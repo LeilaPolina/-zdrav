@@ -1,0 +1,36 @@
+body, html {
+	margin:0;
+	padding:0;
+}
+
+#index-btns-wrapper {
+	width:20%;
+	padding:25px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:100px;
+	background-color:#01CEEF;
+	border-radius:10px;
+}
+
+.index-btn {
+	height:40px;
+	width:150px;
+	border-radius:4px;
+	background-color: rgb(255, 153, 0);
+	border-color: rgb(255, 153, 0);
+	color:#fff;
+	font-size: 20px;
+	text-align:center;
+	text-decoration:none;
+	padding:5px;
+	
+}
+
+.index-btn:active,
+.index-btn:hover,
+.index-btn:focus{
+	background-color: rgb(255, 153, 0);
+	border-color: rgb(255, 153, 0);
+	color:#fff;	
+}

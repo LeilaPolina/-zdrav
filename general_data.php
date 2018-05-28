@@ -1,0 +1,465 @@
+<?php
+	include('/includes/config.php');
+	
+	if(!$user->is_logged_in()){ header('Location: edit_index.html'); }
+	
+	$cur_user_id = $_SESSION['user_id'];
+
+	function getIndexMass ($weight, $height) {
+		$weight = (int) $weight;
+		$height = (int) $height;
+		if ($height == 0) {
+			$height = 1;
+		}
+		return round($weight / pow($height/100, 2), 2);
+	}
+
+	function getTxtIndexMass ($index_mass) {
+		$txt = '';
+		if ($index_mass < 15) {
+			$txt = 'Острый дефицит веса';
+		} elseif ($index_mass >= 15 and $index_mass < 20) {
+			$txt = 'Дефицит веса';
+		} elseif ($index_mass >= 20 and $index_mass < 25) {
+			$txt = 'Нормальный вес';
+		} elseif ($index_mass >= 25 and $index_mass < 30) {
+			$txt = 'Избыточный вес';
+		} elseif ($index_mass >= 30) {
+			$txt = 'Ожирение';
+		}
+		
+		return $txt;
+	}
+	
+	$get_essential_data = $db->prepare('SELECT user_name, user_phone FROM users WHERE user_id = :user_id');
+	$get_essential_data->execute(array(
+		':user_id' => $cur_user_id
+	));
+	$essential_data_row = $get_essential_data->fetch(PDO::FETCH_ASSOC);
+	
+	$get_general_data = $db->prepare('SELECT user_sex, user_age, user_height, user_weight, user_job_conditions, user_smoking, user_alcohol, user_family_status, user_children, user_sport_activity, user_diet, user_diseases, user_chronical FROM user_data WHERE user_data_user_id = :user_id');
+	$get_general_data->execute(array(
+		':user_id' => $cur_user_id
+	));
+	$general_data_row = $get_general_data->fetch(PDO::FETCH_ASSOC);
+	
+	$get_contact_data = $db->prepare('SELECT contact_value FROM contacts_con_user WHERE contacts_con_user_user_id = :user_id AND contacts_con_user_contact_id = (SELECT contact_id FROM contact_types WHERE contact_type = :contact_type)');
+	$get_contact_data->execute(array(
+		':user_id' => $cur_user_id,
+		':contact_type' => 'email'
+	));
+	$contact_data_row = $get_contact_data->fetch(PDO::FETCH_ASSOC);
+	
+	$get_risks_data = $db->prepare('SELECT relatives_death_causes_con_user_relatives_death_causes_type_id FROM relatives_death_causes_con_user WHERE relatives_death_causes_con_user_user_id = :user_id');
+	$get_risks_data->execute(array(
+		':user_id' => $cur_user_id
+	));
+	$relatives_death_causes = array();
+	$relatives_death_causes_ind = 0;
+	while($risks_row = $get_risks_data->fetch(PDO::FETCH_ASSOC)){
+		$relatives_death_causes[$relatives_death_causes_ind] = $risks_row['relatives_death_causes_con_user_relatives_death_causes_type_id'];
+		$relatives_death_causes_ind++;
+	}
+	
+	$index_mass = getIndexMass($general_data_row['user_weight'], $general_data_row['user_height']);
+	$txt_index_mass = getTxtIndexMass($index_mass);
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Общие сведения</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/test.css" />
+	<script src="jquery/jquery-3.1.1.min.js"></script>
+	<script>
+		window.index_mass = '<?php echo $index_mass; ?>';
+	</script>
+	<script src="jquery/jquery.maskedinput.min.js"></script>
+	<script src="scripts/save_general_data.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+
+
+<div class="header-menu">
+	<div class="wrapper">
+		<div class="menu-logo"></div>
+		<div class="menu-nav">
+			<a id="general-inf" href="" style="">Общие сведения</a>
+			<a id="health-in-numbers" href="" style="">Моё здоровье в цифрах</a>
+			<a id="my-documents" href="" style="">Мои документы</a>
+			<a id="shop" href="" style="">Магазин</a>
+			<a id="services" href="" style="">Сервисы</a>
+		</div>
+	</div>
+</div>
+
+
+<div class="main">
+
+	<div class="recommendations">
+		<div class="personal-recommendations threeb">
+			<a class="link-for-toggle" href="" onclick="return false">
+				<div class="img-rec"></div>
+				<div class="per-rec"><p>Личные рекомендации</p></div>
+				<div class="rec-numb">12</div>
+				<p>Свернуть</p>
+			</a>
+			<div class="toggle-inf hide">
+
+			</div>
+		</div>
+		<div class="rec-list">
+			
+		</div>
+	</div>
+
+	<div class="private-office threeb">
+		<div class="lk">
+			<p>Личный кабинет</p>
+			<p>Общие сведения (анамнез)</p>
+		</div>
+		<div class="input-block">
+			<form name="personal-inf"  id="save_gen_data">
+				<div class="general-information">
+					<p>Общая информация</p>
+					<div class="input-name">
+						<p>Как к Вам обращаться</p>
+						<?php
+							echo '<input type="text" value="'.$essential_data_row['user_name'].'" id="iname">';							
+						?>
+					</div>	
+					<div class="input-sex">		
+						<p>Пол</p>
+						<?php
+							if($general_data_row['user_sex'] == 'male'){
+								echo '<input type="radio" checked="checked" name="sex" value="Мужской" id="iman">';
+								echo '<label for="man">Мужской</label>';
+								echo '<input type="radio" name="sex" value="Женский" id="iwoman">';
+								echo '<label for="woman">Женский</label>';
+							}
+							else{
+								echo '<input type="radio" name="sex" value="Мужской" id="iman">';
+								echo '<label for="man">Мужской</label>';
+								echo '<input type="radio" checked="checked" name="sex" value="Женский" id="iwoman">';
+								echo '<label for="woman">Женский</label>';
+							}
+						?>
+					</div>
+					<div class="input-birth">
+						<p>Год рождения</p>
+						<?php
+							echo '<input type="text" value="'.$general_data_row['user_age'].'" id="iyear">';
+						?>
+					</div>
+					<div class="input-height">
+						<p>Рост, см</p>
+						<?php
+							echo '<input type="text" value="'.$general_data_row['user_height'].'" id="iheight">';
+						?>
+					</div>
+					<div class="input-weight">
+						<p>Вес, кг</p>
+						<?php
+							echo '<input type="text" value="'.$general_data_row['user_weight'].'" id="iweight">';
+						?>
+					</div>
+				</div>
+
+				<div class="lifestyle">
+					<p>Образ жизни</p>
+					<div class="input-work">
+						<p>Работа</p>
+						
+						<select name="work" id="iwork">
+						<?php							
+							$work_query = $db->query('SELECT job_conditions_type_name, job_conditions_type_id FROM job_conditions_types ORDER BY job_conditions_type_id');
+							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
+								if($row['job_conditions_type_name'] == $general_data_row['user_job_conditions']){								
+									echo '<option value='.$row['job_conditions_type_id'].' selected>'.$row[	'job_conditions_type_name'].'</option>';
+								}
+								else{								
+									echo '<option value='.$row['job_conditions_type_id'].'>'.$row[	'job_conditions_type_name'].'</option>';
+								}
+							}
+						?>
+						</select>
+						
+					</div>
+					
+					<div class="input-habbits">
+						<p>Курение</p>
+												
+						<select name="smoking" id="ismoking">
+						<?php
+							$smoking_query = $db->query('SELECT smoking_type_name, smoking_type_id FROM smoking_types ORDER BY smoking_type_id');
+							while ($row = $smoking_query->fetch(PDO::FETCH_ASSOC)){
+								if($row['smoking_type_name'] == $general_data_row['user_smoking']){						
+									echo '<option value='.$row['smoking_type_id'].' selected>'.$row['smoking_type_name'].'</option>';
+								}
+								else{								
+									echo '<option value='.$row['smoking_type_id'].'>'.$row['smoking_type_name'].'</option>';
+								}
+							}
+						?>
+						</select>
+						
+					</div>
+					
+					<div class="input-sport">
+						<p>Спорт</p>
+												
+						<select name="sport" id="isport">
+						<?php
+							$sport_query = $db->query('SELECT sport_activity_type_name, sport_activity_type_id FROM sport_activity_types ORDER BY sport_activity_type_id');
+							while ($row = $sport_query->fetch(PDO::FETCH_ASSOC)){
+								if($row['sport_activity_type_name'] == $general_data_row['user_sport_activity']){								
+									echo '<option value='.$row['sport_activity_type_id'].' selected>'.$row['sport_activity_type_name'].'</option>';
+								}
+								else{								
+									echo '<option value='.$row['sport_activity_type_id'].'>'.$row['sport_activity_type_name'].'</option>';
+								}
+							}
+						?>
+						</select>
+					</div>
+					<div class="input-food">
+						<p>Питание</p>						
+						<select name="food" id="ifood">
+						<?php
+							$food_query = $db->query('SELECT diet_type_name, diet_type_id FROM diet_types ORDER BY diet_type_id');
+							while ($row = $food_query->fetch(PDO::FETCH_ASSOC)){
+								if($row['diet_type_name'] == $general_data_row['user_diet']){								
+									echo '<option value='.$row['diet_type_id'].' selected>'.$row['diet_type_name'].'</option>';
+								}
+								else{								
+									echo '<option value='.$row['diet_type_id'].'>'.$row['diet_type_name'].'</option>';
+								}
+							}
+						?>
+						</select>
+						
+					</div>
+					<div class="input-children">
+						<p>Дети</p>
+						
+						<select name="children" id="ichildren">
+						<?php
+							$children_query = $db->query('SELECT children_type_name, children_type_id FROM children_types ORDER BY children_type_id');
+							while ($row = $children_query->fetch(PDO::FETCH_ASSOC)){
+								if($row['children_type_name'] == $general_data_row['user_children']){								
+									echo '<option value='.$row['children_type_id'].' selected>'.$row['children_type_name'].'</option>';
+								}
+								else{								
+									echo '<option value='.$row['children_type_id'].'>'.$row['children_type_name'].'</option>';
+								}
+							}
+						?>
+						</select>
+						
+					</div>
+					
+					<div class="input-education">
+						<p>Алкоголь</p>
+						
+						<select name="alcohol" id="ialcohol">
+						<?php
+							$alcohol_query = $db->query('SELECT alcohol_type_name, alcohol_type_id FROM alcohol_types ORDER BY alcohol_type_id');
+							while ($row = $alcohol_query->fetch(PDO::FETCH_ASSOC)){
+								if($row['alcohol_type_name'] == $general_data_row['user_alcohol']){
+									echo '<option value='.$row['alcohol_type_id'].' selected>'.$row['alcohol_type_name'].'</option>';
+								}
+								else{								
+									echo '<option value='.$row['alcohol_type_id'].'>'.$row['alcohol_type_name'].'</option>';
+								}
+							}
+						?>
+						</select>
+					</div>
+				</div>
+
+				<div class="diseases">
+					<p>Заболевания</p>
+					<div class="input-genetic_risks">
+						<p>Генетические риски</p>
+						<!-- Initialize the plugin: -->
+						<script type="text/javascript">
+							$(document).ready(function() {
+								$('#gen_risks').multiselect({
+									nonSelectedText: 'Ничего не выбрано',
+									nSelectedText: 'выбрано',
+									allSelectedText: 'Выбрано'
+								});
+							});
+						</script>
+						
+						<select id="gen_risks" multiple="multiple">							
+							<?php
+								$risks_query = $db->query('SELECT relatives_death_causes_type_id, relatives_death_causes_type_name FROM relatives_death_causes_types ORDER BY relatives_death_causes_type_id');
+								while ($row = $risks_query->fetch(PDO::FETCH_ASSOC)){
+									if(in_array($row['relatives_death_causes_type_id'], $relatives_death_causes)){
+										echo '<option value='.$row['relatives_death_causes_type_id'].' selected>'.$row['relatives_death_causes_type_name'].'</option>';
+									}
+									else{
+										echo '<option value='.$row['relatives_death_causes_type_id'].'>'.$row['relatives_death_causes_type_name'].'</option>';
+									}
+								}
+							?>
+						</select>
+					</div>
+					<div class="input-sick_before">
+						<p>Чем болел(а) раньше</p>
+						<?php
+							echo '<input type="text" value="'.$general_data_row['user_diseases'].'" id="isick">';
+						?>
+					</div>
+					<div class="input-chronic_dis">
+						<p>Хронические заболевания</p>
+						<?php
+							echo '<input type="text" value="'.$general_data_row['user_chronical'].'" id="ichronic">';
+						?>
+					</div>
+				</div>
+
+				<div class="contacts-po">
+					<p>Контакты</p>
+					<div class="input-email">
+						<p>e-mail</p>
+						<?php
+							echo '<input type="text" value="'.$contact_data_row['contact_value'].'" id="iemail">';
+						?>
+					</div>
+					<div class="input-telephone">
+						<p>Телефон</p>
+						<?php
+							echo '<input type="text" value="'.$essential_data_row['user_phone'].'" placeholder="(xxx) xxx-xx-xx" id="itele">';
+						?>
+					</div>
+				</div>
+				<input type="submit" id="save_gen_data_button" value="Сохранить" class="save-btn">
+			
+			</form>
+		</div>
+	</div>
+
+	<div class="time-link threeb">
+		<div class="img-time"></div>
+		<p class="info">Предоставить временный доступ к Личному кабинету по ссылке:</p>
+		<p id="acctual-link">http://site.ru/url&2333?</p>
+		<a class="" href="" onclick="return false">Открыть доступ</a>
+	</div>
+
+	<div class="family-profile threeb">
+		<div class="img-family"></div>
+		<p class="info">Создать семейный профиль</p>
+		<p class="allfam">(ребенок, муж, жена, мама, папа, родственник)</p>
+		<a class="" href="" onclick="return false">+ Добавить члена семьи</a>
+	</div>
+
+	<div class="services">
+		<p>Сервисы</p>
+		<a class="all-serv">Активировать все сервисы</a>
+		<div class="click-services">
+			
+				<a class="weight-control threeb" href="" onclick="return false">
+					<p>Контроль веса</p>
+					<div class="trigger"></div>
+				</a>
+				<a class="healthy-eating threeb" href="" onclick="return false">
+					<p>Здоровое питание</p>
+					<div class="trigger"></div>
+				</a>
+				<a class="give-up-smoking threeb" href="" onclick="return false">
+					<p>Отказ от курения</p>
+					<div class="trigger"></div>
+				</a>
+			
+				<a class="personal-health-manager threeb" href="" onclick="return false">
+					<p>Персональный менеджер здоровья</p>
+					<div class="trigger"></div>
+				</a>
+				<a class="reminder threeb" href="" onclick="return false">
+					<p>Напоминания</p>
+					<div class="trigger"></div>
+				</a>
+				<a class="immunity threeb" href="" onclick="return false">
+					<p>Поднятие иммунитета</p>
+					<div class="trigger"></div>
+				</a>
+			
+				<a class="analyzes threeb" href="" onclick="return false">
+					<p>Сдача анализов</p>
+					<div class="trigger"></div>
+				</a>
+				<a class="home-bodycheck threeb" href="" onclick="return false">
+					<p>Домашний медосмотр</p>
+					<div class="trigger"></div>
+				</a>
+				<a class="healthy-heart threeb" href="" onclick="return false">
+					<p>Здоровое сердце</p>
+					<div class="trigger"></div>
+				</a>
+			
+				<a class="wait-kid threeb" href="" onclick="return false">
+					<p>Жду малыша</p>
+					<div class="trigger"></div>
+				</a>
+				<a class="be-mom threeb" href="" onclick="return false">
+					<p>Хочу быть мамой</p>
+					<div class="trigger"></div>
+				</a>
+				<a class="be-dad threeb" href="" onclick="return false">
+					<p>Хочу быть папой</p>
+					<div class="trigger"></div>
+				</a>
+			
+		</div>
+	<div class="instructions">
+   		<input type="checkbox" id="how_video" name="video" value="how_video">
+    	<label for="video">Показывать видеоинструкции?</label>
+  	</div>
+	<hr>
+	</div>
+
+
+	<div class="footer">
+
+		<div class="contacts">
+			<div class="social-media">
+				<a class="social-OK"></a>
+				<a class="social-VK"></a>
+				<a class="social-FB"></a>
+				<a class="social-IG"></a>
+			</div>
+			<div class="phone">+7 495 131-32-73</div>
+			<div class="OOO">2016-2018 ООО «Здравствую»</div>
+		</div>
+
+		<div class="zdrav-menu">
+			<p>Здравствую</p>
+			<ul>
+				<li><a>О нас</a></li>
+				<li><a>FAQ</a></li>
+				<li><a>Отзывы о сервисе</a></li>
+				<li><a>Партнерская программа</a></li>
+				<li><a>Команда</a></li>
+				<li><a>Контакты</a></li>
+			</ul>
+		</div>
+
+		<div class="documents">
+			<p>Документы</p>
+			<ul>
+				<li><a>Миссия, цель, ценности</a></li>
+				<li><a>Правила использования</a></li>
+				<li><a>Обработка персональных данных</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>

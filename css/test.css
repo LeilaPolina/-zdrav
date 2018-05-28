@@ -1,0 +1,1088 @@
+body {
+	margin: 0 auto;
+	background: #F0F3F7;
+}
+
+.zdrav-menu ul, .documents ul {
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-menu {
+	height:64.73px;
+	min-width:930px;
+	background: #FFFFFF;
+	box-shadow: 0px 1px 6px rgba(46, 53, 54, 0.131963), 0px 2px 14px rgba(13, 42, 54, 0.08);
+}
+
+.wrapper {
+	position: relative;
+	height:100%;
+	width:885px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.menu-logo {
+	position: absolute;
+	width:134px;
+	height:28px;
+	left: 2.02%;
+	top: 26.65%;
+	bottom: 42.91%;
+	background:url('../images/uploads/logo-nav.png') no-repeat ;
+	background-size:100%;
+}
+
+.menu-nav {
+	position: absolute;
+	line-height:64.73px;
+	left: 20.85%;
+	right:2%;
+	height:100%;
+	text-align:center;
+}
+.menu-nav > a > p {
+	margin:0px;
+	position: relative;
+}
+
+.menu-nav > a > p:before {
+	content:'';
+	position:absolute;
+	width:20px;
+	height:20px;
+	left: -25px;
+	top:calc(50% - 20px/2);
+}
+
+.menu-nav a{
+	display:inline-block;
+	position: relative;
+	height:100%;
+	padding-left:35px;
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 13px;
+	text-decoration: none;
+	color: rgba(22, 50, 92, 0.8);
+}
+
+.menu-nav a:hover{
+    border-bottom: 2px solid #00B0D2;
+}
+
+.main {
+	width:930px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.recommendations {
+	min-height:114px;
+	margin-top:27px;
+}
+
+.personal-recommendations{
+	width:100%;
+}
+
+.link-for-toggle {
+	display:block;
+	position: relative;
+	width:100%;
+	height:114px;
+}
+
+.per-rec {
+	position: absolute;
+	left:9.36%;
+	right:71.88%;
+	top:40.93%;
+	bottom:38.93%;
+	font-family: OpenSans;
+	font-style: normal;
+	font-size: 18px;
+	color: rgba(22, 50, 92, 0.8);
+}
+
+.per-rec > p{
+	margin:0;
+}
+
+.link-for-toggle > p {
+	margin:0;
+	position: absolute;
+	left: 87.24%;
+	right: 6.3%;
+	top:40.93%;
+	bottom:27.93%;
+	font-family: Abhaya Libre Medium;
+	font-style: normal;
+	font-size: 18px;
+	color: rgba(22, 50, 92, 0.8);
+}
+
+.rec-numb {
+	position: absolute;
+	left:29.36%;
+	right:66.88%;
+	top:40.93%;
+	bottom:27.93%;
+	font-family: OpenSans;
+	line-height: 26px;
+	font-size: 15px;
+	text-align: center;
+	color: #FFFFFF;
+	width:26px;
+	height:26px;
+	background-color: #00B0D2;
+	border-radius: 13px;
+}
+
+.img-rec {
+	position: absolute;
+	width:33px;
+	height:25px;
+	background:url('../images/icons/Openheart.png') no-repeat;
+	left:4%;
+	right:88.88%;
+	top:40.93%;
+	bottom:27.93%;
+}
+
+
+.threeb {
+	background-color: white;
+	box-shadow: 0px 2px 2px rgba(46, 53, 54, 0.118631);
+	border-radius: 3px;
+}
+
+.lk {
+	text-align: center;
+}
+
+.lk p:first-child {
+	font-family: OpenSans;
+	line-height: 16px;
+	font-size: 15px;
+	color: rgba(22, 50, 92, 0.8);
+	margin-top:0;
+}
+
+.lk p:nth-child(2) {
+	font-family: OpenSans;
+	line-height: 30px;
+	font-size: 30px;
+	color: #374963;
+	margin-top:-10px;
+	margin-bottom:10px;
+}
+.lk p:nth-child(3) {
+	font-family: OpenSans;
+	line-height: 26px;
+	font-size: 20px;
+	color: #374963;
+	margin-top:-10px;
+}
+
+.private-office {
+	padding:43px 26px 28px 32px;
+	height:926px;
+	margin-top:24px;
+}
+
+.general-information > div , .lifestyle > div{
+	display: inline-block;
+}
+
+#iname {
+	width: 270px;
+	height: 32px;
+	border: 1px solid #A8B7C7;
+	box-sizing: border-box;
+	border-radius: 3px;
+}
+
+#iyear, #iheight, #iweight {
+	width: 94px;
+	height: 32px;
+	border: 1px solid #A8B7C7;
+	box-sizing: border-box;
+	border-radius: 3px;
+	padding-left:12px;
+}
+
+.input-sex, .input-birth , .input-height , .input-weight{
+	margin-left: 31px;
+}
+ 
+#iwork, #ismoke, #isport, #ifood, #ichildren, #ialcohol, #iemail, #itele  {
+	width: 271px;
+	height: 32px;
+	border: 1px solid #A8B7C7;
+	box-sizing: border-box;
+	border-radius: 3px;
+	padding-left:12px;
+}
+
+
+#ismoke, #isport, #ichildren, #ialcohol {
+	margin-left:25px;
+}
+
+.input-smoke > p , .input-sport > p , .input-children > p , .input-alcohol > p {
+	margin-left:25px;
+}
+
+#irisks, #isick, #ichronic {
+	width:572px;
+	height:32px;
+	border: 1px solid #A8B7C7;
+	box-sizing: border-box;
+	border-radius: 3px;
+}
+
+.contacts-po > div {
+	display:inline-block;
+}
+
+.input-telephone {
+	margin-left:28px;
+}
+
+.save-btn {
+	display: block;
+    height: 36px;
+    width: 185px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 61px;
+    background: #00B0D2;
+    border-radius: 4px;
+    color: white;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    border:0;
+}
+
+.input-name > p,.input-sex > p,.input-birth > p,.input-height > p,.input-weight > p,.input-work > p,.input-smoke > p,.input-sport > p,.input-food > p,.input-children > p,.input-alcohol > p,.input-genetic_risks > p,.input-sick_before > p,.input-chronic_dis > p,.input-email > p,.input-telephone > p {
+	margin-bottom:3px;
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 14px;
+	color: #54698D;
+	margin-top:0px;
+}
+.general-information > p, .lifestyle > p, .diseases > p, .contacts-po > p {
+	font-family: OpenSans;
+	font-size: 19px;
+	margin-top:27px;
+	margin-bottom: 23px;
+}
+
+.input-food > p,.input-children > p,.input-alcohol > p,.input-sick_before > p,.input-chronic_dis > p {
+	margin-top:16px;	
+}
+
+.time-link, .family-profile {
+	width:100%;
+	height:96px;
+	margin-top:12px;
+	position:relative;
+}
+
+.services {
+	width:100%;
+	height:468px;
+	margin-top:34px;
+}
+
+.services > p {
+	font-family: Abhaya Libre Medium;
+	font-style: normal;
+	line-height: 19px;
+	font-size: 21px;
+	text-align: center;
+	color: #374963;
+	margin-top:32px;
+	margin-bottom:0px;
+}
+
+.all-serv {
+	display:block;
+	position: relative;
+	text-align: center;
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: bold;
+	line-height: 16px;
+	font-size: 13px;
+	margin-left:330px;
+	width:180px;
+	margin-top:37px;
+	margin-bottom:25px;
+	color: rgba(22, 50, 92, 0.8);
+}
+
+.click-services > a {
+	display:inline-block;
+	position: relative;
+	width:305px;
+	height:64px;
+	background-color:white;
+	color: #373A3C;
+	text-decoration: none;
+}
+
+.click-services > a > p {
+	position:absolute;
+	height:20px;
+	left: 17.38%;
+	right: 15.41%;
+	top: calc(50% - 20px/2 + 3px);
+	margin-top:0;
+	margin-bottom:0;
+	font-family: Open Sans;
+
+	font-size: 13px;
+}
+
+
+.click-services > a.personal-health-manager > p {
+	height:33px;
+	top: calc(50% - 33px/2);
+}
+
+.personal-health-manager, .reminder, .immunity, .analyzes, .home-bodycheck, .healthy-heart, .wait-kid, .be-mom, .be-dad {
+	margin-top:12px;
+}
+
+.click-services > a > p:before {
+	content:'';
+	position:absolute;
+	width:20px;
+	height:20px;
+	left: -29px;
+	top:-2px;
+}
+
+a.weight-control > p:before {
+	background:url('../images/icons/symbols-icon-mass.png') no-repeat;
+}
+
+a.healthy-eating > p:before {
+	background:url('../images/icons/symbols-icon-food.png') no-repeat;
+	width:22px;
+	height:22px;
+}
+
+a.give-up-smoking > p:before {
+	background:url('../images/icons/symbols-icon-smoke.png') no-repeat;
+	width:22px;
+	height:22px;
+}
+
+a.personal-health-manager > p:before {
+	background:url('../images/icons/symbols-icon-personal-manager.png') no-repeat;
+	width:19px;
+	height:22px;
+	top:5px;
+}
+
+a.reminder > p:before {
+	background:url('../images/icons/symbols-icon-notification.png') no-repeat;
+	width:18px;
+}
+
+a.immunity > p:before {
+	background:url('../images/icons/symbols-icon-immunitet.png') no-repeat;
+	width:18px;
+	height:22px;
+}
+
+a.analyzes > p:before {
+	background:url('../images/icons/symbols-icon-analise.png') no-repeat;
+	width:14px;
+	height:21px;
+}
+
+a.home-bodycheck > p:before {
+	background:url('../images/icons/symbols-icon-home.png') no-repeat;
+	width:21px;
+}
+
+a.healthy-heart > p:before {
+	background:url('../images/icons/symbols-icon-heart.png') no-repeat;
+	width:21px;
+	height:17px;
+}
+
+a.wait-kid > p:before {
+	background:url('../images/icons/symbols-icon-wait-baby.png') no-repeat;
+	width:13px;
+	height:21px;
+}
+
+a.be-mom > p:before {
+	background:url('../images/icons/symbols-icon-want-mam.png') no-repeat;
+	width:16px;
+	height:22px;
+}
+
+a.be-dad > p:before {
+	background:url('../images/icons/symbols-icon-pap.png') no-repeat;
+	height:23px;
+}
+
+
+.instructions {
+	margin-top:28px;
+}
+
+.footer {
+	width:100%;
+	height:255px;
+	margin-top:20px;
+	margin-bottom:56px;
+}
+
+.footer > div {
+	display: inline-block;
+}
+
+.contacts {
+	width:192px;
+	height:106px;
+	margin-left:11px;
+	margin-top: 87px;
+	vertical-align: top;
+}
+
+.zdrav-menu {
+	margin-left:118px;
+	margin-top: 46px;
+	width:157px;
+	height:212px;
+	vertical-align: top;
+}
+
+
+.documents {
+	margin-left:151px;
+	width:220px;
+	height:140px;
+	vertical-align: top;
+	margin-top:46px;
+}
+
+.zdrav-menu > p , .documents > p {
+	font-family: OpenSans;
+	font-size: 20px;
+}
+
+.zdrav-menu ul > li, .documents ul > li {
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 24px;
+	font-size: 14px;
+	color: #54698D;
+}
+
+.social-media > a {
+	display:inline-block;
+	width:24px;
+	height:24px;
+	background-color: white;
+}
+
+.social-VK , .social-FB, .social-IG {
+	margin-left:25px;
+}
+
+.phone {
+	margin-top:26px;
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: bold;
+	line-height: 22px;
+	font-size: 18px;
+	color: #374963;
+}
+
+.OOO {
+	margin-top:12px;
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 22px;
+	font-size: 14px;
+	color: #374963;
+}
+
+.img-time {
+	width:28px;
+	height:28px;
+	background:url('../images/icons/Chain.png') no-repeat;
+	position:absolute;
+	top: 31.25%;
+	bottom: 31.25%;
+	left:4.41%;
+	right:92.58%;
+}
+
+.img-family {
+	width:32px;
+	height:27px;
+	background:url('../images/icons/FamilyHeart.png') no-repeat;
+	position:absolute;
+	top: 31.25%;
+	bottom: 31.25%;
+	left:4.41%;
+	right:92.58%;
+}
+
+.family-profile >  a , .time-link >  a {
+	display:block;
+	width:205px;
+	height:36px;
+	background: #F5F7FA;
+	text-decoration: none;
+	color: #15596B;
+	border: 1px solid #CCDAE8;
+	box-sizing: border-box;
+	border-radius: 4px;
+	text-align: center;
+	line-height: 36px;
+	position: absolute;
+	left: 74.62%;
+	right: 3.33%;
+	top: 31.25%;
+	bottom: 31.25%;
+}
+
+.time-link .info {
+	font-family: Abhaya Libre Medium;
+	font-style: normal;
+	height:20px;
+	line-height: 20px;
+	font-size: 15px;
+	color: rgba(22, 50, 92, 0.8);
+	position: absolute;
+	left: 9.67%;
+	right: 35.37%;
+	top:20.83%;
+	bottom:54.16%;
+	margin:0;
+}
+
+#acctual-link {
+	font-family: Abhaya Libre Medium;
+	font-style: normal;
+	height:24px;
+	text-align: center;
+	line-height: 24px;
+	font-size: 14px;
+	color: rgba(22, 50, 92, 0.8);
+	position: absolute;
+	left: 9.67%;
+	right: 71.94%;
+	top: 54.16%;
+	bottom: 20.83%;
+	background: #F7F8FA;
+	border-radius: 3px;
+	margin:0;
+}
+
+.family-profile .info {
+	height: 32px;
+	font-family: Abhaya Libre Medium;
+	font-style: normal;
+	line-height: 32px;
+	font-size: 15px;
+	color: rgba(22, 50, 92, 0.8);
+	position: absolute;
+	top:30.5%;
+	bottom:37.5%;
+	left:9.46%;
+	right:68.27%;
+	margin:0;
+}
+
+.allfam {
+	font-family: Abhaya Libre Medium;
+	font-style: normal;
+	height: 20px;
+	line-height: 20px;
+	font-size: 13px;
+	color: #6F949E;
+	position: absolute;
+	top:42.7%;
+	bottom:36.46%;
+	left:35.16%;
+	right:32.79%;
+	margin:0;
+}
+
+.active-all-serv {
+	display:block;
+	height:20px;
+	width:40px;
+	background-color: grey;
+}
+
+.toggle-inf {
+	position: relative;
+	height:340px;
+}
+
+.video-rec {
+	position: absolute;
+	left:27.4%;
+	right:27.3%;
+	width:421px;
+	height:227px;
+	background:url('../images/video_cap.PNG') no-repeat;
+}
+
+.lifetime {
+	width:544px;
+	height:38px;
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 22px;
+	font-size: 13px;
+	text-align: center;
+	color: rgba(22, 50, 92, 0.8);
+	position: absolute;
+	left: 20.1%;
+	right: 21.4%;
+	top:79.5%;
+}
+
+.rec-list {
+	min-height: 0px;
+}
+
+
+.social-OK {
+	background:url('../images/icons/Ok-socail.PNG') no-repeat;
+}
+
+.social-VK {
+	background:url('../images/icons/Vk-socail.PNG') no-repeat;
+}
+
+.social-FB {
+	background:url('../images/icons/Fb-socail.PNG') no-repeat;
+}
+
+.social-IG {
+	background:url('../images/icons/Ig-socail.PNG') no-repeat;
+}
+
+#general-inf > p:before { 
+	background:url('../images/icons/general_inf_icon.PNG') no-repeat;
+}
+
+#health-in-numbers > p:before {
+	background:url('../images/icons/health_menu_icon.PNG') no-repeat;
+}
+
+#my-documents > p:before {
+	background:url('../images/icons/document_menu_icon.PNG') no-repeat;
+}
+
+#shop > p:before {
+	background:url('../images/icons/store_menu_icon.PNG') no-repeat;
+}
+
+#services > p:before {
+	background:url('../images/icons/services_menu_icon.PNG') no-repeat;
+	width:15px;
+}
+
+.trigger {
+	position: absolute;
+	left:77.7%;
+	top:31.3%;
+	width:48px;
+	height:24px;
+	background:url('../images/icons/symbols-toogle-off.png') no-repeat;
+}
+
+.mass_index {
+	position: relative;
+	margin-top:24px;
+	height:159px;
+}
+
+.icon_mass {
+	position: absolute;
+	top:41.51%;
+	left:4.19%;
+	width:26px;
+	height:26px;
+	background:url('../images/icons/') no-repeat;
+}
+
+.mass_index > div:nth-child(2), .smoke > div:nth-child(2) {
+	position: absolute;
+	left:9.89%;
+	top:12.58%;
+	width:500px;
+	height:32px;
+	font-family: OpenSans;
+	line-height: 16px;
+	font-size: 17px;
+	color: rgba(22, 50, 92, 0.8);
+}
+
+.mass_index > p {
+	margin:0;
+	left:9.89%;
+	top:45.28%;
+	position: absolute;
+	font-family: OpenSans;
+	line-height: 22px;
+	font-size: 15px;
+	color: #1F2F47;
+}
+
+.plus_life {
+	left:9.89%;
+	top:66.67%;
+	position: absolute;
+	width:115px;
+	height:24px;
+	background: #F7F8FA;
+	border-radius: 3px;
+	font-family: OpenSans;
+	line-height: 24px;
+	font-size: 15px;
+	color: #00B0D2;
+	text-align: center;
+}
+
+.rec-button {
+	position: absolute;
+	left:77.53%;
+	top: calc(50% - 32px/2);
+	width:178px;
+	height:32px;
+	background: #00B0D2;
+	border-radius: 4px;
+	font-family: OpenSans;
+	line-height: normal;
+	font-size: 15px;
+	line-height: 32px;
+	text-align: center;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.smoke {
+	height:164px;
+	position: relative;
+	margin-top:6px;
+}
+
+.smoke > p {
+	margin:0;
+	left:9.89%;
+	top:32.28%;
+	position: absolute;
+	font-family: OpenSans;
+	line-height: 22px;
+	font-size: 15px;
+	color: #1F2F47;
+}
+
+.icon_smoke {
+	position: absolute;
+	top:42.07%;
+	left:4.19%;
+	width:26px;
+	height:26px;
+	background:url('../images/icons/') no-repeat;
+}
+
+.req_analyzes {
+	height:495px;
+	position: relative;
+	margin-top:6px;
+}
+
+.req_analyzes p {
+	margin:0;
+}
+
+.result_analyzes {
+	position: absolute;
+	top:11.75%;
+	left:9.89%;
+	width:568px;
+	height:282px;
+	background: #FAFBFC;
+	border-radius: 4px;
+	padding:15px 19px 20px 12px;
+}
+
+.result_analyzes ul {
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.result_analyzes ul > li {
+	width:568px;
+	height:30px;
+	line-height: 30px;
+}
+
+.result_analyzes ul > li:hover {
+	background: #FFFFFF;
+	box-shadow: 0px 1px 3px rgba(44, 50, 52, 0.117103);
+	border-radius: 4px;
+}
+
+.text1 {
+	position: absolute;
+	font-family: OpenSans;
+	line-height: 16px;
+	font-size: 17px;
+	color: rgba(22, 50, 92, 0.8);
+	top:4.12%;
+	left:9.89%;
+}
+
+.text2 {
+	position: absolute;
+	font-family: OpenSans;
+	line-height: 16px;
+	font-size: 15px;
+	color: rgba(22, 50, 92, 0.8);
+	top:78.35%;
+	left:9.89%;
+}
+
+.plus_life_analyzes {
+	position: absolute;	
+	top:90.1%;
+	left:9.89%;
+	width:115px;
+	height:24px;
+	background: #F7F8FA;
+	border-radius: 3px;
+	font-family: OpenSans;
+	line-height: 24px;
+	font-size: 15px;
+	color: #00B0D2;
+	text-align: center;
+}
+
+.rec-button-analyzes {
+	position: absolute;
+	left:77.53%;
+	top:13.4%;
+	width:178px;
+	height:32px;
+	background: #00B0D2;
+	border-radius: 4px;
+	font-family: OpenSans;
+	line-height: normal;
+	font-size: 15px;
+	line-height: 32px;
+	text-align: center;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+
+.result_analyzes li {
+	position: relative;
+	padding-left:12px;
+	font-family: OpenSans;
+	line-height: 16px;
+	font-size: 13px;
+	color: rgba(22, 50, 92, 0.8);
+}
+
+.result_analyzes > div:first-child {
+	font-family: OpenSans;
+	line-height: 16px;
+	font-size: 17px;
+	color: rgba(22, 50, 92, 0.8);
+	margin-left:12px;
+}
+
+.result_analyzes > div:nth-child(2) {
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: bold;
+	line-height: 16px;
+	font-size: 12px;
+	color: rgba(22, 50, 92, 0.8);
+	margin-top:23px;
+	margin-left:12px;
+}
+
+.result_analyzes > div:nth-child(4) {
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: bold;
+	line-height: 16px;
+	font-size: 12px;
+	color: rgba(22, 50, 92, 0.8);
+	margin-top:23px;
+	margin-left:12px;
+}
+
+.rec_min, .rec_individual {
+	margin-top:8px;
+}
+
+.help:after {
+	content:'';
+	width:16px;
+	height:16px;
+	position: absolute;
+	background:url('../images/icons/symbols-icon-question.png') no-repeat;
+	left:120px;
+	top:4px;
+}
+
+.all-serv:after {
+	content:'';
+	position:absolute;
+	width:48px;
+	height:24px;
+	background:url('../images/icons/symbols-toogle-off.png') no-repeat;
+	top:-3px;
+	left:195px;
+}
+
+.homebodycheck, .healthyfood, .tester , .healthyheart, .personal-manager{
+	height:114px;
+	position: relative;
+	margin-top:6px;
+}
+
+.homebodycheck > div:nth-child(2) , .tester > div:nth-child(2), .healthyheart > div:nth-child(2) {
+	position: absolute;
+	font-family: Open Sans;
+	line-height: 16px;
+	font-size: 15px;
+	color: rgba(22, 50, 92, 0.8);
+	left:10.11%;
+	top:21.93%;
+}
+
+.homebodycheck .plus_life, .healthyfood .plus_life , .tester .plus_life, .healthyheart .plus_life , .personal-manager .plus_life{
+	top:58%;
+}
+
+.healthyfood > div:nth-child(2) , .personal-manager > div:nth-child(2){
+	position: absolute;
+	font-family: Open Sans;
+	line-height: 16px;
+	font-size: 15px;
+	color: rgba(22, 50, 92, 0.8);
+	left:10.11%;
+	top:15%;
+}
+
+.icon_rec {
+	position: absolute;
+	width:26px;
+	height:26px;
+	left:4.19%;
+	top:calc(50% - 26px/2);
+}
+
+.icon_mass-index {
+	background:url('../images/icons/symbols-icon-mass26x26.PNG') no-repeat;
+}
+
+.icon_smoke {
+	background:url('../images/icons/symbols-icon-smoke26x26.PNG') no-repeat;
+}
+
+.icon_analyzes {
+	background:url('../images/icons/symbols-icon-analise23x34.PNG') no-repeat;
+	width:23px;
+	height:34px;
+	top:13.79%;
+}
+
+.icon_homebodycheck {
+	background:url('../images/icons/symbols-icon-home28x28.PNG') no-repeat;
+	width:28px;
+	height:28px;
+}
+
+.icon_healthyfood {
+	background:url('../images/icons/symbols-icon-food26x26.PNG') no-repeat;
+}
+
+.icon_tester {
+	background:url('../images/icons/symbols-tester20x32.png') no-repeat;
+	width:20px;
+	height:32px;
+}
+
+.icon_healthyheart {
+	background:url('../images/icons/symbols-icon-heart28x23.PNG') no-repeat;
+	width:28px;
+	height:23px;
+}
+
+.icon_personal-manager {
+	background:url('../images/icons/symbols-icon-personal-manager23x27.PNG') no-repeat;
+	width:23px;
+	height:27px;
+}
+
+.rec_min a.help-reverse , .rec_individual a.help-reverse {
+	position: absolute;
+	margin:0;
+	width:66px;
+	height:16px;
+	top:0;
+	left:85%;
+	font-family: OpenSans;
+	line-height: 30px;
+	font-size: 13px;
+	color: #00B0D2;
+	text-decoration: none;
+}
+
+.help-reverse:before {
+	content:'';
+	width:16px;
+	height:16px;
+	position: absolute;
+	background:url('../images/icons/symbols-icon-question.png') no-repeat;
+	left:-23px;
+	top:5px;
+}
+
+#gen_risks {
+	width: 572px;
+    height: 32px;
+    border: 1px solid #A8B7C7;
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding-left: 12px;
+}
