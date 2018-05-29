@@ -1,7 +1,7 @@
 <?php
-	include('/includes/config.php');
+	include('includes/config.php');
 	
-	if(!$user->is_logged_in()){ header('Location: edit_index.html'); }
+	if(!$user->is_logged_in()){ header('Location: index.html'); }
 	
 	$cur_user_id = $_SESSION['user_id'];
 
@@ -81,6 +81,10 @@
 	
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	
+	<!-- MULTISELECT -->
+	<link rel="stylesheet" type="text/css" href="css/multiselect.css" />
+	<script src="scripts/multiselect.js"></script>
 </head>
 <body>
 
@@ -191,10 +195,10 @@
 						
 					</div>
 					
-					<div class="input-habbits">
+					<div class="input-smoke">
 						<p>Курение</p>
 												
-						<select name="smoking" id="ismoking">
+						<select name="smoking" id="ismoke">
 						<?php
 							$smoking_query = $db->query('SELECT smoking_type_name, smoking_type_id FROM smoking_types ORDER BY smoking_type_id');
 							while ($row = $smoking_query->fetch(PDO::FETCH_ASSOC)){
@@ -263,7 +267,7 @@
 						
 					</div>
 					
-					<div class="input-education">
+					<div class="input-alcohol">
 						<p>Алкоголь</p>
 						
 						<select name="alcohol" id="ialcohol">
@@ -286,30 +290,25 @@
 					<p>Заболевания</p>
 					<div class="input-genetic_risks">
 						<p>Генетические риски</p>
-						<!-- Initialize the plugin: -->
-						<script type="text/javascript">
-							$(document).ready(function() {
-								$('#gen_risks').multiselect({
-									nonSelectedText: 'Ничего не выбрано',
-									nSelectedText: 'выбрано',
-									allSelectedText: 'Выбрано'
-								});
-							});
-						</script>
-						
-						<select id="gen_risks" multiple="multiple">							
+						<div class="gen-risks-selectBox" onclick="showCheckboxes()">
+							<select id="gen_risks">
+								<option>Нажмите, чтобы развернуть</option>
+							</select>
+							<div class="gen-risks-overSelect"></div>
+						</div>						
+						<div id="gen-risks-checkboxes">						
 							<?php
 								$risks_query = $db->query('SELECT relatives_death_causes_type_id, relatives_death_causes_type_name FROM relatives_death_causes_types ORDER BY relatives_death_causes_type_id');
 								while ($row = $risks_query->fetch(PDO::FETCH_ASSOC)){
 									if(in_array($row['relatives_death_causes_type_id'], $relatives_death_causes)){
-										echo '<option value='.$row['relatives_death_causes_type_id'].' selected>'.$row['relatives_death_causes_type_name'].'</option>';
+										echo '<label><input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group" checked>'.$row['relatives_death_causes_type_name'].'</label>';
 									}
 									else{
-										echo '<option value='.$row['relatives_death_causes_type_id'].'>'.$row['relatives_death_causes_type_name'].'</option>';
+										echo '<label><input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group">'.$row['relatives_death_causes_type_name'].'</label>';
 									}
 								}
 							?>
-						</select>
+						</div>
 					</div>
 					<div class="input-sick_before">
 						<p>Чем болел(а) раньше</p>

@@ -1,11 +1,11 @@
 <?php
-	include_once('/includes/config.php');
+	include_once('includes/config.php');	
 	include_once('check_phone_number.php');
 
 	
 	function prepare_health_data($user_health_data) {
-		$format_date = explode('-', $user_health_data['year_birth']);
-		$user_health_data['year_birth'] = $format_date[2].'-'.$format_date[1].'-'.$format_date[0];
+		//$format_date = explode('-', $user_health_data['year_birth']);
+		//$user_health_data['year_birth'] = $format_date[2].'-'.$format_date[1].'-'.$format_date[0];
 		$result_test = $_SESSION['result_test'];
 		
 		if($result_test['family'] == 'Живу одна' || $result_test['family'] == 'Живу один') {
@@ -63,7 +63,7 @@
 		$ins_health_data->execute(array(
 			':user_data_user_id' => $_SESSION['user_id'],
 			':user_sex' => $user_health_data['sex'],
-			':user_age' => $user_health_data['year_birth'],
+			':user_age' => date($user_health_data['birth_year']),
 			':user_height' => $user_health_data['height'],
 			':user_weight' => $user_health_data['weight'],
 			':user_family_status' => $user_health_data['family'],
@@ -123,8 +123,8 @@
 			
 		}		
 		catch(Exception $e) {
-			return $e->getMessage();
-			//return 701;
+			//return $e->getMessage();
+			return 701;
 		}
 	}
 	
