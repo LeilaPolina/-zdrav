@@ -191,10 +191,10 @@
 						
 					</div>
 					
-					<div class="input-habbits">
+					<div class="input-smoke">
 						<p>Курение</p>
 												
-						<select name="smoking" id="ismoking">
+						<select name="smoking" id="ismoke">
 						<?php
 							$smoking_query = $db->query('SELECT smoking_type_name, smoking_type_id FROM smoking_types ORDER BY smoking_type_id');
 							while ($row = $smoking_query->fetch(PDO::FETCH_ASSOC)){
@@ -263,7 +263,7 @@
 						
 					</div>
 					
-					<div class="input-education">
+					<div class="input-alcohol">
 						<p>Алкоголь</p>
 						
 						<select name="alcohol" id="ialcohol">
@@ -288,13 +288,13 @@
 						<p>Генетические риски</p>
 						<!-- Initialize the plugin: -->
 						<script type="text/javascript">
-							$(document).ready(function() {
+							/*$(document).ready(function() {
 								$('#gen_risks').multiselect({
 									nonSelectedText: 'Ничего не выбрано',
 									nSelectedText: 'выбрано',
 									allSelectedText: 'Выбрано'
 								});
-							});
+							});*/
 						</script>
 						
 						<select id="gen_risks" multiple="multiple">							
