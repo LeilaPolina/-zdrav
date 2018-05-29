@@ -66,11 +66,7 @@ function validatePhoneNumber(callback)  {
 	}
 	
 $(document).ready(function(){
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> 77b9f6770da47542055d76d34194d238b7c73a07
+
 	test_reg_modal= document.getElementById('test-register-modal');
 	confirm_modal= document.getElementById('confirm-modal');
 	success_modal= document.getElementById('success-modal');
@@ -199,12 +195,7 @@ $(document).ready(function(){
 			}
 		});
 	}
-	
-<<<<<<< HEAD
-=======
-	
-	
->>>>>>> 77b9f6770da47542055d76d34194d238b7c73a07
+
 	$("#success-btn").click(function (e) {
 		e.preventDefault();
 	    send_user_data(registration_answer);
