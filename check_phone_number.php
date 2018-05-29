@@ -1,17 +1,8 @@
 <?php 
 	require_once('includes/config.php');
-
-	function validate_phone($phone) {
-		$phone_pieces = explode('(', $phone);
-		$phone = $phone_pieces[0].' ('.$phone_pieces[1];
-		$phone_pieces = explode(')', $phone);
-		$phone = $phone_pieces[0].') '.$phone_pieces[1];
-		return $phone;
-	}
 	
 	function check_phone($phone){
 		global $db;
-		//$phone=validate_phone($phone);
 		$search_phone = $db->prepare("SELECT * FROM users WHERE user_phone = :user_phone");
 		$search_phone->execute(array(
 			':user_phone' => $phone
@@ -64,14 +55,14 @@
 	}
 	
 	if(isset($_POST['user_phone']) && isset($_POST['new_password'])) {
-		$user_phone=$_POST['user_phone'];//validate_phone(trim(preg_replace('/ /','',$_POST['user_phone'])));
+		$user_phone=$_POST['user_phone'];
 		$user_password=trim(preg_replace('/ /','',$_POST['new_password']));
 		echo json_encode(array('result' => set_new_password($user_phone,$new_password)));
 	}	
 	
 	
 	if(isset($_POST['login_phone_number']) && isset($_POST['login_password'])) {
-			$user_phone=$_POST['login_phone_number'];//validate_phone(trim(preg_replace('//','',$_POST['login-phone-number'])));
+			$user_phone=$_POST['login_phone_number'];
 			$user_password=trim(preg_replace('/ /','',$_POST['login_password']));
 			global $user;
 			echo json_encode(array('result' => $user->login($user_phone,$user_password)));

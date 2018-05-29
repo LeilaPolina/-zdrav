@@ -123,8 +123,8 @@
 			
 		}		
 		catch(Exception $e) {
-			return $e->getMessage();
-			//return 701;
+			//return $e->getMessage();
+			return 701;
 		}
 	}
 	
