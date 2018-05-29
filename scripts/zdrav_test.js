@@ -44,7 +44,7 @@ $(function () {
 		{
 			name: 'weight',
 			title: 'Вес:',
-			placeholder: 'В килограммах (можно примерно)',
+			placeholder: 'В килограммах (примерно)',
 			type: 'input',
 		},
 		/* 5 */
@@ -53,7 +53,7 @@ $(function () {
 			title: 'Образование:',
 			type: 'radio',
 			answers: [ 
-				{ text: 'Не законченое средне', count: '-2'},
+				{ text: 'Незаконченное среднее', count: '-2'},
 				{ text: 'Среднее', count: '-1' },
 				{ text: 'Специальное', count: '0' },
 				{ text: 'Высшее', count: '2' },
