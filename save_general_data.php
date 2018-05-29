@@ -1,13 +1,6 @@
 <?php
 	include_once('includes/config.php');
 	
-	function prepare_health_data($user_health_data) {
-		$format_date = explode('-', $user_health_data['year_birth']);
-		$user_health_data['year_birth'] = $format_date[2].'-'.$format_date[1].'-'.$format_date[0];
-		
-		return $user_health_data;
-	}
-	
 	function save_health_data($db, $user_health_data){
 		$upd_health_data = $db->prepare('UPDATE user_data SET user_sex = :user_sex, user_age = :user_age, user_height = :user_height, user_weight = :user_weight, user_job_conditions = :user_job_conditions,  user_smoking = :user_smoking, user_alcohol = :user_alcohol, user_children = :user_children, user_sport_activity = :user_sport_activity, user_diet = :user_diet, user_diseases = :user_diseases, user_chronical = :user_chronical WHERE user_data_user_id = :user_data_user_id');
 			
