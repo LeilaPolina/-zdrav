@@ -1,5 +1,5 @@
 <?php 
-	require_once('/includes/config.php');
+	require_once('includes/config.php');
 
 	function validate_phone($phone) {
 		$phone_pieces = explode('(', $phone);

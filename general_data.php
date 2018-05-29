@@ -1,7 +1,7 @@
 <?php
-	include('/includes/config.php');
+	include('includes/config.php');
 	
-	if(!$user->is_logged_in()){ header('Location: edit_index.html'); }
+	if(!$user->is_logged_in()){ header('Location: index.html'); }
 	
 	$cur_user_id = $_SESSION['user_id'];
 

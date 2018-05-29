@@ -1,5 +1,5 @@
 <?php
-	include_once('/includes/config.php');
+	include_once('includes/config.php');
 	
 	function prepare_health_data($user_health_data) {
 		$format_date = explode('-', $user_health_data['year_birth']);
@@ -14,7 +14,7 @@
 		$upd_health_data->execute(array(
 			':user_data_user_id' => $_SESSION['user_id'],
 			':user_sex' => $user_health_data['sex'],
-			':user_age' => $user_health_data['year_birth'],
+			':user_age' => date($user_health_data['birth_year']),
 			':user_height' => $user_health_data['height'],
 			':user_weight' => $user_health_data['weight'],
 			':user_job_conditions' => $user_health_data['work'],
@@ -120,6 +120,7 @@
 			'user_phone'=>$_POST['save_user_phone'],
 			'user_name'=>$_POST['save_user_name']
 		);
+		
 		$user_health_data = array(
 			'sex'=>$_POST['save_sex'],
 			'birth_year'=>$_POST['save_birth_year'],

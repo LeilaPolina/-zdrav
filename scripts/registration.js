@@ -50,7 +50,7 @@ function validatePhoneNumber(callback)  {
 		});
 	}
 	
-$(document).ready(function(){	
+$(document).ready(function(){
 	test_reg_modal= document.getElementById('test-register-modal');
 	confirm_modal= document.getElementById('confirm-modal');
 	success_modal= document.getElementById('success-modal');
@@ -138,24 +138,51 @@ $(document).ready(function(){
 		test_reg_modal.style.display = "none";		
 	});
 	
-	$("#success-btn").click(function (e) {
-		e.preventDefault();
-		user_name = $("#username").val();
+	function registration_answer(answer) {
+	    //alert(answer);
+		if(answer.result==701) {
+			alert("Что-то пошло не так. Мы работаем над этим!");
+		}
+		success_modal.style.display = "none";
+		window.location.replace('general_data.php');
+	}
+	
+	function send_user_data(callback) {
+	    user_name = $("#username").val();
 		$.ajax({
 			type : 'POST',
 			url: 'process_new_user_data.php',
 			data: {sex: sex, birth_year: birth_year, height: height, weight: weight, work: work, sport: sport, food: food, children: children, risks: risks, sick: sick, chronic: chronic, smoking: smoking, alcohol: alcohol, user_email: user_email, user_phone: user_phone, user_password: user_password, user_name: user_name},
-			dataType : 'json',
-			success : function(answer){
-				
-				if(answer.result==701) {
-					alert("Что-то пошло не так. Мы работаем над этим!");
+			dataType : 'text',
+			success : callback,
+			
+			error: function (jqXHR, exception) {
+				var msg = '';
+				if (jqXHR.status === 0) {
+					msg = 'Not connect.\n Verify Network.';
+				} else if (jqXHR.status == 404) {
+					msg = 'Requested page not found. [404]';
+				} else if (jqXHR.status == 500) {
+					msg = 'Internal Server Error [500].';
+				} else if (exception === 'parsererror') {
+					msg = 'Requested JSON parse failed.';
+				} else if (exception === 'timeout') {
+					msg = 'Time out error.';
+				} else if (exception === 'abort') {
+					msg = 'Ajax request aborted.';
+				} else {
+					msg = 'Uncaught Error.\n' + jqXHR.responseText;
 				}
-				
+				//alert(msg);
 			}
 		});
-		success_modal.style.display = "none";
-		window.location.replace('general_data.php');
+	}
+	
+	
+	
+	$("#success-btn").click(function (e) {
+		e.preventDefault();
+	    send_user_data(registration_answer);
 	 });
 	 
 	 
