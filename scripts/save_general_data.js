@@ -35,13 +35,11 @@ $(document).ready(function(){
 		save_chronic = $("#ichronic").val();		
 		
 		save_risks_array = [];
-		$("#gen_risks option:selected").each(function() {
+		$("input:checkbox[name=risks_group]:checked").each(function() {
 			save_risks_array.push(this.value);
 		});
 		save_risks_array = uniq_fast(save_risks_array);
 		save_risks = save_risks_array.join('_');
-		
-		//alert(save_sex+" "+save_birth_year+" "+save_height+" "+save_weight+" "+save_work+" "+save_sport+" "+save_food+" "+save_children+" "+save_risks+" "+save_sick+" "+save_chronic+" "+save_smoking+" "+save_alcohol+" "+save_user_email+" "+save_user_name+" "+save_user_phone);		
 		
 		$.ajax({
 			type : 'POST',

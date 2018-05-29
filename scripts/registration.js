@@ -2,6 +2,21 @@ function generateRandomPassword() {
 	$("#rand-confirm-password").text(Math.random().toString(36).substring(2, 6) + Math.random().toString(36).substring(2,6));
 }
 
+function uniq_fast(a) {
+	var seen = {};
+	var out = [];
+	var len = a.length;
+	var j = 0;
+	for(var i = 0; i < len; i++) {
+		 var item = a[i];
+		 if(seen[item] !== 1) {
+			   seen[item] = 1;
+			   out[j++] = item;
+		 }
+	}
+	return out;
+}
+
 var phone_number, user_phone="",code;
 var test_reg_modal,confirm_modal,success_modal;
 
@@ -88,12 +103,15 @@ $(document).ready(function(){
 		children = $('select[name="children"] option:selected').val();
 		
 		sick = $("#isick").val();
-		chronic = $("#ichronic").val();		
+		chronic = $("#ichronic").val();			
 		
-		$("#gen_risks option:selected").each(function() {
-			risks = risks + "_" + this.value;
+		save_risks_array = [];
+		$("input:checkbox[name=risks_group]:checked").each(function() {
+			save_risks_array.push(this.value);
 		});
-		risks = risks.substring(1);
+		save_risks_array = uniq_fast(save_risks_array);
+		risks = save_risks_array.join('_');
+		
 		$("#phone-number").val(offered_user_phone);
 		$("#phone-number").trigger('input');
 		$("#username").val(offered_user_name);

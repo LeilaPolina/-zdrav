@@ -137,6 +137,10 @@
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 	
+	<!-- MULTISELECT -->
+	<link rel="stylesheet" type="text/css" href="css/multiselect.css" />
+	<script src="scripts/multiselect.js"></script>
+	
 		
 </head>
 <body>
@@ -381,35 +385,27 @@
 				<div class="diseases">
 					<p>Заболевания</p>
 					<div class="input-genetic_risks">
-						<p>Генетические риски</p>
-						<!-- Initialize the plugin: -->
-						<script type="text/javascript">
-							/*$(document).ready(function() {
-								$('#gen_risks').multiselect({
-									nonSelectedText: 'Ничего не выбрано',
-									nSelectedText: 'выбрано',
-									allSelectedText: 'Выбрано'
-								});
-							});*/
-						</script>
-						
-						<select id="gen_risks" multiple="multiple">			
+						<p>Генетические риски</p>						
+						<div class="gen-risks-selectBox" onclick="showCheckboxes()">
+							<select id="gen_risks">
+								<option>Нажмите, чтобы развернуть</option>
+							</select>
+							<div class="gen-risks-overSelect"></div>
+						</div>
+						<div id="gen-risks-checkboxes">
 							<?php
 								$risks_query = $db->query('SELECT relatives_death_causes_type_id, relatives_death_causes_type_name FROM relatives_death_causes_types ORDER BY relatives_death_causes_type_id');
 								$relatives_death_causes = explode(', ', $result_test['dead']);
 								while ($row = $risks_query->fetch(PDO::FETCH_ASSOC)){
-									foreach ($relatives_death_causes as $death_cause){
-										if($row['relatives_death_causes_type_name'] == $death_cause){
-											echo '<option value='.$row['relatives_death_causes_type_id'].' selected>'.$row['relatives_death_causes_type_name'].'</option>';
-										}
-										else{
-											echo '<option value='.$row['relatives_death_causes_type_id'].'>'.$row['relatives_death_causes_type_name'].'</option>';
-										}
+									if(in_array($row['relatives_death_causes_type_name'], $relatives_death_causes)){
+										echo '<label><input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group" checked>'.$row['relatives_death_causes_type_name'].'</label>';
+									}
+									else{
+										echo '<label><input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group">'.$row['relatives_death_causes_type_name'].'</label>';
 									}
 								}
-							?>	
-						</select>
-						<p>*Нажмите ctrl, чтобы выбрать несколько вариантов</p>
+							?>
+						</div>
 					</div>
 					<div class="input-sick_before">
 						<p>Чем болел(а) раньше</p>
