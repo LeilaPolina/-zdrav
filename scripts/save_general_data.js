@@ -49,11 +49,15 @@ $(document).ready(function(){
 			data: {save_sex: save_sex, save_birth_year: save_birth_year, save_height: save_height, save_weight: save_weight, save_work: save_work, save_sport: save_sport, save_food: save_food, save_children: save_children, save_risks: save_risks, save_sick: save_sick, save_chronic: save_chronic, save_smoking: save_smoking, save_alcohol: save_alcohol, save_user_email: save_user_email, save_user_phone: save_user_phone, save_user_name: save_user_name},
 			dataType : 'json',
 			success : function(answer){
+				//alert(answer.result);
 				if(answer.result=="OK"){
 					alert("Ваши данные были сохранены!");
 				}
 				if(answer.result==701) {
 					alert("Что-то пошло не так. Мы работаем над этим!");
+				}
+				else if(answer.result==704){
+					alert("Этот номер телефона уже зарезервирован для другого аккаунта");
 				}
 			}
 		});

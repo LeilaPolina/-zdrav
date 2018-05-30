@@ -19,13 +19,12 @@
 			':user_diseases' => $user_health_data['sick'],
 			':user_chronical' => $user_health_data['chronic'],
 		));
-		
 		if($user_health_data['risks'] != ""){
 			// get current values of risks
 			$find_risks = $db->prepare('SELECT relatives_death_causes_con_user_relatives_death_causes_type_id FROM relatives_death_causes_con_user WHERE relatives_death_causes_con_user_user_id = :user_id');
 			$find_risks->execute(array(
 				':user_id' => $_SESSION['user_id']
-			));				
+			));
 			$risks_in_db = array();
 			while($risks_row = $find_risks->fetch(PDO::FETCH_ASSOC)){
 				$risks_in_db[] = $risks_row['relatives_death_causes_con_user_relatives_death_causes_type_id'];
@@ -34,7 +33,7 @@
 			$relatives_death_causes = explode('_', $user_health_data['risks']);
 			$relatives_death_causes = array_unique($relatives_death_causes);
 			$risks_not_for_del = array();
-			$ins_new_risks = $db->prepare('INSERT INTO relatives_death_causes_con_user (relatives_death_causes_con_user_user_id,relatives_death_causes_con_user_relatives_death_causes_type_id) VALUES (:relatives_death_causes_con_user_user_id, :relatives_death_causes_type_id)');
+			$ins_new_risks = $db->prepare('INSERT INTO relatives_death_causes_con_user (relatives_death_causes_con_user_user_id, relatives_death_causes_con_user_relatives_death_causes_type_id) VALUES (:relatives_death_causes_con_user_user_id, :relatives_death_causes_type_id)');
 			foreach($relatives_death_causes as $death_cause){
 				if(in_array($death_cause, $risks_in_db)){
 					// add value to array of already existing in db
@@ -57,7 +56,7 @@
 						':relatives_death_causes_type_id' => $cur_risk
 					));
 				}
-			}		
+			}
 		}
 		else{
 			$del_risks = $db->prepare('DELETE FROM relatives_death_causes_con_user WHERE  relatives_death_causes_con_user_user_id = :relatives_death_causes_con_user_user_id');
@@ -103,6 +102,10 @@
 			return "OK";
 		}
 		catch(Exception $e) {
+			// number already in db
+			if($e->getMessage() == "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '+7 (999) 777-77-77' for key 'user_phone_UNIQUE'"){
+				return 704;
+			}
 			return $e->getMessage();
 			//return 701;
 		}
