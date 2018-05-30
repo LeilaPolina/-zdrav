@@ -93,14 +93,15 @@
 	<div class="wrapper">
 		<div class="menu-logo"></div>
 		<div class="menu-nav">
-			<a id="general-inf" href="" style="">Общие сведения</a>
-			<a id="health-in-numbers" href="" style="">Моё здоровье в цифрах</a>
-			<a id="my-documents" href="" style="">Мои документы</a>
-			<a id="shop" href="" style="">Магазин</a>
-			<a id="services" href="" style="">Сервисы</a>
+			<a id="general-inf" href="" style="" onclick="return false"><p>Общие сведения</p></a>
+			<a id="health-in-numbers" href="" style="" onclick="return false"><p>Моё здоровье в цифрах</p></a>
+			<a id="my-documents" href="" style="" onclick="return false"><p>Мои документы</p></a>
+			<a id="shop" href="" style="" onclick="return false"><p>Магазин</p></a>
+			<a id="services" href="" style="" onclick="return false"><p>Сервисы</p></a>
 		</div>
 	</div>
 </div>
+
 
 
 <div class="main">
@@ -118,8 +119,36 @@
 			</div>
 		</div>
 		<div class="rec-list">
-			
-		</div>
+		<?php 
+		
+			include './modules/module_mass.php';
+
+		if ($result_test['smoke'] == 1) {
+			include './modules/module_smoke.php';
+		}
+
+		include './modules/module_analyzes.php';
+
+		if ($result_test['homebodycheck'] == 1) {
+			include './modules/module_homebodycheck.php';
+		}
+
+		if ($result_test['healthyfood'] == 1) {
+			include './modules/module_healthyfood.php';
+		}
+
+		include './modules/module_tester.php';
+
+		if ($result_test['healthyheart'] == 1) {
+			include './modules/module_healthyheart.php';
+		}
+
+		if ($result_test['personal_manager'] == 1) {
+			include './modules/module_personal_manager.php';
+		}
+
+		?>
+	</div>
 	</div>
 
 	<div class="private-office threeb">
