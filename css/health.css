@@ -1,0 +1,320 @@
+.health-in-numbers-wrapper {
+	background-color:#fff;
+	margin:27px 0 36px 0;
+	padding:43px 26px 23px 32px;
+}
+
+.indexes-header-wrapper {
+	height:45px;;
+}
+
+.indexes-header p {
+	font-family:Open Sans;
+	font-style: normal;
+	font-weight: normal;
+	line-height:19px;
+	font-size:21px;
+	color:#374963;
+	margin:21px 0 0 0;
+	padding:0;
+}
+
+
+.main-indexes {
+	border-collapse: collapse;
+}
+
+.indexes-head {
+	height:64px;
+	color:rgba(22, 50, 92, 0.8);
+	background-color:#FAFBFC;
+	border-bottom:3.5px solid rgba(46, 53, 54, 0.118631);
+	font-style: normal;
+	font-weight: bold;
+	line-height: 16px;
+	font-size: 13px;
+	
+}
+
+.indexes-head  th {
+	border: 1px solid #FAFBFC;
+	text-align: left;
+	opacity: 0.7;
+}
+
+
+
+.main-indexes-row {
+	height:64px;
+	background-color:#FFF;
+	border-bottom:2px solid rgba(46, 53, 54, 0.118631);
+}
+
+.main-indexes-row td{
+	border: 1px solid #FFF;
+	padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.border-col {
+	width:5px;
+	border:none !important;
+	padding:0;
+}
+
+.date-col {
+	width:145px;
+	padding-left:22px;
+}
+
+.index-col {
+	width:260px;
+}
+
+.value-col {
+	width:109px; /*145*/
+}
+
+.btn-col {
+	width:36px;
+}
+
+.estimation-col {
+	width:120px;
+	padding:0 0 0 5px;
+}
+
+.graph-col {
+	width:85px;
+}
+
+.reason-col{
+	width:170px;
+}
+
+.index-date {
+	font-family: Open Sans;
+	font-style: normal;	
+	font-weight: normal;
+	line-height: 16px;
+	font-size: 13px;
+	color: rgba(22, 50, 92, 0.8);
+}
+
+
+.input-index-value {
+	width:120px;
+	border: 1px solid #A8B7C7;
+	box-sizing: border-box;
+	border-radius: 3px;
+}
+
+/*.blood-pressure-1, .blood-pressure-2 {
+	width:51px;
+	border: 1px solid #A8B7C7;
+	box-sizing: border-box;
+	border-radius: 3px;
+}*/
+
+
+.blood-pressure-span {
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 16px;
+	font-size: 11px;
+	margin:0;
+}
+
+
+
+.index-name {
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: bold;
+	line-height: 22px;
+	font-size: 13px;
+	color: #1F2F47;
+}
+
+.index-estimation {
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 16px;
+	font-size: 13px;
+	color: rgba(22, 50, 92, 0.8);
+}
+
+.index-graph-img {
+	display: inline-block;
+    margin-left: 19px;
+}
+
+.index-reason-a{
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 20px;
+	font-size: 13px;
+	color: #373A3C;
+	text-decoration:none;
+}
+
+.index-reason-a:link {
+	color: #373A3C;
+	text-decoration:none;
+	border-bottom: 1px dashed #373A3C;
+}
+.index-reason-a:visited {
+	color: #373A3C;
+	text-decoration:none;
+	border-bottom: 1px dashed #373A3C;
+}
+.index-reason-a:hover {
+	color: #373A3C;
+	text-decoration:none;
+	border-bottom: 1px dashed #373A3C;
+}
+
+
+.index-span {
+	padding:0;
+	font-size:13px;
+	display:inline-block; 
+	margin:0 0 0 20px ; 
+}
+
+
+.pl-btn {
+	font-size:18px;
+	width:25px;
+	height:25px;
+	text-align:center;
+	padding:0;
+	margin:0 0 0 50px;
+	color:#fff;
+	background-color:#00B0D2;
+	display:inline-block;
+	border-radius:4px;
+	font-weight:bold;
+	line-height: 25px;
+	margin-left:auto;
+	margin-right:auto;
+	text-decoration:none;
+}
+
+/*/////////////////////*/
+.index-graph-img-wrapper {
+	padding:0;
+	margin:0;
+	width:20px; 
+	height:20px;
+	background:url('../images/icons/index-graph.png') no-repeat ;
+	background-size:100%;
+}
+
+
+.modal-input-value{
+	padding:0;
+	margin:16px 0 0 0;
+}
+
+#add-btn {
+	margin-top:15px;
+	width:200px;
+}
+
+#modal-index-value,#date {
+	width:200px;
+}
+
+#health-modal {
+	position:absolute;
+	left:600px;
+	display:none;
+}
+
+#health-numbers-content {
+	
+	width:290px;
+	height:281px;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+	border: none;
+}
+
+.main-indexes {
+	font-family:OpenSans !important;
+}
+/*---------------------------------*/
+
+#reason-container p{
+	padding:0;
+	text-align:justify;
+}
+
+#index-norm {
+	margin:0;
+}
+
+#my-index-value {
+	margin:3px 0 0 0;
+}
+
+#reason-modal-content {
+	width:800px;
+	//height:550px;
+	overflow-y:scroll;
+}
+
+#reason-container {
+	padding:0 0 40px 0;
+	margin-top:25px;
+	font-size:14px;
+	width:90%;
+	margin-left:auto;
+	margin-right:auto;
+	color:#1F2F47
+}
+
+#index-description {
+	margin:20px 0 0 0;
+}
+
+#possible-reasons-wrapper {
+	margin:20px 0 0 0;
+}
+
+#possible-reasons-header {
+	margin:0;
+	font-size:15px;
+	font-weight:bold;
+}
+
+#possible-reasons {
+	margin:13px 0 0 0;
+}
+
+#acticle-ref {
+	margin:25px 0 0 0;
+	font-size:15px;
+}
+
+
+#modal-recommendations{
+	margin:20px 0 0 0;
+}
+
+#recommendations-p {
+	margin:0;
+	
+}
+
