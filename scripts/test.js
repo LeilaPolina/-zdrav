@@ -232,13 +232,8 @@ $(function () {
 	
 	// События
 	function initHandlers () {
-		// Клик по кнопкам "Начать тест"
-		$('.btn_start_test').click(function (e) {
-			e.preventDefault();
-			
-			startTest();
-		});
-		
+	
+		startTest();
 		// Клик вне конента модального окна
 		$(modal_test).click(function (e) {
 			closeModalTest();
