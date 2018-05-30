@@ -18,8 +18,8 @@
 
     function count_percent($user_screen_value, $norms){
         // border_kind legend: lower = -2, lower_ten_percent = -1, normal = 0, upper_ten percent = 1, upper = 2
-        try{
-            $result_arr = Array('border_kind' => 0, 'result_percent' => 0.0);
+        try{			
+            $result_arr = Array('border_kind' => 0, 'result_percent' => 0.0, 'result_lower_norm'=>$norms[0], 'result_upper_norm'=>$norms[1]);
             if($user_screen_value < $norms[0]){ // lower
                 $result = (($user_screen_value*100)/$norms[0]) - 100;
                 $result_arr['border_kind'] = -2;
@@ -118,35 +118,48 @@
         return count_percent($index_mass, $mass_norms);
     }
 
-    function send_result_to_db($db, $cur_user_id, $result_name, $result_date, $result_value){
+    function send_result_to_db($db, $cur_user_id, $result_name, $result_date, $result_value, $evaluated_value){
         try{
             if($result_name != 'давление'){
-                $send_result = $db->prepare('INSERT INTO user_results (user_results_user_id, user_results_result_type_id, current_value, result_date) VALUES (:user_id, (SELECT result_type_id FROM result_types WHERE result_type_name = :result_name), :result_value, :result_date)
-                ON DUPLICATE KEY UPDATE current_value = :result_value');
+                $send_result = $db->prepare('INSERT INTO user_results (user_results_user_id, user_results_result_type_id, current_value, result_date, user_results_lapse_percent, user_results_border_kind, user_results_lower_norm, user_results_upper_norm) VALUES (:user_id, (SELECT result_type_id FROM result_types WHERE result_type_name = :result_name), :result_value, :result_date, :lapse_percent, :border_kind, :lower_norm, :upper_norm)
+                ON DUPLICATE KEY UPDATE current_value = :result_value, user_results_lapse_percent = :lapse_percent, user_results_border_kind = :border_kind, user_results_lower_norm = :lower_norm, user_results_upper_norm = :upper_norm');
                 $send_result->execute(Array(
                     ':user_id' => $cur_user_id,
                     ':result_name' => $result_name,
                     ':result_value' => $result_value,
-                    ':result_date' => $result_date
+                    ':result_date' => $result_date,
+					':lapse_percent' => $evaluated_value['result_percent'],
+					':border_kind' => $evaluated_value['border_kind'],
+					':lower_norm' => $evaluated_value['result_lower_norm'],
+					':upper_norm' => $evaluated_value['result_upper_norm']
                 ));
                 return "OK";
+				//user_results_lapse_percent, user_results_border_kind, user_results_lower_norm, user_results_upper_norm
             }
             else if($result_name == 'давление'){
-                $send_result = $db->prepare('INSERT INTO user_results (user_results_user_id, user_results_result_type_id, current_value, result_date) VALUES (:user_id, (SELECT result_type_id FROM result_types WHERE result_type_name = :result_name), :result_value, :result_date)
-                ON DUPLICATE KEY UPDATE current_value = :result_value');
+                $send_result = $db->prepare('INSERT INTO user_results (user_results_user_id, user_results_result_type_id, current_value, result_date, user_results_lapse_percent, user_results_border_kind, user_results_lower_norm, user_results_upper_norm) VALUES (:user_id, (SELECT result_type_id FROM result_types WHERE result_type_name = :result_name), :result_value, :result_date, :lapse_percent, :border_kind, :lower_norm, :upper_norm)
+                ON DUPLICATE KEY UPDATE current_value = :result_value, user_results_lapse_percent = :lapse_percent, user_results_border_kind = :border_kind, user_results_lower_norm = :lower_norm, user_results_upper_norm = :upper_norm');
                 $send_result->execute(Array(
                     ':user_id' => $cur_user_id,
                     ':result_name' => 'верхнее давление',
                     ':result_value' => $result_value['upper'],
-                    ':result_date' => $result_date
+                    ':result_date' => $result_date,
+					':lapse_percent' => $evaluated_value['upper']['result_percent'],
+					':border_kind' => $evaluated_value['upper']['border_kind'],
+					':lower_norm' => $evaluated_value['upper']['result_lower_norm'],
+					':upper_norm' => $evaluated_value['upper']['result_upper_norm']
                 ));
-                $send_result = $db->prepare('INSERT INTO user_results (user_results_user_id, user_results_result_type_id, current_value, result_date) VALUES (:user_id, (SELECT result_type_id FROM result_types WHERE result_type_name = :result_name), :result_value, :result_date)
-                ON DUPLICATE KEY UPDATE current_value = :result_value');
+                $send_result = $db->prepare('INSERT INTO user_results (user_results_user_id, user_results_result_type_id, current_value, result_date, user_results_lapse_percent, user_results_border_kind, user_results_lower_norm, user_results_upper_norm) VALUES (:user_id, (SELECT result_type_id FROM result_types WHERE result_type_name = :result_name), :result_value, :result_date, :lapse_percent, :border_kind, :lower_norm, :upper_norm)
+                ON DUPLICATE KEY UPDATE current_value = :result_value, user_results_lapse_percent = :lapse_percent, user_results_border_kind = :border_kind, user_results_lower_norm = :lower_norm, user_results_upper_norm = :upper_norm');
                 $send_result->execute(Array(
                     ':user_id' => $cur_user_id,
                     ':result_name' => 'нижнее давление',
                     ':result_value' => $result_value['lower'],
-                    ':result_date' => $result_date
+                    ':result_date' => $result_date,
+					':lapse_percent' => $evaluated_value['lower']['result_percent'],
+					':border_kind' => $evaluated_value['lower']['border_kind'],
+					':lower_norm' => $evaluated_value['lower']['result_lower_norm'],
+					':upper_norm' => $evaluated_value['lower']['result_upper_norm']
                 ));
                 return "OK";
             }
@@ -161,31 +174,31 @@
     }
 	
     if(isset($_POST['health_num_cholesterol'])){
-        $user_cholesterol = $_POST['health_num_cholesterol'];        
-        send_result_to_db($db, $cur_user_id, 'холестерин', $_POST['health_num_date'], $user_cholesterol);
+        $user_cholesterol = $_POST['health_num_cholesterol'];
         $user_age = get_age($user_data_row['user_age']);
         $user_cholesterol_eval = evaluate_cholesterol($user_age, $user_cholesterol);
+        send_result_to_db($db, $cur_user_id, 'холестерин', $_POST['health_num_date'], $user_cholesterol, $user_cholesterol_eval);
         echo json_encode(array('result' => $user_cholesterol_eval)); 
     }    
     else if(isset($_POST['health_num_glucose'])){
         $user_glucose = $_POST['health_num_glucose'];
-        send_result_to_db($db, $cur_user_id, 'сахар', $_POST['health_num_date'], $user_glucose);
         $user_glucose_eval = evaluate_glucose($user_glucose);
+        send_result_to_db($db, $cur_user_id, 'сахар', $_POST['health_num_date'], $user_glucose, $user_glucose_eval);
         echo json_encode(array('result' => $user_glucose_eval));
     }
     else if(isset($_POST['health_num_upper_pressure']) && isset($_POST['health_num_lower_pressure'])){
         $user_pressure = Array(
             'upper' => $_POST['health_num_upper_pressure'],
             'lower' => $_POST['health_num_lower_pressure']);
-        send_result_to_db($db, $cur_user_id, 'давление', $_POST['health_num_date'], $user_pressure);
         $user_age = get_age($user_data_row['user_age']);
-        $user_pressure_eval = evaluate_pressure($user_age, $user_data_row['user_sex'], $user_pressure);    
+        $user_pressure_eval = evaluate_pressure($user_age, $user_data_row['user_sex'], $user_pressure);  
+        send_result_to_db($db, $cur_user_id, 'давление', $_POST['health_num_date'], $user_pressure, $user_pressure_eval);  
         echo json_encode(array('result' => $user_pressure_eval));
     }
     else if(isset($_POST['health_num_weight'])){
         $user_weight = $_POST['health_num_weight'];
-        send_result_to_db($db, $cur_user_id, 'вес', $_POST['health_num_date'], $user_weight);
         $user_weight_eval = evaluate_weight($user_weight, $user_data_row['user_height']);
+        send_result_to_db($db, $cur_user_id, 'вес', $_POST['health_num_date'], $user_weight, $user_weight_eval);
         echo json_encode(array('result' => $user_weight_eval));
     }
     

@@ -320,8 +320,9 @@ $( document ).ready(function() {
    
    function check_answer(answer) {
 		code=answer.result;
+		//alert(answer);
 		if(code!=700) {
-			alert(code['border_kind']+'  '+code['result_percent']);
+			alert(code['border_kind']+'  '+code['result_percent'] + ' ' + code['result_lower_norm'] + ' ' + code['result_upper_norm']);
 			result_percent=code['result_percent'];
 			set_borders(code['border_kind']);
 			$("#health-modal").css("display","none");
