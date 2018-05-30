@@ -71,6 +71,8 @@ $(document).ready(function(){
 	confirm_modal= document.getElementById('confirm-modal');
 	success_modal= document.getElementById('success-modal');
 	$("#phone-number").mask("+7 (999) 999-99-99");
+	$("#iyear").mask("9999-99-99");
+	$("#iyear").trigger('input');
 	$("#itele").mask("+7 (999) 999-99-99");
 	$("#itele").trigger('input');
 	var sex="", birth_year="", height="", weight="", work="", sport="", food="", children="", risks="", sick="", chronic="", smoking="", alcohol="";

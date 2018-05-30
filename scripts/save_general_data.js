@@ -16,6 +16,8 @@ function uniq_fast(a) {
 $(document).ready(function(){
 	$("#itele").mask("+7 (999) 999-99-99");
 	$("#itele").trigger('input');
+	$("#iyear").mask("9999-99-99");
+	$("#iyear").trigger('input');
 	var save_sex="", save_birth_year="", save_height="", save_weight="", save_work="", save_sport="", save_food="", save_children="", save_risks="", save_sick="", save_chronic="", save_smoking="", save_alcohol="",  save_user_email="", save_user_name="", save_user_phone="";
 	$("#save_gen_data").submit(function(e){
 		e.preventDefault();

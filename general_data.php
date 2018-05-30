@@ -157,7 +157,7 @@
 					<div class="input-birth">
 						<p>Год рождения</p>
 						<?php
-							echo '<input type="text" value="'.$general_data_row['user_age'].'" id="iyear">';
+							echo '<input type="text" value="'.$general_data_row['user_age'].'"  placeholder="гггг-мм-дд" id="iyear">';
 						?>
 					</div>
 					<div class="input-height">
