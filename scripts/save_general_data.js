@@ -35,6 +35,7 @@ $(document).ready(function(){
 		save_children = $('select[name="children"] option:selected').val();	
 		save_sick = $("#isick").val();
 		save_chronic = $("#ichronic").val();
+		save_user_name = $('#iname').val();
 		
 		save_risks_array = [];
 		$("input:checkbox[name=risks_group]:checked").each(function() {
@@ -42,8 +43,6 @@ $(document).ready(function(){
 		});
 		save_risks_array = uniq_fast(save_risks_array);
 		save_risks = save_risks_array.join('_');
-
-		//alert(save_work+ ' ' +save_sport+ ' ' +save_food+ ' ' +save_children+ ' ' +save_risks+ ' ' +save_smoking+ ' ' +save_alcohol);
 		
 		$.ajax({
 			type : 'POST',

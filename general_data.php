@@ -31,35 +31,49 @@
 		return $txt;
 	}
 	
-	$get_essential_data = $db->prepare('SELECT user_name, user_phone FROM users WHERE user_id = :user_id');
-	$get_essential_data->execute(array(
-		':user_id' => $cur_user_id
-	));
-	$essential_data_row = $get_essential_data->fetch(PDO::FETCH_ASSOC);
-	
-	$get_general_data = $db->prepare('SELECT user_sex, user_age, user_height, user_weight, user_job_conditions, user_smoking, user_alcohol, user_family_status, user_children, user_sport_activity, user_diet, user_diseases, user_chronical FROM user_data WHERE user_data_user_id = :user_id');
-	$get_general_data->execute(array(
-		':user_id' => $cur_user_id
-	));
-	$general_data_row = $get_general_data->fetch(PDO::FETCH_ASSOC);
-	
-	$get_contact_data = $db->prepare('SELECT contact_value FROM contacts_con_user WHERE contacts_con_user_user_id = :user_id AND contacts_con_user_contact_id = (SELECT contact_id FROM contact_types WHERE contact_type = :contact_type)');
-	$get_contact_data->execute(array(
-		':user_id' => $cur_user_id,
-		':contact_type' => 'email'
-	));
-	$contact_data_row = $get_contact_data->fetch(PDO::FETCH_ASSOC);
-	
-	$get_risks_data = $db->prepare('SELECT relatives_death_causes_con_user_relatives_death_causes_type_id FROM relatives_death_causes_con_user WHERE relatives_death_causes_con_user_user_id = :user_id');
-	$get_risks_data->execute(array(
-		':user_id' => $cur_user_id
-	));
-	$relatives_death_causes = array();
-	$relatives_death_causes_ind = 0;
-	while($risks_row = $get_risks_data->fetch(PDO::FETCH_ASSOC)){
-		$relatives_death_causes[$relatives_death_causes_ind] = $risks_row['relatives_death_causes_con_user_relatives_death_causes_type_id'];
-		$relatives_death_causes_ind++;
+	function get_essential_data($db, $cur_user_id){
+		$get_essential_data = $db->prepare('SELECT user_name, user_phone FROM users WHERE user_id = :user_id');
+		$get_essential_data->execute(array(
+			':user_id' => $cur_user_id
+		));
+		return $get_essential_data->fetch(PDO::FETCH_ASSOC);
 	}
+	
+	function get_general_data($db, $cur_user_id){		
+		$get_general_data = $db->prepare('SELECT user_sex, user_age, user_height, user_weight, user_job_conditions, user_smoking, user_alcohol, user_family_status, user_children, user_sport_activity, user_diet, user_diseases, user_chronical FROM user_data WHERE user_data_user_id = :user_id');
+		$get_general_data->execute(array(
+			':user_id' => $cur_user_id
+		));
+		return $get_general_data->fetch(PDO::FETCH_ASSOC);
+	}
+	
+	function get_contact_data($db, $cur_user_id){
+		$get_contact_data = $db->prepare('SELECT contact_value FROM contacts_con_user WHERE contacts_con_user_user_id = :user_id AND contacts_con_user_contact_id = (SELECT contact_id FROM contact_types WHERE contact_type = :contact_type)');
+		$get_contact_data->execute(array(
+			':user_id' => $cur_user_id,
+			':contact_type' => 'email'
+		));
+		return $get_contact_data->fetch(PDO::FETCH_ASSOC);
+	}
+	
+	function get_risks_data($db, $cur_user_id){
+		$get_risks_data = $db->prepare('SELECT relatives_death_causes_con_user_relatives_death_causes_type_id FROM relatives_death_causes_con_user WHERE relatives_death_causes_con_user_user_id = :user_id');
+		$get_risks_data->execute(array(
+			':user_id' => $cur_user_id
+		));
+		$relatives_death_causes = array();
+		$relatives_death_causes_ind = 0;
+		while($risks_row = $get_risks_data->fetch(PDO::FETCH_ASSOC)){
+			$relatives_death_causes[$relatives_death_causes_ind] = $risks_row['relatives_death_causes_con_user_relatives_death_causes_type_id'];
+			$relatives_death_causes_ind++;
+		}
+		return $relatives_death_causes;
+	}
+	
+	$essential_data_row = get_essential_data($db, $cur_user_id);	
+	$general_data_row = get_general_data($db, $cur_user_id);	
+	$contact_data_row = get_contact_data($db, $cur_user_id);
+	$relatives_death_causes = get_risks_data($db, $cur_user_id);
 	
 	$index_mass = getIndexMass($general_data_row['user_weight'], $general_data_row['user_height']);
 	$txt_index_mass = getTxtIndexMass($index_mass);
@@ -212,7 +226,7 @@
 						<?php							
 							$work_query = $db->query('SELECT job_conditions_type_name, job_conditions_type_id FROM job_conditions_types ORDER BY job_conditions_type_id');
 							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['job_conditions_type_name'] == $general_data_row['user_job_conditions']){								
+								if($row['job_conditions_type_id'] == $general_data_row['user_job_conditions']){				
 									echo '<option value='.$row['job_conditions_type_id'].' selected>'.$row[	'job_conditions_type_name'].'</option>';
 								}
 								else{								
@@ -231,7 +245,7 @@
 						<?php
 							$smoking_query = $db->query('SELECT smoking_type_name, smoking_type_id FROM smoking_types ORDER BY smoking_type_id');
 							while ($row = $smoking_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['smoking_type_name'] == $general_data_row['user_smoking']){						
+								if($row['smoking_type_id'] == $general_data_row['user_smoking']){						
 									echo '<option value='.$row['smoking_type_id'].' selected>'.$row['smoking_type_name'].'</option>';
 								}
 								else{								
@@ -250,7 +264,7 @@
 						<?php
 							$sport_query = $db->query('SELECT sport_activity_type_name, sport_activity_type_id FROM sport_activity_types ORDER BY sport_activity_type_id');
 							while ($row = $sport_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['sport_activity_type_name'] == $general_data_row['user_sport_activity']){								
+								if($row['sport_activity_type_id'] == $general_data_row['user_sport_activity']){								
 									echo '<option value='.$row['sport_activity_type_id'].' selected>'.$row['sport_activity_type_name'].'</option>';
 								}
 								else{								
@@ -266,7 +280,7 @@
 						<?php
 							$food_query = $db->query('SELECT diet_type_name, diet_type_id FROM diet_types ORDER BY diet_type_id');
 							while ($row = $food_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['diet_type_name'] == $general_data_row['user_diet']){								
+								if($row['diet_type_id'] == $general_data_row['user_diet']){								
 									echo '<option value='.$row['diet_type_id'].' selected>'.$row['diet_type_name'].'</option>';
 								}
 								else{								
@@ -284,7 +298,7 @@
 						<?php
 							$children_query = $db->query('SELECT children_type_name, children_type_id FROM children_types ORDER BY children_type_id');
 							while ($row = $children_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['children_type_name'] == $general_data_row['user_children']){								
+								if($row['children_type_id'] == $general_data_row['user_children']){								
 									echo '<option value='.$row['children_type_id'].' selected>'.$row['children_type_name'].'</option>';
 								}
 								else{								
@@ -303,7 +317,7 @@
 						<?php
 							$alcohol_query = $db->query('SELECT alcohol_type_name, alcohol_type_id FROM alcohol_types ORDER BY alcohol_type_id');
 							while ($row = $alcohol_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['alcohol_type_name'] == $general_data_row['user_alcohol']){
+								if($row['alcohol_type_id'] == $general_data_row['user_alcohol']){
 									echo '<option value='.$row['alcohol_type_id'].' selected>'.$row['alcohol_type_name'].'</option>';
 								}
 								else{								

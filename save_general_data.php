@@ -2,7 +2,7 @@
 	include_once('includes/config.php');
 	
 	function save_health_data($db, $user_health_data){
-		$upd_health_data = $db->prepare('UPDATE user_data SET user_sex = :user_sex, user_age = :user_age, user_height = :user_height, user_weight = :user_weight, user_job_conditions = :user_job_conditions,  user_smoking = :user_smoking, user_alcohol = :user_alcohol, user_children = :user_children, user_sport_activity = :user_sport_activity, user_diet = :user_diet, user_diseases = :user_diseases, user_chronical = :user_chronical WHERE user_data_user_id = :user_data_user_id');
+		$upd_health_data = $db->prepare('UPDATE user_data SET user_sex = :user_sex, user_age = :user_age, user_height = :user_height, user_weight = :user_weight, user_job_conditions = :user_job_conditions,  user_smoking = :user_smoking, user_alcohol = :user_alcohol, user_children = :user_children, user_sport_activity = :user_sport_activity, user_diet = :user_diet, user_diseases = :user_diseases, user_chronical = :user_chronical WHERE user_data_user_id = :user_data_user_id');		
 			
 		$upd_health_data->execute(array(
 			':user_data_user_id' => $_SESSION['user_id'],
@@ -117,8 +117,15 @@
 			'user_name'=>$_POST['save_user_name']
 		);
 		
+		if($_POST['save_sex'] == "Мужской"){
+			$save_sex = 'male';
+		}
+		else{
+			$save_sex = 'female';
+		}
+		
 		$user_health_data = array(
-			'sex'=>$_POST['save_sex'],
+			'sex'=>$save_sex,
 			'birth_year'=>$_POST['save_birth_year'],
 			'height'=>$_POST['save_height'],
 			'weight'=>$_POST['save_weight'],
