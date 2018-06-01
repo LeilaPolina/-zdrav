@@ -1,33 +1,3 @@
-
-<?php 
-	include('/includes/config.php');
-	$cur_user_id = 31;//$_SESSION['user_id'];
-	$get_results_data = $db->prepare('
-	SELECT DISTINCT *
-	FROM user_results
-	INNER JOIN
-		(SELECT user_results_result_type_id, MAX(result_date) AS max_result_date
-		FROM user_results
-		WHERE user_results_user_id = :user_id
-		GROUP BY user_results_result_type_id) grouped_result_types
-	ON user_results.user_results_result_type_id = grouped_result_types.user_results_result_type_id
-	INNER JOIN
-		(SELECT result_types.result_type_id, result_types.result_type_name
-		FROM result_types, user_results
-		WHERE result_types.result_type_id = user_results.user_results_result_type_id) result_names
-	ON user_results.user_results_result_type_id = result_names.result_type_id
-	AND user_results.result_date = grouped_result_types.max_result_date
-	WHERE user_results.user_results_user_id = :user_id');
-	$get_results_data->execute(array(
-		':user_id' => $cur_user_id
-	));
-	while($results_data_row = $get_results_data->fetch(PDO::FETCH_ASSOC)){
-		
-		//print_r($results_data_row);
-		//echo '<br/>';
-	}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,25 +12,27 @@
 	<!--SCRIPTS-->
     <script src="jquery/jquery-3.1.1.min.js"></script>
     <script src="scripts/health.js"></script>	
+	<script src="scripts/reason_models.js"></script>	
 	<!-- JavaScript --> 
 	<script src="jquery/jquery.maskedinput.min.js"></script>
-		
 </head>
-
+<?php 
+	include('get_indexes_values.php');
+?>
 <body>
 	<!--#################################Header#################################-->
 	<div class="header-menu">
-		<div class="wrapper">
-			<div class="menu-logo"></div>
-				<div class="menu-nav">
-					<a id="general-inf" href="" style="">Общие сведения</a>
-					<a id="health-in-numbers" href="" style="">Моё здоровье в цифрах</a>
-					<a id="my-documents" href="" style="">Мои документы</a>
-					<a id="shop" href="" style="">Магазин</a>
-					<a id="services" href="" style="">Сервисы</a>
-				</div>
-			</div>
+	<div class="wrapper">
+		<div class="menu-logo"></div>
+		<div class="menu-nav">
+			<a id="general-inf" href="" style="" onclick="return false"><p>Общие сведения</p></a>
+			<a id="health-in-numbers" href="" style="" onclick="return false"><p>Моё здоровье в цифрах</p></a>
+			<a id="my-documents" href="" style="" onclick="return false"><p>Мои документы</p></a>
+			<a id="shop" href="" style="" onclick="return false"><p>Магазин</p></a>
+			<a id="services" href="" style="" onclick="return false"><p>Сервисы</p></a>
 		</div>
+	</div>
+</div>
 	<!--#################################Main#################################-->
 	<div class="main">
 		<div class="lk health-in-numbers-wrapper ">
@@ -89,15 +61,15 @@
 				<!--#################################Сholesterol#################################-->
 				<tr class="main-indexes-row">
 					<td class="border-col" id="cholesterol-brd"></td>
-					<td class="date-col index-date" id="cholesterol-date"></td>
+					<td class="date-col index-date" id="cholesterol-date">&mdash;</td>
 					<td class="index-col index-name">Холестерин общий</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="cholesterol-span"></span>
+						<span  class="index-span" id="cholesterol-span">&mdash;</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="cholesterol-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="cholesterol-estm"></td>
+					<td class="estimation-col index-estimation" id="cholesterol-estm">&mdash;</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper"></div>
 					</td>
@@ -110,15 +82,15 @@
 				<!--#################################Sugar#################################-->				
 				<tr class="main-indexes-row">
 					<td class="border-col" id="sugar-brd" ></td>
-					<td class="date-col index-date" id="sugar-date"></td>
+					<td class="date-col index-date" id="sugar-date">&mdash;</td>
 					<td class="index-col index-name">Сахар</td>
 					<td class="value-col index-value">
-						<span class="index-span" id="sugar-span">18,2</span>
+						<span class="index-span" id="sugar-span">&mdash;</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="sugar-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="sugar-estm"></td>
+					<td class="estimation-col index-estimation" id="sugar-estm">&mdash;</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper"></div>
 					</td>
@@ -131,19 +103,20 @@
 				<!--#################################Blood pressure#################################-->
 				<tr class="main-indexes-row">
 					<td class="border-col" id="blood-pressure-brd"></td>
-					<td class="date-col index-date" id="blood-pressure-date"></td>
+					<td class="date-col index-date" id="blood-pressure-date">&mdash;</td>
 					<td class="index-col index-name">Давление</td>
 					<td class="value-col index-value">
+						
 						<div class="blood-spans-wrapper">
-							<span id="blood-pressure-1" class="blood-pressure-span"></span>
-							<span class="blood-pressure-span">на</span>
-							<span id="blood-pressure-2" class="blood-pressure-span"></span>
+							<span id="blood-pressure-1" class="blood-pressure-span">&mdash;</span>
+							<span class="blood-pressure-span"> на</span>
+							<span id="blood-pressure-2" class="blood-pressure-span">&mdash;</span>
 						</div>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="blood-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="blood-pressure-estm"></td>
+					<td class="estimation-col index-estimation" id="blood-pressure-estm">&mdash;</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper"></div>
 					</td>
@@ -156,15 +129,15 @@
 				<!--#################################Weight#################################-->
 				<tr class="main-indexes-row">
 					<td class="border-col" id="weight-brd"></td>
-					<td class="date-col index-date" id="weight-date"></td>
+					<td class="date-col index-date" id="weight-date">&mdash;</td>
 					<td class="index-col index-name">Вес</td>
 					<td class="value-col index-value">
-						<span class="index-span" id="weight-span"></span>
+						<span class="index-span" id="weight-span">&mdash;</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="weight-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="weight-estm"></td>
+					<td class="estimation-col index-estimation" id="weight-estm">&mdash;</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper"></div>
 					</td>
@@ -255,11 +228,8 @@
 
 						<div id="possible-reasons-wrapper">
 						</div>
-
 						<p id="acticle-ref">
-						
 						<a id="acticle" href="#"></a></p>
-
 						<div id="modal-recommendations">
 							<p id="recommendations-p"></p>
 						</div>

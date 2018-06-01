@@ -115,6 +115,7 @@
 		}
         $index_mass = round($user_weight / pow($user_height/100, 2), 2);
         $mass_norms = Array(20, 25);
+		
         return count_percent($index_mass, $mass_norms);
     }
 
