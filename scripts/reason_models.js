@@ -123,7 +123,7 @@ $( document ).ready(function() {
 			var user_index_value=indexes_array["weight"].val;
 			var recommendations;
 			var weight_reasons;
-			$("#index-norm").text("Ваша норма веса " + lower_norm.toString()+"-" + upper_norm.toString() + ".");
+			$("#index-norm").text("Ваша норма веса " + lower_norm.toString()+"-" + upper_norm.toString() + "кг.");
 			if(indexes_array["weight"].border_kind==2) {
 				user_index_value="превышает норму на "+ indexes_array["weight"].percent.toString() + "%";;
 				recommendations ='Рекомендуем распечатать анализ и обратиться к терапевту или эндокринологу';
