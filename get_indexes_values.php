@@ -74,7 +74,7 @@
 <?php 
 	include('/includes/config.php');
 	
-	$cur_user_id =1;// $_SESSION['user_id'];
+	$cur_user_id = $_SESSION['user_id'];
 	$get_results_data = $db->prepare('
 	SELECT DISTINCT *
 	FROM user_results
