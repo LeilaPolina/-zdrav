@@ -115,8 +115,11 @@
 		}
         $index_mass = round($user_weight / pow($user_height/100, 2), 2);
         $mass_norms = Array(20, 25);
+		$result_arr = count_percent($index_mass, $mass_norms);
 		
-        return count_percent($index_mass, $mass_norms);
+		$result_arr['result_upper_norm'] = round(((25 * $user_height * $user_height)/10000), 0);
+		$result_arr['result_lower_norm'] = round(((20 * $user_height * $user_height)/10000), 0);
+        return $result_arr;
     }
 
     function send_result_to_db($db, $cur_user_id, $result_name, $result_date, $result_value, $evaluated_value){
