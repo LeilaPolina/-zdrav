@@ -321,7 +321,7 @@ $( document ).ready(function() {
 	$("#add-btn").click(function(e){
 		e.preventDefault();
 		if(pl_btn_id == 'cholesterol-btn'){
-			if($("#date").val()=="" || $("#modal-index-value").val()) {
+			if($("#date").val()=="" || $("#modal-index-value").val()=="") {
 				alert("Введите данные");
 			}
 			else {
@@ -331,7 +331,7 @@ $( document ).ready(function() {
 			}
 		}
 		else if(pl_btn_id == 'sugar-btn'){
-			if($("#date").val()=="" || $("#modal-index-value").val()) {
+			if($("#date").val()=="" || $("#modal-index-value").val()=="") {
 				alert("Введите данные");
 			}
 			else {
@@ -359,7 +359,7 @@ $( document ).ready(function() {
 			}
 		}
 		else if(pl_btn_id == 'weight-btn'){
-			if($("#date").val()=="" || $("#modal-index-value").val()) {
+			if($("#date").val()=="" || $("#modal-index-value").val()=="") {
 				alert("Введите данные");
 			}
 			else {
