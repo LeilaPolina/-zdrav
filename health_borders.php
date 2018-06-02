@@ -1,6 +1,6 @@
 ﻿<?php
     include_once('includes/config.php');
-    $cur_user_id = 1;//$_SESSION['user_id'];
+    $cur_user_id = $_SESSION['user_id'];
     
     $get_user_data = $db->prepare('SELECT user_age, user_sex, user_height FROM user_data WHERE user_data_user_id = :user_id');
 	$get_user_data->execute(array(
