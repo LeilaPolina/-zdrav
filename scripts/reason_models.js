@@ -227,6 +227,20 @@ $( document ).ready(function() {
 					text+="превышает норму на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";	
 				}
 				
+				if(upper_blood_kind==0 && (lower_blood_kind==1 || lower_blood_kind==-1)) {
+					text="Сейчас Ваше нижнее (диастолическое) давление на границе нормы";
+				}
+				
+				if(upper_blood_kind==0 && lower_blood_kind==2) {
+					text="Сейчас Ваше нижнее (диастолическое) давление превышает норму на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";
+				}
+				
+				if(upper_blood_kind==0 && lower_blood_kind==-2) {
+						text="Сейчас Ваше нижнее (диастолическое) давление ниже нормы на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";
+				}
+				
+				
+				
 				recommendations ='Рекомендуем распечатать анализ и обратиться к терапевту или эндокринологу.';
 			}
 			
@@ -255,6 +269,19 @@ $( document ).ready(function() {
 				    if(lower_blood_kind==2) {
 						text+="превышает норму на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";	
 					}
+					
+					if(upper_blood_kind==0 && (lower_blood_kind==1 || lower_blood_kind==-1)) {
+					text="Сейчас Ваше нижнее (диастолическое) давление на границе нормы";
+			    	}
+				
+    				if(upper_blood_kind==0 && lower_blood_kind==2) {
+    					text="Сейчас Ваше нижнее (диастолическое) давление превышает норму на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";
+    				}
+    				
+    				if(upper_blood_kind==0 && lower_blood_kind==-2) {
+    						text="Сейчас Ваше нижнее (диастолическое) давление ниже нормы на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";
+    				}
+    					
 					recommendations ='Рекомендуем распечатать анализ и обратиться к терапевту или эндокринологу.';
 				}
 				
