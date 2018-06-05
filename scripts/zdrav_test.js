@@ -29,8 +29,8 @@ $(function () {
 		/* 2 */
 		{
 			name: 'year_birth',
-			title: 'Дата рождения:',
-			placeholder: 'гггг-мм-дд',
+			title: 'Год рождения:',
+			placeholder: 'гггг',
 			type: 'input',
 		},
 		/* 3 */
@@ -300,7 +300,7 @@ $(function () {
 			one_q.placeholder = (one_q.placeholder == undefined) ? (one_q.title +'...') : one_q.placeholder;
 			if(one_q.name == 'year_birth'){
 				$(choice_testing).append('<input type="text" id="year_birth" name="input_test" placeholder="'+ one_q.placeholder +'" />');
-				$('#year_birth').mask("9999-99-99");
+				$('#year_birth').mask("9999");
 			}
 			else{
 				$(choice_testing).append('<input type="text" name="input_test" placeholder="'+ one_q.placeholder +'" />');
