@@ -74,6 +74,8 @@
 	$general_data_row = get_general_data($db, $cur_user_id);	
 	$contact_data_row = get_contact_data($db, $cur_user_id);
 	$relatives_death_causes = get_risks_data($db, $cur_user_id);
+
+	$user_birth_year = substr($general_data_row['user_age'], 0, 4);
 	
 	$index_mass = getIndexMass($general_data_row['user_weight'], $general_data_row['user_height']);
 	$txt_index_mass = getTxtIndexMass($index_mass);
@@ -200,7 +202,7 @@
 					<div class="input-birth">
 						<p>Год рождения</p>
 						<?php
-							echo '<input type="text" value="'.$general_data_row['user_age'].'"  placeholder="гггг-мм-дд" id="iyear">';
+							echo '<input type="text" value="'.$user_birth_year.'"  placeholder="гггг" id="iyear">';
 						?>
 					</div>
 					<div class="input-height">

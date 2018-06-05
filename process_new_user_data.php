@@ -4,8 +4,6 @@
 
 	
 	function prepare_health_data($user_health_data) {
-		//$format_date = explode('-', $user_health_data['year_birth']);
-		//$user_health_data['year_birth'] = $format_date[2].'-'.$format_date[1].'-'.$format_date[0];
 		$result_test = $_SESSION['result_test'];
 		
 		if($result_test['family'] == 'Живу одна' || $result_test['family'] == 'Живу один') {
@@ -60,10 +58,12 @@
 		$ins_health_data = $db->prepare('INSERT INTO user_data (user_data_user_id,user_sex,user_age,user_height,user_weight,user_job_conditions,user_education, user_smoking,user_alcohol,user_family_status,user_children,user_sport_activity,user_diet,user_sleep,user_immunity,user_last_exam_date,user_exam_prevention_causes,user_diseases,user_chronical)
 		VALUES (:user_data_user_id, :user_sex, :user_age, :user_height, :user_weight, :user_job_conditions, (SELECT education_type_id FROM education_types WHERE education_type_name = :user_education), :user_smoking, :user_alcohol, (SELECT family_status_type_id FROM family_status_types WHERE family_status_type_name = :user_family_status), :user_children, :user_sport_activity, :user_diet, (SELECT sleep_type_id FROM sleep_types WHERE sleep_type_name = :user_sleep), (SELECT immunity_type_id FROM immunity_types WHERE immunity_type_name = :user_immunity), (SELECT last_exam_date_type_id FROM last_exam_date_types WHERE last_exam_date_type_name = :user_last_exam_date), (SELECT exam_prevention_causes_type_id FROM exam_prevention_causes_types WHERE exam_prevention_causes_type_name = :user_exam_prevention_causes), :user_diseases, :user_chronical)');	
 		
+		$user_birth_year = $user_health_data['birth_year']."-01-01";
+
 		$ins_health_data->execute(array(
 			':user_data_user_id' => $_SESSION['user_id'],
 			':user_sex' => $user_health_data['sex'],
-			':user_age' => date($user_health_data['birth_year']),
+			':user_age' => $user_birth_year,
 			':user_height' => $user_health_data['height'],
 			':user_weight' => $user_health_data['weight'],
 			':user_family_status' => $user_health_data['family'],

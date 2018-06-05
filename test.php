@@ -254,7 +254,7 @@
 					<div class="input-birth">
 						<p>Год рождения</p>
 						<?php
-							echo '<input type="text" value="'.$result_test['year_birth'].'" placeholder="гггг-мм-дд" id="iyear">';
+							echo '<input type="text" value="'.$result_test['year_birth'].'" placeholder="гггг" id="iyear">';
 						?>
 					</div>
 					<div class="input-height">
