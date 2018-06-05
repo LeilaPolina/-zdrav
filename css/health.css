@@ -2,10 +2,12 @@
 	background-color:#fff;
 	margin:27px 0 36px 0;
 	padding:43px 26px 23px 32px;
+	height:340px;
+	position:relative;
 }
 
 .indexes-header-wrapper {
-	height:45px;;
+	position:relative;
 }
 
 .indexes-header p {
