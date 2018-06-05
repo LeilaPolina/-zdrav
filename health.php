@@ -38,6 +38,8 @@
 		<div class="lk health-in-numbers-wrapper ">
 			<p>Личный кабинет</p>
 			<p>Мое здоровье в цифрах</p>
+			<div class="video-rec">
+				</div>
 		</div>
 
 		<div class="indexes-header-wrapper">
