@@ -42,15 +42,15 @@
 		$txt = '';
 		$count_weight = '';
 		if ($index_mass < 15) {
-			$txt = 'острому дефициту веса';
+			$txt = '<b>острому дефициту</b> веса';
 		} elseif ($index_mass >= 15 and $index_mass < 20) {
-			$txt = 'дефициту веса';
+			$txt = '<b>дефициту</b> веса';
 		} elseif ($index_mass >= 20 and $index_mass < 25) {
-			$txt = 'нормальному весу';
+			$txt = '<b>нормальному</b> весу';
 		} elseif ($index_mass >= 25 and $index_mass < 30) {
-			$txt = 'избыточному весу';
+			$txt = '<b>избыточному</b> весу';
 		} elseif ($index_mass >= 30) {
-			$txt = 'ожирению';
+			$txt = '<b>ожирению</b>';
 		}
 		return $txt;
 	}
@@ -170,7 +170,20 @@
 			<a class="link-for-toggle" href="" onclick="return false">
 				<div class="img-rec"></div>
 				<div class="per-rec"><p>Личные рекомендации</p></div>
-				<div class="rec-numb"><?php echo $lifecount ?></div>
+				<div class="rec-numb">
+					<?php echo "+";echo $lifecount; ?>
+				</div> 
+				<div class="rec_numb_text">
+					<?php if ($lifecount == 1) { 
+							echo 'год жизни';
+						} 
+						elseif ($lifecount > 1 && $lifecount < 5) { 
+							echo 'года жизни';
+						}
+						elseif ($lifecount > 5) { 
+							echo 'лет жизни';
+						} ?>
+				</div>
 				
 			</a>
 			<div class="toggle-inf hide">
@@ -179,7 +192,16 @@
 				</div>
 				<div class="lifetime">
 					Согласно тесту расчетная продолжительность вашей жизни составит <b><?php echo $result_test['lifetime']; ?> лет</b> </br>
-					Максимальная возможная продолжительность жизни может составить <b><?php if ($result_test['sex'] == 'м') {echo '88 лет';} else {echo '99 лет';} ?></b>
+					Максимальная возможная продолжительность жизни может составить
+					<b><?php if ($result_test['sex'] == 'м'){
+						echo 88+$lifecount;
+						echo ' лет';
+					}
+					else 
+					{
+						echo 99+$lifecount;
+						echo ' лет';
+					} ?></b>
 				</div>
 			</div>
 		</div>

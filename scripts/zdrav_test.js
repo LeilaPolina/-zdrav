@@ -144,7 +144,7 @@ $(function () {
 			title: 'Занятия спортом или фитнесом:',
 			type: 'radio',
 			answers: [ 
-				{ text: 'Занимаюсь не менее 1 раза в неделю', count: '2' },
+				{ text: 'Занимаюсь более 1 раза в неделю', count: '2' },
 				{ text: 'Не занимаюсь', count: '-1' },
 			],
 		},
@@ -155,6 +155,7 @@ $(function () {
 			type: 'radio',
 			answers: [ 
 				{ text: 'Здоровое', count: '2' },
+				{ text: 'Обычное', count: '0', warning: 'healthyfood' },
 				{ text: 'Не здоровое', count: '-2', warning: 'healthyfood' },
 			],
 		},
@@ -174,8 +175,8 @@ $(function () {
 			title: 'Как часто Вы болеете простудными заболеваниями?',
 			type: 'radio',
 			answers: [ 
-				{ text: 'Больше 2-х раз в год', count: '-1' },
-				{ text: 'Меньше 2-х раз в год', count: '1' },
+				{ text: 'Больше 4-х раз в год', count: '-1' },
+				{ text: 'Меньше 4-х раз в год', count: '1' },
 			],
 		},
 		/* 15 */
@@ -184,7 +185,7 @@ $(function () {
 			title: 'Чем болели кровные родственники (родители, дедушки, бабушки, братья, сестры )',
 			type: 'checkbox',
 			answers: [ 
-				{ text: 'Все живы или не знаю причин', count: '0' },
+				{ text: 'Ничем или не знаю', count: '0' },
 				{ text: 'Сердце', count: '-2', warning: 'healthyheart' },
 				{ text: 'Инсульт', count: '-2' },
 				{ text: 'Рак', subcheckbox: [
@@ -397,15 +398,28 @@ $(function () {
 						}
 					}
 				}
-
 			break;
+
 			case 'input' :
 				val = $('input[name="input_test"]').val();
 				if (val == '') {
 					showErrorTest('Заполните поле');
 					return false;
 				}
+				if (one_q.name == "year_birth" && (val < 1900 || val > 2018)) {
+					showErrorTest('Введено не реальное значение');
+					return false;
+				}
+				if (one_q.name == "weight" && (val < 10 || val > 200)) {
+					showErrorTest('Введено не реальное значение');
+					return false;
+				}
+				if (one_q.name == "height" && (val < 50 || val > 250)) {
+					showErrorTest('Введено не реальное значение');
+					return false;
+				}
 			break;
+			
 			case 'checkbox' :
 				var tmp = [];
 				var elems = $(choice_testing).find('input:checkbox');

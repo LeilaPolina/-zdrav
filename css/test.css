@@ -31,7 +31,7 @@ body {
 	left: 2.02%;
 	top: 26.65%;
 	bottom: 42.91%;
-	background:url('../images/uploads/logo-nav.png') no-repeat ;
+	background:url('../images/icons/logo-nav.png') no-repeat ;
 	background-size:100%;
 }
 
@@ -142,6 +142,19 @@ body {
 	border-radius: 13px;
 }
 
+.rec_numb_text {
+	position: absolute;
+	left:33%;
+	right:66.88%;
+	top:40.93%;
+	bottom:27.93%;
+	font-family: OpenSans;
+	line-height: 26px;
+	font-size: 13px;
+	color:#00B0D2;
+	width:100px;
+}
+
 .img-rec {
 	position: absolute;
 	width:33px;
@@ -152,7 +165,6 @@ body {
 	top:40.93%;
 	bottom:27.93%;
 }
-
 
 .threeb {
 	background-color: white;
@@ -643,7 +655,7 @@ a.be-dad > p:before {
 
 .toggle-inf {
 	position: relative;
-	height:340px;
+	height:100px;
 }
 
 .video-rec {
@@ -653,6 +665,7 @@ a.be-dad > p:before {
 	width:421px;
 	height:227px;
 	background:url('../images/video_cap.PNG') no-repeat;
+	display:none;
 }
 
 .lifetime {
@@ -668,7 +681,7 @@ a.be-dad > p:before {
 	position: absolute;
 	left: 20.1%;
 	right: 21.4%;
-	top:79.5%;
+	top:25.5%;
 }
 
 .rec-list {
