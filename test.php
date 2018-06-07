@@ -551,10 +551,10 @@
 
 		<div class="contacts">
 			<div class="social-media">
-				<a class="social-OK"></a>
-				<a class="social-VK"></a>
-				<a class="social-FB"></a>
-				<a class="social-IG"></a>
+				<a class="social-OK" href="https://ok.ru/zdorovyebu"></a>
+				<a class="social-VK" href="https://vk.com/public157016043"></a>
+				<a class="social-FB" href="https://www.facebook.com/zdrav.rf/"></a>
+				<a class="social-IG" href="https://www.instagram.com/zdrav.rf"></a>
 			</div>
 			<div class="phone">+7 495 131-32-73</div>
 			<div class="OOO">2016-2018 ООО «Здравствую»</div>
