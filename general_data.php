@@ -109,10 +109,10 @@
 	<div class="wrapper">
 		<div class="menu-logo"></div>
 		<div class="menu-nav">
-			<a id="general-inf" href="" style="" onclick="return false"><p>Общие сведения</p></a>
+			<a id="general-inf" href="general_data.php" style=""><p>Общие сведения</p></a>
 			<a id="health-in-numbers" href="health.php" style=""><p>Моё здоровье в цифрах</p></a>
-			<a id="my-documents" href="" style="" onclick="return false"><p>Мои документы</p></a>
-			<a id="shop" href="" style="" onclick="return false"><p>Магазин</p></a>
+			<a id="my-documents" href="docs.php" style=""><p>Мои документы</p></a>
+			<a id="shop" href="shop.php" style=""><p>Магазин</p></a>
 			<a id="services" href="" style="" onclick="return false"><p>Сервисы</p></a>
 		</div>
 	</div>
