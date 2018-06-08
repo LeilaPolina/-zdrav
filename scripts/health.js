@@ -251,10 +251,10 @@ $( document ).ready(function() {
 						indexes_array["upper_blood_pressure"].lower_norm=code['upper']['result_lower_norm'];
 						indexes_array["upper_blood_pressure"].upper_norm=code['upper']['result_upper_norm'];
 						
-						indexes_array["lower_blood_pressure"].border_kind=code['upper']['border_kind'];
-						indexes_array["lower_blood_pressure"].percent=code['upper']['result_percent'];
-						indexes_array["lower_blood_pressure"].lower_norm=code['upper']['result_lower_norm'];
-						indexes_array["lower_blood_pressure"].upper_norm=code['upper']['result_upper_norm'];
+						indexes_array["lower_blood_pressure"].border_kind=code['lower']['border_kind'];
+						indexes_array["lower_blood_pressure"].percent=code['lower']['result_percent'];
+						indexes_array["lower_blood_pressure"].lower_norm=code['lower']['result_lower_norm'];
+						indexes_array["lower_blood_pressure"].upper_norm=code['lower']['result_upper_norm'];
 						
 						set_blood_pressure_values(indexes_array["upper_blood_pressure"].val,indexes_array["lower_blood_pressure"].val,indexes_array["upper_blood_pressure"].date,indexes_array["upper_blood_pressure"].border_kind,indexes_array["lower_blood_pressure"].border_kind); 
 						$("#health-modal").css("display","none");
