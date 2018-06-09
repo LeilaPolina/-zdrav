@@ -17,21 +17,7 @@ function init_indexes_array() {
 	}
 }
 
-function get_blood_pressure_border_kind (upper_blood_kind,lower_blood_kind) {
-			
-	if (upper_blood_kind==lower_blood_kind) {
-		return upper_blood_kind;
-	}
-	
-	else if(upper_blood_kind==-2 || upper_blood_kind==2) {
-		return upper_blood_kind;
-	}
-	else {
-			return lower_blood_kind;
-	}
-			
-}
-
+var is_cholesterol=false, is_sugar=false, is_weight=false, is_blood_pressure=false;
 $( document ).ready(function() {
    init_indexes_array();
    var is_blodd_btn=false;
@@ -48,7 +34,7 @@ $( document ).ready(function() {
 	   
 	   if(pl_btn_id=="blood-btn") {
 		   is_blodd_btn=true;
-		   $("#modal-index-value").attr("placeholder", "XXX/XXX");
+		   $("#modal-index-value").attr("placeholder", "Примеры: 130/85, 90/85");
 	   }
 	   else{
 			is_blodd_btn = false;
@@ -121,11 +107,19 @@ $( document ).ready(function() {
 		if (upper_blood_kind==lower_blood_kind) {
 			return upper_blood_kind;
 		}
-		else if(upper_blood_kind==-2 || upper_blood_kind==2) {
+		if(upper_blood_kind==2 || upper_blood_kind==-2) {
 			return upper_blood_kind;
 		}
-		else {
-				return lower_blood_kind;
+		if((upper_blood_kind!=2 && upper_blood_kind!=-2) && (lower_blood_kind==2 || lower_blood_kind==-2)) {
+			return lower_blood_kind;
+		}
+		
+		if((upper_blood_kind==1 || upper_blood_kind==-1) && lower_blood_kind==0) {
+			return upper_blood_kind;
+		}	
+		
+		if((lower_blood_kind==1 || lower_blood_kind==-1) && upper_blood_kind==0) {
+			return lower_blood_kind;
 		}
 	}
 
@@ -140,8 +134,62 @@ $( document ).ready(function() {
 		set_border_colors_and_estimation_values(brd_id,estimatimation_id,border_kind);
 	}
 
+
+	function fill_blood_indexes_values(code) {
+		indexes_array["upper_blood_pressure"].border_kind=code['upper']['border_kind'];
+		indexes_array["upper_blood_pressure"].percent=code['upper']['result_percent'];
+		indexes_array["upper_blood_pressure"].lower_norm=code['upper']['result_lower_norm'];
+		indexes_array["upper_blood_pressure"].upper_norm=code['upper']['result_upper_norm'];
+		
+		indexes_array["lower_blood_pressure"].border_kind=code['lower']['border_kind'];
+		indexes_array["lower_blood_pressure"].percent=code['lower']['result_percent'];
+		indexes_array["lower_blood_pressure"].lower_norm=code['lower']['result_lower_norm'];
+		indexes_array["lower_blood_pressure"].upper_norm=code['lower']['result_upper_norm'];
+		
+		set_blood_pressure_values(indexes_array["upper_blood_pressure"].val,indexes_array["lower_blood_pressure"].val,indexes_array["upper_blood_pressure"].date,indexes_array["upper_blood_pressure"].border_kind,indexes_array["lower_blood_pressure"].border_kind); 
+		$("#health-modal").css("display","none");
+	}
+
+	function check_answer(data) {
+		code=data.result;
+		var ind_name="";
+		if(code!=700) {
+			if(is_cholesterol==true) {
+				ind_name="cholesterol";
+				is_cholesterol=false;
+			}
+			if(is_sugar==true) {
+				ind_name="sugar";
+				is_sugar=false;
+			}  
+			
+			if(is_weight==true) {
+				ind_name="weight"
+				is_weight=false;
+			}
+			
+			if(is_blood_pressure==true) {
+				is_blood_pressure=false;
+				fill_blood_indexes_values(code);
+				return;
+			}
+			
+			indexes_array[ind_name].border_kind=code['border_kind'];
+			indexes_array[ind_name].percent=code['result_percent'];
+			indexes_array[ind_name].lower_norm=code['result_lower_norm'];
+			indexes_array[ind_name].upper_norm=code['result_upper_norm'];
+			$("#health-modal").css("display","none");
+			set_values(ind_name,indexes_array[ind_name].val,indexes_array[ind_name].date,indexes_array[ind_name].border_kind);
+			
+		}
+		
+		if(code==700) {
+			alert("Cервис недоступен, попробуйте позже");
+		}
+	}
+
 //=====================SEND DATA==============================
-	function send_cholesterol_value() {
+	function send_cholesterol_value(callback) {
 			$.ajax({
 				type: 'POST',
 				url: 'health_borders.php',
@@ -150,21 +198,7 @@ $( document ).ready(function() {
 					health_num_date: indexes_array["cholesterol"].date
 				},
 				dataType : 'json',
-				success: function(data) {
-					code=data.result;
-					if(code!=700) {
-						indexes_array["cholesterol"].border_kind=code['border_kind'];
-						indexes_array["cholesterol"].percent=code['result_percent'];
-						indexes_array["cholesterol"].lower_norm=code['result_lower_norm'];
-						indexes_array["cholesterol"].upper_norm=code['result_upper_norm'];
-						$("#health-modal").css("display","none");
-						set_values("cholesterol",indexes_array["cholesterol"].val,indexes_array["cholesterol"].date,indexes_array["cholesterol"].border_kind);
-					}
-					if(code==700) {
-						alert("Cервис недоступен, попробуйте позже");
-					}
-					
-				},
+				success: callback,
 				error: function (jqXHR, exception) {
 					var msg = '';
 					if (jqXHR.status === 0) {
@@ -187,7 +221,7 @@ $( document ).ready(function() {
 			});			
 		}
 
-	function send_sugar_value() {
+	function send_sugar_value(callback) {
 		$.ajax({
 				type: 'POST',
 				url: 'health_borders.php',
@@ -196,21 +230,7 @@ $( document ).ready(function() {
 					health_num_date: indexes_array["sugar"].date
 				},
 				dataType : 'json',
-				success: function(data) {
-					code=data.result;
-					if(code!=700) {
-						indexes_array["sugar"].border_kind=code['border_kind'];
-						indexes_array["sugar"].percent=code['result_percent'];
-						indexes_array["sugar"].lower_norm=code['result_lower_norm'];
-						indexes_array["sugar"].upper_norm=code['result_upper_norm'];
-						$("#health-modal").css("display","none");
-						set_values("sugar",indexes_array["sugar"].val,indexes_array["sugar"].date,indexes_array["sugar"].border_kind);
-					}
-					if(code==700) {
-						alert("Cервис недоступен, попробуйте позже");
-					}
-					
-				},
+				success: callback,
 				error: function (jqXHR, exception) {
 							var msg = '';
 							if (jqXHR.status === 0) {
@@ -233,7 +253,7 @@ $( document ).ready(function() {
 					});
 	}
 		
-	function send_blood_values() {
+	function send_blood_values(callback) {
 			$.ajax({
 				type: 'POST',
 				url: 'health_borders.php',
@@ -243,33 +263,30 @@ $( document ).ready(function() {
 					health_num_date: indexes_array["upper_blood_pressure"].date
 				},
 				dataType : 'json',
-				success:  function(data) {
-					code=data.result;
-					if(code!=700) {
-						indexes_array["upper_blood_pressure"].border_kind=code['upper']['border_kind'];
-						indexes_array["upper_blood_pressure"].percent=code['upper']['result_percent'];
-						indexes_array["upper_blood_pressure"].lower_norm=code['upper']['result_lower_norm'];
-						indexes_array["upper_blood_pressure"].upper_norm=code['upper']['result_upper_norm'];
-						
-						indexes_array["lower_blood_pressure"].border_kind=code['lower']['border_kind'];
-						indexes_array["lower_blood_pressure"].percent=code['lower']['result_percent'];
-						indexes_array["lower_blood_pressure"].lower_norm=code['lower']['result_lower_norm'];
-						indexes_array["lower_blood_pressure"].upper_norm=code['lower']['result_upper_norm'];
-						
-						set_blood_pressure_values(indexes_array["upper_blood_pressure"].val,indexes_array["lower_blood_pressure"].val,indexes_array["upper_blood_pressure"].date,indexes_array["upper_blood_pressure"].border_kind,indexes_array["lower_blood_pressure"].border_kind); 
-						$("#health-modal").css("display","none");
-					
-						
-					}
-					if(code==700) {
-						alert("Cервис недоступен, попробуйте позже");
-					}
-					
-				}
+				success:  callback,
+				error: function (jqXHR, exception) {
+							var msg = '';
+							if (jqXHR.status === 0) {
+								msg = 'Not connect.\n Verify Network.';
+							} else if (jqXHR.status == 404) {
+								msg = 'Requested page not found. [404]';
+							} else if (jqXHR.status == 500) {
+								msg = 'Internal Server Error [500].';
+							} else if (exception === 'parsererror') {
+								msg = 'Requested JSON parse failed.';
+							} else if (exception === 'timeout') {
+								msg = 'Time out error.';
+							} else if (exception === 'abort') {
+								msg = 'Ajax request aborted.';
+							} else {
+								msg = 'Uncaught Error.\n' + jqXHR.responseText;
+							}
+							alert(msg);
+						}
 			});
 	}	
 
-	function send_weight_value() {
+	function send_weight_value(callback) {
 		$.ajax({
 				type: 'POST',
 				url: 'health_borders.php',
@@ -278,21 +295,7 @@ $( document ).ready(function() {
 					health_num_date: indexes_array["weight"].date
 				},
 				dataType : 'json',
-				success: function(data){
-					code=data.result;
-					if(code!=700) {
-						indexes_array["weight"].border_kind=code['border_kind'];
-						indexes_array["weight"].percent=code['result_percent'];
-						indexes_array["weight"].lower_norm=code['result_lower_norm'];
-						indexes_array["weight"].upper_norm=code['result_upper_norm'];
-						$("#health-modal").css("display","none");
-						set_values("weight",indexes_array["weight"].val,indexes_array["weight"].date,indexes_array["weight"].border_kind);
-					}
-					if(code==700) {
-						alert("Cервис недоступен, попробуйте позже");
-					}
-					
-				},
+				success: callback,
 				error: function (jqXHR, exception) {
 						var msg = '';
 						if (jqXHR.status === 0) {
@@ -327,7 +330,8 @@ $( document ).ready(function() {
 			else {
 				indexes_array["cholesterol"].val=$("#modal-index-value").val();
 				indexes_array["cholesterol"].date=$("#date").val();
-				send_cholesterol_value();
+				is_cholesterol=true;
+				send_cholesterol_value(check_answer);
 			}
 		}
 		else if(pl_btn_id == 'sugar-btn'){
@@ -337,7 +341,8 @@ $( document ).ready(function() {
 			else {
 				indexes_array["sugar"].val=$("#modal-index-value").val();
 				indexes_array["sugar"].date=$("#date").val();
-				send_sugar_value();
+				is_sugar=true;
+				send_sugar_value(check_answer);
 			}
 		}
 		else if(pl_btn_id == 'blood-btn'){
@@ -355,7 +360,8 @@ $( document ).ready(function() {
 				indexes_array["lower_blood_pressure"].val=health_num_value[1];
 				indexes_array["upper_blood_pressure"].date=$("#date").val();
 				indexes_array["lower_blood_pressure"].date=$("#date").val();
-				send_blood_values();
+				is_blood_pressure=true;
+				send_blood_values(check_answer);
 			}
 		}
 		else if(pl_btn_id == 'weight-btn'){
@@ -365,7 +371,8 @@ $( document ).ready(function() {
 			else {
 				indexes_array["weight"].val=$("#modal-index-value").val();
 				indexes_array["weight"].date=$("#date").val();
-				send_weight_value();
+				is_weight=true;
+				send_weight_value(check_answer);
 			}
 		}
 	});

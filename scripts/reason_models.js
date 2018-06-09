@@ -75,7 +75,9 @@ $( document ).ready(function() {
 	
 	/*SHOW SUGAR MODAL REASON*/
 	$("#sugar-reason").click(function(e) {
+		
 		e.preventDefault();
+		if(indexes_array["sugar"].border_kind!=0) {
 		var recommendations;
 		var lower_norm=indexes_array["sugar"].lower_norm;
 		var upper_norm=indexes_array["sugar"].upper_norm;
@@ -110,6 +112,7 @@ $( document ).ready(function() {
 		$("#reason-modal-content").css("height",450);
 		$("#recommendations-p").html(recommendations);
 		$("#reason-modal").css("display","block");
+		}
 	});
 	
 	
@@ -120,17 +123,17 @@ $( document ).ready(function() {
 		if(indexes_array["weight"].border_kind!=0) {
 			var lower_norm=indexes_array["weight"].lower_norm;
 			var upper_norm=indexes_array["weight"].upper_norm;
-			var user_index_value=indexes_array["weight"].val;
+			var user_index_value="";
 			var recommendations;
 			var weight_reasons;
 			$("#index-norm").text("Ваша норма веса " + lower_norm.toString()+"-" + upper_norm.toString() + "кг.");
 			if(indexes_array["weight"].border_kind==2) {
-				user_index_value="превышает норму на "+ indexes_array["weight"].percent.toString() + "%";;
+				user_index_value="превышает норму на "+ indexes_array["weight"].percent.toString() + "%";
 				recommendations ='Рекомендуем распечатать анализ и обратиться к терапевту или эндокринологу';
 			}
 			
 			if(indexes_array["weight"].border_kind==-2) {
-				user_index_value="ниже нормы на "+ result_percent.toString() + "%";;
+				user_index_value="ниже нормы на "+ indexes_array["weight"].percent.toString() + "%";
 				recommendations ='Рекомендуем распечатать анализ и обратиться к терапевту или эндокринологу';
 			}
 			
@@ -140,7 +143,6 @@ $( document ).ready(function() {
 			}
 			
 			$("#my-index-value").text("Сейчас этот показатель у Вас " +user_index_value);
-			
 			if(indexes_array["weight"].border_kind==2 || indexes_array["weight"].border_kind==1) {
 				weight_reasons=
 						'<p id="possible-reasons-header">Причины появления лишнего веса:</p>'+
@@ -181,14 +183,13 @@ $( document ).ready(function() {
 		}
 	});
 	
-	
-	
 	/*SHOW BLOOD PRESSURE MODAL REASON*/
 	$("#blood-reason").click(function(e) {
 		e.preventDefault();
 		var lower_value=indexes_array["lower_blood_pressure"].val, upper_value=indexes_array["upper_blood_pressure"].val;
 		var border_kind=get_blood_pressure_border_kind(indexes_array["upper_blood_pressure"].border_kind,indexes_array["lower_blood_pressure"].border_kind);
 		if(border_kind!=0) {
+			
 			var upper_pressure_upper_norm=indexes_array["upper_blood_pressure"].upper_norm;
 			var upper_pressure_lower_norm=indexes_array["upper_blood_pressure"].lower_norm;
 			var lower_pressure_upper_norm=indexes_array["lower_blood_pressure"].upper_norm;
@@ -197,123 +198,74 @@ $( document ).ready(function() {
 			var lower_blood_kind=indexes_array["lower_blood_pressure"].border_kind;
 			var upper_blood_kind=indexes_array["upper_blood_pressure"].border_kind;
 			var recommendations;
-			
 			$("#index-norm").text("Нормальное давление для Вас  ("+upper_pressure_lower_norm.toString()+"-"+upper_pressure_upper_norm.toString()+")/("+lower_pressure_lower_norm.toString()+"-"+lower_pressure_upper_norm.toString()+")");
 			var text="";
 			
-			if(border_kind==2) { 
-				if(upper_blood_kind==2) {
-				 text="Сейчас Ваше верхнее давление (систолическое) превышено на " +indexes_array["upper_blood_pressure"].percent.toString()+"% / нижнее (диастолическое) ";
-				}
-				if(upper_blood_kind==-2) {
-					 text="Сейчас Ваше верхнее давление (систолическое) ниже нормы на " +indexes_array["upper_blood_pressure"].percent.toString()+"% / нижнее (диастолическое) ";
-				}
+			if(upper_blood_kind==2) {
+				text="Сейчас Ваше верхнее давление (систолическое) превышено на " +indexes_array["upper_blood_pressure"].percent.toString()+"% / нижнее (диастолическое) ";
+			}
+			
+			if(upper_blood_kind==-2) {
+				text="Сейчас Ваше верхнее давление (систолическое) ниже нормы на " +indexes_array["upper_blood_pressure"].percent.toString()+"% / нижнее (диастолическое) ";
+			}
 				
-				if(upper_blood_kind==-1 || upper_blood_kind==1) {
-					 text="Сейчас Ваше верхнее давление (систолическое) в норме / нижнее (диастолическое) ";
-				}
-				//////////////////////////////////
-				if(lower_blood_kind==0) {
-					text+="в норме"
-				}
-				if (lower_blood_kind==1 || lower_blood_kind==-1) {
-					text+="на границе нормы"
-				}
-				if(lower_blood_kind==-2) {
-					text+="ниже нормы на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";
-				}
-				if(lower_blood_kind==2) {
-					
-					text+="превышает норму на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";	
-				}
+			if(upper_blood_kind==-1 || upper_blood_kind==1) {
+				text="Сейчас Ваше верхнее давление (систолическое) на границе нормы / нижнее (диастолическое) ";
+			}
 				
-				if(upper_blood_kind==0 && (lower_blood_kind==1 || lower_blood_kind==-1)) {
-					text="Сейчас Ваше нижнее (диастолическое) давление на границе нормы";
+			if(upper_blood_kind==0) {
+				text="Сейчас Ваше верхнее давление (систолическое) в норме / нижнее (диастолическое) ";
+			}
+			
+			if(lower_blood_kind==0) {
+				text+="в норме"
 				}
+			if (lower_blood_kind==1 || lower_blood_kind==-1) {
+				text+="на границе нормы"
+			}
+			
+			if(lower_blood_kind==-2) {
+				text+="ниже нормы на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";
+			}
 				
-				if(upper_blood_kind==0 && lower_blood_kind==2) {
-					text="Сейчас Ваше нижнее (диастолическое) давление превышает норму на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";
-				}
+			if(lower_blood_kind==2) {
+				text+="превышает норму на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";	
+			}
 				
-				if(upper_blood_kind==0 && lower_blood_kind==-2) {
-						text="Сейчас Ваше нижнее (диастолическое) давление ниже нормы на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";
-				}
-				
-				
-				
+			
+			if(border_kind==2 || border_kind==-2) {
 				recommendations ='Рекомендуем распечатать анализ и обратиться к терапевту или эндокринологу.';
 			}
 			
-				if(border_kind==-2) {
-					
-					if(upper_blood_kind==2) {
-					 text="Сейчас Ваше верхнее давление (систолическое) превышено на " +indexes_array["upper_blood_pressure"].percent.toString()+"% / нижнее (диастолическое) ";
-					}
-					if(upper_blood_kind==-2) {
-						 text="Сейчас Ваше верхнее давление (систолическое) ниже нормы на " +indexes_array["upper_blood_pressure"].percent.toString()+"% / нижнее (диастолическое) ";
-					}
-					
-					if(upper_blood_kind==-1 || upper_blood_kind==1) {
-						 text="Сейчас Ваше верхнее давление (систолическое) в норме / нижнее (диастолическое) ";
-					}
-					
-					if(lower_blood_kind==0) {
-						text+="в норме"
-					}
-					if (lower_blood_kind==1 || lower_blood_kind==-1) {
-						text+="на границе нормы"
-					}
-					if(lower_blood_kind==-2) {
-						text+="ниже нормы на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";
-					}
-				    if(lower_blood_kind==2) {
-						text+="превышает норму на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";	
-					}
-					
-					if(upper_blood_kind==0 && (lower_blood_kind==1 || lower_blood_kind==-1)) {
-					text="Сейчас Ваше нижнее (диастолическое) давление на границе нормы";
-			    	}
-				
-    				if(upper_blood_kind==0 && lower_blood_kind==2) {
-    					text="Сейчас Ваше нижнее (диастолическое) давление превышает норму на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";
-    				}
-    				
-    				if(upper_blood_kind==0 && lower_blood_kind==-2) {
-    						text="Сейчас Ваше нижнее (диастолическое) давление ниже нормы на "+indexes_array["lower_blood_pressure"].percent.toString()+"%.";
-    				}
-    					
-					recommendations ='Рекомендуем распечатать анализ и обратиться к терапевту или эндокринологу.';
-				}
-				
-				if(border_kind==1 || border_kind==-1) {
-					text="находится на границы нормы";
-					recommendations ='Рекомендуем следить за данным параметром и проверять его не реже 1 раза месяц чтобы в случае превышения нормы своевременно его устранить';
-				}
-				if(border_kind==2 || border_kind==1) {
-					$("#index-description").html('В большинстве случаев, длительное сохранение повышенного давления свидетельствует о развитии болезней:<br><br>'+
-												'эндокринной системы;<br>сердца и сосудов;<br>остеохондроза;<br>вегето-сосудистой дистонии.');
-												
-					$("#recommendations-p").html("Рекомендуем следить за данным параметром и проверять его не реже 1 раза в 6 месяцев чтобы в случае превышения нормы своевременно его устранить.");
-					$("#acticle").text("Статья про повышенное давление");
-					$("#acticle").attr("href","http://attuale.ru/arterialnoe-davlenie-norma-po-vozrastam-tablitsa/");
-				}
-				
-				if(border_kind==-2 || border_kind==-1) {
-					$("#index-description").text("Гипотония (пониженное давление) наблюдается при кровотечениях, сердечной недостаточности, обезвоживании, шейном остеохондрозе, цистите, туберкулезе, анемии, ревматизме, гипогликемии, язве желудка, панкреатите. В отдельных случаях, понижение показателей тонометра возможно при переутомлении, недостатке витаминов и резкой смене климата.");
-					
-					$("#recommendations-p").html("Рекомендуем следить за данным параметром и проверять его не реже 1 раза в 6 месяцев чтобы в случае превышения нормы своевременно его устранить.");
-					$("#acticle").text("Статья про пониженное давление");
-					$("#acticle").attr("href","http://attuale.ru/arterialnoe-davlenie-norma-po-vozrastam-tablitsa/");
-				}
-			
-				$("#my-index-value").text(text);
-				$("#possible-reasons-wrapper").html('');
-				$("#recommendations-p").html(recommendations);
-				$("#reason-modal-content").css("height",450);
-				$("#reason-modal").css("display","block");
+			if(border_kind==1 || border_kind==-1) {
+				recommendations ='Рекомендуем следить за данным параметром и проверять его не реже 1 раза месяц чтобы в случае превышения нормы своевременно его устранить.';
 			}
-		
+			
+			if(border_kind==2 || border_kind==1) {
+				$("#index-description").html('В большинстве случаев, длительное сохранение повышенного давления свидетельствует о развитии болезней:<br>'+
+											'эндокринной системы;<br>сердца и сосудов;<br>остеохондроза;<br>вегето-сосудистой дистонии.');
+											
+				$("#recommendations-p").html("Рекомендуем следить за данным параметром и проверять его не реже 1 раза в 6 месяцев чтобы в случае превышения нормы своевременно его устранить.");
+				$("#acticle").text("Статья про повышенное давление");
+				$("#acticle").attr("href","http://attuale.ru/arterialnoe-davlenie-norma-po-vozrastam-tablitsa/");
+			}
+				
+			if(border_kind==-2 || border_kind==-1) {
+				$("#index-description").text("Гипотония (пониженное давление) наблюдается при кровотечениях, сердечной недостаточности, обезвоживании, шейном остеохондрозе, цистите, туберкулезе, анемии, ревматизме, гипогликемии, язве желудка, панкреатите. В отдельных случаях, понижение показателей тонометра возможно при переутомлении, недостатке витаминов и резкой смене климата.");
+				
+				$("#recommendations-p").html("Рекомендуем следить за данным параметром и проверять его не реже 1 раза в 6 месяцев чтобы в случае превышения нормы своевременно его устранить.");
+				$("#acticle").text("Статья про пониженное давление");
+				$("#acticle").attr("href","http://attuale.ru/arterialnoe-davlenie-norma-po-vozrastam-tablitsa/");
+			}
+				
+			$("#my-index-value").text(text);
+			$("#possible-reasons-wrapper").html('');
+			$("#recommendations-p").html(recommendations);
+			$("#reason-modal-content").css("height",450);
+			$("#reason-modal").css("display","block");
+			
+			
+		}
 	});
-	
 	
 });

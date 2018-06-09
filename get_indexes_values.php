@@ -46,17 +46,21 @@
 			if (upper_blood_kind==lower_blood_kind) {
 				return upper_blood_kind;
 			}
-			
-			else if(upper_blood_kind==-2 || upper_blood_kind==2) {
+			if(upper_blood_kind==2 || upper_blood_kind==-2) {
 				return upper_blood_kind;
 			}
-			else {
-					return lower_blood_kind;
+			if((upper_blood_kind!=2 && upper_blood_kind!=-2) && (lower_blood_kind==2 || lower_blood_kind==-2)) {
+				return lower_blood_kind;
 			}
 			
+			if((upper_blood_kind==1 || upper_blood_kind==-1) && lower_blood_kind==0) {
+				return upper_blood_kind;
+			}	
 			
-		}
-		
+			if((lower_blood_kind==1 || lower_blood_kind==-1) && upper_blood_kind==0) {
+				return lower_blood_kind;
+			}
+	}
 		
 		function set_blood_pressure_values(upper_value,lower_value,index_date,upper_blood_kind,lower_blood_kind) {
 			$("#blood-pressure-1").text(upper_value);
