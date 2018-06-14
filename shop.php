@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <script src="jquery/jquery-3.1.1.min.js"></script>
     <script src="jquery/jquery.maskedinput.min.js"></script>
+    <script src="scripts/get_ali_prices.js"></script>
 
     <!-- EDITED -->
 	<link rel="stylesheet" type="text/css" href="css/registration_login_windows.css" />
@@ -52,10 +53,12 @@
             </div>
             <div class="col-1-2">
                 <div style="height: 227px; width: 421px; float: right; margin: 30px;">
-                        <div class="play-icon">
-                            <i class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
-                        </div>
-                        <p class="shop-text"><br><strong>Видеораспаковка: заголовок внутри видео</strong></p>
+                        <iframe height="220" width="420" src="https://www.youtube.com/embed/RF8bXxotHiI" 
+                            allowfullscreen="allowfullscreen"
+                            mozallowfullscreen="mozallowfullscreen" 
+                            msallowfullscreen="msallowfullscreen" 
+                            oallowfullscreen="oallowfullscreen" 
+                            webkitallowfullscreen="webkitallowfullscreen"></iframe>
                     <p class="shop-text">Если вы никогда не совершали покупок на AliExpress
                         <strong>посмотрите видео</strong> как это делается. Все очень просто</p>
                 </div>
@@ -178,24 +181,24 @@
                 <div class="content-box">
                     <img src="images/shop/1.jpg">
                     <h1>Тестер холестерина</h1>
-                    <p class="price">7 500 руб.</p>
-                    <input type="submit" class="buy-button" value="Купить">
+                    <p class="price" id="cholesterol-tester"></p>
+                    <input type="button" onclick="window.open('http://s.click.aliexpress.com/e/Iurr7eM','_blank');" class="buy-button" value="Купить">
                 </div>
             </div>
             <div class="col-1-3">
                 <div class="content-box">
                     <img src="images/shop/2.jpg">
                     <h1>Домашний ЭКГ монитор</h1>
-                    <p class="price">7 500 руб.</p>
-                    <input type="submit" class="buy-button" value="Купить">
+                    <p class="price" id="EKG-monitor"></p>
+                    <input type="button" onclick="window.open('http://s.click.aliexpress.com/e/MN7AMbQ','_blank');" class="buy-button" value="Купить">
                 </div>
             </div>
             <div class="col-1-3">
                 <div class="content-box">
                     <img src="images/shop/3.jpg">
                     <h1>Тонометр</h1>
-                    <p class="price">7 500 руб.</p>
-                    <input type="submit" class="buy-button" value="Купить">
+                    <p class="price" id="tonometer"></p>
+                    <input type="button" onclick="window.open('http://s.click.aliexpress.com/e/rBYRzFq','_blank');" class="buy-button" value="Купить">
                 </div>
             </div>
         </section>
