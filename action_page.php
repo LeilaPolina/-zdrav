@@ -1,6 +1,6 @@
 <?php 
 	include_once "smsc_api.php";
-	
+	include_once('includes/config.php');
 	function get_random_code() {
 		$min=1000;
 		$max=9999;
@@ -42,4 +42,17 @@
 		}
 		*/
 	}
+	
+	if(isset($_POST['signout'])) { 
+		try {
+			$user->logout();
+			 echo json_encode(array('result' => "OK"));
+			}
+		catch(PDOException $e) {
+			 echo json_encode(array('result' => 701));
+		}
+	}
+	
+	
+
 ?>

@@ -101,6 +101,8 @@
 	<!-- MULTISELECT -->
 	<link rel="stylesheet" type="text/css" href="css/multiselect.css" />
 	<script src="scripts/multiselect.js"></script>
+	<script src="scripts/multiselect.js"></script>
+	<script src="scripts/signout.js"></script>
 </head>
 <body>
 
@@ -114,6 +116,7 @@
 			<a id="my-documents" href="docs.php" style=""><p>Мои документы</p></a>
 			<a id="shop" href="shop.php" style=""><p>Магазин</p></a>
 			<a id="services" href="" style="" onclick="return false"><p>Сервисы</p></a>
+			<a id="sign-out-lk" href="#" style=""><p>Выход</p></a>
 		</div>
 	</div>
 </div>

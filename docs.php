@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/docs.css">
     <script src="jquery/jquery-3.1.1.min.js"></script>
     <script src="jquery/jquery.maskedinput.min.js"></script>
+	<script src="scripts/signout.js"></script>
 	<!-- FINISH -->
 	
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
@@ -23,6 +24,7 @@
 			<a id="my-documents" href="docs.php" style=""><p>Мои документы</p></a>
 			<a id="shop" href="shop.php" style=""><p>Магазин</p></a>
 			<a id="services" href="" style="" onclick="return false"><p>Сервисы</p></a>
+			<a id="sign-out-lk" href="#" style=""><p>Выход</p></a>
 		</div>
 	</div>
     </div>

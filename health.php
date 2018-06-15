@@ -15,6 +15,7 @@
 	<script src="scripts/reason_models.js"></script>	
 	<!-- JavaScript --> 
 	<script src="jquery/jquery.maskedinput.min.js"></script>
+	<script src="scripts/signout.js"></script>
 </head>
 <?php 
 	include('get_indexes_values.php');
@@ -30,15 +31,16 @@
 			<a id="my-documents" href="docs.php" style=""><p>Мои документы</p></a>
 			<a id="shop" href="shop.php" style=""><p>Магазин</p></a>
 			<a id="services" href="" style="" onclick="return false"><p>Сервисы</p></a>
+			<a id="sign-out-lk" href="#" style=""><p>Выход</p></a>
 		</div>
 	</div>
 </div>
 	<!--#################################Main#################################-->
 	<div class="main">
-		<div class="lk health-in-numbers-wrapper ">
+		<div class="lk health-in-numbers-wrapper">
 			<p>Личный кабинет</p>
 			<p>Мое здоровье в цифрах</p>
-			<div class="video-rec">
+			<div class="video-rec" style="display:block">
 				</div>
 		</div>
 
