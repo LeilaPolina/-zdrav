@@ -71,8 +71,6 @@ $(document).ready(function(){
 	confirm_modal= document.getElementById('confirm-modal');
 	success_modal= document.getElementById('success-modal');
 	$("#phone-number").mask("+7 (999) 999-99-99");
-	//$("#iyear").mask("9999-99-99");
-	//$("#iyear").trigger('input');
 	$("#itele").mask("+7 (999) 999-99-99");
 	$("#itele").trigger('input');
 	var sex="", birth_year="", height="", weight="", work="", sport="", food="", children="", risks="", sick="", chronic="", smoking="", alcohol="";
@@ -159,7 +157,6 @@ $(document).ready(function(){
 	});
 	
 	function registration_answer(answer) {
-	    //alert(answer);
 		if(answer.result==701) {
 			alert("Что-то пошло не так. Мы работаем над этим!");
 		}
@@ -193,7 +190,6 @@ $(document).ready(function(){
 				} else {
 					msg = 'Uncaught Error.\n' + jqXHR.responseText;
 				}
-				//alert(msg);
 			}
 		});
 	}
@@ -221,5 +217,7 @@ $(document).ready(function(){
 	 
 	 
 	});
+	
+	
 
 	 
