@@ -5,7 +5,13 @@
     <title>Документы</title>
     <link rel="stylesheet" href="css/test.css">
     <link rel="stylesheet" href="css/docs.css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <script src="jquery/jquery-3.1.1.min.js"></script>
+    <script src="jquery/jquery.maskedinput.min.js"></script>
+	<!-- FINISH -->
+	
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	
 </head>
 <body>
     <div class="header-menu">
@@ -20,12 +26,17 @@
 		</div>
 	</div>
     </div>
+
+    <div class="main">
     <div class="content">
         <section class="row">
             <h2 class="pagename">Личный кабинет</h2>
             <h1 class="pagename">Мои документы</h1>
-            <div class="background-gray" style="height: 227px; width: 421px; margin: 0 auto 20px auto;">
-                <p><i class="fa fa-play-circle-o fa-3x" aria-hidden="true"></i><br>Видеораспаковка: заголовок внутри видео</p>
+                <div class="video-area">
+                    <div class="play-icon">
+                        <i class="fa fa-play-circle-o fa-3x" aria-hidden="true"></i>
+                    </div>
+                    <p>Видеораспаковка: заголовок внутри видео</p>
                 </div>
         </section>
     </div>
@@ -33,27 +44,28 @@
         <section class="row">
             <div class="line"><span class="title">История моего здоровья</span><br>
                 <input class="download" type="submit" value="Скачать все">
-                <input class="add" type="submit" value="+Добавить">
+                <input class="add" type="submit" value="+ Добавить">
                 <p>Информация об анализах, обследованиях и лечении в хронологическом порядке</p>
             </div>
             <div class="line"><span class="title">Найти</span><br>
-                <div style="float:left; width: 15%;">
-                    <span style="margin: 5px 0; display: inline-block;">Дата</span><br>
-                    <input type="text" style="margin-bottom: 30px;">
-                </div>
-                <div style="float:left; margin-left: 2%; width: 28%;">
-                    <span style="margin: 5px 0; display: inline-block;">Вид</span><br>
-                    <select>
-                        <option>Пункт 2</option>
-                        <option>Пункт 1</option>
-                    </select>
-                </div>
-                <div style="float:left; margin-left: 2%; width: 38%;">
-                    <span style="margin: 5px 0; display: inline-block;">Название</span><br>
+                <div class="date-field">
+                    <span class="search-text">Дата</span><br>
                     <input type="text">
                 </div>
-                <div style="float:right; margin-left: 2%; margin-top: 28px; width: 13%">
-                    <input class="find" type="submit" value="Найти">
+                <div class="type-field">
+                    <span class="search-text">Вид</span><br>
+                    <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+                <div class="title-field">
+                    <span class="search-text">Название</span><br>
+                    <input type="text">
+                </div>
+                <div class = "search-button">
+                    <button class="search" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Найти</button>
                 </div>
             </div>
         </section>
@@ -69,63 +81,77 @@
                 <th></th>
             </tr>
             <tr>
-                <td width="150px">22 марта 2018</td>
-                <td width="180px">Холестерин общий</td>
-                <td>Название довольно длинное может быть</td>
+                <td class="document-date">22 марта 2018</td>
+                <td class="document-type">Холестерин общий</td>
+                <td class="document-name">Название довольно длинное может быть</td>
                 <td><input class="open" type="submit" value="Открыть"></td>
-                <td><a href="#" style="float:right;"><i class="fa fa-download"></i></a></td>
-                
-                <td><a href="#" style="float:right; margin-right: 10px;"><i class="fa fa-times-circle"></i></a></td>
+                <td><a href="#" class="download-button"><i class="fa fa-download"></i></a></td>
+                <td><a href="#" class="delete-button"><i class="fa fa-times-circle"></i></a></td>
             </tr>
             <tr>
-                <td width="150px">22 марта 2018</td>
-                <td width="180px">Сахар</td>
-                <td>Название довольно длинное может быть</td>
+                <td class="document-date">22 марта 2018</td>
+                <td class="document-type">Сахар</td>
+                <td class="document-name">Название довольно длинное может быть</td>
                 <td><input class="open" type="submit" value="Открыть"></td>
-                <td><a href="#" style="float:right;"><i class="fa fa-download"></i></a></td>
-                
-                <td><a href="#" style="float:right; margin-right: 10px;"><i class="fa fa-times-circle"></i></a></td>
+                <td><a href="#" class="download-button"><i class="fa fa-download"></i></a></td>
+                <td><a href="#" class="delete-button"><i class="fa fa-times-circle"></i></a></td>
             </tr>
         </tbody>
     </table>
-    <footer>
+    <hr>
         <div class="footer">
-            <section class="row">
-            <div class="col-1-3" style="height: 280px;">
-                <div class="content-box" style="text-align: left; vertical-align: middle; padding: 60px 30px;">
-                    <div class="soc"><a href="#"><i class="fa fa-odnoklassniki" aria-hidden="true"></i></a></div>
-                    <div class="soc"><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></div>
-                    <div class="soc"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
-                    <div class="soc"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></div><br>
-                    <h1 style="margin-bottom: 5px;">+7 495 131-32-73</h1>
-                    <p>2016-2018 ООО «Здравствую»</p>
+        
+            <div class="contacts">
+                <div class="social-media">
+                    <a class="social-OK" href="https://ok.ru/zdorovyebu"></a>
+                    <a class="social-VK" href="https://vk.com/public157016043"></a>
+                    <a class="social-FB" href="https://www.facebook.com/zdrav.rf/"></a>
+                    <a class="social-IG" href="https://www.instagram.com/zdrav.rf"></a>
                 </div>
+                <div class="phone">+7 495 131-32-73</div>
+                <div class="OOO">2016-2018 ООО «Здравствую»</div>
             </div>
-            <div class="col-1-3">
-                <div class="content-box" style="text-align: left">
-                    <h1>Здравствую</h1>
-                    <ul>
-                        <li><a href="#">О нас</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Отзывы о сервисе</a></li>
-                        <li><a href="#">Партнерская программа</a></li>
-                        <li><a href="#">Команда</a></li>
-                        <li><a href="#">Контакты</a></li>
-                    </ul>
-                </div>
+        
+            <div class="zdrav-menu">
+                <p>Здравствую</p>
+                <ul>
+                    <li>
+                        <a>О нас</a>
+                    </li>
+                    <li>
+                        <a>FAQ</a>
+                    </li>
+                    <li>
+                        <a>Отзывы о сервисе</a>
+                    </li>
+                    <li>
+                        <a>Партнерская программа</a>
+                    </li>
+                    <li>
+                        <a>Команда</a>
+                    </li>
+                    <li>
+                        <a>Контакты</a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-1-3">
-                <div class="content-box" style="text-align: left">
-                    <h1>Документы</h1>
-                    <ul>
-                        <li><a href="#">Миссия, цель, ценности</a></li>
-                        <li><a href="#">Правила использования</a></li>
-                        <li><a href="#">Обработка персональных данных</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        
+            <div class="documents">
+                <p>Документы</p>
+                <ul>
+                    <li>
+                        <a>Миссия, цель, ценности</a>
+                    </li>
+                    <li>
+                        <a>Правила использования</a>
+                    </li>
+                    <li>
+                        <a>Обработка персональных данных</a>
+                    </li>
+                </ul>
         </div>
-    </footer>
+	</div>
+    </div>
+    </div>
 </body>
 </html>
