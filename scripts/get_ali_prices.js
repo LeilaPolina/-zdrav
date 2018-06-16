@@ -4,7 +4,7 @@ $(document).ready(function() {
         if(data.contents.match(/itemprop="price">(.*?)<\/span>/)) {
             cholesterol_tester_price = data.contents.match(/itemprop="price">(.*?)<\/span>/)[1];
         } else {
-            cholesterol_tester_price = data.contents.match(/itemprop="lowPrice">(.*?)<\/span>/)[1];
+            cholesterol_tester_price = data.contents.match(/itemprop="highPrice">(.*?)<\/span>/)[1];
         }
 
         $("#cholesterol-tester").html(cholesterol_tester_price + " руб.");
@@ -15,7 +15,7 @@ $(document).ready(function() {
         if(data.contents.match(/itemprop="price">(.*?)<\/span>/)) {
             EKG_monitor_price = data.contents.match(/itemprop="price">(.*?)<\/span>/)[1];
         } else {
-            EKG_monitor_price = data.contents.match(/itemprop="lowPrice">(.*?)<\/span>/)[1];
+            EKG_monitor_price = data.contents.match(/itemprop="highPrice">(.*?)<\/span>/)[1];
         }
 
         $("#EKG-monitor").html(EKG_monitor_price + " руб.");
@@ -26,7 +26,7 @@ $(document).ready(function() {
         if(data.contents.match(/itemprop="price">(.*?)<\/span>/)) {
             tonometer_price = data.contents.match(/itemprop="price">(.*?)<\/span>/)[1];
         } else {
-            tonometer_price = data.contents.match(/itemprop="lowPrice">(.*?)<\/span>/)[1];
+            tonometer_price = data.contents.match(/itemprop="highPrice">(.*?)<\/span>/)[1];
         }
 
         $("#tonometer").html(tonometer_price + " руб.");
