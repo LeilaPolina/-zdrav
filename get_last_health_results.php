@@ -2,6 +2,9 @@
     include_once('includes/config.php');
 
     function get_last_from_db($db, $result_name) {
+        if(!$user->is_logged_in()){
+            return 'none';
+        }
         try{
             // для давления нужно менять запрос так как запрашивать нужно две строки на каждую дату
             if($result_name === 'давление')
