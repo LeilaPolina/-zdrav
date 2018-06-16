@@ -378,9 +378,20 @@ $( document ).ready(function() {
 	});
 
 	function show_dates_results(data) {
-		//alert(data);
 		code = data.result;
-		alert(code);
+		if(code != 'none'){
+			var last_results_arr = [];
+			for(i = 0; i < code.length; i++){
+				if(i == 5){
+					break;
+				}
+				last_results_arr.push("Дата: " + code[i]['result_date'] + ' Значение: ' + code[i]['current_value']);
+			}
+			alert("Первые 5 результатов:\n\n" + last_results_arr.join('\n'));
+		}
+		else{
+			alert("Вы еще не занесли ни одного результата!");
+		}
 	}
 
 	function ask_last_results(health_result_name, callback){
