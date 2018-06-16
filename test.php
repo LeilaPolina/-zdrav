@@ -244,12 +244,12 @@
 					Согласно тесту расчетная продолжительность вашей жизни составит <b><?php if ($result_test['lifetime'] - (date("Y") - $result_test['year_birth']) < 5) { echo date("Y") - $result_test['year_birth'] + 5; } else { echo $result_test['lifetime']; } ?> лет</b> </br>
 					Максимальная возможная продолжительность жизни может составить
 					<b><?php if ($result_test['sex'] == 'м'){
-						echo 88+$lifecount;
+						echo $result_test['lifetime']+$lifecount;
 						echo ' лет';
 					}
 					else 
 					{
-						echo 99+$lifecount;
+						echo $result_test['lifetime']+$lifecount;
 						echo ' лет';
 					} ?></b>
 				</div>
