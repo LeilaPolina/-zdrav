@@ -203,7 +203,7 @@
 		<div class="menu-logo"></div>
 		<div class="menu-nav">
 			<a id="general-inf" href="test.php" style=""><p>Общие сведения</p></a>
-			<a id="health-in-numbers" href="" style="" onclick="return false"><p>Моё здоровье в цифрах</p></a>
+			<a id="health-in-numbers" href="health.php" style="" onclick="return false"><p>Моё здоровье в цифрах</p></a>
 			<a id="my-documents" href="docs.php" style=""><p>Мои документы</p></a>
 			<a id="shop" href="" style="shop.php"><p>Магазин</p></a>
 			<a id="services" href="" style="" onclick="return false"><p>Сервисы</p></a>
@@ -632,9 +632,9 @@
 		<div class="documents">
 			<p>Документы</p>
 			<ul>
-				<li><a>Миссия, цель, ценности</a></li>
-				<li><a>Правила использования</a></li>
-				<li><a>Обработка персональных данных</a></li>
+				<li><a href="mission.php">Миссия, цель, ценности</a></li>
+				<li><a href="agreement.php">Правила использования</a></li>
+				<li><a href="personal_data_agreement.php">Обработка персональных данных</a></li>
 			</ul>
 		</div>
 	</div>

@@ -1,3 +1,4 @@
+<?php include_once('includes/config.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,8 +24,15 @@
 	<div class="wrapper">
 		<div class="menu-logo"></div>
 		<div class="menu-nav">
-			<a id="general-inf" href="test.php" style=""><p>Общие сведения</p></a>
-			<a id="health-in-numbers" href="" style="" onclick="return false"><p>Моё здоровье в цифрах</p></a>
+			<?php 
+				if($user->is_logged_in()){
+					echo '<a id="general-inf" href="general_data.php" style=""><p>Общие сведения</p></a>';
+				}
+				else{
+					echo '<a id="general-inf" href="test.php" style=""><p>Общие сведения</p></a>';
+				}
+			?>  
+			<a id="health-in-numbers" href="health.php" style="" onclick="return false"><p>Моё здоровье в цифрах</p></a>
 			<a id="my-documents" href="docs.php" style=""><p>Мои документы</p></a>
 			<a id="shop" href="shop.php" style=""><p>Магазин</p></a>
 			<a id="services" href="" style="" onclick="return false"><p>Сервисы</p></a>
@@ -77,9 +85,9 @@
 		<div class="documents">
 			<p>Документы</p>
 			<ul>
-				<li><a href="mission.html">Миссия, цель, ценности</a></li>
-				<li><a href="agreement.html">Правила использования</a></li>
-				<li><a href="personal_data_agreement.html">Обработка персональных данных</a></li>
+				<li><a href="mission.php">Миссия, цель, ценности</a></li>
+				<li><a href="agreement.php">Правила использования</a></li>
+				<li><a href="personal_data_agreement.php">Обработка персональных данных</a></li>
 			</ul>
 		</div>
 	</div>
