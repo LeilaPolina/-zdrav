@@ -55,7 +55,6 @@
 		return $txt;
 	}
 
-
 	function getLifetimeIndexMass ($index_mass) {
 		$count_weight = '';
 		if ($index_mass < 15) {
@@ -191,7 +190,7 @@
 					
 				</div>
 				<div class="lifetime">
-					Согласно тесту расчетная продолжительность вашей жизни составит <b><?php echo $result_test['lifetime']; ?> лет</b> </br>
+					Согласно тесту расчетная продолжительность вашей жизни составит <b><?php if ($result_test['lifetime'] - (date("Y") - $result_test['year_birth']) < 5) { echo date("Y") - $result_test['year_birth'] + 5; } else { echo $result_test['lifetime']; } ?> лет</b> </br>
 					Максимальная возможная продолжительность жизни может составить
 					<b><?php if ($result_test['sex'] == 'м'){
 						echo 88+$lifecount;
