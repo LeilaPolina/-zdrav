@@ -176,34 +176,83 @@
             //return 700;
         }
     }
-	
-    if(isset($_POST['health_num_cholesterol'])){
-        $user_cholesterol = $_POST['health_num_cholesterol'];
-        $user_age = get_age($user_data_row['user_age']);
-        $user_cholesterol_eval = evaluate_cholesterol($user_age, $user_cholesterol);
-        send_result_to_db($db, $cur_user_id, 'холестерин', $_POST['health_num_date'], $user_cholesterol, $user_cholesterol_eval);
-        echo json_encode(array('result' => $user_cholesterol_eval)); 
-    }    
-    else if(isset($_POST['health_num_glucose'])){
-        $user_glucose = $_POST['health_num_glucose'];
-        $user_glucose_eval = evaluate_glucose($user_glucose);
-        send_result_to_db($db, $cur_user_id, 'сахар', $_POST['health_num_date'], $user_glucose, $user_glucose_eval);
-        echo json_encode(array('result' => $user_glucose_eval));
+
+    function prepare_result_test(){
+        if(isset($_SESSION['result_test'])){
+            $result_test = $_SESSION['result_test'];
+            if($result_test['sex'] == 'Мужской'){
+                $result_test['sex'] = 'male';
+            }
+            else {
+                $result_test['sex'] = 'female';
+            }
+            return $result_test;
+        }  
+        // for testing
+        else {
+            $result_test = array('year_birth' => 1990, 'height' => 180, 'sex'=> 'male');
+            return $result_test;
+        }
+    } 
+    
+    if($user->is_logged_in()){
+        if(isset($_POST['health_num_cholesterol'])){
+            $user_cholesterol = $_POST['health_num_cholesterol'];
+            $user_age = get_age($user_data_row['user_age']);
+            $user_cholesterol_eval = evaluate_cholesterol($user_age, $user_cholesterol);
+            send_result_to_db($db, $cur_user_id, 'холестерин', $_POST['health_num_date'], $user_cholesterol, $user_cholesterol_eval);
+            echo json_encode(array('result' => $user_cholesterol_eval)); 
+        }    
+        else if(isset($_POST['health_num_glucose'])){
+            $user_glucose = $_POST['health_num_glucose'];
+            $user_glucose_eval = evaluate_glucose($user_glucose);
+            send_result_to_db($db, $cur_user_id, 'сахар', $_POST['health_num_date'], $user_glucose, $user_glucose_eval);
+            echo json_encode(array('result' => $user_glucose_eval));
+        }
+        else if(isset($_POST['health_num_upper_pressure']) && isset($_POST['health_num_lower_pressure'])){
+            $user_pressure = Array(
+                'upper' => $_POST['health_num_upper_pressure'],
+                'lower' => $_POST['health_num_lower_pressure']);
+            $user_age = get_age($user_data_row['user_age']);
+            $user_pressure_eval = evaluate_pressure($user_age, $user_data_row['user_sex'], $user_pressure);  
+            send_result_to_db($db, $cur_user_id, 'давление', $_POST['health_num_date'], $user_pressure, $user_pressure_eval);  
+            echo json_encode(array('result' => $user_pressure_eval));
+        }
+        else if(isset($_POST['health_num_weight'])){
+            $user_weight = $_POST['health_num_weight'];
+            $user_weight_eval = evaluate_weight($user_weight, $user_data_row['user_height']);
+            send_result_to_db($db, $cur_user_id, 'вес', $_POST['health_num_date'], $user_weight, $user_weight_eval);
+            echo json_encode(array('result' => $user_weight_eval));
+        }
     }
-    else if(isset($_POST['health_num_upper_pressure']) && isset($_POST['health_num_lower_pressure'])){
-        $user_pressure = Array(
-            'upper' => $_POST['health_num_upper_pressure'],
-            'lower' => $_POST['health_num_lower_pressure']);
-        $user_age = get_age($user_data_row['user_age']);
-        $user_pressure_eval = evaluate_pressure($user_age, $user_data_row['user_sex'], $user_pressure);  
-        send_result_to_db($db, $cur_user_id, 'давление', $_POST['health_num_date'], $user_pressure, $user_pressure_eval);  
-        echo json_encode(array('result' => $user_pressure_eval));
-    }
-    else if(isset($_POST['health_num_weight'])){
-        $user_weight = $_POST['health_num_weight'];
-        $user_weight_eval = evaluate_weight($user_weight, $user_data_row['user_height']);
-        send_result_to_db($db, $cur_user_id, 'вес', $_POST['health_num_date'], $user_weight, $user_weight_eval);
-        echo json_encode(array('result' => $user_weight_eval));
+    else{
+        // DEMO VERSION - NO SAVING TO DB
+        $result_test = prepare_result_test();
+
+        if(isset($_POST['health_num_cholesterol'])){
+            $user_cholesterol = $_POST['health_num_cholesterol'];
+            $user_age = get_age($result_test['year_birth']);
+            $user_cholesterol_eval = evaluate_cholesterol($user_age, $user_cholesterol);
+            echo json_encode(array('result' => $user_cholesterol_eval)); 
+        }    
+        else if(isset($_POST['health_num_glucose'])){
+            $user_glucose = $_POST['health_num_glucose'];
+            $user_glucose_eval = evaluate_glucose($user_glucose);
+            echo json_encode(array('result' => $user_glucose_eval));
+        }
+        else if(isset($_POST['health_num_upper_pressure']) && isset($_POST['health_num_lower_pressure'])){
+            $user_pressure = Array(
+                'upper' => $_POST['health_num_upper_pressure'],
+                'lower' => $_POST['health_num_lower_pressure']);
+            $user_age = get_age($result_test['year_birth']);
+            $user_pressure_eval = evaluate_pressure($user_age, $result_test['sex'], $user_pressure); 
+            echo json_encode(array('result' => $user_pressure_eval));
+        }
+        else if(isset($_POST['health_num_weight'])){
+            $user_weight = $_POST['health_num_weight'];
+            $user_weight_eval = evaluate_weight($user_weight, $result_test['height']);
+            echo json_encode(array('result' => $user_weight_eval));
+        }
     }
     
 ?>

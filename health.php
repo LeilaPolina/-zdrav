@@ -1,3 +1,7 @@
+<?php
+	include_once('includes/config.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,8 +74,10 @@
 
 
 </head>
-<?php 
-	include('get_indexes_values.php');
+<?php
+	if($user->is_logged_in()){
+		include('get_indexes_values.php');
+	}
 ?>
 <body>
 	<!--#################################Header#################################-->
