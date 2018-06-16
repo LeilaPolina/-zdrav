@@ -377,23 +377,60 @@ $( document ).ready(function() {
 		}
 	});
 
+	function show_dates_results(data) {
+		//alert(data);
+		code = data.result;
+		alert(code);
+	}
+
+	function ask_last_results(health_result_name, callback){
+		$.ajax({
+			type: 'POST',
+			url: 'get_last_health_results.php',
+			data: {
+				health_result_name: health_result_name
+			},
+			dataType : 'json',
+			success: callback,
+			error: function (jqXHR, exception) {
+					var msg = '';
+					if (jqXHR.status === 0) {
+						msg = 'Not connect.\n Verify Network.';
+					} else if (jqXHR.status == 404) {
+						msg = 'Requested page not found. [404]';
+					} else if (jqXHR.status == 500) {
+						msg = 'Internal Server Error [500].';
+					} else if (exception === 'parsererror') {
+						msg = 'Requested JSON parse failed.';
+					} else if (exception === 'timeout') {
+						msg = 'Time out error.';
+					} else if (exception === 'abort') {
+						msg = 'Ajax request aborted.';
+					} else {
+						msg = 'Uncaught Error.\n' + jqXHR.responseText;
+					}
+					alert(msg);
+				}				
+		});
+	}
+
 	$("#cholesterol-graph").click(function(e){
 		e.preventDefault();
-		alert("ch hraph");
+		ask_last_results('холестерин', show_dates_results);
 	});
 
 	$("#sugar-graph").click(function(e){
 		e.preventDefault();
-		alert("su hraph");
+		ask_last_results('сахар', show_dates_results);
 	});
 
 	$("#blood-pressure-graph").click(function(e){
 		e.preventDefault();
-		alert("bl hraph");
+		ask_last_results('давление', show_dates_results);
 	});
 
 	$("#weight-graph").click(function(e){
 		e.preventDefault();
-		alert("we hraph");
+		ask_last_results('вес', show_dates_results);
 	});
 });
