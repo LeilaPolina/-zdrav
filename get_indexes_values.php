@@ -1,3 +1,7 @@
+<?php 
+	include('includes/config.php');
+?>
+
 
 	<script>
 		function set_border_colors_and_estimation_values(brd_id,estimatimation_id,border_kind) {
@@ -76,7 +80,7 @@
 
 
 <?php 
-	include('includes/config.php');
+	//include('includes/config.php');
 	
 	$cur_user_id = $_SESSION['user_id'];
 	$get_results_data = $db->prepare('
