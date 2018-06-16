@@ -214,6 +214,7 @@
 	height:20px;
 	background:url('../images/icons/health_menu_icon.png') no-repeat ;
 	background-size:100%;
+	cursor: pointer;
 }
 
 

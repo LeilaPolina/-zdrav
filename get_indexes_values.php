@@ -141,7 +141,7 @@
 				var date="'.$index_date.'".split(" ")[0];
 				indexes_array["weight"].date=date;
 				set_values("weight",'.$index_value.',date,'.$border_kind.');
-			 });</script>';	
+			 });</script>';
 		   }
 		   
 		if($index_name=='сахар'){

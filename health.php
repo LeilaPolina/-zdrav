@@ -128,7 +128,7 @@
 					</td>
 					<td class="estimation-col index-estimation" id="cholesterol-estm">&mdash;</td>
 					<td class="graph-col index-graph">
-						<div class="index-graph-img-wrapper"></div>
+						<div class="index-graph-img-wrapper" id="cholesterol-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
@@ -149,7 +149,7 @@
 					</td>
 					<td class="estimation-col index-estimation" id="sugar-estm">&mdash;</td>
 					<td class="graph-col index-graph">
-						<div class="index-graph-img-wrapper"></div>
+						<div class="index-graph-img-wrapper" id="sugar-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
@@ -175,7 +175,7 @@
 					</td>
 					<td class="estimation-col index-estimation" id="blood-pressure-estm">&mdash;</td>
 					<td class="graph-col index-graph">
-						<div class="index-graph-img-wrapper"></div>
+						<div class="index-graph-img-wrapper" id="blood-pressure-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
@@ -196,7 +196,7 @@
 					</td>
 					<td class="estimation-col index-estimation" id="weight-estm">&mdash;</td>
 					<td class="graph-col index-graph">
-						<div class="index-graph-img-wrapper"></div>
+						<div class="index-graph-img-wrapper" id="weight-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">

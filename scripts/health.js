@@ -376,4 +376,24 @@ $( document ).ready(function() {
 			}
 		}
 	});
+
+	$("#cholesterol-graph").click(function(e){
+		e.preventDefault();
+		alert("ch hraph");
+	});
+
+	$("#sugar-graph").click(function(e){
+		e.preventDefault();
+		alert("su hraph");
+	});
+
+	$("#blood-pressure-graph").click(function(e){
+		e.preventDefault();
+		alert("bl hraph");
+	});
+
+	$("#weight-graph").click(function(e){
+		e.preventDefault();
+		alert("we hraph");
+	});
 });
