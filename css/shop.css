@@ -45,8 +45,13 @@ p.shop-text {
 }
 
 .content-box img{
-    max-height: 150px; 
-    max-width: 150px;
+    height: 150px; 
+    width: 150px;
+}
+
+.ali-logo {
+	height: 71px !important;
+	width: 141px !important;
 }
 
 .col-1-2 {

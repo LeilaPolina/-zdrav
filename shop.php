@@ -107,7 +107,7 @@
         <section class="row">
             <div class="col-1-2">
                 <div class="content-box ali-text">
-                    <img src="images/shop/AliExpress.png">
+                    <img src="images/shop/AliExpress.png" class="ali-logo">
                     <h1>Наш сервис является официальным партнером крупнейшего интернет магазина AliExpress.</h1>
                     <p class="shop-text">Зарегистрированные пользователи совершая покупки на AliExpress через наш сервис получают кэшбек в размере <strong>3% от суммы покупки</strong>
                     </p>
@@ -261,6 +261,32 @@
                     <h1>Тонометр</h1>
                     <p class="price" id="tonometer"></p>
                     <input type="button" onclick="window.open('http://s.click.aliexpress.com/e/rBYRzFq','_blank');" class="buy-button" value="Купить">
+                </div>
+            </div>
+        </section>
+        <section class="row">
+            <div class="col-1-3">
+                <div class="content-box">
+                    <img src="images/shop/4.jpg">
+                    <h1>Умные весы</h1>
+                    <p class="price" id="scales"></p>
+                    <input type="button" onclick="window.open('http://s.click.aliexpress.com/e/ChYYJvq','_blank');" class="buy-button" value="Купить">
+                </div>
+            </div>
+            <div class="col-1-3">
+                <div class="content-box">
+                    <img src="images/shop/5.jpg">
+                    <h1>Фитнес браслет</h1>
+                    <p class="price" id="smart-watch"></p>
+                    <input type="button" onclick="window.open('http://s.click.aliexpress.com/e/bXipeSos','_blank');" class="buy-button" value="Купить">
+                </div>
+            </div>
+            <div class="col-1-3">
+                <div class="content-box">
+                    <img src="images/shop/6.jpg">
+                    <h1>Пульсометр</h1>
+                    <p class="price" id="heart-rate-monitor"></p>
+                    <input type="button" onclick="window.open('http://s.click.aliexpress.com/e/bqomT23I','_blank');" class="buy-button" value="Купить">
                 </div>
             </div>
         </section>
