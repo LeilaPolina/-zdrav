@@ -1,0 +1,163 @@
+h1.pagename {
+    font-family: sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    color: #374963;
+    line-height: 10px;
+}
+
+h2.pagename {
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+    color: #16325C;
+    margin-top: 43.47px;
+}
+
+.services-menu {
+    width: 100%;
+    margin-top: 45px;
+    margin-bottom: 60px;
+}
+
+.accordion {
+    width: 100%;
+    height: 80px;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.1);
+}
+
+.acc-active > p > .services-right::after {
+    content: "";
+    background: url(../images/icons/new_arrow_reversed.png) no-repeat;
+    background-size: contain;
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 18px;
+    height: 12px;
+    float: right;
+}
+
+.panel {
+    width: 100%;
+    padding-top: 1px;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.1);
+    transition: max-height 0.2s ease-out;
+    /*display: none;*/
+    overflow: hidden;
+
+    max-height: 0;
+}
+
+.services-left {
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 27px;
+    margin-left: 28px;
+    float: left;
+    color: #16325C;
+}
+
+.services-right {
+    font-family: sans-serif;
+    font-size: 13px;
+    margin-top: 33px;
+    margin-right: 19px;
+    float: right;
+    color: #16325C;
+}
+
+.services-right::after {
+    content: "";
+    background: url(../images/icons/new_arrow.png) no-repeat;
+    background-size: contain;
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 18px;
+    height: 12px;
+    float: right;
+}
+
+.service-content {
+    margin: 5px 42px 40px 42px;
+    font-family: sans-serif;
+}
+
+.service-content > h1 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #16325C;
+}
+
+.img-center {
+    display: block;
+    margin: 0px auto;
+}
+
+#weight > p > span.services-left::before {
+    content: url('../images/icons/symbols-icon-mass.png');
+    margin-right: 10px;
+}
+
+#food > p > span.services-left::before {
+    content: url('../images/icons/symbols-icon-food.png');
+    margin-right: 10px;
+}
+
+#smoking > p > span.services-left::before {
+    content: url('../images/icons/symbols-icon-smoke.png');
+    margin-right: 10px;
+}
+
+#personal-manager > p > span.services-left::before {
+    content: url('../images/icons/symbols-icon-personal-manager.png');
+    margin-right: 10px;
+}
+
+#screening > p > span.services-left::before {
+    content: url('../images/icons/symbols-icon-notification.png');
+    margin-right: 10px;
+}
+
+#immunity > p > span.services-left::before {
+    content: url('../images/icons/symbols-icon-immunitet.png');
+    margin-right: 10px;
+}
+
+#analyzes > p > span.services-left::before {
+    content: url('../images/icons/symbols-icon-analise.png');
+    margin-right: 10px;
+}
+
+#home-checkup > p > span.services-left::before {
+    content: url('../images/icons/symbols-icon-home.png');
+    margin-right: 10px;
+}
+
+#healthy-heart > p > span.services-left::before {
+    content: url('../images/icons/symbols-icon-heart.png');
+    margin-right: 10px;
+}
+
+#expecting > p > span.services-left::before {
+    content: url('../images/icons/symbols-icon-wait-baby.png');
+    margin-right: 10px;
+}
+
+#be-mom > p > span.services-left::before {
+    content: url('../images/icons/symbols-icon-want-mam.png');
+    margin-right: 10px;
+}
+
+#be-dad > p > span.services-left::before {
+    content: url('../images/icons/symbols-icon-pap.png');
+    margin-right: 10px;
+}
+
