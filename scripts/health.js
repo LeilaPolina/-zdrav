@@ -101,28 +101,6 @@ $( document ).ready(function() {
 	   $(value_span_id).text(index_value);
 	   set_border_colors_and_estimation_values(brd_id,estimatimation_id,border_kind);
 	}
-		
-
-	function get_blood_pressure_border_kind (upper_blood_kind,lower_blood_kind) {
-		if (upper_blood_kind==lower_blood_kind) {
-			return upper_blood_kind;
-		}
-		if(upper_blood_kind==2 || upper_blood_kind==-2) {
-			return upper_blood_kind;
-		}
-		if((upper_blood_kind!=2 && upper_blood_kind!=-2) && (lower_blood_kind==2 || lower_blood_kind==-2)) {
-			return lower_blood_kind;
-		}
-		
-		if((upper_blood_kind==1 || upper_blood_kind==-1) && lower_blood_kind==0) {
-			return upper_blood_kind;
-		}	
-		
-		if((lower_blood_kind==1 || lower_blood_kind==-1) && upper_blood_kind==0) {
-			return lower_blood_kind;
-		}
-	}
-
 
 	function set_blood_pressure_values(upper_value,lower_value,date,upper_blood_kind,lower_blood_kind) {
 		$("#blood-pressure-1").text(upper_value);
@@ -491,3 +469,23 @@ $( document ).ready(function() {
 
 	fill_demo_values();
 });
+
+function get_blood_pressure_border_kind (upper_blood_kind,lower_blood_kind) {
+	if (upper_blood_kind==lower_blood_kind) {
+		return upper_blood_kind;
+	}
+	if(upper_blood_kind==2 || upper_blood_kind==-2) {
+		return upper_blood_kind;
+	}
+	if((upper_blood_kind!=2 && upper_blood_kind!=-2) && (lower_blood_kind==2 || lower_blood_kind==-2)) {
+		return lower_blood_kind;
+	}
+	
+	if((upper_blood_kind==1 || upper_blood_kind==-1) && lower_blood_kind==0) {
+		return upper_blood_kind;
+	}	
+	
+	if((lower_blood_kind==1 || lower_blood_kind==-1) && upper_blood_kind==0) {
+		return lower_blood_kind;
+	}
+}
