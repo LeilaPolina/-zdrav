@@ -444,4 +444,50 @@ $( document ).ready(function() {
 		e.preventDefault();
 		ask_last_results('вес', show_dates_results);
 	});
+
+	function fill_demo_values(){
+		if(document.getElementById('demo-health-btn')){
+			indexes_array['weight'].val = 80;
+			indexes_array['weight'].date = "2018-06-19";
+			indexes_array['weight'].border_kind = 1;
+			indexes_array['weight'].percent = 0;
+			indexes_array['weight'].lower_norm = 65;
+			indexes_array['weight'].upper_norm = 81;
+			set_values(indexes_array['weight'].name, indexes_array['weight'].val, indexes_array['weight'].date, indexes_array['weight'].border_kind);
+			
+			indexes_array['cholesterol'].val = 6;
+			indexes_array['cholesterol'].date = "2018-06-19";
+			indexes_array['cholesterol'].border_kind = 2;
+			indexes_array['cholesterol'].percent = 4.35;
+			indexes_array['cholesterol'].lower_norm = 3.32;
+			indexes_array['cholesterol'].upper_norm = 5.75;
+			set_values(indexes_array['cholesterol'].name, indexes_array['cholesterol'].val, indexes_array['cholesterol'].date, indexes_array['cholesterol'].border_kind);
+
+			indexes_array['sugar'].val = 4.3;
+			indexes_array['sugar'].date = "2018-06-19";
+			indexes_array['sugar'].border_kind = 0;
+			indexes_array['sugar'].percent = 0;
+			indexes_array['sugar'].lower_norm = 3.3;
+			indexes_array['sugar'].upper_norm = 5.5;
+			set_values(indexes_array['sugar'].name, indexes_array['sugar'].val, indexes_array['sugar'].date, indexes_array['sugar'].border_kind);
+			
+			indexes_array['upper_blood_pressure'].val = 130;
+			indexes_array['upper_blood_pressure'].date = "2018-06-19";
+			indexes_array['upper_blood_pressure'].border_kind = 0;
+			indexes_array['upper_blood_pressure'].percent = 0;
+			indexes_array['upper_blood_pressure'].lower_norm = 120;
+			indexes_array['upper_blood_pressure'].upper_norm = 140;
+
+			indexes_array['lower_blood_pressure'].val = 80;
+			indexes_array['lower_blood_pressure'].date = "2018-06-19";
+			indexes_array['lower_blood_pressure'].border_kind = 0;
+			indexes_array['lower_blood_pressure'].percent = 0;
+			indexes_array['lower_blood_pressure'].lower_norm = 70;
+			indexes_array['lower_blood_pressure'].upper_norm = 90;
+			
+			set_blood_pressure_values(indexes_array['upper_blood_pressure'].val, indexes_array['lower_blood_pressure'].val, indexes_array['upper_blood_pressure'].date, indexes_array["upper_blood_pressure"].border_kind, indexes_array["lower_blood_pressure"].border_kind); 
+		}
+	}
+
+	fill_demo_values();
 });

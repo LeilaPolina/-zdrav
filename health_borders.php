@@ -178,7 +178,7 @@
     }
 
     function prepare_result_test(){
-        if(isset($_SESSION['result_test'])){
+        if((isset($_SESSION['result_test'])) && ($_SESSION['result_test']['sex'] != "")){
             $result_test = $_SESSION['result_test'];
             if($result_test['sex'] == 'Мужской'){
                 $result_test['sex'] = 'male';

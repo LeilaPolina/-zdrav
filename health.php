@@ -12,11 +12,19 @@
 	<link rel="stylesheet" type="text/css" href="css/health.css" />
 	<link rel="stylesheet" type="text/css" href="css/registration_login_windows.css" />
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+	<!--DEMO Zdrav Test Styles-->
+	<!-- полетели стили теста в модальном окне -->
+	<link rel="stylesheet" href="css/zdrav_test.css"/>
+	<link rel="stylesheet" type="text/css" href="css/demo_health.css" />
 	
 	<!--SCRIPTS-->
     <script src="jquery/jquery-3.1.1.min.js"></script>
+	<!-- FOR DEMO REG BUTTON -->
+	<script src="scripts/zdrav_test.js"></script>
+	
     <script src="scripts/health.js"></script>	
-	<script src="scripts/reason_models.js"></script>	
+	<script src="scripts/reason_models.js"></script>
 	<!-- JavaScript --> 
 	<script src="jquery/jquery.maskedinput.min.js"></script>
 	<script src="scripts/signout.js"></script>
@@ -101,13 +109,47 @@
 		</div>
 	</div>
 </div>
+
+<!-- DEMO PART -->
+<div id="modal_test">
+	<div id="content_test">
+		<div class="header_modal">
+			Тест для составления индивидуального плана профилактики
+			<div id="close_modal" title="Закрыть">&#215;</div>
+		</div>
+		<div class="body_modal">
+			<div id="cont_testing">
+				
+			</div>
+		</div>
+	</div>
+</div>
+<div id="modal_loading">
+	<div id="content_loading">
+		<div id="load_img"><img src="images/loading.gif" /></div>
+		<div id="load_txt">Идет обработка результатов</div>
+	</div>
+</div>
+<!-- /DEMO PART -->
+
 	<!--#################################Main#################################-->
 	<div class="main">
 		<div class="lk health-in-numbers-wrapper">
 			<p>Личный кабинет</p>
 			<p>Мое здоровье в цифрах</p>
-			<div class="video-rec" style="display:block">
-				</div>
+			
+			<!-- DEMO PART -->
+			<?php 
+				if(!$user->is_logged_in()){
+					echo '<br/>';
+					echo '<p>Демо версия. Полноценная версия сервиса с сохранением результатов и истории доступна после регистрации<p>';
+					echo '<button class="demo-btn btn_start_test" id="demo-health-btn" href="">Создать личный кабинет</button>';
+				}
+			?>
+			<!-- /DEMO PART -->
+			
+			<!--<div class="video-rec" style="display:block">
+				</div> -->
 		</div>
 
 		<div class="indexes-header-wrapper">
