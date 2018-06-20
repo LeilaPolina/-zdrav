@@ -482,7 +482,7 @@ $(function () {
 			str += '<input type="hidden" name="'+ key +'" value="'+ result_warnings[key] +'" />';
 		}
 		str += '<input type="hidden" name="lifetime" value="'+ lifetime +'" />';
-		$('body').append('<form action="test.php" method="POST" id="form_test">'+ str +'</form>');
+		$('body').append('<form action="test_results_processing.php" method="POST" id="form_test">'+ str +'</form>');
 		
 		$(modal_test).hide();
 		$(modal_loading).show();

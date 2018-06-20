@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     
-    <!-- Yandex.Metrika counter --> 
+    <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function (d, w, c) { 
             (w[c] = w[c] || []).push(function() { 

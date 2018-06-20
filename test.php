@@ -1,17 +1,7 @@
-<?php
+<?php {
 	include('includes/config.php');
 	
 	// TODO: закрыть доступ тем кто не прошел тест
-	
-	$name_fields = array('sex', 'year_birth', 'height', 'weight', 'education', 'work', 'smoking', 'alcohol', 'family', 'children', 'sport', 'food', 'sleep', 'cold', 'dead', 'bodycheck','whynotbodycheck','lifetime','personal_manager','smoke','healthyfood','healthyheart','homebodycheck','count_homebodycheck','count_work', 'count_smoking','count_food','count_dead', 'count_bodycheck','count_whynotbodycheck');
-	$result_test = array();
-	foreach ($name_fields as $field) {
-		$val = '';
-		if (isset($_POST[$field])) {
-			$val = $_POST[$field];
-		}
-		$result_test[$field] = $val;
-	}
 
 	function recToBuy ($dead) {
 		$listToBuy = array();
@@ -69,39 +59,38 @@
 		return $count_weight;
 	}
 
-
-	$index_mass = getIndexMass($result_test['weight'], $result_test['height']);
-	$txt_index_mass = getTxtIndexMass($index_mass);
-	$lifetime_index_mass = getLifetimeIndexMass($index_mass);
-	$toBuy = recToBuy ($result_test['dead']);
-
-	$lifecount = 2;
-
+	function get_lifecount(){
+		$lifecount = 2;
 		$lifecount += -(int)$lifetime_index_mass;
 
-		if ($result_test['smoke'] == 1) {
-			$lifecount += -(int)$result_test['count_smoking'];
+		if ($_SESSION['result_test']['smoke'] == 1) {
+			$lifecount += -(int)$_SESSION['result_test']['count_smoking'];
 		}
 
-		if ($result_test['homebodycheck'] == 1) {
-			$lifecount += -(int)$result_test['count_bodycheck'];
+		if ($_SESSION['result_test']['homebodycheck'] == 1) {
+			$lifecount += -(int)$_SESSION['result_test']['count_bodycheck'];
 		}
 
-		if ($result_test['healthyfood'] == 1) {
-			$lifecount += -(int)$result_test['count_food'];
+		if ($_SESSION['result_test']['healthyfood'] == 1) {
+			$lifecount += -(int)$_SESSION['result_test']['count_food'];
 		}
 
-		if ($result_test['healthyheart'] == 1) {
-			$lifecount += -(int)$result_test['count_dead'];
+		if ($_SESSION['result_test']['healthyheart'] == 1) {
+			$lifecount += -(int)$_SESSION['result_test']['count_dead'];
 		}
 
-		if ($result_test['personal_manager'] == 1) {
-			$lifecount += -(int)$result_test['count_work'];
+		if ($_SESSION['result_test']['personal_manager'] == 1) {
+			$lifecount += -(int)$_SESSION['result_test']['count_work'];
 		}
-	
-	//session_start();
-	$_SESSION['result_test'] = $result_test;
-?>
+		return $lifecount;
+	}
+
+	$index_mass = getIndexMass($_SESSION['result_test']['weight'], $_SESSION['result_test']['height']);
+	$txt_index_mass = getTxtIndexMass($index_mass);
+	$lifetime_index_mass = getLifetimeIndexMass($index_mass);
+	$toBuy = recToBuy ($_SESSION['result_test']['dead']);
+	$lifecount = get_lifecount();
+} ?>
 
 <!DOCTYPE html>
 <html>
@@ -113,19 +102,19 @@
 	<script src="jquery/jquery-3.1.1.min.js"></script>
 	<script>
 		window.index_mass = '<?php echo $index_mass; ?>';
-		window.sex = '<?php echo $result_test['sex']; ?>';
-		window.year_birth = '<?php echo $result_test['year_birth']; ?>';
-		window.height = '<?php echo $result_test['height']; ?>';
-		window.weight = '<?php echo $result_test['weight']; ?>';
-		window.smoking = '<?php echo $result_test['smoking']; ?>';
-		window.sport = '<?php echo $result_test['sport']; ?>';
-		window.food = '<?php echo $result_test['food']; ?>';
-		window.alcohol = '<?php echo $result_test['alcohol']; ?>';
-		window.children = '<?php echo $result_test['children']; ?>';
-		window.work = '<?php echo $result_test['work']; ?>';
-		window.parturition = '<?php echo $result_test['parturition']; ?>';
-		window.dead = '<?php echo $result_test['dead']; ?>';
-		window.education = '<?php echo $result_test['education']; ?>';
+		window.sex = '<?php echo $_SESSION['result_test']['sex']; ?>';
+		window.year_birth = '<?php echo $_SESSION['result_test']['year_birth']; ?>';
+		window.height = '<?php echo $_SESSION['result_test']['height']; ?>';
+		window.weight = '<?php echo $_SESSION['result_test']['weight']; ?>';
+		window.smoking = '<?php echo $_SESSION['result_test']['smoking']; ?>';
+		window.sport = '<?php echo $_SESSION['result_test']['sport']; ?>';
+		window.food = '<?php echo $_SESSION['result_test']['food']; ?>';
+		window.alcohol = '<?php echo $_SESSION['result_test']['alcohol']; ?>';
+		window.children = '<?php echo $_SESSION['result_test']['children']; ?>';
+		window.work = '<?php echo $_SESSION['result_test']['work']; ?>';
+		window.parturition = '<?php echo $_SESSION['result_test']['parturition']; ?>';
+		window.dead = '<?php echo $_SESSION['result_test']['dead']; ?>';
+		window.education = '<?php echo $_SESSION['result_test']['education']; ?>';
 	</script>
 	<script src="jquery/jquery.maskedinput.min.js"></script>
 	<script src="scripts/result_test.js"></script>
@@ -203,15 +192,13 @@
 		<div class="menu-logo"></div>
 		<div class="menu-nav">
 			<a id="general-inf" href="test.php" style=""><p>Общие сведения</p></a>
-			<a id="health-in-numbers" href="health.php" style="" onclick="return false"><p>Моё здоровье в цифрах</p></a>
+			<a id="health-in-numbers" href="health.php" style=""><p>Моё здоровье в цифрах</p></a>
 			<a id="my-documents" href="docs.php" style=""><p>Мои документы</p></a>
-			<a id="shop" href="" style="shop.php"><p>Магазин</p></a>
+			<a id="shop" href="shop.php" style=""><p>Магазин</p></a>
 			<a id="services" href="" style="" onclick="return false"><p>Сервисы</p></a>
 		</div>
 	</div>
 </div>
-
-
 
 <div class="main">
 
@@ -241,15 +228,15 @@
 					
 				</div>
 				<div class="lifetime">
-					Согласно тесту расчетная продолжительность вашей жизни составит <b><?php if ($result_test['lifetime'] - (date("Y") - $result_test['year_birth']) < 5) { echo date("Y") - $result_test['year_birth'] + 5; } else { echo $result_test['lifetime']; } ?> лет</b> </br>
+					Согласно тесту расчетная продолжительность вашей жизни составит <b><?php if ($_SESSION['result_test']['lifetime'] - (date("Y") - $_SESSION['result_test']['year_birth']) < 5) { echo date("Y") - $_SESSION['result_test']['year_birth'] + 5; } else { echo $_SESSION['result_test']['lifetime']; } ?> лет</b> </br>
 					Максимальная возможная продолжительность жизни может составить
-					<b><?php if ($result_test['sex'] == 'м'){
-						echo $result_test['lifetime']+$lifecount;
+					<b><?php if ($_SESSION['result_test']['sex'] == 'м'){
+						echo $_SESSION['result_test']['lifetime']+$lifecount;
 						echo ' лет';
 					}
 					else 
 					{
-						echo $result_test['lifetime']+$lifecount;
+						echo $_SESSION['result_test']['lifetime']+$lifecount;
 						echo ' лет';
 					} ?></b>
 				</div>
@@ -262,27 +249,27 @@
 		
 			include './modules/module_mass.php';
 
-		if ($result_test['smoke'] == 1) {
+		if ($_SESSION['result_test']['smoke'] == 1) {
 			include './modules/module_smoke.php';
 		}
 
 		include './modules/module_analyzes.php';
 
-		if ($result_test['homebodycheck'] == 1) {
+		if ($_SESSION['result_test']['homebodycheck'] == 1) {
 			include './modules/module_homebodycheck.php';
 		}
 
-		if ($result_test['healthyfood'] == 1) {
+		if ($_SESSION['result_test']['healthyfood'] == 1) {
 			include './modules/module_healthyfood.php';
 		}
 
 		include './modules/module_tester.php';
 
-		if ($result_test['healthyheart'] == 1) {
+		if ($_SESSION['result_test']['healthyheart'] == 1) {
 			include './modules/module_healthyheart.php';
 		}
 
-		if ($result_test['personal_manager'] == 1) {
+		if ($_SESSION['result_test']['personal_manager'] == 1) {
 			include './modules/module_personal_manager.php';
 		}
 
@@ -309,7 +296,7 @@
 					<div class="input-sex">		
 						<p>Пол</p>
 						<?php
-							if($result_test['sex'] == 'м'){								
+							if($_SESSION['result_test']['sex'] == 'м'){								
 								echo '<input type="radio" checked="checked" name="sex" value="Мужской" id="iman">';
 								echo '<label for="man">Мужской</label>';
 								echo '<input type="radio" name="sex" value="Женский" id="iwoman">';
@@ -326,19 +313,19 @@
 					<div class="input-birth">
 						<p>Год рождения</p>
 						<?php
-							echo '<input type="text" value="'.$result_test['year_birth'].'" placeholder="гггг" id="iyear">';
+							echo '<input type="text" value="'.$_SESSION['result_test']['year_birth'].'" placeholder="гггг" id="iyear">';
 						?>
 					</div>
 					<div class="input-height">
 						<p>Рост, см</p>
 						<?php
-							echo '<input type="text" value="'.$result_test['height'].'" id="iheight">';
+							echo '<input type="text" value="'.$_SESSION['result_test']['height'].'" id="iheight">';
 						?>
 					</div>
 					<div class="input-weight">
 						<p>Вес, кг</p>
 						<?php
-							echo '<input type="text" value="'.$result_test['weight'].'" id="iweight">';
+							echo '<input type="text" value="'.$_SESSION['result_test']['weight'].'" id="iweight">';
 						?>
 					</div>
 				</div>
@@ -352,7 +339,7 @@
 						<?php
 							$work_query = $db->query('SELECT job_conditions_type_name, job_conditions_type_id FROM job_conditions_types ORDER BY job_conditions_type_id');
 							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['job_conditions_type_name'] == $result_test['work']){								
+								if($row['job_conditions_type_name'] == $_SESSION['result_test']['work']){								
 									echo '<option value='.$row['job_conditions_type_id'].' selected>'.$row[	'job_conditions_type_name'].'</option>';
 								}
 								else{								
@@ -372,7 +359,7 @@
 						<?php
 							$work_query = $db->query('SELECT smoking_type_name, smoking_type_id FROM smoking_types ORDER BY smoking_type_id');
 							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['smoking_type_name'] == $result_test['smoking']){								
+								if($row['smoking_type_name'] == $_SESSION['result_test']['smoking']){								
 									echo '<option value='.$row['smoking_type_id'].' selected>'.$row['smoking_type_name'].'</option>';
 								}
 								else{								
@@ -391,7 +378,7 @@
 						<?php
 							$work_query = $db->query('SELECT sport_activity_type_name, sport_activity_type_id FROM sport_activity_types ORDER BY sport_activity_type_id');
 							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['sport_activity_type_name'] == $result_test['sport']){								
+								if($row['sport_activity_type_name'] == $_SESSION['result_test']['sport']){								
 									echo '<option value='.$row['sport_activity_type_id'].' selected>'.$row['sport_activity_type_name'].'</option>';
 								}
 								else{								
@@ -407,7 +394,7 @@
 						<?php
 							$work_query = $db->query('SELECT diet_type_name, diet_type_id FROM diet_types ORDER BY diet_type_id');
 							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['diet_type_name'] == $result_test['food']){								
+								if($row['diet_type_name'] == $_SESSION['result_test']['food']){								
 									echo '<option value='.$row['diet_type_id'].' selected>'.$row['diet_type_name'].'</option>';
 								}
 								else{								
@@ -425,7 +412,7 @@
 						<?php
 							$work_query = $db->query('SELECT children_type_name, children_type_id FROM children_types ORDER BY children_type_id');
 							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['children_type_name'] == $result_test['children']){								
+								if($row['children_type_name'] == $_SESSION['result_test']['children']){								
 									echo '<option value='.$row['children_type_id'].' selected>'.$row['children_type_name'].'</option>';
 								}
 								else{								
@@ -444,7 +431,7 @@
 						<?php
 							$work_query = $db->query('SELECT alcohol_type_name, alcohol_type_id FROM alcohol_types ORDER BY alcohol_type_id');
 							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['alcohol_type_name'] == $result_test['alcohol']){								
+								if($row['alcohol_type_name'] == $_SESSION['result_test']['alcohol']){								
 									echo '<option value='.$row['alcohol_type_id'].' selected>'.$row['alcohol_type_name'].'</option>';
 								}
 								else{								
@@ -469,7 +456,7 @@
 						<div id="gen-risks-checkboxes">
 							<?php
 								$risks_query = $db->query('SELECT relatives_death_causes_type_id, relatives_death_causes_type_name FROM relatives_death_causes_types ORDER BY relatives_death_causes_type_id');
-								$relatives_death_causes = explode(', ', $result_test['dead']);
+								$relatives_death_causes = explode(', ', $_SESSION['result_test']['dead']);
 
 								$risks_arr = array('Легких', 'Молочной железы', 'Кишечника', 'Печени', 'Предстательной железы', 'Кожи', 'Шейки матки', 'Другой');
 								for($i = 0; $i < count($risks_arr); $i++){
