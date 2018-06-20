@@ -137,8 +137,15 @@
 					':lower_norm' => $evaluated_value['result_lower_norm'],
 					':upper_norm' => $evaluated_value['result_upper_norm']
                 ));
+                // update weight in user_data
+                if($result_name == 'вес'){
+                    $send_result = $db->prepare('UPDATE user_data SET user_weight = :result_value WHERE user_data_user_id = :user_id');
+                    $send_result->execute(Array(
+                        ':user_id' => $cur_user_id,
+                        ':result_value' => $result_value
+                    ));
+                }
                 return "OK";
-				//user_results_lapse_percent, user_results_border_kind, user_results_lower_norm, user_results_upper_norm
             }
             else if($result_name == 'давление'){
                 $send_result = $db->prepare('INSERT INTO user_results (user_results_user_id, user_results_result_type_id, current_value, result_date, user_results_lapse_percent, user_results_border_kind, user_results_lower_norm, user_results_upper_norm) VALUES (:user_id, (SELECT result_type_id FROM result_types WHERE result_type_name = :result_name), :result_value, :result_date, :lapse_percent, :border_kind, :lower_norm, :upper_norm)
