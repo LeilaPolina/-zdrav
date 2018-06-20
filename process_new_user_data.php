@@ -43,7 +43,7 @@
 	}
 	
 	function save_user($user, $db, $user_essentials){
-		$ins_user_essentials = $db->prepare('INSERT INTO users (user_phone, user_password, user_name) VALUES (:user_phone, :user_password, :user_name)');
+		$ins_user_essentials = $db->prepare('INSERT INTO users (user_phone, user_password, user_name, reg_date) VALUES (:user_phone, :user_password, :user_name, now())');
 		$hashed_password = $user->hash_password($user_essentials['user_password']);
 		$ins_user_essentials->execute(array(
 			':user_phone'=> $user_essentials['user_phone'], 
