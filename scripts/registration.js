@@ -75,16 +75,14 @@ $(document).ready(function(){
 	$("#itele").trigger('input');
 	var sex="", birth_year="", height="", weight="", work="", sport="", food="", children="", risks="", sick="", chronic="", smoking="", alcohol="";
 	var offered_user_name="", offered_user_phone="";
-	var user_email="", user_name="", user_password="";
-	
-	
+	var user_email="", user_name="", user_password="";	
 	
 	$("#register").submit(function(e){ 
 		e.preventDefault();
 		offered_user_name = $("#iname").val();
 		offered_user_phone = $("#itele").val();
 		
-		user_email = $("#iemail").val();			
+		user_email = $("#iemail").val();
 		birth_year = $("#iyear").val();
 		height = $("#iheight").val();
 		weight = $("#iweight").val();

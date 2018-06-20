@@ -1,3 +1,8 @@
+//<!-- Jump to registration (for demo health.php)-->
+$(document).on('click', '#go-to-result-test-save', function (e) {
+	window.location = "test.php#register";
+});
+
 function create_index_object(name,val, date, border_kind, percent,lower_norm,upper_norm ) {
 	var index_obj={};
 	index_obj.name=name;
