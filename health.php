@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="css/registration_login_windows.css" />
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<!--DEMO Zdrav Test Styles-->
-	<link rel="stylesheet" type="text/css" href="css/demo_health.css" />
+	<link rel="stylesheet" type="text/css" href="css/demo_btn.css" />
 	
 	<!--SCRIPTS-->
     <script src="jquery/jquery-3.1.1.min.js"></script>
@@ -21,6 +21,7 @@
 	<script src="scripts/reason_models.js"></script>
 	<script src="jquery/jquery.maskedinput.min.js"></script>
 	<script src="scripts/signout.js"></script>
+	<script src="scripts/demo.js"></script>
 
 	<!-- Yandex.Metrika counter --> 
 	<script type="text/javascript">
@@ -113,6 +114,7 @@
 			<!-- DEMO PART -->
 			<?php 
 				if(!$user->is_logged_in()){
+					echo '<div class="demo-div">';
 					echo '<p>Демонстрационный режим</p>';
 					echo '<p>Мое здоровье в цифрах</p>';
 					echo '<br/>';
@@ -123,6 +125,7 @@
 					echo '</ul>';
 					echo '<br/>';
 					echo '<button class="demo-btn" id="go-to-result-test-save" href="">Создать личный кабинет</button>';
+					echo '</div>';
 				}
 				else{
 					echo '<p>Личный кабинет</p>';

@@ -8,6 +8,8 @@
     <title>Документы</title>
     <link rel="stylesheet" href="css/test.css">
     <link rel="stylesheet" href="css/docs.css">
+    <link rel="stylesheet" type="text/css" href="css/demo_btn.css" />
+    <script src="scripts/demo.js"></script>
     <script src="jquery/jquery-3.1.1.min.js"></script>
     <script src="jquery/jquery.maskedinput.min.js"></script>
 	<script src="scripts/signout.js"></script>
@@ -86,7 +88,11 @@
 			<a id="my-documents" href="docs.php" style=""><p>Мои документы</p></a>
 			<a id="shop" href="shop.php" style=""><p>Магазин</p></a>
 			<a id="services" href="services.php" style="" onclick=""><p>Сервисы</p></a>
-			<a id="sign-out-lk" href="#" style=""><p>Выход</p></a>
+			<?php 
+                if($user->is_logged_in()){
+                    echo '<a id="sign-out-lk" href="#" style=""><p>Выход</p></a>';
+                }
+            ?>
 		</div>
 	</div>
     </div>
@@ -94,14 +100,36 @@
     <div class="main">
     <div class="content">
         <section class="row">
-            <h2 class="pagename">Личный кабинет</h2>
-            <h1 class="pagename">Мои документы</h1>
+            <!-- DEMO PART -->
+			<?php 
+				if(!$user->is_logged_in()){
+                    echo '<div class="demo-div">';
+                    echo '<h2 class="pagename">Демонстрационный режим</h2>';                    
+                    echo '<h1 class="pagename">Мои документы</h1>'; 
+					echo '<br/>';
+					echo '<ul class="demo-ul">';
+						echo '<li><p>Данный сервис предоставлен в демонстрационном режиме<p></li>';
+						echo '<li><p>Для полноценной работы необходимо создать Личный кабинет<p></li>';
+					echo '</ul>';
+					echo '<br/>';
+                    echo '<button class="demo-btn" id="go-to-result-test-save" href="">Создать личный кабинет</button>';
+                    echo '</div>';
+				}
+				else{					
+                    echo '<h2 class="pagename">Личный кабинет</h2>';
+                    echo '<h1 class="pagename">Мои документы</h1>';
+				}
+			?>
+			<!-- /DEMO PART -->
+
+            <!--
                 <div class="video-area">
                     <div class="play-icon">
                         <i class="fa fa-play-circle-o fa-3x" aria-hidden="true"></i>
                     </div>
                     <p>Видеораспаковка: заголовок внутри видео</p>
                 </div>
+            -->
         </section>
     </div>
     <div class="content">
