@@ -27,7 +27,7 @@
     } else {
         $user_weight = $_SESSION['result_test']['weight'];
         $user_height = $_SESSION['result_test']['height'];
-        $index_mass = getIndexMass ($user_weight, $user_height);
+        $index_mass = getIndexMass ($user_weight, $user_height, $db);
     }
 ?>
 
