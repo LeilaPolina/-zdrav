@@ -4,7 +4,7 @@ $(document).ready(function() {
     accordions.each(function(index) {
         let acc = $(this),
             panel = acc.next(),
-            acc_text = acc.children().children(".services-right");
+            acc_text = acc.children().children(".accordions-right");
 
         acc.click(function() {
             acc.toggleClass("acc-active"); //переворачиваем стрелочку справа

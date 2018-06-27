@@ -31,7 +31,7 @@ h2.pagename {
     box-shadow: 0 3px 3px rgba(0,0,0,0.1);
 }
 
-.acc-active > p > .services-right::after {
+.acc-active > p > .accordions-right::after {
     content: "";
     background: url(../images/icons/new_arrow_reversed.png) no-repeat;
     background-size: contain;
@@ -51,11 +51,10 @@ h2.pagename {
     transition: max-height 0.2s ease-out;
     /*display: none;*/
     overflow: hidden;
-
     max-height: 0;
 }
 
-.services-left {
+.accordions-left {
     font-family: sans-serif;
     font-size: 15px;
     font-weight: 600;
@@ -65,7 +64,7 @@ h2.pagename {
     color: #16325C;
 }
 
-.services-right {
+.accordions-right {
     font-family: sans-serif;
     font-size: 13px;
     margin-top: 33px;
@@ -74,7 +73,7 @@ h2.pagename {
     color: #16325C;
 }
 
-.services-right::after {
+.accordions-right::after {
     content: "";
     background: url(../images/icons/new_arrow.png) no-repeat;
     background-size: contain;
@@ -90,73 +89,224 @@ h2.pagename {
     font-family: sans-serif;
 }
 
-.service-content > h1 {
+.service-content > h1, form > h1 {
     font-size: 15px;
     font-weight: 600;
     color: #16325C;
 }
 
+.service-content > p {
+    font-size: 13px;
+    color: #16325C;
+    line-height: 22px;
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.text-green {
+    color: #29a329;
+}
+
+h1.service-title {
+    font-size: 21px;
+    font-weight: 400;
+    color: #374963;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2.service-title {
+    font-size: 13px;
+    font-weight: 400;
+    color: #16325C;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
 .img-center {
     display: block;
     margin: 0px auto;
+    max-width:100%;
+    max-height:100%;
 }
 
-#weight > p > span.services-left::before {
+.button-center {
+    margin: 30px auto;
+}
+
+#weight > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-mass.png');
     margin-right: 10px;
 }
 
-#food > p > span.services-left::before {
+.weight-form-column {
+    display: inline-block;
+    margin: 20px;
+}
+
+.weight-form-column > p {
+    font-size: 13px;
+    margin: 0%;
+    color: #54698D;
+}
+
+.weight-form-column > h1 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #16325C;
+    text-align: center;
+}
+
+.weight-form-column > input {
+    margin-top: 3px;
+}
+
+.weight-form-column > img {
+    width: 15px;
+    height: 25px;
+}
+
+.contact {
+    margin: 30px auto;
+}
+
+.contact-column-left {
+    display: inline-block;
+}
+
+.contact-column-left > .container {
+    display: inline-block;
+    position: relative;
+    padding-top: 2px;
+    padding-left: 25px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #1F2F47;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    border: solid;
+    border-radius: 50%;
+    border-color: #D8DDE6;
+    border-width: thin;
+}
+
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+.container .checkmark:after {
+    top: 4px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00B0D2;
+}
+
+.contact-column-right {
+    display: inline-block;
+    margin-left: 90px;
+    width: 580px;
+    font-size: 13px;
+    line-height: 22px;
+}
+
+.fa-info-circle {
+    color: #A8B7C7;
+    font-size: 17px !important;
+}
+
+.fa-check {
+    margin-right: 14px;
+    color: #00B0D2;
+}
+
+button {
+	display: block;
+	margin-top: 20px;
+	width: 108px;
+	height: 32px;
+    background-color: #00B0D2;
+	border: 0;
+	border-radius: 5px;
+	color: #FFFFFF;
+}
+
+#food > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-food.png');
     margin-right: 10px;
 }
 
-#smoking > p > span.services-left::before {
+#smoking > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-smoke.png');
     margin-right: 10px;
 }
 
-#personal-manager > p > span.services-left::before {
+#personal-manager > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-personal-manager.png');
     margin-right: 10px;
 }
 
-#screening > p > span.services-left::before {
+#screening > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-notification.png');
     margin-right: 10px;
 }
 
-#immunity > p > span.services-left::before {
+#immunity > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-immunitet.png');
     margin-right: 10px;
 }
 
-#analyzes > p > span.services-left::before {
+#analyzes > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-analise.png');
     margin-right: 10px;
 }
 
-#home-checkup > p > span.services-left::before {
+#home-checkup > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-home.png');
     margin-right: 10px;
 }
 
-#healthy-heart > p > span.services-left::before {
+#healthy-heart > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-heart.png');
     margin-right: 10px;
 }
 
-#expecting > p > span.services-left::before {
+#expecting > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-wait-baby.png');
     margin-right: 10px;
 }
 
-#be-mom > p > span.services-left::before {
+#be-mom > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-want-mam.png');
     margin-right: 10px;
 }
 
-#be-dad > p > span.services-left::before {
+#be-dad > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-pap.png');
     margin-right: 10px;
 }
