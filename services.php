@@ -113,7 +113,7 @@
                 <a id="health-in-numbers" href="" style="" onclick="return false"><p>Моё здоровье в цифрах</p></a>
                 <a id="my-documents" href="docs.php" style=""><p>Мои документы</p></a>
                 <a id="shop" href="shop.php" style=""><p>Магазин</p></a>
-                <a id="services" href="" style="" onclick="return false"><p>Сервисы</p></a>
+                <a id="services" href="services.php" style="" onclick=""><p>Сервисы</p></a>
 				<a id="sign-out-lk" href="#" style=""><p>Выход</p></a>
             </div>
         </div>
