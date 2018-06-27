@@ -1,7 +1,7 @@
 <?php 
     include_once('includes/config.php');
 
-    function getIndexMass ($weight, $height) {
+    function getIndexMass ($weight, $height, $db) {
 		$weight = (int) $weight;
 		$height = (int) $height;
 		if ($height == 0) {
@@ -10,7 +10,7 @@
 		return round($weight / pow($height/100, 2), 2);
     }
     
-    function getWeightHeight ($user) {
+    function getWeightHeight ($user, $db) {
         $user_data_query = $db->prepare('SELECT user_height, user_weight FROM user_data WHERE user_data_user_id = :user_id');
         $user_data_query->execute(array(':user_id' => $_SESSION['user_id']));
         return $user_data_query->fetch(PDO::FETCH_ASSOC);
@@ -19,11 +19,11 @@
     if ($user->is_logged_in()) {
         $user_data_query = $db->prepare('SELECT user_height, user_weight FROM user_data WHERE user_data_user_id = :user_id');
         $user_data_query->execute(array(':user_id' => $_SESSION['user_id']));
-        $user_data_row = getWeightHeight ($user);
+        $user_data_row = getWeightHeight ($user, $db);
 
         $user_weight = $user_data_row['user_weight'];
         $user_height = $user_data_row['user_height'];
-        $index_mass = getIndexMass ($user_weight, $user_height);
+        $index_mass = getIndexMass ($user_weight, $user_height, $db);
     } else {
         $user_weight = $_SESSION['result_test']['weight'];
         $user_height = $_SESSION['result_test']['height'];
