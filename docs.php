@@ -174,11 +174,12 @@
             <div class="line"><span class="title">Найти</span><br>
                 <div class="date-field">
                     <span class="search-text">Дата</span><br>
-                    <input type="text">
+                    <input type="date" id="upload_search_date">
                 </div>
                 <div class="type-field">
                     <span class="search-text">Вид</span><br>            
-                    <select>
+                    <select id="upload_search_type">
+                        <option>Показать все</option>
                         <?php
                             while($upload_type_row = $get_upload_types->fetch(PDO::FETCH_ASSOC)){
                                 echo '<option>'.$upload_type_row['upload_type_name'].'</option>';
@@ -188,7 +189,7 @@
                 </div>
                 <div class="title-field">
                     <span class="search-text">Название</span><br>
-                    <input type="text">
+                    <input type="text" id="upload_search_title">
                 </div>
                 <div class = "search-button">
                     <button class="search" type="submit" onClick="filter_files();"><i class="fa fa-search" aria-hidden="true"></i> Найти</button>
@@ -197,7 +198,7 @@
         </section>
     </div>
     <table class="docs">
-        <tbody>
+        <tbody id="files_list">
             <tr>
                 <th>Дата</th>
                 <th>Вид</th>
@@ -212,7 +213,7 @@
                     foreach($files_arr as $file => $file_data){
                         $filepath = $folder . '/' . $file;
                         echo
-                        '<tr>
+                        '<tr class="file_row">
                             <td class="document-date">'.$file_data['date'].'</td>
                             <td class="document-type">'.$file_data['type'].'</td>
                             <td class="document-name">'.$file_data['name'].'</td>

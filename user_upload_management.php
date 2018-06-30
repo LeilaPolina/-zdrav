@@ -1,5 +1,9 @@
 <?php
 try{
+    if(isset($_GET['upload_file'])){
+        
+    }
+
     if(isset($_GET['download_file'])){
         $filepath = $_GET['download_file'];
         $filename = basename($filepath);
