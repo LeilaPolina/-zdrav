@@ -14,5 +14,16 @@ function delete_user_upload(filepath, filename, demo){
     }
 }
 
+function get_zip(folder){
+    window.location.href = 'user_upload_management.php?get_zip_files=' + folder;
+}
+
+function add_file(demo){
+    if(demo){
+        alert("Это действие недоступно в демо режиме!");
+    }
+}
+
 function filter_files(){
+    
 }

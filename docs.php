@@ -165,8 +165,10 @@
     <div class="content">
         <section class="row">
             <div class="line"><span class="title">История моего здоровья</span><br>
-                <input class="download" type="submit" value="Скачать все">
-                <input class="add" type="submit" value="+ Добавить">
+                <?php
+                    echo '<input class="download" type="submit" value="Скачать все" onClick="get_zip(\''.$folder.'\');">';
+                    echo '<input class="add" type="submit" value="+ Добавить" onClick="add_file('.$demo.');">';
+                ?>
                 <p>Информация об анализах, обследованиях и лечении в хронологическом порядке</p>
             </div>
             <div class="line"><span class="title">Найти</span><br>
