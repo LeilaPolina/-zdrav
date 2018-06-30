@@ -17,8 +17,6 @@
     }
 
     if ($user->is_logged_in()) {
-        $user_data_query = $db->prepare('SELECT user_height, user_weight FROM user_data WHERE user_data_user_id = :user_id');
-        $user_data_query->execute(array(':user_id' => $_SESSION['user_id']));
         $user_data_row = getWeightHeight ($user, $db);
 
         $user_weight = $user_data_row['user_weight'];
@@ -41,9 +39,9 @@
     <link rel="stylesheet" href="css/services_windows.css" />
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/demo_btn.css" />
-    <script src="scripts/demo.js"></script>
     <script src="jquery/jquery-3.1.1.min.js"></script>
     <script src="jquery/jquery.maskedinput.min.js"></script>
+    <script src="scripts/demo.js"></script>
     <script src="scripts/services.js"></script>
     <script src="scripts/accordions.js"></script>
 
@@ -111,7 +109,7 @@
         <div class="wrapper">
             <div class="menu-logo"></div>
             <div class="menu-nav">
-                <?php 
+            <?php 
                     if($user->is_logged_in()){
                         echo '<a id="general-inf" href="general_data.php" style=""><p>Общие сведения</p></a>';
                     }
@@ -123,7 +121,7 @@
                 <a id="my-documents" href="docs.php" style=""><p>Мои документы</p></a>
                 <a id="shop" href="shop.php" style=""><p>Магазин</p></a>
                 <a id="services" href="services.php" style="" onclick=""><p>Сервисы</p></a>
-                <?php 
+				<?php 
                     if($user->is_logged_in()){
                         echo '<a id="sign-out-lk" href="#" style=""><p>Выход</p></a>';
                     }
@@ -191,21 +189,21 @@
                     <h1>Консультация с диетологом</h1>
                     <div class="contact">
                         <div class="contact-column-left">
-                            <label class="container">
+                            <label class="container-radio">
                                 <input type="radio" name="contact" value="video">
-                                <span class="checkmark"></span>
+                                <span class="checkmark-radio"></span>
                                 <span>Видеоконсультация</span>
                             </label><br>
                                       
-                            <label class="container">
+                            <label class="container-radio">
                                 <input type="radio" name="contact" value="chat">
-                                <span class="checkmark"></span>
+                                <span class="checkmark-radio"></span>
                                 <span>Чат</span>
                             </label><br>
                                       
-                            <label class="container">
+                            <label class="container-radio">
                                 <input type="radio" name="contact" value="phone" checked="checked">
-                                <span class="checkmark"></span>
+                                <span class="checkmark-radio"></span>
                                 <span>Телефон</span>
                             </label>
                         </div>
@@ -263,7 +261,7 @@
                     <h1 class="service-title">Полный отказ от курения за 21 день</h1>
                     <h2 class="service-title">Если вы хотите бросить курить, предлагаем пройти интерактивный он-лайн тест</h2>
                     <img class="img-center" src="images/banners/prostye_pravila_landing.png">
-                    <button class="button-center" onclick="window.open('http://простыеправила.рф/no-smoking/','_blank');">Начать</button>
+                    <button class="button-center" onclick="window.open('http://простыеправила.рф/no-smoking/?gcpc=8b7f1','_blank');">Начать</button>
                     <h1>О программе «Полный отказ от курения за 21 день»</h1>
                     <p>В основе курса борьба с причинами курения, преодоление физической и психологической зависимостей, а также замещение курения привычками, необходимыми для полноценной жизни.</p>
                     <p class="text-bold">В программе курса:</p>
@@ -285,7 +283,7 @@
                     <p><span class="text-bold">Поддержка</span> — семь дней в неделю двадцать четыре часа в сутки работает онлайн-поддержка, которая поможет в самый трудный момент, ответив на любой волнующий вопрос.</p>
                     <p><span class="text-bold">Контроль</span> — выполнение каждого задания контролируется наставником, доступ к следующему уроку предоставляется только после изучения материала, прохождения проверочных тестов и выполнения заданий во всех предыдущих уроках.</p>
                     <p><span class="text-bold">Целостность</span> — именно последовательное и непрерывное прохождение всего курса дает полноценный результат: полный отказ от курения. Даже если на первый взгляд некоторые задания кажутся банальными и слишком простыми, нельзя их игнорировать, т. к. именно в простоте кроется успех. Как говорится, все гениальное — просто!</p>
-                    <button class="button-center" onclick="window.open('http://простыеправила.рф/no-smoking/','_blank');">Начать</button>
+                    <button class="button-center" onclick="window.open('http://простыеправила.рф/no-smoking/?gcpc=8b7f1','_blank');">Начать</button>
                 </div>
             </div>
             <div id="personal-manager" class="accordion">
@@ -313,9 +311,9 @@
                     <p><span class="text-bold">18 000 руб.</span> при оплате за год + составление плана-графика бесплатно <span class="text-bold text-green">(экономия 33%)</span></p>
                     <?php
                             if($user->is_logged_in()) {
-                                echo '<button>Подключить</button>';
+                                echo '<button class="button-registered-wip">Подключить</button>';
                             } else {
-                                echo '<p><br>Данный сервис находится в разработке. <a href="test.php#register">Зарегистрируйте Личный кабинет</a>, оставьте заявку<br>и мы сообщим вам когда им можно будет воспользоваться.</p>';
+                                echo '<button class="button-unregistered-wip">Подключить</button>';
                             }
                     ?>
                 </div>
@@ -327,7 +325,9 @@
                     </p>
             </div>
             <div class="panel">
-                <p>Сервис находится в разработке</p>
+                <div class="service-content">
+                    <p>Сервис находится в разработке</p>
+                </div>
             </div>
             <div id="immunity" class="accordion">
                     <p>
@@ -336,7 +336,91 @@
                     </p>
             </div>
             <div class="panel">
-                <p>Сервис находится в разработке</p>
+                <div class="service-content">
+                    <p>Иммунная и эндокринная (гормоны) системы организма тесно взаимозависимы.<br>
+                    Поэтому для приведения иммунитета в норму прежде всего необходимо оценить их состояние.</p>
+                    <div class="immunity-analyses">
+                        <h1>Для этого мы рекомендуем сдать комплексы анализов</h1>
+                        <label class="container">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            <span>Гормональный профиль для мужчин</span>
+                        </label>
+
+                        <div class="info-right">
+                            <a href="#" onclick="return false">Подробнее</a>
+                        </div><br>
+                        
+                        <label class="container">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            <span>Гормональный профиль для женщин</span>
+                        </label>
+                        
+                        <div class="info-right">
+                            <a href="#" onclick="return false">Подробнее</a>
+                        </div><br>
+                        
+                        <label class="container">
+                            <input type="checkbox" checked="checked">
+                            <span class="checkmark"></span>
+                            <span>Комплексный анализ на витамины (А, D, E, K, C, B1, B5, B6, B9, B12)</span>
+                        </label>
+
+                        <div class="info-right">
+                            <a href="#" onclick="return false">Подробнее</a>
+                        </div><br>
+                    </div>
+                    <div class="contact">
+                    <?php
+                        if($user->is_logged_in()) {
+                            echo '<div class="contact-column-left">';
+                            echo '<button type="submit">Заказать</button>';
+                            echo '</div>';
+                            echo '<div class="contact-column-right">';
+                            echo '<p><i class="fa fa-info-circle"></i> В расшифрованных  результатах анализов вы увидите какие гормоны и витамины в норме, а какие нет.</p>';
+                            echo '<p>После этого вы сможете получить онлайн консультацию иммунолога-эндокринолога</p>';
+                            echo '</div>';
+                            } else {
+                            echo '<p>Чтобы воспользоваться данным сервисом, необходимо <a href="test.php#register">создать личный кабинет.</a></p>';
+                        }
+                    ?>
+                    </div>
+                    <h1>Консультация с Иммунологом-эндокринологом</h1>
+                    <div class="contact">
+                        <div class="contact-column-left">
+                            <label class="container-radio">
+                                <input type="radio" name="contact" value="video">
+                                <span class="checkmark-radio"></span>
+                                <span>Видеоконсультация</span>
+                            </label><br>
+                                      
+                            <label class="container-radio">
+                                <input type="radio" name="contact" value="chat">
+                                <span class="checkmark-radio"></span>
+                                <span>Чат</span>
+                            </label><br>
+                                      
+                            <label class="container-radio">
+                                <input type="radio" name="contact" value="phone" checked="checked">
+                                <span class="checkmark-radio"></span>
+                                <span>Телефон</span>
+                            </label>
+                        </div>
+                        <div class="contact-column-right">
+                            <p><i class="fa fa-info-circle"></i> Перед консультацией специалист ознакомится с показателями вашего здоровья введенными в программу, результатами анализов и обследований.</p>
+                            <p>Результаты консультации будут помещены в раздел Мои документы и всегда вам доступны</p>
+                        </div>
+                        <?php
+                        if($user->is_logged_in()) {
+                            echo '<button type="submit">Заказать</button>';
+                            } else {
+                                echo '<p>Чтобы воспользоваться данным сервисом, необходимо <a href="test.php#register">создать личный кабинет.</a></p>';
+                            }
+                        ?>
+                    </div>
+
+                </div>
             </div>
             <div id="analyzes" class="accordion">
                     <p>
@@ -345,7 +429,9 @@
                     </p>
             </div>
             <div class="panel">
-                <p>Сервис находится в разработке</p>
+                <div class="service-content">
+                    <p>Сервис находится в разработке</p>
+                </div>
             </div>
             <div id="home-checkup" class="accordion">
                     <p>
@@ -354,7 +440,9 @@
                     </p>
             </div>
             <div class="panel">
-                <p>Сервис находится в разработке</p>
+                <div class="service-content">
+                    <p>Сервис находится в разработке</p>
+                </div>
             </div>
             <div id="healthy-heart" class="accordion">
                     <p>
@@ -363,7 +451,9 @@
                     </p>
             </div>
             <div class="panel">
-                <p>Сервис находится в разработке</p>
+                <div class="service-content">
+                    <p>Сервис находится в разработке</p>
+                </div>
             </div>
             <div id="expecting" class="accordion">
                     <p>
@@ -372,7 +462,9 @@
                     </p>
             </div>
             <div class="panel">
-                <p>Сервис находится в разработке</p>
+                <div class="service-content">
+                    <p>Сервис находится в разработке</p>
+                </div>
             </div>
             <div id="be-mom" class="accordion">
                     <p>
@@ -381,7 +473,9 @@
                     </p>
             </div>
             <div class="panel">
-                <p>Сервис находится в разработке</p>
+                <div class="service-content">
+                    <p>Сервис находится в разработке</p>
+                </div>
             </div>
             <div id="be-dad" class="accordion">
                     <p>
@@ -390,7 +484,9 @@
                     </p>
             </div>
             <div class="panel">
-                <p>Сервис находится в разработке</p>
+                <div class="service-content">
+                    <p>Сервис находится в разработке</p>
+                </div>
             </div>
         </div>
 
@@ -451,24 +547,24 @@
     </div>
     <!--button class="button-unregistered-wip">Open unregistered Modal</button-->
     <!--button class="button-registered-wip">Open registered Modal</button-->
-    <div id="unregistered-wip" class="modal-window">
+    <div id="unregistered-wip" class="modal-window modal-hidden">
         <div class="modal-content">
-            <span class="close">×</span>
+            <span class="close close-cross">×</span>
             <div class="modal-text-content">
                 <h1 class="modal-title">Сервис в разработке</h1>
                 <p class="modal-text">Данный сервис находится в разработке. Зарегистрируйте Личный кабинет, оставьте заявку и мы сообщим вам когда им можно будет воспользоваться.</p>
-                <button id="register-button" class="modal-button">Зарегистрироваться</button>
+                <button id="register-button" class="modal-button" onclick="window.location = 'test.php#register';">Зарегистрироваться</button>
             </div>
         </div>
     </div>
 
-    <div id="registered-wip" class="modal-window">
+    <div id="registered-wip" class="modal-window modal-hidden">
         <div class="modal-content">
-            <span class="close">×</span>
+            <span class="close close-cross">×</span>
             <div class="modal-text-content">
                 <h1 class="modal-title">Сервис в разработке</h1>
                 <p class="modal-text">Данный сервис находится в разработке. Мы сообщим вам, когда им можно будет воспользоваться.</p>
-                <button id="notify-me-button" class="modal-button">ОК</button>
+                <form><button id="notify-me-button" class="modal-button close">ОК</button></form>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 h1.pagename {
-    font-family: sans-serif;
+    font-family: Open sans;
     font-size: 30px;
     font-weight: 400;
     text-align: center;
@@ -8,7 +8,7 @@ h1.pagename {
 }
 
 h2.pagename {
-    font-family: sans-serif;
+    font-family: Open sans;
     font-size: 13px;
     font-weight: 400;
     text-align: center;
@@ -55,7 +55,7 @@ h2.pagename {
 }
 
 .accordions-left {
-    font-family: sans-serif;
+    font-family: Open sans;
     font-size: 15px;
     font-weight: 600;
     margin-top: 27px;
@@ -65,7 +65,7 @@ h2.pagename {
 }
 
 .accordions-right {
-    font-family: sans-serif;
+    font-family: Open sans;
     font-size: 13px;
     margin-top: 33px;
     margin-right: 19px;
@@ -86,7 +86,7 @@ h2.pagename {
 
 .service-content {
     margin: 5px 42px 40px 42px;
-    font-family: sans-serif;
+    font-family: Open sans;
 }
 
 .service-content > h1, form > h1 {
@@ -174,9 +174,15 @@ h2.service-title {
 
 .contact-column-left {
     display: inline-block;
+    vertical-align:top;
 }
 
-.contact-column-left > .container {
+.only-button {
+    position: relative;
+    bottom: 50px;
+}
+
+.contact-column-left > .container-radio {
     display: inline-block;
     position: relative;
     padding-top: 2px;
@@ -187,12 +193,12 @@ h2.service-title {
     color: #1F2F47;
 }
 
-.container input {
+.container-radio input {
     position: absolute;
     opacity: 0;
 }
 
-.checkmark {
+.checkmark-radio {
     position: absolute;
     top: 0;
     left: 0;
@@ -204,21 +210,21 @@ h2.service-title {
     border-width: thin;
 }
 
-.container:hover input ~ .checkmark {
+.container-radio:hover input ~ .checkmark-radio {
     background-color: #ccc;
 }
 
-.checkmark:after {
+.checkmark-radio:after {
     content: "";
     position: absolute;
     display: none;
 }
 
-.container input:checked ~ .checkmark:after {
+.container-radio input:checked ~ .checkmark-radio:after {
     display: block;
 }
   
-.container .checkmark:after {
+.container-radio .checkmark-radio:after {
     top: 4px;
     left: 4px;
     width: 8px;
@@ -226,6 +232,102 @@ h2.service-title {
     border-radius: 50%;
     background: #00B0D2;
 }
+
+.immunity-analyses {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.immunity-analyses h1 {
+    font-size: 15px;
+    font-weight: 400;
+    color: #16325C;
+}
+
+.info-right {
+    position: relative;
+    float: right;
+    font-size: 12px;
+    color: #00B0D2;
+    height: 100%;
+}
+
+.info-right a {
+    text-decoration: none;
+    height: 100%;
+}
+
+.info-right a:visited {
+    color: #00B0D2;
+}
+
+.info-right a::before {
+    content: "";
+    background: url("../images/icons/symbols-icon-question.png") no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: 73px;
+}
+
+.container {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 12px;
+    line-height: 15px;
+    color: #16325C;
+}
+  
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+  
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: #FFFFFF;
+    border: solid #D8DDE6 1px;
+    border-radius: 2px;
+  }
+  
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+  
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+.container .checkmark:after {
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 9px;
+    border: solid #00B0D2;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+} 
 
 .contact-column-right {
     display: inline-block;
