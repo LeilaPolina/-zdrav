@@ -1,5 +1,34 @@
 <?php
-	include_once('includes/config.php');
+    include_once('includes/config.php');
+    
+    $files_arr = array();
+    $demo = true;
+    $folder = "user_uploads";
+    
+    try{
+        $get_upload_types = $db->prepare('SELECT upload_type_name FROM upload_types');
+        $get_upload_types->execute();
+
+        if($demo === true){
+            $folder = $folder.'/demo_files';
+            $files_arr = array(
+                "sample_file_1.jpg" => array("type" => "Другое", "name" => "Выписка из истории болезни", "date" => "27 июня 2018"), 
+                "sample_file_2.jpg" => array("type" => "Анализ", "name" => "Биохимический анализ крови", "date" => "27 июня 2018"), 
+                "sample_file_3.jpg" => array("type" => "Заключение", "name" => "Заключение от кардиолога", "date" => "27 июня 2018"), 
+                "sample_file_4.jpg" => array("type" => "Заключение", "name" => "Заключение от невролога", "date" => "27 июня 2018"), 
+                "sample_file_5.jpg" => array("type" => "Рецепт", "name" => "Рецепт", "date" => "27 июня 2018"), 
+                "sample_file_6.jpg" => array("type" => "Обследование", "name" => "Узи брюшной полости", "date" => "27 июня 2018"), 
+                "sample_file_7.jpg" => array("type" => "Обследование", "name" => "Узи почек и мочеполовой системы", "date" => "27 июня 2018"), 
+                "sample_file_8.png" => array("type" => "Анализ", "name" => "Анализ мочи", "date" => "27 июня 2018"));
+        }
+        else{
+            $user_dir = '';
+            $folder = $folder.$user_dir;
+        }
+    }
+    catch(Exception $e){
+
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,10 +38,11 @@
     <link rel="stylesheet" href="css/test.css">
     <link rel="stylesheet" href="css/docs.css">
     <link rel="stylesheet" type="text/css" href="css/demo_btn.css" />
-    <script src="scripts/demo.js"></script>
     <script src="jquery/jquery-3.1.1.min.js"></script>
     <script src="jquery/jquery.maskedinput.min.js"></script>
+    <script src="scripts/demo.js"></script>
 	<script src="scripts/signout.js"></script>
+    <script src="scripts/docs.js"></script>
 	<!-- FINISH -->
 	
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
@@ -145,11 +175,13 @@
                     <input type="text">
                 </div>
                 <div class="type-field">
-                    <span class="search-text">Вид</span><br>
+                    <span class="search-text">Вид</span><br>            
                     <select>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                        <?php
+                            while($upload_type_row = $get_upload_types->fetch(PDO::FETCH_ASSOC)){
+                                echo '<option>'.$upload_type_row['upload_type_name'].'</option>';
+                            }
+                        ?>
                     </select>
                 </div>
                 <div class="title-field">
@@ -157,7 +189,7 @@
                     <input type="text">
                 </div>
                 <div class = "search-button">
-                    <button class="search" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Найти</button>
+                    <button class="search" type="submit" onClick="filter_files();"><i class="fa fa-search" aria-hidden="true"></i> Найти</button>
                 </div>
             </div>
         </section>
@@ -172,22 +204,26 @@
                 <th></th>
                 <th></th>
             </tr>
-            <tr>
-                <td class="document-date">22 марта 2018</td>
-                <td class="document-type">Холестерин общий</td>
-                <td class="document-name">Название довольно длинное может быть</td>
-                <td><input class="open" type="submit" value="Открыть"></td>
-                <td><a href="#" class="download-button"><i class="fa fa-download"></i></a></td>
-                <td><a href="#" class="delete-button"><i class="fa fa-times-circle"></i></a></td>
-            </tr>
-            <tr>
-                <td class="document-date">22 марта 2018</td>
-                <td class="document-type">Сахар</td>
-                <td class="document-name">Название довольно длинное может быть</td>
-                <td><input class="open" type="submit" value="Открыть"></td>
-                <td><a href="#" class="download-button"><i class="fa fa-download"></i></a></td>
-                <td><a href="#" class="delete-button"><i class="fa fa-times-circle"></i></a></td>
-            </tr>
+
+            <?php
+                try{    
+                    foreach($files_arr as $file => $file_data){
+                        $filepath = $folder . '/' . $file;
+                        echo
+                        '<tr>
+                            <td class="document-date">'.$file_data['date'].'</td>
+                            <td class="document-type">'.$file_data['type'].'</td>
+                            <td class="document-name">'.$file_data['name'].'</td>
+                            <td><input type="submit" value="Открыть" onClick="view_user_upload(\''.$filepath.'\');" class="open"></td>
+                            <td><a href="user_upload_management.php?download_file='.$filepath.'" class="download-button"><i class="fa fa-download"></i></a></td>
+                            <td><a href="#" class="delete-button" onClick="delete_user_upload(\''.$filepath.'\', \''.$file_data['name'].'\', '.$demo.');"><i class="fa fa-times-circle"></i></a></td>
+                        </tr>';
+                    }
+                }
+                catch(Exception $e) {
+                    //return $e->getMessage();
+                }
+            ?>
         </tbody>
     </table>
     <hr>
