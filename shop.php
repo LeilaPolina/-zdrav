@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="css/shop.css" />
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/demo_btn.css" />
-    <script src="scripts/demo.js"></script>
     <script src="jquery/jquery-3.1.1.min.js"></script>
     <script src="jquery/jquery.maskedinput.min.js"></script>
+    <script src="scripts/demo.js"></script>
     <script src="scripts/get_ali_prices.js"></script>
 
     <!-- EDITED -->
