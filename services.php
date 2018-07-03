@@ -10,21 +10,23 @@
 		return round($weight / pow($height/100, 2), 2);
     }
     
-    function getWeightHeight ($user, $db) {
-        $user_data_query = $db->prepare('SELECT user_height, user_weight FROM user_data WHERE user_data_user_id = :user_id');
+    function getUserData ($user, $db) {
+        $user_data_query = $db->prepare('SELECT user_height, user_weight, user_sex FROM user_data WHERE user_data_user_id = :user_id');
         $user_data_query->execute(array(':user_id' => $_SESSION['user_id']));
         return $user_data_query->fetch(PDO::FETCH_ASSOC);
     }
 
     if ($user->is_logged_in()) {
-        $user_data_row = getWeightHeight ($user, $db);
+        $user_data_row = getUserData ($user, $db);
 
         $user_weight = $user_data_row['user_weight'];
         $user_height = $user_data_row['user_height'];
+        $user_sex = $user_data_row['user_sex'];
         $index_mass = getIndexMass ($user_weight, $user_height, $db);
     } else {
         $user_weight = $_SESSION['result_test']['weight'];
         $user_height = $_SESSION['result_test']['height'];
+        $user_sex = $_SESSION['result_test']['sex'];
         $index_mass = getIndexMass ($user_weight, $user_height, $db);
     }
 ?>
@@ -42,6 +44,7 @@
     <script src="jquery/jquery-3.1.1.min.js"></script>
     <script src="jquery/jquery.maskedinput.min.js"></script>
     <script src="scripts/demo.js"></script>
+    <script src="scripts/services_modal_texts.js"></script>
     <script src="scripts/services.js"></script>
     <script src="scripts/accordions.js"></script>
 
@@ -336,31 +339,45 @@
                     </p>
             </div>
             <div class="panel">
+            
                 <div class="service-content">
+                    <p>Сервис находится в разработке</p>
+                    <!--
                     <p>Иммунная и эндокринная (гормоны) системы организма тесно взаимозависимы.<br>
                     Поэтому для приведения иммунитета в норму прежде всего необходимо оценить их состояние.</p>
-                    <div class="immunity-analyses">
+                    <div class="service-analyses">
                         <h1>Для этого мы рекомендуем сдать комплексы анализов</h1>
-                        <label class="container">
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                            <span>Гормональный профиль для мужчин</span>
-                        </label>
-
-                        <div class="info-right">
-                            <a href="#" onclick="return false">Подробнее</a>
-                        </div><br>
-                        
-                        <label class="container">
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                            <span>Гормональный профиль для женщин</span>
-                        </label>
-                        
-                        <div class="info-right">
-                            <a href="#" onclick="return false">Подробнее</a>
-                        </div><br>
-                        
+                        <?php
+                            if($user_sex == "male" || $user_sex == "м"){
+                                echo '<label class="container">';
+                                echo '<input type="checkbox" checked="checked">';
+                                echo '<span class="checkmark"></span>';
+                                echo '<span>Гормональный профиль для мужчин</span>';
+                                echo '</label>';
+                                echo '<div class="info-right">';
+                                echo '<div class="questionmark hormones-m-hover-info">';
+                                echo '<span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания
+                                иммунитета и эндокринной системы в норме (до 40 лет – 1 раз
+                                в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>';
+                                echo '</div>';
+                                echo '<a class="hormones-m-info btn-info">Подробнее</a>';
+                                echo '</div><br>';
+                            } else {
+                                echo '<label class="container">';
+                                echo '<input type="checkbox" checked="checked">';
+                                echo '<span class="checkmark"></span>';
+                                echo '<span>Гормональный профиль для женщин</span>';
+                                echo '</label>';
+                                echo '<div class="info-right">';
+                                echo '<div class="questionmark hormones-f-hover-info">';
+                                echo '<span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания
+                                иммунитета и эндокринной системы в норме (до 40 лет – 1 раз
+                                в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>';
+                                echo '</div>';
+                                echo '<a class="hormones-f-info btn-info">Подробнее</a>';
+                                echo '</div><br>';
+                            }
+                        ?>
                         <label class="container">
                             <input type="checkbox" checked="checked">
                             <span class="checkmark"></span>
@@ -368,7 +385,10 @@
                         </label>
 
                         <div class="info-right">
-                            <a href="#" onclick="return false">Подробнее</a>
+                            <div class="questionmark vitamins-hover-info">
+                                <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                            </div>
+                            <a class="vitamins-info btn-info">Подробнее</a>
                         </div><br>
                     </div>
                     <div class="contact">
@@ -419,9 +439,10 @@
                             }
                         ?>
                     </div>
-
+                    -->
                 </div>
             </div>
+            
             <div id="analyzes" class="accordion">
                     <p>
                         <span class="accordions-left">Сдача анализов</span>
@@ -430,7 +451,175 @@
             </div>
             <div class="panel">
                 <div class="service-content">
-                    <p>Сервис находится в разработке</p>
+                    <p>Прямо сейчас вы можете заказать сдачу анализов дома или в офисе с бесплатным выездом при заказе от 1500р</p>
+                    <p>Сделав заказ на нашем сайте по цене лаборатории, Вы получите бесплатную автоматическую расшифровку с пояснениями причин возможных отклонений.</p>
+                    <p>Мы сотрудничаем с одной из крупнейших федеральных лабораторий <strong>KDL</strong> <img class="img-inline" src="images/icons/kdl_logo.png"></p>
+                    <div class="service-analyses">
+                        <h1>По результатам теста вам рекомендуется сдать следующие анализы</h1>
+
+                        <label class="container">
+                            <input type="checkbox" checked="checked" class="analysis-checkbox">
+                            <span class="checkmark"></span>
+                            <span>Биохимическй анализ крови</span>
+                        </label>
+
+                        <div class="info-right">
+                            <div class="analysis-price">3780 руб.</div>
+                            <div class="questionmark vitamins-hover-info">
+                                <span class="tooltip-content">Рекомендовано сдавать данный анализ (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                            </div>
+                            <a class="blood-info btn-info">Подробнее</a>
+                        </div><br>
+                        <label class="container">
+                            <input type="checkbox" checked="checked" class="analysis-checkbox">
+                            <span class="checkmark"></span>
+                            <span>Общий анализ мочи</span>
+                        </label>
+
+                        <div class="info-right">
+                            <div class="analysis-price">340 руб.</div>
+                            <div class="questionmark vitamins-hover-info">
+                                <span class="tooltip-content">Рекомендовано сдавать данный анализ (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                            </div>
+                            <a class="pee-info btn-info">Подробнее</a>
+                        </div><br>
+                        <label class="container">
+                            <input type="checkbox" class="analysis-checkbox">
+                            <span class="checkmark"></span>
+                            <span>Гастрокомплекс</span>
+                        </label>
+
+                        <div class="info-right">
+                            <div class="analysis-price">3240 руб.</div>
+                            <div class="questionmark vitamins-hover-info">
+                                <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>заболеваниям ЖКТ</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                            </div>
+                            <a class="gastro-info btn-info">Подробнее</a>
+                        </div><br>
+                        <label class="container">
+                            <input type="checkbox" class="analysis-checkbox">
+                            <span class="checkmark"></span>
+                            <span>Диагностика диабета, биохимический</span>
+                        </label>
+
+                        <div class="info-right">
+                            <div class="analysis-price">4220 руб.</div>
+                            <div class="questionmark vitamins-hover-info">
+                                <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>диабету</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                            </div>
+                            <a class="diabetes-info btn-info">Подробнее</a>
+                        </div><br>
+                        <label class="container">
+                            <input type="checkbox" class="analysis-checkbox">
+                            <span class="checkmark"></span>
+                            <span>Кардиологический</span>
+                        </label>
+
+                        <div class="info-right">
+                            <div class="analysis-price">5530 руб.</div>
+                            <div class="questionmark vitamins-hover-info">
+                                <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к заболеваниям <strong>сердечно сосудистой системы</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                            </div>
+                            <a class="cardio-info btn-info">Подробнее</a>
+                        </div><br>
+                        <label class="container">
+                            <input type="checkbox" class="analysis-checkbox">
+                            <span class="checkmark"></span>
+                            <span>Онкологический для мужчин, биохимический</span>
+                        </label>
+
+                        <div class="info-right">
+                            <div class="analysis-price">3910 руб.</div>
+                            <div class="questionmark vitamins-hover-info">
+                                <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>раковым</strong> заболеваниям (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                            </div>
+                            <a class="onco-m-info btn-info">Подробнее</a>
+                        </div><br>
+                        <label class="container">
+                            <input type="checkbox" class="analysis-checkbox">
+                            <span class="checkmark"></span>
+                            <span>Онкологический для женщин, биохимический</span>
+                        </label>
+
+                        <div class="info-right">
+                            <div class="analysis-price">5720 руб.</div>
+                            <div class="questionmark vitamins-hover-info">
+                                <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>раковым</strong> заболеваниям (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                            </div>
+                            <a class="onco-f-info btn-info">Подробнее</a>
+                        </div><br>
+                        <label class="container">
+                            <input type="checkbox" class="analysis-checkbox">
+                            <span class="checkmark"></span>
+                            <span>Диагностика сосудистых заболеваний головного мозга</span>
+                        </label>
+
+                        <div class="info-right">
+                            <div class="analysis-price">4610 руб.</div>
+                            <div class="questionmark vitamins-hover-info">
+                                <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к заболеваниям <strong>сосудистой системы головного мозга</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                            </div>
+                            <a class="vessels-info btn-info">Подробнее</a>
+                        </div><br>
+                        
+                        <label class="container">
+                            <input type="checkbox" class="analysis-checkbox">
+                            <span class="checkmark"></span>
+                            <span>Гормональный профиль (комплекс) для мужчин</span>
+                        </label>
+
+                        <div class="info-right">
+                            <div class="analysis-price">2880 руб.</div>
+                            <div class="questionmark vitamins-hover-info">
+                                <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                            </div>
+                            <a class="hormones-m-info btn-info">Подробнее</a>
+                        </div><br>
+                        <label class="container">
+                            <input type="checkbox" class="analysis-checkbox">
+                            <span class="checkmark"></span>
+                            <span>Гормональный профиль (комплекс) для женщин</span>
+                        </label>
+
+                        <div class="info-right">
+                            <div class="analysis-price">6140 руб.</div>
+                            <div class="questionmark vitamins-hover-info">
+                                <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                            </div>
+                            <a class="hormones-f-info btn-info">Подробнее</a>
+                        </div><br>
+                        <label class="container">
+                            <input type="checkbox" class="analysis-checkbox">
+                            <span class="checkmark"></span>
+                            <span>Комплексный анализ крови на витамины (A, D, E, K, C, B1, B5, B6, В9, B12)</span>
+                        </label>
+
+                        <div class="info-right">
+                            <div class="analysis-price">15500 руб.</div>
+                            <div class="questionmark vitamins-hover-info">
+                                <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                            </div>
+                            <a class="vitamins-info btn-info">Подробнее</a>
+                        </div><br>
+
+                        <p class="total">ИТОГО</p>
+                        <p class="total-number" id="an-price"></p>
+                        </div>
+
+                        <p>Сдать анализы в лаборатории КДЛ можно в любом отделении на территории России или дома, визит сестры для приема анализов бесплатный.</p>
+
+                        <div class="contact">
+                        <div class="contact-column-left">
+                            <button class="button-wider" type="submit">Заказать</button>
+                            <p class="order-info">Кэшбэк <strong id="an-cashback"></strong> (3%)</p>
+                            <p class="order-info-lower btn-info">Подробнее о заказе</p>
+                        </div>
+                        <div class="contact-column-right">
+                            <p><i class="fa fa-info-circle"></i> В течение 2-3 дней после сдачи расшифрованные данные анализов и рекомендации появятся в разделе Мое здоровье в цифрах, а сам бланк можно будет посмотреть и скачать в разделе Мои мед документы</p>
+                            <p><i class="fa fa-info-circle"></i> Мы не сотрудничаем с врачами и клиниками, не рекламируем и не рекомендуем их. Результаты расшифровки анализов носят информационный характер, не ставят диагнозов, не назначают лечение, а лишь рекомендуют оборащение к врачу в случае необходимости.</p>
+                        </div>
+                        </div>
+                    
                 </div>
             </div>
             <div id="home-checkup" class="accordion">
@@ -569,6 +758,15 @@
         </div>
     </div>
 
-
+    <div id="info-modal" class="modal-window modal-hidden">
+        <div class="modal-content">
+            <span class="close close-cross">×</span>
+            <div class="modal-text-content">
+                <h1 class="modal-title" id="info-modal-title"></h1>
+                <p class="modal-text" id="info-modal-text"></p>
+                <button id="notify-me-button" class="modal-button close">ОК</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
