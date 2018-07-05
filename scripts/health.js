@@ -465,7 +465,7 @@ $( document ).ready(function() {
 		set_blood_pressure_values(indexes_array['upper_blood_pressure'].val, indexes_array['lower_blood_pressure'].val, indexes_array['upper_blood_pressure'].date, indexes_array["upper_blood_pressure"].border_kind, indexes_array["lower_blood_pressure"].border_kind);
 	}
 
-	if(document.getElementsByClassName('demo-btn')){
+	if(document.getElementById('go-to-result-test-save')){
 		fill_demo_values();
 	}
 });
