@@ -133,18 +133,22 @@
 				}
 			?>
 			<!-- /DEMO PART -->
+			<?php 
+				if($user->is_logged_in()) {
+					echo '<div class="video-rec" style="display:block"></div>';
+				}
 			
-			<!--<div class="video-rec" style="display:block">
-				</div> -->
+			?>
+			
 		</div>
-
+		
 		<div class="indexes-header-wrapper">
 			<div class="indexes-header">
 				<p>Главные показатели<p/>
 			</div>
 		</div>
 		
-		<div class="main-four-indexes">
+		<div class="table-wrapper">
 			<table class="main-indexes">
 				<tr class="indexes-head">
 					<th class="border-col"></th>
@@ -157,7 +161,7 @@
 					<th class="reason-col">Причина</th>
 				</tr>
 				<!--#################################Сholesterol#################################-->
-				<tr class="main-indexes-row">
+				<tr class="indexes-row">
 					<td class="border-col" id="cholesterol-brd"></td>
 					<td class="date-col index-date" id="cholesterol-date">&mdash;</td>
 					<td class="index-col index-name">Холестерин общий</td>
@@ -178,7 +182,7 @@
 					</td>
 				</tr>
 				<!--#################################Sugar#################################-->				
-				<tr class="main-indexes-row">
+				<tr class="indexes-row">
 					<td class="border-col" id="sugar-brd" ></td>
 					<td class="date-col index-date" id="sugar-date">&mdash;</td>
 					<td class="index-col index-name">Сахар</td>
@@ -199,7 +203,7 @@
 					</td>
 				</tr>
 				<!--#################################Blood pressure#################################-->
-				<tr class="main-indexes-row">
+				<tr class="indexes-row">
 					<td class="border-col" id="blood-pressure-brd"></td>
 					<td class="date-col index-date" id="blood-pressure-date">&mdash;</td>
 					<td class="index-col index-name">Давление</td>
@@ -225,7 +229,7 @@
 					</td>
 				</tr>
 				<!--#################################Weight#################################-->
-				<tr class="main-indexes-row">
+				<tr class="indexes-row">
 					<td class="border-col" id="weight-brd"></td>
 					<td class="date-col index-date" id="weight-date">&mdash;</td>
 					<td class="index-col index-name">Вес</td>
@@ -248,6 +252,12 @@
 			</table>
 		</div>
 		
+		<?php if(!$user->is_logged_in()){
+			$file = file_get_contents('./other_indexes.txt', FILE_USE_INCLUDE_PATH);
+			echo $file;
+			echo '<script>show_other_indexes=true;</script>';
+		} ?>
+	
 	<!--#################################Footer#################################-->
 		<div class="footer">
 		<div class="contacts">

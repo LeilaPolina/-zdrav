@@ -183,6 +183,7 @@ $( document ).ready(function() {
 		}
 	});
 	
+	
 	/*SHOW BLOOD PRESSURE MODAL REASON*/
 	$("#blood-reason").click(function(e) {
 		e.preventDefault();
@@ -268,4 +269,127 @@ $( document ).ready(function() {
 		}
 	});
 	
+	$("#erythrocytes-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["erythrocytes"].border_kind!=0) {
+			var lower_norm=indexes_array["erythrocytes"].lower_norm;
+			var upper_norm=indexes_array["erythrocytes"].upper_norm;
+			$("#index-norm").text("Ваша норма 3.8 – 5.3 клеток/л");
+			$("#possible-reasons-wrapper").html(
+				'<div class="reasons-d"><p class="reasons-header">Эритремия</p>'+
+					'<p class="reasons-p">Эритремия заболевание кроветворной системы, при которой наблюдается увеличение содержания клеток крови в крови, преимущественно красных кровяных телец (эритроцитов).</p></br>'+
+					'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-ehritremija-prichiny-laboratornaja-diagnostika-simptomy-lechenie.html">Эритремия</a>'+
+					'</div>'+
+
+				'<div class="reasons-d"><p class="reasons-header">Хронические болезни легких и сердца</p>'+
+					'<p class="reasons-p">Повышение уровня эритроцитов крови могут вызываться нарушением работы сердца приводящей к сердечной недостаточности или болезнями легких, которые приводят к дыхательной недостаточности.</p></div>'+
+
+				'<div class="reasons-d"><p class="reasons-p">Сердечная недостаточность приводит к снижению доставки обогащенного кислородом тока крови к тканям и органам.</p>'+
+					'<p class="reasons-p">Испытывая дефицит кислорода (гипоксия) организм стимулирует размножение и созревание эритроцитов, которые переносят кислород.</p></div>'+
+
+				'<div class="reasons-d"><p class="reasons-header">Причины сердечной недостаточности:</p>'+
+					'<a class="reasons-a" href=" https://www.polismed.com/articles-aritmija01.html">Сердечная аритмия</a></br>'+
+					'<a class="reasons-a"href="https://www.polismed.com/articles-ishemicheskaja-bolezn-serdca-stenokardija-simptomy-narushenija-krovoobrashhenija-serdca-infarkt-miokarda-lechenie-narushenijj-krovoobrashhenija-serdca.html">Ишемическая болезнь сердца </a></br>'+
+					'<a class="reasons-a"href="https://www.polismed.com/articles-aortal-nyjj-klapan-i-ego-poroki.html">Коарктация аорты</a></br>'+
+					'<a class="reasons-a" href="https://www.polismed.com/articles-poroki-serdca-poroki-mitral-nogo-klapana.html">Пороки сердца</a></br>'+
+					'<a class="reasons-a" href="https://www.polismed.com/articles-serdechnaja-nedostatochnost-prichiny-simptomy.html">Сердечная недостаточность</a></br></br>'+
+					'<p class="reasons-p">Дыхательная недостаточность может приводить к снижению количества доставляемого органам и тканям с кровью кислорода. Для того, чтобы компенсировать этот дефицит организм стимулирует размножение и созревание эритроцитов, которые переносят кислород.</p></div>'+
+
+				'<div class="reasons-d"><p class="reasons-header">Причины легочной недостаточности:</p>'+
+					'<a class="reasons-a" href="https://www.polismed.com/articles-tuberkulez-prichiny-simptomy-sovremennaja-diagnostika-i-ehffektivnoe-lechenie.html">Туберкулез</a></br>'+
+					'<a class="reasons-a" href="https://www.polismed.com/articles-bronkhoehktaticheskaja-bolezn-prichiny-simptomy-diagnostika-lechenie.html">Бронхоэктатическая болезнь </a></br>'+
+					'<a class="reasons-a" href=" https://www.polismed.com/articles-bronkhial-naja-astma-01.html">Бронхиальная астма</a></br>'+
+					'<a class="reasons-a" href="https://www.polismed.com/articles-ehmfizema-legkogo-prichiny-simptomy-priznaki.html">Эмфизема легких</a></br>'+
+					'<a class="reasons-a" href="https://www.polismed.com/articles-dykhatelnaja-nedostatochnost-prichiny-simptomy-diagnostika-lechenie.html">Дыхательная недостаточность</a></div>'+
+
+
+				'<div class="reasons-d"><p class="reasons-header">Гормональные болезни</p>'+
+					'<p id="possible-reasons-header">Возможные причины:</p>'+
+					'<p class="reasons-p">Повышенный эритропоэтин</p>'+
+					'<a class="reasons-a" href="https://www.polismed.com/articles-bolezn-icenko-kushinga.html">Болезнь Иценко-Кушинга</a></br>'+
+					'<a class="reasons-a" href="https://www.polismed.com/articles-feokhromocitoma-prichiny-simptomy-priznaki.html">Феохромоцитома</a></div>'
+			);
+			$("#reason-modal-content").css("height",600);
+			$("#reason-modal").css("display","block");
+			
+		}
+	});
+
+
+$("#hemoglobin-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["hemoglobin"].border_kind!=0) {
+			var lower_norm=indexes_array["hemoglobin"].lower_norm;
+			var upper_norm=indexes_array["hemoglobin"].upper_norm;
+			$("#index-norm").text("Ваша норма 115.0 – 150.0  г/л");
+			$("#possible-reasons-wrapper").html(
+				'<div class="reasons-d"><p class="reasons-header">Анемия</p>'+
+					'<p class="reasons-p"><span>Гемолитическая анемия</span></br>Гемолитическая анемия – патологическое состояние, при котором снижение уровня эритроцитов и гемоглобина происходит в результате ускоренного разрушения красных кровяных телец.</p></br>'+
+					'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-gemoliticheskaja-anemija.html">Гемолитическая анемия</a>'+
+				'</div>'+
+				
+				'<div class="reasons-d">'+
+					'<p class="reasons-p"><span>Апластическая анемия</span></br>Апластическая анемия - патологическое состояние при котором происходит угнетение кроветворения в красном костном мозге. Данное заболевание проявляется снижением уровня эритроцитов, всех видов лейкоцитов и тромбоцитов крови.</p></br>'+
+					'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-aplasticheskaja-anemija01.html">Апластическая анемия</a>'+
+				'</div>'+
+				
+				'<div class="reasons-d">'+
+					'<p class="reasons-p"><span>В12 дефицитная анемия</span></br>В12 дефицитная анемия - патологическое состояние при котором снижение уровня эритроцитов вызвано недостатком витамина В 12. Дефицит этого витамина ведет к замедлению и неправильному созреванию красных кровяных телец. По этой причине в крови наблюдается снижение количества эритроцитов и их увеличение в размерах.</p></br>'+
+					'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-aplasticheskaja-anemija01.html">В12 дефицитная анемия</a>'+
+				'</div>'+
+				
+				'<div class="reasons-d">'+
+					'<p class="reasons-p"><span>Серповидноклеточная анемия</span></br>Серповидноклеточная анемия – наследственное заболевание крови, при котором образуется дефектный гемоглобин (гемоглобин S). При этом эритроциты приобретают форму серпа, снижается их функция переноса кислорода, прочность и продолжительность жизни.</p></br>'+
+					'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-serpovidnokletochnaja-anemija-01.html">В12 дефицитная анемия</a>'+
+				'</div>'+
+				
+				'<div class="reasons-d"><p class="reasons-header">Острая кровопотеря</p>'+
+				'<p id="possible-reasons-header">Возможные причины:</p>'+
+					'<p class="reasons-p"><span>Острое кровотечение</span></br>Острое кровотечение - состояние, при котором наружное или внутреннее кровотечение приводит к нарушению состава крови. Как правило, спустя несколько часов после кровотечения происходит восполнение жидкостной части крови. Клеточный состав восстанавливается в течение нескольких недель. </p></br>'+
+					'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/subject-ostroe-krovotechenie.html">Острое кровотечение</a>'+
+				'</div>'+
+				
+				'<div class="reasons-d">'+
+				'<p class="reasons-p"><span>Хроническое кровотечение</span></br>Длительно протекающие постоянные или периодические частые кровотечения могут быть причиной изменения состава крови. </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-khronicheskie-krovotechenija.html">Узнать больше </a>'+
+					'</div>'
+			);
+			$("#reason-modal-content").css("height",600);
+			$("#reason-modal").css("display","block");
+			
+		}
+	});
+	
+	
+	
+	$("#hematocrit-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["hematocrit"].border_kind!=0) {
+			var lower_norm=indexes_array["hematocrit"].lower_norm;
+			var upper_norm=indexes_array["hematocrit"].upper_norm;
+			$("#index-norm").text("Ваша норма 34.0 – 42.0 %");
+			$("#possible-reasons-wrapper").html(
+				'<div class="reasons-d"><p class="reasons-header">Эритремия</p>'+
+					'<p class="reasons-p">Эритремия заболевание кроветворной системы, при которой наблюдается увеличение содержания клеток крови в крови, преимущественно красных кровяных телец (эритроцитов).</p></br>'+
+					'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-ehritremija-prichiny-laboratornaja-diagnostika-simptomy-lechenie.html">Эритремия</a>'+
+					'</div>'+
+					'<div class="reasons-d"><p class="reasons-header">Эритроцитоз</p>'+
+					'<p class="reasons-p">Эритроцитоз - патологическое состояние при котором наблюдается повышенная концентрация эритроцитов в крови.</p></br>'+
+					'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-ehritrocitoz-prichiny-pervichnogo-i-vtorichnogo-ehritrocitoza.html">Эритроцитоз</a>'+
+					'</div>'
+			);
+			$("#reason-modal-content").css("height",480);
+			$("#reason-modal").css("display","block");
+		}
+	
+	});
 });
+

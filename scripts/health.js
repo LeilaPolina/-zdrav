@@ -1,3 +1,5 @@
+
+var show_other_indexes=false;
 function create_index_object(name,val, date, border_kind, percent,lower_norm,upper_norm ) {
 	var index_obj={};
 	index_obj.name=name;
@@ -10,22 +12,21 @@ function create_index_object(name,val, date, border_kind, percent,lower_norm,upp
 	return index_obj;
 }
 var indexes_array=[];
-var index_names=["cholesterol","sugar","weight","upper_blood_pressure","lower_blood_pressure"];
+var index_names=["cholesterol","sugar","weight","upper_blood_pressure","lower_blood_pressure","erythrocytes","hemoglobin","hematocrit"];
 function init_indexes_array() {
 	for (i=0;i<index_names.length;i++) {
 		indexes_array[index_names[i]]=create_index_object(index_names[i],0,0,0,0,0);
 	}
 }
 
-var is_cholesterol=false, is_sugar=false, is_weight=false, is_blood_pressure=false;
+var is_cholesterol=false, is_sugar=false, is_weight=false,
+is_blood_pressure=false;is_erythrocytes=false, is_hemoglobin=false, is_hematocrit=false;
 $( document ).ready(function() {
    init_indexes_array();
    var is_blodd_btn=false;
    var pl_btn_id="none"; //which button is clicked
    var code,health_num_value,health_num_date;
-   /*var code, result_percent,index_name,health_num_value,health_num_date;
-   var border_kind, result_percent,result_lower_norm,result_upper_norm;
-   var is_high=false, is_low=false, is_low_border=false,is_high_border=false,is_normal=false;*/
+   
 	
    $(".pl-btn").click(function(e) { 
 	   e.preventDefault();
@@ -146,6 +147,23 @@ $( document ).ready(function() {
 				is_weight=false;
 			}
 			
+			if(is_erythrocytes==true) {
+				ind_name="erythrocytes"
+				is_erythrocytes=false;
+			}
+			
+			if(is_hemoglobin ==true) {
+				ind_name="hemoglobin"
+				is_hemoglobin=false;
+			}
+			
+			
+			if(is_hematocrit==true) {
+				ind_name="hematocrit"
+				is_hematocrit=false;
+			}
+			
+			
 			if(is_blood_pressure==true) {
 				is_blood_pressure=false;
 				fill_blood_indexes_values(code);
@@ -230,6 +248,106 @@ $( document ).ready(function() {
 						}
 					});
 	}
+		
+		
+	function send_erythrocytes_value(callback) {
+		$.ajax({
+				type: 'POST',
+				url: 'health_borders.php',
+				data: {
+					health_num_erythrocytes: indexes_array["erythrocytes"].val,
+					health_num_date: indexes_array["erythrocytes"].date
+				},
+				dataType : 'json',
+				success: callback,
+				error: function (jqXHR, exception) {
+							var msg = '';
+							if (jqXHR.status === 0) {
+								msg = 'Not connect.\n Verify Network.';
+							} else if (jqXHR.status == 404) {
+								msg = 'Requested page not found. [404]';
+							} else if (jqXHR.status == 500) {
+								msg = 'Internal Server Error [500].';
+							} else if (exception === 'parsererror') {
+								msg = 'Requested JSON parse failed.';
+							} else if (exception === 'timeout') {
+								msg = 'Time out error.';
+							} else if (exception === 'abort') {
+								msg = 'Ajax request aborted.';
+							} else {
+								msg = 'Uncaught Error.\n' + jqXHR.responseText;
+							}
+							alert(msg);
+						}
+					});
+	}
+	
+	function send_hematocrit_value(callback) {
+		$.ajax({
+				type: 'POST',
+				url: 'health_borders.php',
+				data: {
+					health_num_hematocrit: indexes_array["hematocrit"].val,
+					health_num_date: indexes_array["hematocrit"].date
+				},
+				dataType : 'json',
+				success: callback,
+				error: function (jqXHR, exception) {
+							var msg = '';
+							if (jqXHR.status === 0) {
+								msg = 'Not connect.\n Verify Network.';
+							} else if (jqXHR.status == 404) {
+								msg = 'Requested page not found. [404]';
+							} else if (jqXHR.status == 500) {
+								msg = 'Internal Server Error [500].';
+							} else if (exception === 'parsererror') {
+								msg = 'Requested JSON parse failed.';
+							} else if (exception === 'timeout') {
+								msg = 'Time out error.';
+							} else if (exception === 'abort') {
+								msg = 'Ajax request aborted.';
+							} else {
+								msg = 'Uncaught Error.\n' + jqXHR.responseText;
+							}
+							alert(msg);
+						}
+					});
+	}
+	
+	
+	
+	function send_hemoglobin_value(callback) {
+		$.ajax({
+				type: 'POST',
+				url: 'health_borders.php',
+				data: {
+					health_num_hemoglobin: indexes_array["hemoglobin"].val,
+					health_num_date: indexes_array["hemoglobin"].date
+				},
+				dataType : 'json',
+				success: callback,
+				error: function (jqXHR, exception) {
+							var msg = '';
+							if (jqXHR.status === 0) {
+								msg = 'Not connect.\n Verify Network.';
+							} else if (jqXHR.status == 404) {
+								msg = 'Requested page not found. [404]';
+							} else if (jqXHR.status == 500) {
+								msg = 'Internal Server Error [500].';
+							} else if (exception === 'parsererror') {
+								msg = 'Requested JSON parse failed.';
+							} else if (exception === 'timeout') {
+								msg = 'Time out error.';
+							} else if (exception === 'abort') {
+								msg = 'Ajax request aborted.';
+							} else {
+								msg = 'Uncaught Error.\n' + jqXHR.responseText;
+							}
+							alert(msg);
+						}
+					});
+	}
+		
 		
 	function send_blood_values(callback) {
 			$.ajax({
@@ -353,6 +471,43 @@ $( document ).ready(function() {
 				send_weight_value(check_answer);
 			}
 		}
+		
+		else if(pl_btn_id == 'erythrocytes-btn'){
+			if($("#date").val()=="" || $("#modal-index-value").val()=="") {
+				alert("Введите данные");
+			}
+			else {
+				indexes_array["erythrocytes"].val=$("#modal-index-value").val();
+				indexes_array["erythrocytes"].date=$("#date").val();
+				is_erythrocytes=true;
+				send_erythrocytes_value(check_answer);
+			}
+		}
+
+		else if(pl_btn_id == 'hemoglobin-btn'){
+			if($("#date").val()=="" || $("#modal-index-value").val()=="") {
+				alert("Введите данные");
+			}
+			else {
+				indexes_array["hemoglobin"].val=$("#modal-index-value").val();
+				indexes_array["hemoglobin"].date=$("#date").val();
+				is_hemoglobin=true;
+				send_hemoglobin_value(check_answer);
+			}
+		}
+		
+		else if(pl_btn_id == 'hematocrit-btn'){
+			if($("#date").val()=="" || $("#modal-index-value").val()=="") {
+				alert("Введите данные");
+			}
+			else {
+				indexes_array["hematocrit"].val=$("#modal-index-value").val();
+				indexes_array["hematocrit"].date=$("#date").val();
+				is_hematocrit=true;
+				send_hematocrit_value(check_answer);
+			}
+		}
+		
 	});
 
 	function show_dates_results(data) {
@@ -464,9 +619,39 @@ $( document ).ready(function() {
 		
 		set_blood_pressure_values(indexes_array['upper_blood_pressure'].val, indexes_array['lower_blood_pressure'].val, indexes_array['upper_blood_pressure'].date, indexes_array["upper_blood_pressure"].border_kind, indexes_array["lower_blood_pressure"].border_kind);
 	}
+	
+	
+	function fill_other_indexes_values() {
+		indexes_array['erythrocytes'].val = 3.0;
+		indexes_array['erythrocytes'].date = "2018-06-19";
+		indexes_array['erythrocytes'].border_kind = -2;
+		indexes_array['erythrocytes'].percent = 0;
+		indexes_array['erythrocytes'].lower_norm = 3.8;
+		indexes_array['erythrocytes'].upper_norm = 5.3;
+		set_values(indexes_array['erythrocytes'].name, indexes_array['erythrocytes'].val, indexes_array['erythrocytes'].date, indexes_array['erythrocytes'].border_kind);
+		
+		indexes_array['hemoglobin'].val = 105.0;
+		indexes_array['hemoglobin'].date = "2018-06-19";
+		indexes_array['hemoglobin'].border_kind = -2;
+		indexes_array['hemoglobin'].percent = 0;
+		indexes_array['hemoglobin'].lower_norm = 115.0;
+		indexes_array['hemoglobin'].upper_norm = 150.0;
+		set_values(indexes_array['hemoglobin'].name, indexes_array['hemoglobin'].val, indexes_array['hemoglobin'].date, indexes_array['hemoglobin'].border_kind);
+		
+		indexes_array['hematocrit'].val = 30.0;
+		indexes_array['hematocrit'].date = "2018-06-19";
+		indexes_array['hematocrit'].border_kind = -2;
+		indexes_array['hematocrit'].percent = 0;
+		indexes_array['hematocrit'].lower_norm = 34.0;
+		indexes_array['hematocrit'].upper_norm = 42.0;
+		set_values(indexes_array['hematocrit'].name, indexes_array['hematocrit'].val, indexes_array['hematocrit'].date, indexes_array['hematocrit'].border_kind);
+	}
 
 	if(document.getElementById('go-to-result-test-save')){
 		fill_demo_values();
+		if(show_other_indexes==true) {
+			fill_other_indexes_values();
+		}
 	}
 });
 

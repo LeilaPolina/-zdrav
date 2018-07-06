@@ -1,0 +1,86 @@
+<!-----------------------------Other indexes------------------------------------->
+		<div class="indexes-header-wrapper">
+			<div class="indexes-header">
+				<p>Другие показатели<p/>
+			</div>
+		</div>
+		
+		<div class="table-wrapper">
+			<table class="other-indexes">
+				<tr class="indexes-head">
+					<th class="border-col"></th>
+					<th class="date-col">Дата</th>
+					<th class="index-col">Показатель</th>
+					<th class="value-col">Значение</th>
+					<th class="btn-col"></th>
+					<th class="estimation-col">Оценка</th>
+					<th class="graph-col">График</th>
+					<th class="reason-col">Причина</th>
+				</tr>
+				<!--#################################Erythrocytes#################################-->
+				<tr class="indexes-row">
+					<td class="border-col" id="erythrocytes-brd"></td>
+					<td class="date-col index-date" id="erythrocytes-date">&mdash;</td>
+					<td class="index-col index-name">Эритроциты</td>
+					<td class="value-col index-value">
+						<span  class="index-span" id="erythrocytes-span">&mdash;</span>
+					</td>
+					<td class="btn-col">
+						<a type="button" class="pl-btn" id="erythrocytes-btn" href="#">+</a>
+					</td>
+					<td class="estimation-col index-estimation" id="erythrocytes-estm">&mdash;</td>
+					<td class="graph-col index-graph">
+						<div class="index-graph-img-wrapper" id="erythrocytes-graph"></div>
+					</td>
+					<td class="reason-col index-reason">
+						<div class="index-reason-wrapper">
+							<a href="#" class="index-reason-a" id="erythrocytes-reason">Причина</a>
+						</div>
+					</td>
+				</tr>
+				<!--#################################Hemoglobin#################################-->
+				<tr class="indexes-row">
+					<td class="border-col" id="hemoglobin-brd"></td>
+					<td class="date-col index-date" id="hemoglobin-date">&mdash;</td>
+					<td class="index-col index-name">Гемоглобин</td>
+					<td class="value-col index-value">
+						<span  class="index-span" id="hemoglobin-span">&mdash;</span>
+					</td>
+					<td class="btn-col">
+						<a type="button" class="pl-btn" id="hemoglobin-btn" href="#">+</a>
+					</td>
+					<td class="estimation-col index-estimation" id="hemoglobin-estm">&mdash;</td>
+					<td class="graph-col index-graph">
+						<div class="index-graph-img-wrapper" id="hemoglobin-graph"></div>
+					</td>
+					<td class="reason-col index-reason">
+						<div class="index-reason-wrapper">
+							<a href="#" class="index-reason-a" id="hemoglobin-reason">Причина</a>
+						</div>
+					</td>
+				</tr>
+				<!--#################################Hematocrit#################################-->
+				<tr class="indexes-row">
+					<td class="border-col" id="hematocrit-brd"></td>
+					<td class="date-col index-date" id="hematocrit-date">&mdash;</td>
+					<td class="index-col index-name">Гематокрит</td>
+					<td class="value-col index-value">
+						<span  class="index-span" id="hematocrit-span">&mdash;</span>
+					</td>
+					<td class="btn-col">
+						<a type="button" class="pl-btn" id="hematocrit-btn" href="#">+</a>
+					</td>
+					<td class="estimation-col index-estimation" id="hematocrit-estm">&mdash;</td>
+					<td class="graph-col index-graph">
+						<div class="index-graph-img-wrapper" id="hematocrit-graph"></div>
+					</td>
+					<td class="reason-col index-reason">
+						<div class="index-reason-wrapper">
+							<a href="#" class="index-reason-a" id="hematocrit-reason">Причина</a>
+						</div>
+					</td>
+				</tr>
+				
+				
+			</table>
+		</div>

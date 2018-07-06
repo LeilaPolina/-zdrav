@@ -22,7 +22,7 @@
 }
 
 
-.main-indexes {
+.main-indexes,.other-indexes {
 	border-collapse: collapse;
 }
 
@@ -46,13 +46,13 @@
 
 
 
-.main-indexes-row {
+.indexes-row {
 	height:64px;
 	background-color:#FFF;
 	border-bottom:2px solid rgba(46, 53, 54, 0.118631);
 }
 
-.main-indexes-row td{
+.indexes-row td{
 	border: 1px solid #FFF;
 	padding-top: 5px;
     padding-bottom: 5px;
@@ -212,7 +212,7 @@
 	margin:0;
 	width:20px; 
 	height:20px;
-	background:url('../images/icons/health_menu_icon.png') no-repeat ;
+	background:url('../images/icons/health_menu_icon.PNG') no-repeat ;
 	background-size:100%;
 	cursor: pointer;
 }
@@ -274,7 +274,7 @@
 
 #reason-modal-content {
 	width:800px;
-	//height:550px;
+	/*height:550px;*/
 	overflow-y:scroll;
 }
 
@@ -318,5 +318,38 @@
 
 #recommendations-p {
 	margin:0;
-	
 }
+
+
+.reasons-header {
+	padding:0;
+	margin:0 0 10px 0;
+	font-size:1.2em;
+	font-weight:bold;
+}
+
+.reasons-p{
+	padding:0;
+	margin:0;
+}
+
+.reasons-d {
+	margin:0 0 20px 0;
+}
+
+#reason-modal .modal-title {
+	font-weight:bold;
+}
+
+.reasons-d #possible-reasons-header {
+	margin:0 0 5.5px 0;
+}
+
+
+.reasons-p span {
+	font-style:italic;
+	margin:0 0 5.5px 0;
+	font-family:  serif;
+	font-size:1.25em;
+}
+

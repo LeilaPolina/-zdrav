@@ -8,7 +8,7 @@ $(document).ready(function(){
 				dataType : 'json',
 				success : function(data) {
 					if(data.result=="OK") {
-						window.location.replace('index.html');
+						window.location.replace('https://здравствую.рф');
 					}
 				  }
 				});

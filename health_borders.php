@@ -67,6 +67,22 @@
         return count_percent($user_glucose, $glucose_norms);
     }
 
+	function evaluate_erythrocytes($user_erythrocytes){
+        $erythrocytes_norms = Array(3.8, 5.3);
+        return count_percent($user_erythrocytes, $erythrocytes_norms);
+    }
+	
+	function evaluate_hemoglobin($user_hemoglobin){
+        $hemoglobin_norms = Array(115.0, 150.0);
+        return count_percent($user_hemoglobin, $hemoglobin_norms);
+    }
+	
+	function evaluate_hematocrit($user_hematocrit){
+        $hematocrit_norms = Array(34.0, 42.0);
+        return count_percent($user_hematocrit, $hematocrit_norms);
+    }
+	
+	
     function evaluate_pressure($user_age, $user_sex, $user_pressure){
         $male_pressure_norms = Array(5=>Array(83, 107, 55, 79), 10 => Array(93, 117, 60, 80), 15=>Array(93, 117, 60, 80), 20=>Array(105, 129, 73, 81), 
         25=>Array(108, 132, 75, 83), 30=>Array(110, 132, 76, 84), 35=>Array(113, 137, 77, 85), 40=>Array(114, 138, 78, 86), 
@@ -260,6 +276,24 @@
             $user_weight_eval = evaluate_weight($user_weight, $result_test['height']);
             echo json_encode(array('result' => $user_weight_eval));
         }
+		/////////////////////////////////////////////////
+		else if(isset($_POST['health_num_erythrocytes'])){
+            $user_erythrocytes = $_POST['health_num_erythrocytes'];
+            $user_erythrocytes_eval = evaluate_glucose($user_erythrocytes);
+            echo json_encode(array('result' => $user_erythrocytes_eval));
+        }
+		
+		else if(isset($_POST['health_num_hemoglobin'])){
+            $user_hemoglobin = $_POST['health_num_hemoglobin'];
+            $user_hemoglobin_eval = evaluate_hemoglobin($user_hemoglobin);
+            echo json_encode(array('result' => $user_hemoglobin_eval));
+        }
+		else if(isset($_POST['health_num_hematocrit'])){
+            $user_hematocrit = $_POST['health_num_hematocrit'];
+            $user_hematocrit_eval = evaluate_hematocrit($user_hematocrit);
+            echo json_encode(array('result' => $user_hematocrit_eval));
+        }
+	
     }
     
 ?>

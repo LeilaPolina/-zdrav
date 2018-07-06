@@ -31,7 +31,7 @@ body {
 	left: 2.02%;
 	top: 26.65%;
 	bottom: 42.91%;
-	background:url('../images/icons/logo-nav.png') no-repeat ;
+	background:url('../images/icons/logo-nav.PNG') no-repeat ;
 	background-size:100%;
 }
 
@@ -159,7 +159,7 @@ body {
 	position: absolute;
 	width:33px;
 	height:25px;
-	background:url('../images/icons/Openheart.png') no-repeat;
+	background:url('../images/icons/Openheart.PNG') no-repeat;
 	left:4%;
 	right:88.88%;
 	top:40.93%;
@@ -389,70 +389,70 @@ body {
 }
 
 a.weight-control > p:before {
-	background:url('../images/icons/symbols-icon-mass.png') no-repeat;
+	background:url('../images/icons/symbols-icon-mass.PNG') no-repeat;
 }
 
 a.healthy-eating > p:before {
-	background:url('../images/icons/symbols-icon-food.png') no-repeat;
+	background:url('../images/icons/symbols-icon-food.PNG') no-repeat;
 	width:22px;
 	height:22px;
 }
 
 a.give-up-smoking > p:before {
-	background:url('../images/icons/symbols-icon-smoke.png') no-repeat;
+	background:url('../images/icons/symbols-icon-smoke.PNG') no-repeat;
 	width:22px;
 	height:22px;
 }
 
 a.personal-health-manager > p:before {
-	background:url('../images/icons/symbols-icon-personal-manager.png') no-repeat;
+	background:url('../images/icons/symbols-icon-personal-manager.PNG') no-repeat;
 	width:19px;
 	height:22px;
 	top:5px;
 }
 
 a.reminder > p:before {
-	background:url('../images/icons/symbols-icon-notification.png') no-repeat;
+	background:url('../images/icons/symbols-icon-notification.PNG') no-repeat;
 	width:18px;
 }
 
 a.immunity > p:before {
-	background:url('../images/icons/symbols-icon-immunitet.png') no-repeat;
+	background:url('../images/icons/symbols-icon-immunitet.PNG') no-repeat;
 	width:18px;
 	height:22px;
 }
 
 a.analyzes > p:before {
-	background:url('../images/icons/symbols-icon-analise.png') no-repeat;
+	background:url('../images/icons/symbols-icon-analise.PNG') no-repeat;
 	width:14px;
 	height:21px;
 }
 
 a.home-bodycheck > p:before {
-	background:url('../images/icons/symbols-icon-home.png') no-repeat;
+	background:url('../images/icons/symbols-icon-home.PNG') no-repeat;
 	width:21px;
 }
 
 a.healthy-heart > p:before {
-	background:url('../images/icons/symbols-icon-heart.png') no-repeat;
+	background:url('../images/icons/symbols-icon-heart.PNG') no-repeat;
 	width:21px;
 	height:17px;
 }
 
 a.wait-kid > p:before {
-	background:url('../images/icons/symbols-icon-wait-baby.png') no-repeat;
+	background:url('../images/icons/symbols-icon-wait-baby.PNG') no-repeat;
 	width:13px;
 	height:21px;
 }
 
 a.be-mom > p:before {
-	background:url('../images/icons/symbols-icon-want-mam.png') no-repeat;
+	background:url('../images/icons/symbols-icon-want-mam.PNG') no-repeat;
 	width:16px;
 	height:22px;
 }
 
 a.be-dad > p:before {
-	background:url('../images/icons/symbols-icon-pap.png') no-repeat;
+	background:url('../images/icons/symbols-icon-pap.PNG') no-repeat;
 	height:23px;
 }
 
@@ -549,7 +549,7 @@ a.be-dad > p:before {
 .img-time {
 	width:28px;
 	height:28px;
-	background:url('../images/icons/Chain.png') no-repeat;
+	background:url('../images/icons/Chain.PNG') no-repeat;
 	position:absolute;
 	top: 31.25%;
 	bottom: 31.25%;
@@ -560,7 +560,7 @@ a.be-dad > p:before {
 .img-family {
 	width:32px;
 	height:27px;
-	background:url('../images/icons/FamilyHeart.png') no-repeat;
+	background:url('../images/icons/FamilyHeart.PNG') no-repeat;
 	position:absolute;
 	top: 31.25%;
 	bottom: 31.25%;
@@ -735,7 +735,7 @@ a.be-dad > p:before {
 }
 /*SIGN OUT*/
 #sign-out-lk > p:before {
-	background:url('../images/icons/sign_out.PNG') no-repeat;
+	background:url('sign_out.PNG') no-repeat;
 	width:15px;
 }
 
@@ -745,7 +745,7 @@ a.be-dad > p:before {
 	top:31.3%;
 	width:48px;
 	height:24px;
-	background:url('../images/icons/symbols-toogle-off.png') no-repeat;
+	background:url('../images/icons/symbols-toogle-off.PNG') no-repeat;
 }
 
 .mass_index {
@@ -984,7 +984,7 @@ a.be-dad > p:before {
 	width:16px;
 	height:16px;
 	position: absolute;
-	background:url('../images/icons/symbols-icon-question.png') no-repeat;
+	background:url('../images/icons/symbols-icon-question.PNG') no-repeat;
 	left:120px;
 	top:4px;
 }
@@ -994,7 +994,7 @@ a.be-dad > p:before {
 	position:absolute;
 	width:48px;
 	height:24px;
-	background:url('../images/icons/symbols-toogle-off.png') no-repeat;
+	background:url('../images/icons/symbols-toogle-off.PNG') no-repeat;
 	top:-3px;
 	left:195px;
 }
@@ -1063,7 +1063,7 @@ a.be-dad > p:before {
 }
 
 .icon_tester {
-	background:url('../images/icons/symbols-tester20x32.png') no-repeat;
+	background:url('../images/icons/symbols-tester20x32.PNG') no-repeat;
 	width:20px;
 	height:32px;
 }
@@ -1099,7 +1099,7 @@ a.be-dad > p:before {
 	width:16px;
 	height:16px;
 	position: absolute;
-	background:url('../images/icons/symbols-icon-question.png') no-repeat;
+	background:url('../images/icons/symbols-icon-question.PNG') no-repeat;
 	left:-23px;
 	top:5px;
 }
