@@ -1,6 +1,6 @@
+<?php include_once('includes/config.php'); ?>
 <?php
-
-include_once('includes/config.php');
+$_SESSION['user_id'] = 1;
 
 function process_user_file($db, $user, $user_filename, $user_filedate, $user_filetype, $user_file){
     // check if file downloaded with error
@@ -31,9 +31,12 @@ function process_user_file($db, $user, $user_filename, $user_filedate, $user_fil
         $file_extension = strtolower(end(explode('.',$file_name)));
 
         // user files directory == user_uploads/user_id_uploads/
-        $upload_dir = "/user_uploads/".$_SESSION['user_id']."_uploads/";
+        $upload_dir = getcwd()."/user_uploads/".$_SESSION['user_id']."_uploads/";
+        if (!file_exists($upload_dir)) {
+            mkdir($upload_dir, 0777, true);
+        }
         
-        // + check if directory for user upload needs to be created
+        // + check if user_folder contains 30 files already
         // + check if file with such name and type already exists
         // + rename user file using user id and time of upload in milliseconds
         // + save file to user directory

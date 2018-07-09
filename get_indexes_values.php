@@ -1,7 +1,5 @@
-<?php 
-	include('includes/config.php');
-?>
-
+<?php include('includes/config.php'); ?>
+<?php
 
 	<script>
 		function set_border_colors_and_estimation_values(brd_id,estimatimation_id,border_kind) {

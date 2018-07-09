@@ -1,5 +1,5 @@
-<?php 
-	include_once('includes/config.php');
+<?php include_once('includes/config.php'); ?>
+<?php
 	$cur_user_id = 31;//$_SESSION['user_id'];
 	$get_results_data = $db->prepare('
 	SELECT DISTINCT *

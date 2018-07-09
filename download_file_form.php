@@ -1,5 +1,5 @@
+<?php include_once('includes/config.php'); ?>
 <?php
-    include_once('includes/config.php');
 
     $get_upload_types = $db->prepare('SELECT upload_type_name FROM upload_types');
     $get_upload_types->execute();
@@ -16,6 +16,7 @@
 </head>
 
 <body>
+    <p>Максимальное число файлов, загруженных пользователем за все время: 30</p>
     <p>Размер файла не должен превышать 2 Мегабайта</p>
     <p>Допустимые расширения: jpeg, jpg, png, svg, gif, pdf, doc, docx</p>
     <form action="" method="post" enctype="multipart/form-data">

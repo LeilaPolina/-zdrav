@@ -619,8 +619,7 @@ $( document ).ready(function() {
 		
 		set_blood_pressure_values(indexes_array['upper_blood_pressure'].val, indexes_array['lower_blood_pressure'].val, indexes_array['upper_blood_pressure'].date, indexes_array["upper_blood_pressure"].border_kind, indexes_array["lower_blood_pressure"].border_kind);
 	}
-	
-	
+		
 	function fill_other_indexes_values() {
 		indexes_array['erythrocytes'].val = 3.0;
 		indexes_array['erythrocytes'].date = "2018-06-19";
@@ -647,7 +646,7 @@ $( document ).ready(function() {
 		set_values(indexes_array['hematocrit'].name, indexes_array['hematocrit'].val, indexes_array['hematocrit'].date, indexes_array['hematocrit'].border_kind);
 	}
 
-	if(document.getElementById('go-to-result-test-save')){
+	if(show_other_indexes===true){
 		fill_demo_values();
 		if(show_other_indexes==true) {
 			fill_other_indexes_values();

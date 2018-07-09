@@ -1,6 +1,6 @@
-<?php 
+<?php include_once('includes/config.php'); ?>
+<?php
 	include_once "smsc_api.php";
-	include_once('includes/config.php');
 	function get_random_code() {
 		$min=1000;
 		$max=9999;

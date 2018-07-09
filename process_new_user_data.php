@@ -1,5 +1,5 @@
+<?php include_once('includes/config.php'); ?>
 <?php
-	include_once('includes/config.php');	
 	include_once('check_phone_number.php');
 
 	

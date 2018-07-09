@@ -1,5 +1,5 @@
+<?php include_once('includes/config.php'); ?>
 <?php
-    include_once('includes/config.php');
     
     //phone number format: +7 (555) 555-55-55
     // test with '{"login": "+7 (999) 777-77-77", "password": "test"}';

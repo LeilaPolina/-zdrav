@@ -1,5 +1,5 @@
+<?php include('includes/config.php'); ?>
 <?php
-	include('includes/config.php');
 	
 	if(!$user->is_logged_in()){ header('Location: index.html'); }
 	

@@ -1,5 +1,5 @@
+<?php include_once('includes/config.php'); ?>
 <?php
-    include_once('includes/config.php');
 
     function get_last_from_db($user, $db, $result_name) {
         if(!$user->is_logged_in()){

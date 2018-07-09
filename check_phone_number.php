@@ -1,5 +1,5 @@
-<?php 
-	require_once('includes/config.php');
+<?php require_once('includes/config.php'); ?>
+<?php
 	
 	function check_phone($phone){
 		global $db;

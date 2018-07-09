@@ -1,6 +1,5 @@
-<?php {
-	include('includes/config.php');
-	
+<?php include('includes/config.php'); ?>
+<?php
 	// TODO: закрыть доступ тем кто не прошел тест
 
 	function recToBuy ($dead) {
@@ -90,7 +89,7 @@
 	$lifetime_index_mass = getLifetimeIndexMass($index_mass);
 	$toBuy = recToBuy ($_SESSION['result_test']['dead']);
 	$lifecount = get_lifecount();
-} ?>
+?>
 
 <!DOCTYPE html>
 <html>

@@ -1,5 +1,5 @@
+<?php include_once('includes/config.php'); ?>
 <?php
-    include_once('includes/config.php');
     
     $files_arr = array();
     $demo = true;
