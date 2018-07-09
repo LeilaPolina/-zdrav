@@ -130,6 +130,7 @@ input[type=submit]{
 input[type=submit].add{
     width: 100px;
     float: right;
+    cursor: pointer;
 }
 
 input[type=submit].download{
@@ -138,6 +139,7 @@ input[type=submit].download{
     color: #15596B;
     width: 140px;
     float: right;
+    cursor: pointer;
 }
 
 .search {
@@ -149,6 +151,7 @@ input[type=submit].download{
     height: 32px; 
     border-radius: 5px;
     margin: 0 7px;
+    cursor: pointer;
 }
 
 input[type=submit].open{
@@ -158,6 +161,7 @@ input[type=submit].open{
     width: 120px;
     float: right;
     margin: 0;
+    cursor: pointer;
 }
 
 input[type=text]{

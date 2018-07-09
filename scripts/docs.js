@@ -27,6 +27,74 @@ function add_file(demo){
     }
 }
 
+function send_file(fd, callback){
+    $.ajax({
+        type: 'POST',
+        url: 'user_upload_management.php',
+        data: fd,
+        processData: false,
+        contentType: false,
+        success: callback,
+        error: function (jqXHR, exception) {
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            $("#error_msg").text(msg);
+        }
+    });
+}
+
+function process_ajax_answer(data){
+    if(data != "ОК"){
+        alert(data);
+        //$("#error_msg").text(data);
+    }
+    else{
+        alert(data);        
+    }
+}
+
+function upload_file(){
+    var $file_input = $("#user_file");
+    var date_input = $("#user_file_date").val();
+    var type_input = $("#user_file_type").val();
+    var name_input = $("#user_file_name").val();
+
+    if($file_input.prop('files').length == 0){
+        $("#error_msg").text("Файл не выбран!");
+    }
+    else if($file_input.prop('files').length > 1){
+        $("#error_msg").text("Можно загружать только один файл за раз!");
+    }
+    else if(date_input === ""){
+        $("#error_msg").text("Введите дату!");
+    }
+    else if(name_input === ""){
+        $("#error_msg").text("Введите название!");
+    }
+    else{        
+        var fd = new FormData;
+        fd.append('user_file', $file_input.prop('files')[0]);
+        fd.append('user_file_date', date_input);
+        fd.append('user_file_type', type_input);
+        fd.append('user_file_name', name_input);
+        send_file(fd, process_ajax_answer);
+    }
+}
+
 function filter_files(){
     var type = $('#upload_search_type').val();
     var date = $('#upload_search_date').val();
@@ -77,3 +145,10 @@ function filter_files(){
         }
     }
 }
+
+$(document).ready(function(){
+    $("#user_file_submit").click(function(e) { 
+        e.preventDefault();
+        upload_file();
+    });
+});

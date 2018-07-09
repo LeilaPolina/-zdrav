@@ -1,10 +1,61 @@
 <?php
-try{
-    if(isset($_GET['upload_file'])){
-        
+
+include_once('includes/config.php');
+
+function process_user_file($db, $user, $user_filename, $user_filedate, $user_filetype, $user_file){
+    // check if file downloaded with error
+    if ($user_file['error'] !== UPLOAD_ERR_OK) {
+        return "Ошибка загрузки!";
+    }
+    
+    $file_tmp_name  = $user_file['tmp_name'];
+
+    $allowed_mime_types  = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg', 'image/gif',
+                        'application/pdf', 'application/msword'];
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mime = finfo_file($finfo, $file_tmp_name);
+    // check if file file extension is bad
+    if(!in_array($mime, $allowed_mime_types)){
+        return "Данное разрешение не поддерживается нашим сервисом!";
     }
 
-    if(isset($_GET['download_file'])){
+    $max_size = 2000000;
+    // check file size
+    if($user_file['size'] > $max_size){
+        return "Наш сервис не поддерживает загрузку файлов размером больше 2Мб!";
+    }
+
+    // check if file is malicious
+    if(is_uploaded_file($file_tmp_name)){
+        $file_name = $user_file['name'];
+        $file_extension = strtolower(end(explode('.',$file_name)));
+
+        // user files directory == user_uploads/user_id_uploads/
+        $upload_dir = "/user_uploads/".$_SESSION['user_id']."_uploads/";
+        
+        // + check if directory for user upload needs to be created
+        // + check if file with such name and type already exists
+        // + rename user file using user id and time of upload in milliseconds
+        // + save file to user directory
+        // + save data about file in db (user_uploads_user_id, user_uploads_upload_type_id, user_uploads_filename, 
+        // + user_uploads_date, user_uploads_extension, user_uploads_path)
+
+        return "ОК";
+    }
+}
+
+try{
+    if(isset($_POST['user_file_name'])){
+        
+        $user_filename = $_POST['user_file_name'];
+        $user_filedate = $_POST['user_file_date'];
+        $user_filetype = $_POST['user_file_type'];
+        $user_file = $_FILES['user_file'];
+
+        echo process_user_file($db, $user, $user_filename, $user_filedate, $user_filetype, $user_file);
+    }
+
+    else if(isset($_GET['download_file'])){
         $filepath = $_GET['download_file'];
         $filename = basename($filepath);
         if(file_exists($filepath)){
@@ -14,7 +65,7 @@ try{
         }
     }
 
-    if(isset($_GET['delete_file'])){
+    else if(isset($_GET['delete_file'])){
         $filepath = $_GET['delete_file'];
         $filename = basename($filepath);
         if (file_exists($filepath) && is_writable($filepath)) {
@@ -23,7 +74,7 @@ try{
         header("Location: docs_test.php");
     }
 
-    if(isset($_GET['get_zip_files'])){
+    else if(isset($_GET['get_zip_files'])){
         $folder_path = $_GET['get_zip_files'];
         if(file_exists($folder_path)) {            
             $rootPath = realpath($folder_path);
@@ -58,6 +109,6 @@ try{
     }
 }
 catch(Exception $e){
-
+    $e->getMessage();
 }
 ?>
