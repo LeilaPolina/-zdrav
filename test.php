@@ -451,13 +451,14 @@
 							<?php
 								$risks_query = $db->query('SELECT relatives_death_causes_type_id, relatives_death_causes_type_name FROM relatives_death_causes_types ORDER BY relatives_death_causes_type_id');
 								$relatives_death_causes = explode(', ', $_SESSION['result_test']['dead']);
-
-								$risks_arr = array('Легких', 'Молочной железы', 'Кишечника', 'Печени', 'Предстательной железы', 'Кожи', 'Шейки матки', 'Другой');
-								for($i = 0; $i < count($risks_arr); $i++){
-									if(in_array($risks_arr[$i], $relatives_death_causes)){
-										array_push($relatives_death_causes, "Рак ".mb_strtolower($risks_arr[$i]));
+								
+								$cancer_types = array('Легких' => 'легких', 'Молочной железы' => 'молочной железы', 'Кишечника' => 'кишечника', 'Печени' => 'печени', 'Предстательной железы' => 'предстательной железы', 'Кожи' => 'кожи', 'Шейки матки' => 'шейки матки', 'Другой' => 'другой');
+								foreach($cancer_types as $key => $value){
+									if(in_array($key, $relatives_death_causes)){
+										array_push($relatives_death_causes, "Рак ".$value);
 									}
 								}
+								
 								while ($row = $risks_query->fetch(PDO::FETCH_ASSOC)){
 									if(in_array($row['relatives_death_causes_type_name'], $relatives_death_causes)){
 										echo '<label><input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group" checked>'.$row['relatives_death_causes_type_name'].'</label>';
