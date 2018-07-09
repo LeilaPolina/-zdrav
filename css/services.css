@@ -99,7 +99,7 @@ h2.pagename {
     color: #16325C;
 }
 
-.service-content > p {
+.service-content p {
     font-size: 13px;
     color: #16325C;
     line-height: 22px;
@@ -138,6 +138,24 @@ h2.service-title {
 
 .img-inline {
     display: inline-block;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.neomed-logo {
+    position: relative;
+    width: 90px;
+    height: 50px;
+    left: 80px;
+    top: 20px;
+}
+
+.img-checkup {
+    margin-left: 150px;
+    position: relative;
+    top: 15px;
 }
 
 .button-center {
@@ -201,6 +219,46 @@ h2.service-title {
     font-weight: 700;
     font-size: 13px;
     color: #1F2F47;
+}
+
+.checkup-pre-price {
+    display: inline-block;
+    margin-left: 20px;
+    font-weight: 700;
+    font-size: 13px;
+    color: #1F2F47;
+}
+
+.uzi-price {
+    font-size: 12px;
+    font-weight: 700;
+    color: #16325C;
+}
+
+.uzi-stomach-additional {
+    margin-left: 30px;
+    margin-bottom: 15px;
+    font-size: 11px;
+    color: #16325C;
+}
+
+.uzi-stomach-additional > p {
+    margin: 0px 1px;
+}
+
+.additional {
+    margin-top: 40px;
+}
+
+#checkup-price {
+    margin-left: 470px;
+    margin-right: 10px;
+}
+
+#checkup-cashback {
+    float: right;
+    position: relative;
+    bottom: 15px;
 }
 
 .contact-column-left > .container-radio {

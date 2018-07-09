@@ -9,6 +9,7 @@ $(document).ready(function() {
         close_btns = $(".close"),
         info_btns = $(".btn-info"),
         an_boxes = $(".analysis-checkbox"),
+        checkup_boxes = $(".checkup-checkbox"),
         active_modal = null;
     
     function assignChecked() {
@@ -17,6 +18,12 @@ $(document).ready(function() {
                 $(this).addClass("checkbox-checked");
             } else {
                 $(this).parent().next().toggleClass("hidden");
+            }
+        })
+
+        checkup_boxes.each(function(){
+            if ($(this).attr("checked")) {
+                $(this).addClass("checkbox-checked");
             }
         })
     }
@@ -36,15 +43,37 @@ $(document).ready(function() {
         $("#an-price").text(an_total_price + " руб.");
         $("#an-cashback").text(Math.floor(an_total_price * 0.03) + " руб.");
     }
+
+    function calculateCheckupPrice() {
+        let ch_total_price = 5900;
+        checkup_boxes.each(function(){
+            let box = $(this),
+                pricetag;
+
+            if (box.hasClass("checkbox-checked")) {
+                pricetag = box.parent().next().children(".uzi-price");
+                pricetag = Number(pricetag.text().split(" ")[1]);
+                ch_total_price += pricetag;
+            } 
+        })
+        $("#checkup-price").text(ch_total_price + " руб.");
+        $("#checkup-cashback").children().text(Math.floor(ch_total_price * 0.03) + " руб.");
+    }
     
     assignChecked();
     calculateAnalysisPrice();
+    calculateCheckupPrice();
     
     an_boxes.change(function(){
         $(this).toggleClass("checkbox-checked");
         $(this).parent().next().toggleClass("hidden");
         calculateAnalysisPrice();
     });
+
+    checkup_boxes.change(function(){
+        $(this).toggleClass("checkbox-checked");
+        calculateCheckupPrice();
+    })
 
     unregistered_modal_btns.each(function (index) {
         $(this).click(function () {
@@ -132,7 +161,7 @@ $(document).ready(function() {
                 }
 
                 default: {
-                    changeModalContent("Ой!","Что-то сломалось!");
+                    changeModalContent("","Произошла непредвиденная ошибка");
                 }
             }
         })
