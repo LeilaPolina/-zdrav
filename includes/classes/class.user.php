@@ -34,7 +34,7 @@
 		
         
 		public function logout(){
-			$_SESSION = array()
+			$_SESSION = array();
 			session_destroy();
 		}
 		
