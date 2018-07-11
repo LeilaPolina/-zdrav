@@ -23,7 +23,7 @@ function add_file(demo){
         alert("Это действие недоступно в демо режиме!");
     }
     else{
-        //window.location.href = 'user_upload_management.php?upload_file=' + '';
+        //появление модального окна
     }
 }
 
@@ -59,8 +59,7 @@ function send_file(fd, callback){
 
 function process_ajax_answer(data){
     if(data != "ОК"){
-        alert(data);
-        //$("#error_msg").text(data);
+        $("#error_msg").text(data);
     }
     else{
         alert(data);        
@@ -72,7 +71,6 @@ function upload_file(){
     var date_input = $("#user_file_date").val();
     var type_input = $("#user_file_type").val();
     var name_input = $("#user_file_name").val();
-
     if($file_input.prop('files').length == 0){
         $("#error_msg").text("Файл не выбран!");
     }

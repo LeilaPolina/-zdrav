@@ -1,7 +1,6 @@
 <?php include_once('includes/config.php'); ?>
 <?php
-
-    $get_upload_types = $db->prepare('SELECT upload_type_name FROM upload_types');
+    $get_upload_types = $db->prepare('SELECT upload_type_id, upload_type_name FROM upload_types');
     $get_upload_types->execute();
 ?>
 
@@ -30,7 +29,7 @@
         <select id="user_file_type">            
         <?php
             while($upload_type_row = $get_upload_types->fetch(PDO::FETCH_ASSOC)){
-                echo '<option>'.$upload_type_row['upload_type_name'].'</option>';
+                echo '<option value="'.$upload_type_row['upload_type_id'].'">'.$upload_type_row['upload_type_name'].'</option>';
             }
         ?>
         </select><br><br>
