@@ -165,65 +165,7 @@
             </div>
             <div class="panel">
                 <div class="service-content">
-                    <img class="img-center" src="images/video_cap.PNG">
-                    <h1>Программы по контролю за весом</h1>
-                    <form name="weight-inf">
-                    <div id="weight-numbers">
-                        <div class="weight-form-column">
-                            <p>Текущий вес, кг</p>
-                            <input type="text" id="current-weight" name="current-weight" value="<?php echo $user_weight ?>"></input>
-                        </div>
-                        <div class="weight-form-column">
-                            <p>Индекс массы</p>
-                            <h1 id="mass-index"><?php echo ("= " . $index_mass); ?></h1>
-                        </div>
-                        <div class="weight-form-column">
-                            <p>Оптимальный вес</p>
-                            <h1 id="optimal-weight"><?php echo round(pow($user_height/100, 2)*20 , 0, PHP_ROUND_HALF_DOWN); ?>-<?php echo round(pow($user_height/100, 2)*24 , 0, PHP_ROUND_HALF_DOWN); ?> кг</h1>
-                        </div>
-                        <div class="weight-form-column">
-                            <img src="images/icons/fast_forward_arrows.svg">
-                        </div>
-                        <div class="weight-form-column">
-                            <p>Желаемый вес</p>
-                            <input type="text" id="desired-weight" name="desired-weight"></input>
-                        </div>
-                    </div>
-                    <h1>Консультация с диетологом</h1>
-                    <div class="contact">
-                        <div class="contact-column-left">
-                            <label class="container-radio">
-                                <input type="radio" name="contact" value="video">
-                                <span class="checkmark-radio"></span>
-                                <span>Видеоконсультация</span>
-                            </label><br>
-                                      
-                            <label class="container-radio">
-                                <input type="radio" name="contact" value="chat">
-                                <span class="checkmark-radio"></span>
-                                <span>Чат</span>
-                            </label><br>
-                                      
-                            <label class="container-radio">
-                                <input type="radio" name="contact" value="phone" checked="checked">
-                                <span class="checkmark-radio"></span>
-                                <span>Телефон</span>
-                            </label>
-                        </div>
-                        <div class="contact-column-right">
-                            <p><i class="fa fa-info-circle"></i> Перед консультацией специалист ознакомится с показателями вашего здоровья введенными в программу, результатами анализов и обследований.</p>
-                            <p>Эта информация позволит составить наиболее подходящую для вас систему питания.</p>
-                        </div>
-                        <?php
-                            if($user->is_logged_in()) {
-                                echo '<button type="submit">Заказать</button>';
-                            } else {
-                                echo '<p>Чтобы воспользоваться данным сервисом, необходимо <a href="test.php#register">создать личный кабинет.</a></p>';
-                            }
-                        ?>
-                        
-                        </form>
-                    </div>
+                    <?php include("services/weight.php"); ?>
                 </div>
             </div>
             <div id="food" class="accordion">
@@ -234,23 +176,7 @@
             </div>
             <div class="panel">
                 <div class="service-content">
-                    <p>
-                        Вы можете воспользоваться сервисом Дневник питания и тренировок совершенно
-                        бесплатно. Для этого необходимо пройти по ссылке, пройти дополнительную
-                        регистрацию и ознакомиться с 5-ю шагами к контролю над весом.
-                    </p>
-                    <img src="images/banners/five_steps.png">
-                    <img class="img-center" src="images/banners/dnevnik.png">
-                    <?php
-                    if($user->is_logged_in()) {
-                        echo '<button class="button-center" onclick="window.open(\'https://здравствую.рф/tvoy_dnevnik.php#/\',\'_blank\');">Начать</button>';
-                    } else {
-                        echo '<p>Чтобы воспользоваться данным сервисом, необходимо <a href="test.php#register">создать личный кабинет.</a></p><br>';
-                    }
-                    ?>
-                    <img class="img-center" src="images/banners/healthy_food_1.png">
-                    <img class="img-center" src="images/banners/healthy_food_2.png"><br>
-                    <button class="button-center" onclick="window.open('https://www.justfood.pro/','_blank');">Подробнее</button>
+                    <?php include("services/food.php"); ?>
                 </div>
             </div>
             <div id="smoking" class="accordion">
@@ -261,32 +187,7 @@
             </div>
             <div class="panel">
                 <div class="service-content">
-                    <h1 class="service-title">Полный отказ от курения за 21 день</h1>
-                    <h2 class="service-title">Если вы хотите бросить курить, предлагаем пройти интерактивный он-лайн тест</h2>
-                    <img class="img-center" src="images/banners/prostye_pravila_landing.png">
-                    <button class="button-center" onclick="window.open('http://простыеправила.рф/no-smoking/?gcpc=8b7f1','_blank');">Начать</button>
-                    <h1>О программе «Полный отказ от курения за 21 день»</h1>
-                    <p>В основе курса борьба с причинами курения, преодоление физической и психологической зависимостей, а также замещение курения привычками, необходимыми для полноценной жизни.</p>
-                    <p class="text-bold">В программе курса:</p>
-                    <p>факты о курении, эффективные приемы и практические задания, следуя которым, Вы полностью освободите себя от зависимости.</p>
-                    <p>24 часа в сутки 7 дней в неделю работает онлайн-поддержка, которая поможет в трудные моменты отвыкания от курения, а также ответит на любой волнующий вопрос.</p>
-                    <p class="text-bold">План прохождения курса:</p>
-                    <p>
-                        Первая неделя — подготовка к полному отказу от курения.<br>
-                        Вторая неделя — отказ от курения, внедрение новых привычек, заменяющих курение.<br>
-                        Третья неделя — удержание результата, привыкаем не курить всегда и везде.<br>
-                    </p>
-                    <hr>
-                    <p class="text-bold">Механика действия курса:</p>
-                    <p>Курс длится 21 день, в состав курса входят теория, практика, мотивация, контроль и поддержка. Совокупность этих факторов дает положительный результат в отказе от курения.</p>
-                    <p><span class="text-bold">21 день</span> — известно, что любая привычка формируется двадцать один день, именно столько времени необходимо для приобретения новой привычки не курить в любой ситуации.</p>
-                    <p><span class="text-bold">Теория</span> — развенчиваем все мифы, которые мешают бросить курить. Вся правда о курении, а также о том, как правильно и эффективно бороться с никотиновой и психологической зависимостью. Знание — сила: кто осведомлен, тот вооружен!</p>
-                    <p><span class="text-bold">Практика</span> — ежедневно в течении 21 дня даем задания и практические приемы, которые помогут справиться с физиологической и психологической зависимостью от курения.</p>
-                    <p><span class="text-bold">Мотивация</span> — вселяем уверенность, настраиваем на успех, помогаем принять правильное решение и придаем силы для отказа от курения.</p>
-                    <p><span class="text-bold">Поддержка</span> — семь дней в неделю двадцать четыре часа в сутки работает онлайн-поддержка, которая поможет в самый трудный момент, ответив на любой волнующий вопрос.</p>
-                    <p><span class="text-bold">Контроль</span> — выполнение каждого задания контролируется наставником, доступ к следующему уроку предоставляется только после изучения материала, прохождения проверочных тестов и выполнения заданий во всех предыдущих уроках.</p>
-                    <p><span class="text-bold">Целостность</span> — именно последовательное и непрерывное прохождение всего курса дает полноценный результат: полный отказ от курения. Даже если на первый взгляд некоторые задания кажутся банальными и слишком простыми, нельзя их игнорировать, т. к. именно в простоте кроется успех. Как говорится, все гениальное — просто!</p>
-                    <button class="button-center" onclick="window.open('http://простыеправила.рф/no-smoking/?gcpc=8b7f1','_blank');">Начать</button>
+                    <?php include("services/smoking.php"); ?>
                 </div>
             </div>
             <div id="personal-manager" class="accordion">
@@ -297,28 +198,7 @@
             </div>
             <div class="panel">
                 <div class="service-content">
-                    <h1>Аутсорсинг здоровья</h1>
-                    <p>Подключив данный сервис вы получите персонального удаленного помощника для<br>контроля над здоровьем</p>
-                    <p>Помощник не является врачом. его цель помочь вам привести здоровье в норму и<br>сохранить его на долгие годы</p>
-                    <h1>Как это работает?</h1>
-                    <p><i class="fa fa-check" aria-hidden="true"></i>вы подключаете и оплачиваете услугу Персональный Менеджер Здоровья (ПМЗ)</p>
-                    <p><i class="fa fa-check" aria-hidden="true"></i>ПМЗ знакомится с данными которые вы ввели в Личный кабинет</p>
-                    <p><i class="fa fa-check" aria-hidden="true"></i>в удобное для вас время он с вами связывается наиболее удобным для вас способом<br>(телефон, почта, месенджеры)</p>
-                    <p><i class="fa fa-check" aria-hidden="true"></i>задает ряд вопросов для уточнения вашего текущего состояния и пожелания по<br>изменению состояния (провести полную профилактику, снизить вес, улучшить фигуру,<br>подправить показания анализов, подлечить органы и др )</p>
-                    <p><i class="fa fa-check" aria-hidden="true"></i>ПМЗ предлагает вам план конкретных действий, вы его одобряете или совместно<br>корректируете</p>
-                    <p><i class="fa fa-check" aria-hidden="true"></i>ПМЗ находит для Вас наиболее подходящие вам клиники, курсы, специалистов и пр.<br>записывает вас к ним, составляет удобный для вас график</p>
-                    <p><i class="fa fa-check" aria-hidden="true"></i>связывается с вами в соответствии с графиком и помогает дойти до результата</p>
-                    <h1>Стоимость услуги</h1>
-                    <p><span class="text-bold">3 000 руб.</span> за составление плана и графика</p>
-                    <p><span class="text-bold">2 000 руб.</span> за месяц поддержки</p>
-                    <p><span class="text-bold">18 000 руб.</span> при оплате за год + составление плана-графика бесплатно <span class="text-bold text-green">(экономия 33%)</span></p>
-                    <?php
-                            if($user->is_logged_in()) {
-                                echo '<button class="button-registered-wip">Подключить</button>';
-                            } else {
-                                echo '<button class="button-unregistered-wip">Подключить</button>';
-                            }
-                    ?>
+                    <?php include("services/personal_manager.php"); ?>
                 </div>
             </div>
             <div id="screening" class="accordion">
@@ -329,7 +209,7 @@
             </div>
             <div class="panel">
                 <div class="service-content">
-                    <p>Сервис находится в разработке</p>
+                    <?php include("services/screening.php"); ?>
                 </div>
             </div>
             <div id="immunity" class="accordion">
@@ -339,107 +219,8 @@
                     </p>
             </div>
             <div class="panel">
-            
                 <div class="service-content">
-                    <p>Сервис находится в разработке</p>
-                    <!--
-                    <p>Иммунная и эндокринная (гормоны) системы организма тесно взаимозависимы.<br>
-                    Поэтому для приведения иммунитета в норму прежде всего необходимо оценить их состояние.</p>
-                    <div class="service-analyses">
-                        <h1>Для этого мы рекомендуем сдать комплексы анализов</h1>
-                        <?php
-                            if($user_sex == "male" || $user_sex == "м"){
-                                echo '<label class="container">';
-                                echo '<input type="checkbox" checked="checked">';
-                                echo '<span class="checkmark"></span>';
-                                echo '<span>Гормональный профиль для мужчин</span>';
-                                echo '</label>';
-                                echo '<div class="info-right">';
-                                echo '<div class="questionmark hormones-m-hover-info">';
-                                echo '<span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания
-                                иммунитета и эндокринной системы в норме (до 40 лет – 1 раз
-                                в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>';
-                                echo '</div>';
-                                echo '<a class="hormones-m-info btn-info">Подробнее</a>';
-                                echo '</div><br>';
-                            } else {
-                                echo '<label class="container">';
-                                echo '<input type="checkbox" checked="checked">';
-                                echo '<span class="checkmark"></span>';
-                                echo '<span>Гормональный профиль для женщин</span>';
-                                echo '</label>';
-                                echo '<div class="info-right">';
-                                echo '<div class="questionmark hormones-f-hover-info">';
-                                echo '<span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания
-                                иммунитета и эндокринной системы в норме (до 40 лет – 1 раз
-                                в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>';
-                                echo '</div>';
-                                echo '<a class="hormones-f-info btn-info">Подробнее</a>';
-                                echo '</div><br>';
-                            }
-                        ?>
-                        <label class="container">
-                            <input type="checkbox" checked="checked">
-                            <span class="checkmark"></span>
-                            <span>Комплексный анализ на витамины (А, D, E, K, C, B1, B5, B6, B9, B12)</span>
-                        </label>
-
-                        <div class="info-right">
-                            <div class="questionmark vitamins-hover-info">
-                                <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
-                            </div>
-                            <a class="vitamins-info btn-info">Подробнее</a>
-                        </div><br>
-                    </div>
-                    <div class="contact">
-                    <?php
-                        if($user->is_logged_in()) {
-                            echo '<div class="contact-column-left">';
-                            echo '<button type="submit">Заказать</button>';
-                            echo '</div>';
-                            echo '<div class="contact-column-right">';
-                            echo '<p><i class="fa fa-info-circle"></i> В расшифрованных  результатах анализов вы увидите какие гормоны и витамины в норме, а какие нет.</p>';
-                            echo '<p>После этого вы сможете получить онлайн консультацию иммунолога-эндокринолога</p>';
-                            echo '</div>';
-                            } else {
-                            echo '<p>Чтобы воспользоваться данным сервисом, необходимо <a href="test.php#register">создать личный кабинет.</a></p>';
-                        }
-                    ?>
-                    </div>
-                    <h1>Консультация с Иммунологом-эндокринологом</h1>
-                    <div class="contact">
-                        <div class="contact-column-left">
-                            <label class="container-radio">
-                                <input type="radio" name="contact" value="video">
-                                <span class="checkmark-radio"></span>
-                                <span>Видеоконсультация</span>
-                            </label><br>
-                                      
-                            <label class="container-radio">
-                                <input type="radio" name="contact" value="chat">
-                                <span class="checkmark-radio"></span>
-                                <span>Чат</span>
-                            </label><br>
-                                      
-                            <label class="container-radio">
-                                <input type="radio" name="contact" value="phone" checked="checked">
-                                <span class="checkmark-radio"></span>
-                                <span>Телефон</span>
-                            </label>
-                        </div>
-                        <div class="contact-column-right">
-                            <p><i class="fa fa-info-circle"></i> Перед консультацией специалист ознакомится с показателями вашего здоровья введенными в программу, результатами анализов и обследований.</p>
-                            <p>Результаты консультации будут помещены в раздел Мои документы и всегда вам доступны</p>
-                        </div>
-                        <?php
-                        if($user->is_logged_in()) {
-                            echo '<button type="submit">Заказать</button>';
-                            } else {
-                                echo '<p>Чтобы воспользоваться данным сервисом, необходимо <a href="test.php#register">создать личный кабинет.</a></p>';
-                            }
-                        ?>
-                    </div>
-                    -->
+                    <?php include("services/immunity.php"); ?>
                 </div>
             </div>
             
@@ -451,175 +232,7 @@
             </div>
             <div class="panel">
                 <div class="service-content">
-                    <p>Прямо сейчас вы можете заказать сдачу анализов дома или в офисе с бесплатным выездом при заказе от 1500р</p>
-                    <p>Сделав заказ на нашем сайте по цене лаборатории, Вы получите бесплатную автоматическую расшифровку с пояснениями причин возможных отклонений.</p>
-                    <p>Мы сотрудничаем с одной из крупнейших федеральных лабораторий <strong>KDL</strong> <img class="img-inline" src="images/icons/kdl_logo.png"></p>
-                    <div class="service-analyses">
-                        <h1>По результатам теста вам рекомендуется сдать следующие анализы</h1>
-
-                        <label class="container">
-                            <input type="checkbox" checked="checked" class="analysis-checkbox">
-                            <span class="checkmark"></span>
-                            <span>Биохимическй анализ крови</span>
-                        </label>
-
-                        <div class="info-right">
-                            <div class="analysis-price">3780 руб.</div>
-                            <div class="questionmark vitamins-hover-info">
-                                <span class="tooltip-content">Рекомендовано сдавать данный анализ (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
-                            </div>
-                            <a class="blood-info btn-info">Подробнее</a>
-                        </div><br>
-                        <label class="container">
-                            <input type="checkbox" checked="checked" class="analysis-checkbox">
-                            <span class="checkmark"></span>
-                            <span>Общий анализ мочи</span>
-                        </label>
-
-                        <div class="info-right">
-                            <div class="analysis-price">340 руб.</div>
-                            <div class="questionmark vitamins-hover-info">
-                                <span class="tooltip-content">Рекомендовано сдавать данный анализ (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
-                            </div>
-                            <a class="pee-info btn-info">Подробнее</a>
-                        </div><br>
-                        <label class="container">
-                            <input type="checkbox" class="analysis-checkbox">
-                            <span class="checkmark"></span>
-                            <span>Гастрокомплекс</span>
-                        </label>
-
-                        <div class="info-right">
-                            <div class="analysis-price">3240 руб.</div>
-                            <div class="questionmark vitamins-hover-info">
-                                <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>заболеваниям ЖКТ</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
-                            </div>
-                            <a class="gastro-info btn-info">Подробнее</a>
-                        </div><br>
-                        <label class="container">
-                            <input type="checkbox" class="analysis-checkbox">
-                            <span class="checkmark"></span>
-                            <span>Диагностика диабета, биохимический</span>
-                        </label>
-
-                        <div class="info-right">
-                            <div class="analysis-price">4220 руб.</div>
-                            <div class="questionmark vitamins-hover-info">
-                                <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>диабету</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
-                            </div>
-                            <a class="diabetes-info btn-info">Подробнее</a>
-                        </div><br>
-                        <label class="container">
-                            <input type="checkbox" class="analysis-checkbox">
-                            <span class="checkmark"></span>
-                            <span>Кардиологический</span>
-                        </label>
-
-                        <div class="info-right">
-                            <div class="analysis-price">5530 руб.</div>
-                            <div class="questionmark vitamins-hover-info">
-                                <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к заболеваниям <strong>сердечно сосудистой системы</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
-                            </div>
-                            <a class="cardio-info btn-info">Подробнее</a>
-                        </div><br>
-                        <label class="container">
-                            <input type="checkbox" class="analysis-checkbox">
-                            <span class="checkmark"></span>
-                            <span>Онкологический для мужчин, биохимический</span>
-                        </label>
-
-                        <div class="info-right">
-                            <div class="analysis-price">3910 руб.</div>
-                            <div class="questionmark vitamins-hover-info">
-                                <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>раковым</strong> заболеваниям (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
-                            </div>
-                            <a class="onco-m-info btn-info">Подробнее</a>
-                        </div><br>
-                        <label class="container">
-                            <input type="checkbox" class="analysis-checkbox">
-                            <span class="checkmark"></span>
-                            <span>Онкологический для женщин, биохимический</span>
-                        </label>
-
-                        <div class="info-right">
-                            <div class="analysis-price">5720 руб.</div>
-                            <div class="questionmark vitamins-hover-info">
-                                <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>раковым</strong> заболеваниям (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
-                            </div>
-                            <a class="onco-f-info btn-info">Подробнее</a>
-                        </div><br>
-                        <label class="container">
-                            <input type="checkbox" class="analysis-checkbox">
-                            <span class="checkmark"></span>
-                            <span>Диагностика сосудистых заболеваний головного мозга</span>
-                        </label>
-
-                        <div class="info-right">
-                            <div class="analysis-price">4610 руб.</div>
-                            <div class="questionmark vitamins-hover-info">
-                                <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к заболеваниям <strong>сосудистой системы головного мозга</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
-                            </div>
-                            <a class="vessels-info btn-info">Подробнее</a>
-                        </div><br>
-                        
-                        <label class="container">
-                            <input type="checkbox" class="analysis-checkbox">
-                            <span class="checkmark"></span>
-                            <span>Гормональный профиль (комплекс) для мужчин</span>
-                        </label>
-
-                        <div class="info-right">
-                            <div class="analysis-price">2880 руб.</div>
-                            <div class="questionmark vitamins-hover-info">
-                                <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
-                            </div>
-                            <a class="hormones-m-info btn-info">Подробнее</a>
-                        </div><br>
-                        <label class="container">
-                            <input type="checkbox" class="analysis-checkbox">
-                            <span class="checkmark"></span>
-                            <span>Гормональный профиль (комплекс) для женщин</span>
-                        </label>
-
-                        <div class="info-right">
-                            <div class="analysis-price">6140 руб.</div>
-                            <div class="questionmark vitamins-hover-info">
-                                <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
-                            </div>
-                            <a class="hormones-f-info btn-info">Подробнее</a>
-                        </div><br>
-                        <label class="container">
-                            <input type="checkbox" class="analysis-checkbox">
-                            <span class="checkmark"></span>
-                            <span>Комплексный анализ крови на витамины (A, D, E, K, C, B1, B5, B6, В9, B12)</span>
-                        </label>
-
-                        <div class="info-right">
-                            <div class="analysis-price">15500 руб.</div>
-                            <div class="questionmark vitamins-hover-info">
-                                <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
-                            </div>
-                            <a class="vitamins-info btn-info">Подробнее</a>
-                        </div><br>
-
-                        <p class="total">ИТОГО</p>
-                        <p class="total-number" id="an-price"></p>
-                        </div>
-
-                        <p>Сдать анализы в лаборатории КДЛ можно в любом отделении на территории России или дома, визит сестры для приема анализов бесплатный.</p>
-
-                        <div class="contact">
-                        <div class="contact-column-left">
-                            <button class="button-wider" type="submit">Заказать</button>
-                            <p class="order-info">Кэшбэк <strong id="an-cashback"></strong> (3%)</p>
-                            <p class="order-info-lower btn-info">Подробнее о заказе</p>
-                        </div>
-                        <div class="contact-column-right">
-                            <p><i class="fa fa-info-circle"></i> В течение 2-3 дней после сдачи расшифрованные данные анализов и рекомендации появятся в разделе Мое здоровье в цифрах, а сам бланк можно будет посмотреть и скачать в разделе Мои мед документы</p>
-                            <p><i class="fa fa-info-circle"></i> Мы не сотрудничаем с врачами и клиниками, не рекламируем и не рекомендуем их. Результаты расшифровки анализов носят информационный характер, не ставят диагнозов, не назначают лечение, а лишь рекомендуют оборащение к врачу в случае необходимости.</p>
-                        </div>
-                        </div>
-                    
+                    <?php include("services/analyzes.php"); ?>
                 </div>
             </div>
             <div id="home-checkup" class="accordion">
@@ -630,98 +243,7 @@
             </div>
             <div class="panel">
                 <div class="service-content">
-                    <p class="inline">Данная услуга предоставляется совместно с нашим партнером клиникой </p>
-                    <img src="images/icons/neomed_logo.png" class="img-inline neomed-logo">
-                    <h1>В стандартный домашний медосмотр входят следующие процедуры</h1>
-                    <div class="inline">
-                        <p><i class="fa fa-check" aria-hidden="true"></i>Измерение веса и роста</p>
-                        <p><i class="fa fa-check" aria-hidden="true"></i>Измерение давления</p>
-                        <p><i class="fa fa-check" aria-hidden="true"></i>Экспресс анализ на сахар, холестерин, гемоглобин</p>
-                        <p><i class="fa fa-check" aria-hidden="true"></i>ЭКГ (проверка сердца)</p>
-                        <p><i class="fa fa-check" aria-hidden="true"></i>Проверка зрения</p>
-                        <p><i class="fa fa-check" aria-hidden="true"></i>Проверка легких (спирография)</p>
-                    </div>
-                    <div class="inline">
-                        <img src="images/home_checkup.png" class="inline img-checkup">
-                    </div>
-                    <hr>
-                    <p class="total">Стоимость</p> <p class="checkup-pre-price">5900 руб.</p>
-                    <h1 class="additional">Дополнительно можно провести следующие обследования:</h1>
-                    
-                    <label class="container">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox">
-                            <span class="checkmark"></span>
-                            <span>УЗИ брюшной полости на дому</span>
-                    </label>
-
-                    <div class="info-right">
-                        <div class="uzi-price">+ 1500 руб.</div>
-                    </div>
-                    <div class="uzi-stomach-additional">
-                        <p>железу поджелудочную;</p>
-                        <p>орган-депо желчи;</p>
-                        <p>почки и зону надпочечников;</p>
-                        <p>печень;</p>
-                        <p>селезенку.</p>
-                    </div>
-
-                    <label class="container">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox">
-                            <span class="checkmark"></span>
-                            <span>УЗИ печени и желчного органа</span>
-                    </label>
-
-                    <div class="info-right">
-                        <div class="uzi-price">+ 1500 руб.</div>
-                    </div><br>
-
-                    <label class="container">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox">
-                            <span class="checkmark"></span>
-                            <span>УЗИ мочевого органа и мочеточников</span>
-                    </label>
-
-                    <div class="info-right">
-                        <div class="uzi-price">+ 1500 руб.</div>
-                    </div><br>
-
-                    <label class="container">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox">
-                            <span class="checkmark"></span>
-                            <span>УЗИ сосудов нижних конечностей (вены + артерии)</span>
-                    </label>
-
-                    <div class="info-right">
-                        <div class="uzi-price">+ 1500 руб.</div>
-                    </div><br>
-
-                    <label class="container">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox">
-                            <span class="checkmark"></span>
-                            <span>УЗИ сердца</span>
-                    </label>
-
-                    <div class="info-right">
-                        <div class="uzi-price">+ 2000 руб.</div>
-                    </div><br>
-
-                    <label class="container">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox">
-                            <span class="checkmark"></span>
-                            <span>Рентген легких на дому</span>
-                    </label>
-
-                    <div class="info-right">
-                        <div class="uzi-price">+ 5000 руб.</div>
-                    </div><br>
-
-                    <p><i class="fa fa-info-circle"></i> Результаты осмотра с комментариями врача будут доступны в личном кабинете в<br>течение 24 часов после прохождения обследования</p>
-                    <p><i class="fa fa-info-circle"></i> Обследование проходит у вас дома или в офисе. Необходимо наличие стула, стола, а так<br>же небольшой кушетки (дивана) для УЗИ</p>
-                    <hr>
-                    <h1 class="inline">Стоимость для Москвы</h1>
-                    <p class="total-number" id="checkup-price">10000 руб.</p>
-                    <button class="inline">Заказать</button>
-                    <p id="checkup-cashback">Кэшбэк <strong>100 руб.</strong> (3%)<p>
+                    <?php include("services/home_checkup.php"); ?>
                 </div>
             </div>
             <div id="healthy-heart" class="accordion">
@@ -732,7 +254,7 @@
             </div>
             <div class="panel">
                 <div class="service-content">
-                    <p>Сервис находится в разработке</p>
+                    <?php include("services/healthy_heart.php"); ?>
                 </div>
             </div>
             <div id="expecting" class="accordion">
@@ -743,7 +265,7 @@
             </div>
             <div class="panel">
                 <div class="service-content">
-                    <p>Сервис находится в разработке</p>
+                    <?php include("services/expecting.php"); ?>
                 </div>
             </div>
             <div id="be-mom" class="accordion">
@@ -754,7 +276,7 @@
             </div>
             <div class="panel">
                 <div class="service-content">
-                    <p>Сервис находится в разработке</p>
+                    <?php include("services/be_mom.php"); ?>
                 </div>
             </div>
             <div id="be-dad" class="accordion">
@@ -765,7 +287,7 @@
             </div>
             <div class="panel">
                 <div class="service-content">
-                    <p>Сервис находится в разработке</p>
+                    <?php include("services/be_dad.php") ?>
                 </div>
             </div>
         </div>
@@ -844,7 +366,7 @@
             <div class="modal-text-content">
                 <h1 class="modal-title">Сервис в разработке</h1>
                 <p class="modal-text">Данный сервис находится в разработке. Мы сообщим вам, когда им можно будет воспользоваться.</p>
-                <form><button id="notify-me-button" class="modal-button close">ОК</button></form>
+                <button id="notify-me-button" class="modal-button close">ОК</button>
             </div>
         </div>
     </div>

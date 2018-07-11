@@ -105,6 +105,10 @@ h2.pagename {
     line-height: 22px;
 }
 
+.hr-indent {
+    margin: 20px auto;
+}
+
 .text-bold {
     font-weight: 700;
 }
@@ -459,7 +463,8 @@ button {
     background-color: #00B0D2;
 	border: 0;
 	border-radius: 5px;
-	color: #FFFFFF;
+    color: #FFFFFF;
+    cursor: pointer;
 }
 
 .button-wider {
@@ -477,6 +482,63 @@ button {
     text-align: center;
     cursor: pointer;
     color: #00B0D2
+}
+
+.cardio-form {
+    margin-bottom: 25px;
+}
+
+.heart-date-field {
+    display: inline-block;
+    width: 15%;
+}
+
+.heart-date-field > p {
+    font-size: 13px;
+    margin-bottom: 0px;
+}
+
+.heart-date-field > input {
+    height: 32px;
+}
+
+.heart-file-field {
+    display: inline-block;
+    width: 450px;
+    height: 36px;
+    border: 1px dotted #A8B7C7;
+}
+
+.heart-file-field > p {
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: auto;
+}
+
+.heart-btn-search {
+    margin-left: 16px;
+    width: 108px;
+    height: 38px;
+    border: 1px solid #CCDAE8;
+    background-color: #FFFFFF;
+    color: #15596B;
+    cursor: pointer;
+}
+
+.heart-btn-send {
+    margin-left: 16px;
+    width: 108px;
+    height: 38px;
+}
+
+.heart-order-btn {
+    margin-left: 170px;
+    position: relative;
+    bottom: 10px;
+}
+
+.heart-info {
+    width: 550px;
 }
 
 #food > p > span.accordions-left::before {
