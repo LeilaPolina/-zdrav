@@ -2,28 +2,51 @@
 <?php
     
     $files_arr = array();
-    $demo = true;
     $folder = "user_uploads";
     
     try{
-        $get_upload_types = $db->prepare('SELECT upload_type_name FROM upload_types');
+        $get_upload_types = $db->prepare('SELECT upload_type_id, upload_type_name FROM upload_types');
         $get_upload_types->execute();
 
-        if($demo === true){
-            $folder = $folder.'/demo_files';
+        if(!$user->is_logged_in()){
+            $folder = $folder."/demo_files/";
             $files_arr = array(
-                "sample_file_1.jpg" => array("type" => "Другое", "name" => "Выписка из истории болезни", "date" => "27 июня 2018"), 
-                "sample_file_2.jpg" => array("type" => "Анализ", "name" => "Биохимический анализ крови", "date" => "27 июня 2018"), 
-                "sample_file_3.jpg" => array("type" => "Заключение", "name" => "Заключение от кардиолога", "date" => "27 июня 2018"), 
-                "sample_file_4.jpg" => array("type" => "Заключение", "name" => "Заключение от невролога", "date" => "27 июня 2018"), 
-                "sample_file_5.jpg" => array("type" => "Рецепт", "name" => "Рецепт", "date" => "27 июня 2018"), 
-                "sample_file_6.jpg" => array("type" => "Обследование", "name" => "Узи брюшной полости", "date" => "27 июня 2018"), 
-                "sample_file_7.jpg" => array("type" => "Обследование", "name" => "Узи почек и мочеполовой системы", "date" => "27 июня 2018"), 
-                "sample_file_8.png" => array("type" => "Анализ", "name" => "Анализ мочи", "date" => "27 июня 2018"));
+                "sample_file_1" => array("type" => "Другое", "name" => "Выписка из истории болезни", "date" => "27 июня 2018", "extension" => "jpg"), 
+                "sample_file_2" => array("type" => "Анализ", "name" => "Биохимический анализ крови", "date" => "27 июня 2018", "extension" => "jpg"), 
+                "sample_file_3" => array("type" => "Заключение", "name" => "Заключение от кардиолога", "date" => "27 июня 2018", "extension" => "jpg"), 
+                "sample_file_4" => array("type" => "Заключение", "name" => "Заключение от невролога", "date" => "27 июня 2018", "extension" => "jpg"), 
+                "sample_file_5" => array("type" => "Рецепт", "name" => "Рецепт", "date" => "27 июня 2018", "extension" => "jpg"), 
+                "sample_file_6" => array("type" => "Обследование", "name" => "Узи брюшной полости", "date" => "27 июня 2018", "extension" => "jpg"), 
+                "sample_file_7" => array("type" => "Обследование", "name" => "Узи почек и мочеполовой системы", "date" => "27 июня 2018", "extension" => "jpg"), 
+                "sample_file_8" => array("type" => "Анализ", "name" => "Анализ мочи", "date" => "27 июня 2018", "extension" => "png"));
         }
         else{
-            $user_dir = '';
-            $folder = $folder.$user_dir;
+            $folder = $folder."/".$_SESSION['user_id']."_uploads/";
+
+            
+            $get_user_files = $db->prepare('SELECT * FROM user_uploads 
+                                            INNER JOIN upload_types 
+                                            ON upload_types.upload_type_id = user_uploads.user_uploads_upload_type_id 
+                                            WHERE user_uploads_user_id = :user_id');
+            $get_user_files->execute(array(
+                ':user_id' => $_SESSION['user_id']
+            ));
+
+            $months_list = array('null_value', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
+            while($user_file = $get_user_files->fetch(PDO::FETCH_ASSOC)){
+
+                $day = substr($user_file['user_uploads_date'], -2);
+                $month = $months_list[intval(substr($user_file['user_uploads_date'], 5, -3))];
+                $year = substr($user_file['user_uploads_date'], 0, 4);
+                $date_format = $day.' '.$month.' '.$year;
+
+                $files_arr[$user_file['user_uploads_path']] = array(
+                    "type" => $user_file['upload_type_name'], 
+                    "name" => $user_file['user_uploads_filename'], 
+                    "date" => $date_format, 
+                    "extension" => $user_file['user_uploads_extension']
+                );
+            }
         }
     }
     catch(Exception $e){
@@ -199,19 +222,21 @@
     </div>
     <table class="docs">
         <tbody id="files_list">
-            <tr>
-                <th>Дата</th>
-                <th>Вид</th>
-                <th>Название</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-
             <?php
-                try{    
+                try{  
+                    if(count($files_arr) > 0){
+                    echo '
+                        <tr>
+                            <th>Дата</th>
+                            <th>Вид</th>
+                            <th>Название</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>';
+                    
                     foreach($files_arr as $file => $file_data){
-                        $filepath = $folder . '/' . $file;
+                        $filepath = $folder.$file.'.'.$file_data['extension'];
                         echo
                         '<tr class="file_row">
                             <td class="document-date">'.$file_data['date'].'</td>
@@ -221,6 +246,7 @@
                             <td><a href="user_upload_management.php?download_file='.$filepath.'" class="download-button"><i class="fa fa-download"></i></a></td>
                             <td><a href="#" class="delete-button" onClick="delete_user_upload(\''.$filepath.'\', \''.$file_data['name'].'\', '.$demo.');"><i class="fa fa-times-circle"></i></a></td>
                         </tr>';
+                    }
                     }
                 }
                 catch(Exception $e) {
