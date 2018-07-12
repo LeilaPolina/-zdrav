@@ -59,10 +59,11 @@ function send_file(fd, callback){
 
 function process_ajax_answer(data){
     if(data != "ОК"){
+        $("#error_msg").css('color', 'red');
         $("#error_msg").text(data);
     }
     else{
-        alert(data);        
+        window.location = "docs.php";      
     }
 }
 
@@ -72,15 +73,19 @@ function upload_file(){
     var type_input = $("#user_file_type").val();
     var name_input = $("#user_file_name").val();
     if($file_input.prop('files').length == 0){
+        $("#error_msg").css('color', 'red');
         $("#error_msg").text("Файл не выбран!");
     }
     else if($file_input.prop('files').length > 1){
+        $("#error_msg").css('color', 'red');
         $("#error_msg").text("Можно загружать только один файл за раз!");
     }
     else if(date_input === ""){
+        $("#error_msg").css('color', 'red');
         $("#error_msg").text("Введите дату!");
     }
     else if(name_input === ""){
+        $("#error_msg").css('color', 'red');
         $("#error_msg").text("Введите название!");
     }
     else{        
@@ -151,14 +156,18 @@ $(document).ready(function(){
     });
 
     $("#upload_modal_close").click(function (e) {
-        e.preventDefault();
+        e.preventDefault();    
         $("#upload_file_form").css('display', 'none');
+        $("#error_msg").css('color', '');
+        $("#error_msg").text("Заполните данные о файле");
     });
 
     window.onclick = function(event) {
         var modal = document.getElementById('upload_file_form');
         if (event.target == modal) {
             $("#upload_file_form").css({'display':'none'});
+            $("#error_msg").css('color', '');
+            $("#error_msg").text("Заполните данные о файле");
         }
     }
 });

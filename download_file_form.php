@@ -14,7 +14,7 @@
             <div class="modal_text_lines">
                 <p>Максимальное число файлов, загруженных пользователем за все время: 30</p>
                 <p>Размер файла не должен превышать 2 Мегабайта</p>
-                <p>Допустимые расширения: jpeg, jpg, png, svg, gif, pdf, doc, docx</p>
+                <p>Допустимые расширения: jpeg, jpg, png, pdf, doc, docx</p>
             </div>
             <form action="" method="post" enctype="multipart/form-data">
 
@@ -42,15 +42,15 @@
                             </select> 
                         </td>
                         <td>
-                            <input type="text" id="user_file_name" class="upload_file_input" mazlength="50">
+                            <input type="text" id="user_file_name" class="upload_file_input" maxlength="50">
                         </td>
                     </tr>
                     </tbody>
                 </table>
 
-                <span id="error_msg"></span><br>
+                <span id="error_msg">Заполните данные о файле</span><br>
 
-                <input type="button" id="user_file_submit" class="add" value="Загрузить">
+                <input type="button" id="user_file_submit" value="Загрузить">
             </form>
         </div>
     </div>
