@@ -3,12 +3,16 @@
     
     $files_arr = array();
     $folder = "user_uploads";
+    $demo = false;
+    if(!$user->is_logged_in()){
+        $demo = true;
+    }
     
     try{
-        $get_upload_types = $db->prepare('SELECT upload_type_id, upload_type_name FROM upload_types');
-        $get_upload_types->execute();
+        $get_upload_types_for_search = $db->prepare('SELECT upload_type_id, upload_type_name FROM upload_types');
+        $get_upload_types_for_search->execute();
 
-        if(!$user->is_logged_in()){
+        if($demo){
             $folder = $folder."/demo_files/";
             $files_arr = array(
                 "sample_file_1" => array("type" => "Другое", "name" => "Выписка из истории болезни", "date" => "27 июня 2018", "extension" => "jpg"), 
@@ -59,6 +63,7 @@
     <meta charset="utf-8">
     <title>Документы</title>
     <link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="css/upload_file_form.css">
     <link rel="stylesheet" href="css/docs.css">
     <link rel="stylesheet" type="text/css" href="css/demo_btn.css" />
     <script src="jquery/jquery-3.1.1.min.js"></script>
@@ -66,7 +71,6 @@
     <script src="scripts/demo.js"></script>
 	<script src="scripts/signout.js"></script>
     <script src="scripts/docs.js"></script>
-	<!-- FINISH -->
 	
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
@@ -191,6 +195,7 @@
                 <?php
                     echo '<input class="download" type="submit" value="Скачать все" onClick="get_zip(\''.$folder.'\');">';
                     echo '<input class="add" type="submit" value="+ Добавить" onClick="add_file('.$demo.');">';
+                    include_once("download_file_form.php");
                 ?>
                 <p>Информация об анализах, обследованиях и лечении в хронологическом порядке</p>
             </div>
@@ -204,7 +209,7 @@
                     <select id="upload_search_type">
                         <option>Показать все</option>
                         <?php
-                            while($upload_type_row = $get_upload_types->fetch(PDO::FETCH_ASSOC)){
+                            while($upload_type_row = $get_upload_types_for_search->fetch(PDO::FETCH_ASSOC)){
                                 echo '<option>'.$upload_type_row['upload_type_name'].'</option>';
                             }
                         ?>
