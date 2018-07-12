@@ -23,7 +23,7 @@ function add_file(demo){
         alert("Это действие недоступно в демо режиме!");
     }
     else{
-        //появление модального окна
+        $("#upload_file_form").css('display', 'block');
     }
 }
 
@@ -149,4 +149,16 @@ $(document).ready(function(){
         e.preventDefault();
         upload_file();
     });
+
+    $("#upload_modal_close").click(function (e) {
+        e.preventDefault();
+        $("#upload_file_form").css('display', 'none');
+    });
+
+    window.onclick = function(event) {
+        var modal = document.getElementById('upload_file_form');
+        if (event.target == modal) {
+            $("#upload_file_form").css({'display':'none'});
+        }
+    }
 });
