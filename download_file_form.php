@@ -42,7 +42,7 @@
                             </select> 
                         </td>
                         <td>
-                            <input type="text" id="user_file_name" class="upload_file_input" mazlength="50">
+                            <input type="text" id="user_file_name" class="upload_file_input" maxlength="50">
                         </td>
                     </tr>
                     </tbody>
@@ -50,7 +50,7 @@
 
                 <span id="error_msg"></span><br>
 
-                <input type="button" id="user_file_submit" class="add" value="Загрузить">
+                <input type="button" id="user_file_submit" value="Загрузить">
             </form>
         </div>
     </div>

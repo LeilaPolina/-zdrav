@@ -62,7 +62,7 @@ function process_ajax_answer(data){
         $("#error_msg").text(data);
     }
     else{
-        alert(data);        
+        window.location = "docs.php";      
     }
 }
 
