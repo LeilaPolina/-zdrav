@@ -14,7 +14,7 @@
             <div class="modal_text_lines">
                 <p>Максимальное число файлов, загруженных пользователем за все время: 30</p>
                 <p>Размер файла не должен превышать 2 Мегабайта</p>
-                <p>Допустимые расширения: jpeg, jpg, png, svg, gif, pdf, doc, docx</p>
+                <p>Допустимые расширения: jpeg, jpg, png, pdf, doc, docx</p>
             </div>
             <form action="" method="post" enctype="multipart/form-data">
 
