@@ -48,7 +48,7 @@
                     </tbody>
                 </table>
 
-                <span id="error_msg"></span><br>
+                <span id="error_msg">Заполните данные о файле</span><br>
 
                 <input type="button" id="user_file_submit" value="Загрузить">
             </form>
