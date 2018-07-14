@@ -1,4 +1,6 @@
-<?php include_once('includes/config.php'); ?>
+<?php
+	include_once('includes/config.php');
+?>
 
 <!DOCTYPE html>
 <html>
@@ -15,6 +17,9 @@
 	
 	<!--SCRIPTS-->
     <script src="jquery/jquery-3.1.1.min.js"></script>
+	<script src="scripts/errors.js"></script>
+	<script src="scripts/init_indexes.js"></script>
+	<script src="scripts/demo_indexes.js"></script>
     <script src="scripts/health.js"></script>
 	<script src="scripts/reason_models.js"></script>
 	<script src="jquery/jquery.maskedinput.min.js"></script>
@@ -70,6 +75,8 @@
 		ga('create', 'UA-96242372-1', 'auto');
 		ga('send', 'pageview');
 	</script>
+	
+
 	<!-- /Google analytics -->
 
 
@@ -171,7 +178,7 @@
 					</td>
 					<td class="estimation-col index-estimation" id="cholesterol-estm">&mdash;</td>
 					<td class="graph-col index-graph">
-						<div class="index-graph-img-wrapper" id="cholesterol-graph"></div>
+						<div class="index-graph-img-wrapper graph" id="cholesterol-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
@@ -179,24 +186,24 @@
 						</div>
 					</td>
 				</tr>
-				<!--#################################Sugar#################################-->				
+				<!--#################################Glucose#################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="sugar-brd" ></td>
-					<td class="date-col index-date" id="sugar-date">&mdash;</td>
+					<td class="border-col" id="glucose-brd" ></td>
+					<td class="date-col index-date" id="glucose-date">&mdash;</td>
 					<td class="index-col index-name">Сахар</td>
 					<td class="value-col index-value">
-						<span class="index-span" id="sugar-span">&mdash;</span>
+						<span class="index-span" id="glucose-span">&mdash;</span>
 					</td>
 					<td class="btn-col">
-						<a type="button" class="pl-btn" id="sugar-btn" href="#">+</a>
+						<a type="button" class="pl-btn" id="glucose-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="sugar-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="glucose-estm">&mdash;</td>
 					<td class="graph-col index-graph">
-						<div class="index-graph-img-wrapper" id="sugar-graph"></div>
+						<div class="index-graph-img-wrapper graph" id="glucose-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="sugar-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="glucose-reason">Причина</a>
 						</div>
 					</td>
 				</tr>
@@ -214,11 +221,11 @@
 						</div>
 					</td>
 					<td class="btn-col">
-						<a type="button" class="pl-btn" id="blood-btn" href="#">+</a>
+						<a type="button" class="pl-btn" id="pressure-btn" href="#">+</a>
 					</td>
 					<td class="estimation-col index-estimation" id="blood-pressure-estm">&mdash;</td>
 					<td class="graph-col index-graph">
-						<div class="index-graph-img-wrapper" id="blood-pressure-graph"></div>
+						<div class="index-graph-img-wrapper graph" id="blood-pressure-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
@@ -239,7 +246,7 @@
 					</td>
 					<td class="estimation-col index-estimation" id="weight-estm">&mdash;</td>
 					<td class="graph-col index-graph">
-						<div class="index-graph-img-wrapper" id="weight-graph"></div>
+						<div class="index-graph-img-wrapper graph" id="weight-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">

@@ -74,35 +74,35 @@ $( document ).ready(function() {
 	});
 	
 	/*SHOW SUGAR MODAL REASON*/
-	$("#sugar-reason").click(function(e) {
+	$("#glucose-reason").click(function(e) {
 		
 		e.preventDefault();
-		if(indexes_array["sugar"].border_kind!=0) {
+		if(indexes_array["glucose"].border_kind!=0) {
 		var recommendations;
-		var lower_norm=indexes_array["sugar"].lower_norm;
-		var upper_norm=indexes_array["sugar"].upper_norm;
-		var user_index_value=indexes_array["sugar"].val;
+		var lower_norm=indexes_array["glucose"].lower_norm;
+		var upper_norm=indexes_array["glucose"].upper_norm;
+		var user_index_value=indexes_array["glucose"].val;
 		$("#index-norm").text("Ваша норма глюкозы 3,3 – 5,5 ммоль/л");
-		if(indexes_array["sugar"].border_kind==2) {
-			user_index_value="превышает норму на "+ indexes_array["sugar"].percent.toString() + "%";
+		if(indexes_array["glucose"].border_kind==2) {
+			user_index_value="превышает норму на "+ indexes_array["glucose"].percent.toString() + "%";
 			recommendations ='Рекомендуем распечатать анализ и обратиться к терапевту или эндокринологу';
 		}
-		if(indexes_array["sugar"].border_kind==-2) {
-			user_index_value="ниже нормы на "+ indexes_array["sugar"].percent.toString() + "%";
+		if(indexes_array["glucose"].border_kind==-2) {
+			user_index_value="ниже нормы на "+ indexes_array["glucose"].percent.toString() + "%";
 			recommendations ='Рекомендуем распечатать анализ и обратиться к терапевту или эндокринологу';
 		}
-		if(indexes_array["sugar"].border_kind==-1 || indexes_array["sugar"].border_kind==1) {
+		if(indexes_array["glucose"].border_kind==-1 || indexes_array["glucose"].border_kind==1) {
 			user_index_value="находится на границы нормы";
 			recommendations ='Рекомендуем следить за данным параметром и проверять его не реже 1 раза в 6 месяцев чтобы в случае превышения нормы своевременно его устранить';
 		}
 		$("#my-index-value").text("Сейчас этот показатель у Вас " +user_index_value);
-		if(indexes_array["sugar"].border_kind==2 || indexes_array["sugar"].border_kind==1) {
+		if(indexes_array["glucose"].border_kind==2 || indexes_array["glucose"].border_kind==1) {
 			$("#index-description").text("Гипергликемия (повышенный сахар в крови) характерна только для эндокринных заболеваний (нарушение работы желез ), таких как сахарный диабет, повышенная функция щитовидной железы, для заболеваний гипоталамуса – области головного мозга, которая отвечает за всю работу желёз внутренней секреции, в редких случаях может быть из-за некоторых заболеваний печени. При продолжительной гипергликемии, начинается стойкое нарушение обменных процессов, которое приводит к ощущению сильной слабости, иммунная система начинает давать сбои, начинаются регулярные гнойные воспалительные процессы в организме, происходит нарушение половых функций и нарушается кровоснабжение всех тканей.");
 			$("#recommendations-p").html("Рекомендуем следить за данным параметром и проверять его не реже 1 раза в 6 месяцев чтобы в случае превышения нормы своевременно его устранить.");
 			$("#acticle").text("Статья про повышенный уровень сахара в крови");
 			$("#acticle").attr("href","https://www.ayzdorov.ru/ttermini_sahar_v_krovi.php");
 		}
-		if(indexes_array["sugar"].border_kind==-2 ||indexes_array["sugar"].border_kind==-1) {
+		if(indexes_array["glucose"].border_kind==-2 ||indexes_array["glucose"].border_kind==-1) {
 			$("#index-description").text("Развиться постоянная гипогликемия (пониженный сахар в крови) может и при разных заболеваниях поджелудочной железы, которые связаны с разрастанием её тканей, а также клеток, которые вырабатывают инсулин, это могут быть различные опухоли. Постоянная гипогликемия также может начаться из-за тяжёлых заболеваний печени, при которых происходит нарушение процессов усвояемости и случается выброс гликогена в кровь, а также заболевание почек, надпочечников и гипоталамуса могут быть причиной развития гипогликемии.");
 			$("#recommendations-p").html("Рекомендуем следить за данным параметром и проверять его не реже 1 раза в 6 месяцев чтобы в случае превышения нормы своевременно его устранить.");
 			$("#acticle").text("Статья про пониженный уровень сахара в крови");
