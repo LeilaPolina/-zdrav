@@ -6,6 +6,7 @@ $(function () {
 	// vars
 	var modal_test = $('#modal_test');
 	var modal_loading = $('#modal_loading');
+	var modal_create_lk = $('#create-lk');
 	var close_modal = $('#close_modal');
 	var cont_testing = $('#cont_testing');
 	var cont_num_testing, title_testing, choice_testing, btn_testing;
@@ -175,7 +176,7 @@ $(function () {
 			title: 'Как часто Вы болеете простудными заболеваниями?',
 			type: 'radio',
 			answers: [ 
-				{ text: 'Больше 4-х раз в год', count: '-1' },
+				{ text: '4 раза в год или больше', count: '-1' },
 				{ text: 'Меньше 4-х раз в год', count: '1' },
 			],
 		},
@@ -485,11 +486,15 @@ $(function () {
 		$('body').append('<form action="test_results_processing.php" method="POST" id="form_test">'+ str +'</form>');
 		
 		$(modal_test).hide();
-		$(modal_loading).show();
+		$(modal_create_lk).show();
+
+		$("#btn_endtest_continue").onclick(function() {
+			$(modal_create_lk).hide();
+			$(modal_loading).show();
 		
-		setTimeout(function () {
-			$('#form_test').submit();
-		}, 4000);
+			setTimeout(function () {
+				$('#form_test').submit();
+			}, 4000);
+		})
 	}
-	
 });

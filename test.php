@@ -1,7 +1,7 @@
 <?php include('includes/config.php'); ?>
 <?php
 	// TODO: закрыть доступ тем кто не прошел тест
-
+	
 	function recToBuy ($dead) {
 		$listToBuy = array();
 		$txtListToBuy = '';
@@ -58,10 +58,10 @@
 		return $count_weight;
 	}
 
-	function get_lifecount(){
-		$lifecount = 2;
+	function get_lifecount($lifetime_index_mass){
+		$lifecount = 2; /* +2 всем за анализы */
 		$lifecount += -(int)$lifetime_index_mass;
-
+		
 		if ($_SESSION['result_test']['smoke'] == 1) {
 			$lifecount += -(int)$_SESSION['result_test']['count_smoking'];
 		}
@@ -75,12 +75,9 @@
 		}
 
 		if ($_SESSION['result_test']['healthyheart'] == 1) {
-			$lifecount += -(int)$_SESSION['result_test']['count_dead'];
+			$lifecount += 2;
 		}
 
-		if ($_SESSION['result_test']['personal_manager'] == 1) {
-			$lifecount += -(int)$_SESSION['result_test']['count_work'];
-		}
 		return $lifecount;
 	}
 
@@ -88,7 +85,7 @@
 	$txt_index_mass = getTxtIndexMass($index_mass);
 	$lifetime_index_mass = getLifetimeIndexMass($index_mass);
 	$toBuy = recToBuy ($_SESSION['result_test']['dead']);
-	$lifecount = get_lifecount();
+	$lifecount = get_lifecount($lifetime_index_mass);
 ?>
 
 <!DOCTYPE html>
@@ -123,6 +120,7 @@
 	<script src="jquery/jquery.maskedinput.min.js"></script>
 	<script src="scripts/result_test.js"></script>	
 	<script src="scripts/registration.js"></script>
+	<script src="scripts/test_margins.js"></script>
 	<script src="scripts/multiselect.js"></script>
 	
 	<!-- Yandex.Metrika counter --> 
@@ -224,13 +222,13 @@
 				<div class="lifetime">
 					Согласно тесту расчетная продолжительность вашей жизни составит <b><?php if ($_SESSION['result_test']['lifetime'] - (date("Y") - $_SESSION['result_test']['year_birth']) < 5) { echo date("Y") - $_SESSION['result_test']['year_birth'] + 5; } else { echo $_SESSION['result_test']['lifetime']; } ?> лет</b> </br>
 					Максимальная возможная продолжительность жизни может составить
-					<b><?php if ($_SESSION['result_test']['sex'] == 'м'){
-						echo $_SESSION['result_test']['lifetime']+$lifecount;
+					<b><?php if ($_SESSION['result_test']['lifetime'] - (date("Y") - $_SESSION['result_test']['year_birth']) < 5){
+						echo date("Y") - $_SESSION['result_test']['year_birth'] + 5 + $lifecount;
 						echo ' лет';
 					}
 					else 
 					{
-						echo $_SESSION['result_test']['lifetime']+$lifecount;
+						echo $_SESSION['result_test']['lifetime'] + $lifecount;
 						echo ' лет';
 					} ?></b>
 				</div>
@@ -257,7 +255,9 @@
 			include './modules/module_healthyfood.php';
 		}
 
-		include './modules/module_tester.php';
+		if ($_SESSION['result_test']['healthyheart'] == 1 || $_SESSION['result_test']['work'] == "Физически тяжелая") {
+			include './modules/module_tester.php';
+		}
 
 		if ($_SESSION['result_test']['healthyheart'] == 1) {
 			include './modules/module_healthyheart.php';
@@ -492,7 +492,7 @@
 					</div>
 				</div>
 				
-				<input type="submit" id="register-button" value="Сохранить" class="save-btn">
+				<input type="submit" id="register-button" value="Создать личный кабинет" class="save-btn">
 			</form>
 		</div>
 	</div>
@@ -584,42 +584,9 @@
   	</div>
 	<hr>
 	</div>
-
-
-	<div class="footer">
-
-		<div class="contacts">
-			<div class="social-media">
-				<a class="social-OK" href="https://ok.ru/zdorovyebu"></a>
-				<a class="social-VK" href="https://vk.com/public157016043"></a>
-				<a class="social-FB" href="https://www.facebook.com/zdrav.rf/"></a>
-				<a class="social-IG" href="https://www.instagram.com/zdrav.rf"></a>
-			</div>
-			<div class="phone">+7 495 131-32-73</div>
-			<div class="OOO">2016-2018 ООО «Здравствую»</div>
-		</div>
-
-		<div class="zdrav-menu">
-			<p>Здравствую</p>
-			<ul>
-				<li><a>О нас</a></li>
-				<li><a>FAQ</a></li>
-				<li><a>Отзывы о сервисе</a></li>
-				<li><a>Партнерская программа</a></li>
-				<li><a>Команда</a></li>
-				<li><a>Контакты</a></li>
-			</ul>
-		</div>
-
-		<div class="documents">
-			<p>Документы</p>
-			<ul>
-				<li><a href="mission.php">Миссия, цель, ценности</a></li>
-				<li><a href="agreement.php">Правила использования</a></li>
-				<li><a href="personal_data_agreement.php">Обработка персональных данных</a></li>
-			</ul>
-		</div>
-	</div>
+	<?php
+        include("footer/footer.php");
+    ?>
 </div>
 
 

@@ -102,7 +102,7 @@ body {
 	right:71.88%;
 	top:40.93%;
 	bottom:38.93%;
-	font-family: OpenSans;
+	font-family: Open Sans;
 	font-style: normal;
 	font-size: 18px;
 	color: rgba(22, 50, 92, 0.8);
@@ -110,6 +110,7 @@ body {
 
 .per-rec > p{
 	margin:0;
+	width: 250px;
 }
 
 .link-for-toggle > p {
@@ -127,11 +128,11 @@ body {
 
 .rec-numb {
 	position: absolute;
-	left:29.36%;
+	left: 33%;
 	right:66.88%;
 	top:40.93%;
 	bottom:27.93%;
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 26px;
 	font-size: 15px;
 	text-align: center;
@@ -144,11 +145,11 @@ body {
 
 .rec_numb_text {
 	position: absolute;
-	left:33%;
+	left: 36.5%;
 	right:66.88%;
 	top:40.93%;
 	bottom:27.93%;
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 26px;
 	font-size: 13px;
 	color:#00B0D2;
@@ -172,12 +173,21 @@ body {
 	border-radius: 3px;
 }
 
+.rec-content {
+	margin: 50px 0px 0px 50px;
+}
+
+.analyzes-content {
+	display: inline-block;
+	margin-top: 20px;
+}
+
 .lk {
 	text-align: center;
 }
 
 .lk p:first-child {
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 16px;
 	font-size: 15px;
 	color: rgba(22, 50, 92, 0.8);
@@ -185,7 +195,7 @@ body {
 }
 
 .lk p:nth-child(2) {
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 30px;
 	font-size: 30px;
 	color: #374963;
@@ -193,7 +203,7 @@ body {
 	margin-bottom:10px;
 }
 .lk p:nth-child(3) {
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 26px;
 	font-size: 20px;
 	color: #374963;
@@ -268,7 +278,7 @@ body {
 .save-btn {
 	display: block;
     height: 36px;
-    width: 185px;
+    width: 200px;
     text-align: center;
     text-decoration: none;
     line-height: 30px;
@@ -296,7 +306,7 @@ body {
 	margin-top:0px;
 }
 .general-information > p, .lifestyle > p, .diseases > p, .contacts-po > p {
-	font-family: OpenSans;
+	font-family: Open Sans;
 	font-size: 19px;
 	margin-top:27px;
 	margin-bottom: 23px;
@@ -502,7 +512,7 @@ a.be-dad > p:before {
 }
 
 .zdrav-menu > p , .documents > p {
-	font-family: OpenSans;
+	font-family: Open Sans;
 	font-size: 20px;
 }
 
@@ -769,7 +779,7 @@ a.be-dad > p:before {
 	top:12.58%;
 	width:500px;
 	height:32px;
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 16px;
 	font-size: 17px;
 	color: rgba(22, 50, 92, 0.8);
@@ -780,7 +790,7 @@ a.be-dad > p:before {
 	left:9.89%;
 	top:45.28%;
 	position: absolute;
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 22px;
 	font-size: 15px;
 	color: #1F2F47;
@@ -794,7 +804,7 @@ a.be-dad > p:before {
 	height:24px;
 	background: #F7F8FA;
 	border-radius: 3px;
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 24px;
 	font-size: 15px;
 	color: #00B0D2;
@@ -809,7 +819,7 @@ a.be-dad > p:before {
 	height:32px;
 	background: #00B0D2;
 	border-radius: 4px;
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: normal;
 	font-size: 15px;
 	line-height: 32px;
@@ -829,7 +839,7 @@ a.be-dad > p:before {
 	left:9.89%;
 	top:32.28%;
 	position: absolute;
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 22px;
 	font-size: 15px;
 	color: #1F2F47;
@@ -845,24 +855,20 @@ a.be-dad > p:before {
 }
 
 .req_analyzes {
-	height:495px;
 	position: relative;
 	margin-top:6px;
 }
 
 .req_analyzes p {
-	margin:0;
+	
 }
 
 .result_analyzes {
-	position: absolute;
-	top:11.75%;
-	left:9.89%;
-	width:568px;
-	height:282px;
+	width:600px;
 	background: #FAFBFC;
 	border-radius: 4px;
-	padding:15px 19px 20px 12px;
+	display: inline-block;
+	margin: 25px 19px 20px 100px;
 }
 
 .result_analyzes ul {
@@ -872,7 +878,7 @@ a.be-dad > p:before {
 }
 
 .result_analyzes ul > li {
-	width:568px;
+	width:600px;
 	height:30px;
 	line-height: 30px;
 }
@@ -884,49 +890,44 @@ a.be-dad > p:before {
 }
 
 .text1 {
-	position: absolute;
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 16px;
 	font-size: 17px;
 	color: rgba(22, 50, 92, 0.8);
-	top:4.12%;
-	left:9.89%;
+	margin-left: 90px;
 }
 
 .text2 {
-	position: absolute;
-	font-family: OpenSans;
-	line-height: 16px;
+	font-family: Open Sans;
+	line-height: 22px;
 	font-size: 15px;
 	color: rgba(22, 50, 92, 0.8);
-	top:78.35%;
-	left:9.89%;
+	margin-left: 85px;
 }
 
 .plus_life_analyzes {
-	position: absolute;	
-	top:90.1%;
-	left:9.89%;
 	width:115px;
 	height:24px;
 	background: #F7F8FA;
 	border-radius: 3px;
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 24px;
 	font-size: 15px;
 	color: #00B0D2;
 	text-align: center;
+	margin-left: 85px;
+	margin-bottom: 30px;
 }
 
 .rec-button-analyzes {
-	position: absolute;
-	left:77.53%;
-	top:13.4%;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 18px;
 	width:178px;
 	height:32px;
 	background: #00B0D2;
 	border-radius: 4px;
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: normal;
 	font-size: 15px;
 	line-height: 32px;
@@ -939,16 +940,16 @@ a.be-dad > p:before {
 .result_analyzes li {
 	position: relative;
 	padding-left:12px;
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 16px;
 	font-size: 13px;
 	color: rgba(22, 50, 92, 0.8);
 }
 
 .result_analyzes > div:first-child {
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 16px;
-	font-size: 17px;
+	font-size: 15px;
 	color: rgba(22, 50, 92, 0.8);
 	margin-left:12px;
 }
@@ -978,7 +979,7 @@ a.be-dad > p:before {
 .rec_min, .rec_individual {
 	margin-top:8px;
 }
-
+/*
 .help:after {
 	content:'';
 	width:16px;
@@ -988,7 +989,7 @@ a.be-dad > p:before {
 	left:120px;
 	top:4px;
 }
-
+*/
 .all-serv:after {
 	content:'';
 	position:absolute;
@@ -1049,7 +1050,7 @@ a.be-dad > p:before {
 	background:url('../images/icons/symbols-icon-analise23x34.PNG') no-repeat;
 	width:23px;
 	height:34px;
-	top:13.79%;
+	top: 85px;
 }
 
 .icon_homebodycheck {
@@ -1087,13 +1088,13 @@ a.be-dad > p:before {
 	height:16px;
 	top:0;
 	left:85%;
-	font-family: OpenSans;
+	font-family: Open Sans;
 	line-height: 30px;
 	font-size: 13px;
 	color: #00B0D2;
 	text-decoration: none;
 }
-
+/* 
 .help-reverse:before {
 	content:'';
 	width:16px;
@@ -1103,7 +1104,7 @@ a.be-dad > p:before {
 	left:-23px;
 	top:5px;
 }
-
+*/
 #gen_risks {
 	width: 572px;
     height: 32px;
