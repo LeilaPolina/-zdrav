@@ -2,7 +2,16 @@
 <?php
 	include_once('check_phone_number.php');
 
-	
+	// === EMAIL ===
+	function send_notification_email($user_name, $user_phone){
+		$to      = 'wayay@yandex.ru, zdrav.rf@mail.ru';
+		$subject = 'Новая регистрация';
+		$message = 'Зарегистрировался пользователь с номером ' . $user_phone . ' по имени ' . $user_name;
+
+		mail($to, $subject, $message);
+	}
+	// === /EMAIL === 
+
 	function prepare_health_data($user_health_data) {
 		$result_test = $_SESSION['result_test'];
 		
@@ -49,7 +58,7 @@
 			':user_phone'=> $user_essentials['user_phone'], 
 			':user_password'=> $hashed_password, 
 			':user_name'=> $user_essentials['user_name']
-		));	
+		));
 	}
 	
 	function save_health($db, $user_health_data){
@@ -114,7 +123,8 @@
 			
 			if(new_user_id_to_session($db, $user_essentials)==true) {	
 				save_health($db, $user_health_data);
-				save_contacts($db, $user_contacts);				
+				save_contacts($db, $user_contacts);
+				send_notification_email($user_essentials['user_name'], $user_essentials['user_phone']);
 				return "OK";
 			}
 			else{

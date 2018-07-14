@@ -11,7 +11,8 @@
 		$result_test[$field] = $val;
     }
 
-    $_SESSION['result_test'] = $result_test;
+	$_SESSION['result_test'] = $result_test;
+	$_SESSION['test_completed'] = true;
     header('Location: test.php');
     exit;
 ?>
