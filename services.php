@@ -330,20 +330,9 @@
                     </ul>
                 </div>
             
-                <div class="documents">
-                    <p>Документы</p>
-                    <ul>
-                        <li>
-                            <a>Миссия, цель, ценности</a>
-                        </li>
-                        <li>
-                            <a>Правила использования</a>
-                        </li>
-                        <li>
-                            <a>Обработка персональных данных</a>
-                        </li>
-                    </ul>
-            </div>
+                <?php
+					include("footer/footer.php");
+				?>
         </div>
     </div>
     </div>
