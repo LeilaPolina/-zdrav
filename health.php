@@ -263,7 +263,7 @@
 	
 	<!--#################################Footer#################################-->		
 	<?php
-		include("footer/footer.php");
+		include("footer.php");
 	?>
 
 	</div>

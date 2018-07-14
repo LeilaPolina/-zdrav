@@ -38,9 +38,9 @@
 	<div class="documents">
 		<p>Документы</p>
 		<ul>
-			<li><a href="footer/mission.php">Миссия, цель, ценности</a></li>
-			<li><a href="footer/agreement.php">Правила использования</a></li>
-			<li><a href="footer/personal_data_agreement.php">Обработка персональных данных</a></li>
+			<li><a href="mission.php">Миссия, цель, ценности</a></li>
+			<li><a href="agreement.php">Правила использования</a></li>
+			<li><a href="personal_data_agreement.php">Обработка персональных данных</a></li>
 		</ul>
 	</div>
 
