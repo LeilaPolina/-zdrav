@@ -1,82 +1,5 @@
-<?php include('includes/config.php'); ?>
-	<script>
-		function set_border_colors_and_estimation_values(brd_id,estimatimation_id,border_kind) {
-			if(border_kind==2) {
-			   $(brd_id).css("background-color","red"); 
-			   $(estimatimation_id).css("color","red");
-			   $(estimatimation_id).text("Повышен");
-		   }
-		   
-		   else if (border_kind==1) {
-			   $(brd_id).css("background-color","#E5C82E");
-			   $(estimatimation_id).css("color","#E5C82E");
-			   $(estimatimation_id).text("Верхняя граница");
-		   }
-		   else if(border_kind==-1) {
-			   $(brd_id).css("background-color","#E5C82E");
-			   $(estimatimation_id).css("color","#E5C82E");
-			   $(estimatimation_id).text("Нижняя граница");
-			   
-		   }
-		   else if (border_kind==-2){
-			  $(brd_id).css("background-color","red");
-			  $(estimatimation_id).css("color","red");
-			  $(estimatimation_id).text("Понижен");
-		   }
-		   else if (border_kind==0){
-			  $(brd_id).css("background-color","green"); 
-			  $(estimatimation_id).css("color","green");
-			  $(estimatimation_id).text("Норма");
-		   }  
-		}
-	
-		function set_values(index_name,index_value,index_date,border_kind) {
-		   var brd_id="#"+index_name+"-brd";
-		   var date_id="#"+index_name+"-date";
-		   var value_span_id="#"+index_name+"-span";
-		   var estimatimation_id="#"+index_name+"-estm";
-		   $(date_id).text(index_date);
-		   $(value_span_id).text(index_value);
-		   set_border_colors_and_estimation_values(brd_id,estimatimation_id,border_kind);
-		}
-			
-
-		function get_blood_pressure_border_kind (upper_blood_kind,lower_blood_kind) {
-			
-			if (upper_blood_kind==lower_blood_kind) {
-				return upper_blood_kind;
-			}
-			if(upper_blood_kind==2 || upper_blood_kind==-2) {
-				return upper_blood_kind;
-			}
-			if((upper_blood_kind!=2 && upper_blood_kind!=-2) && (lower_blood_kind==2 || lower_blood_kind==-2)) {
-				return lower_blood_kind;
-			}
-			
-			if((upper_blood_kind==1 || upper_blood_kind==-1) && lower_blood_kind==0) {
-				return upper_blood_kind;
-			}	
-			
-			if((lower_blood_kind==1 || lower_blood_kind==-1) && upper_blood_kind==0) {
-				return lower_blood_kind;
-			}
-	}
-		
-		function set_blood_pressure_values(upper_value,lower_value,index_date,upper_blood_kind,lower_blood_kind) {
-			$("#blood-pressure-1").text(upper_value);
-			$("#blood-pressure-2").text(lower_value);
-			$("#blood-pressure-date").text(index_date);
-			var brd_id="#blood-pressure-brd";
-			var estimatimation_id="#blood-pressure-estm";
-			var border_kind=get_blood_pressure_border_kind(upper_blood_kind,lower_blood_kind);
-			set_border_colors_and_estimation_values(brd_id,estimatimation_id,border_kind);
-		}
-		
-	</script>
-
-
 <?php 
-	//include('includes/config.php');
+	include('includes/config.php');
 	
 	$cur_user_id = $_SESSION['user_id'];
 	$get_results_data = $db->prepare('
@@ -112,79 +35,29 @@
 		$index_lower_norm=$results_data_row['user_results_lower_norm'];
 		$index_percent=$results_data_row['user_results_lapse_percent'];
 		
-		if($index_name=='холестерин'){
-			echo '<script type="text/javascript">
+		echo '<script type="text/javascript">
 			$( document ).ready(function() {
-				indexes_array["cholesterol"].val='.$index_value.';
-				indexes_array["cholesterol"].border_kind='.$border_kind.';
-				indexes_array["cholesterol"].percent='.$index_percent.';
-				indexes_array["cholesterol"].upper_norm='.$index_upper_norm.';
-				indexes_array["cholesterol"].lower_norm='.$index_lower_norm.';
+				indexes_array["'.$index_name.'"].val='.$index_value.';
+				indexes_array["'.$index_name.'"].border_kind='.$border_kind.';
+				indexes_array["'.$index_name.'"].percent='.$index_percent.';
+				indexes_array["'.$index_name.'"].upper_norm='.$index_upper_norm.';
+				indexes_array["'.$index_name.'"].lower_norm='.$index_lower_norm.';
 				var date="'.$index_date.'".split(" ")[0];
-				indexes_array["cholesterol"].date=date;
-				set_values("cholesterol",'.$index_value.',date,'.$border_kind.');
-			 });</script>';	
-		   }
-		
-		if($index_name=='вес'){
-			echo '<script type="text/javascript">
-			$( document ).ready(function() {
-				indexes_array["weight"].val='.$index_value.';
-				indexes_array["weight"].border_kind='.$border_kind.';
-				indexes_array["weight"].percent='.$index_percent.';
-				indexes_array["weight"].upper_norm='.$index_upper_norm.';
-				indexes_array["weight"].lower_norm='.$index_lower_norm.';
-				var date="'.$index_date.'".split(" ")[0];
-				indexes_array["weight"].date=date;
-				set_values("weight",'.$index_value.',date,'.$border_kind.');
+				indexes_array["'.$index_name.'"].date=date;
+				set_values("'.$index_name.'",'.$index_value.',date,'.$border_kind.');
 			 });</script>';
-		   }
-		   
-		if($index_name=='сахар'){
-			echo '<script type="text/javascript">
-			$( document ).ready(function() {
-				indexes_array["sugar"].val='.$index_value.';
-				indexes_array["sugar"].border_kind='.$border_kind.';
-				indexes_array["sugar"].percent='.$index_percent.';
-				indexes_array["sugar"].upper_norm='.$index_upper_norm.';
-				indexes_array["sugar"].lower_norm='.$index_lower_norm.';
-				var date="'.$index_date.'".split(" ")[0];
-				indexes_array["sugar"].date=date;
-				set_values("sugar",'.$index_value.',date,'.$border_kind.');
-			 });</script>';	
-		   }
-		   
-		if($index_name=='верхнее давление'){
+		
+		if($index_name=='upper_blood_pressure'){
 			 $upper_blood_pressure_value=$index_value;
-			 $upper_blood_kind=$border_kind;
-			echo '<script type="text/javascript">
-			$( document ).ready(function() {
-				indexes_array["upper_blood_pressure"].val='.$index_value.';
-				indexes_array["upper_blood_pressure"].border_kind='.$border_kind.';
-				indexes_array["upper_blood_pressure"].percent='.$index_percent.';
-				indexes_array["upper_blood_pressure"].upper_norm='.$index_upper_norm.';
-				indexes_array["upper_blood_pressure"].lower_norm='.$index_lower_norm.';
-				var date="'.$index_date.'".split(" ")[0];
-				indexes_array["upper_blood_pressure"].date=date;
-			});</script>';			 
+			 $upper_blood_kind=$border_kind;			 
 		}
-
-		if($index_name=='нижнее давление'){
+		
+		if($index_name=='lower_blood_pressure'){
 			 $lower_blood_pressure_value=$index_value;
 			 $lower_blood_kind=$border_kind;
 			 $blood_date=$index_date;
-			 echo '<script type="text/javascript">
-			$( document ).ready(function() {
-				indexes_array["lower_blood_pressure"].val='.$index_value.';
-				indexes_array["lower_blood_pressure"].border_kind='.$border_kind.';
-				indexes_array["lower_blood_pressure"].percent='.$index_percent.';
-				indexes_array["lower_blood_pressure"].upper_norm='.$index_upper_norm.';
-				indexes_array["lower_blood_pressure"].lower_norm='.$index_lower_norm.';
-				var date="'.$index_date.'".split(" ")[0];
-				indexes_array["lower_blood_pressure"].date=date;
-			});</script>';	
 		} 
-	
+
 		if ($upper_blood_pressure_value!='' and  $lower_blood_pressure_value!=''and $blood_date!=''
 			and $upper_blood_kind!='' and $lower_blood_kind!='') {
 			echo '<script type="text/javascript">

@@ -1,5 +1,5 @@
-<?php include_once('includes/config.php'); ?>
 <?php
+    include_once('includes/config.php');
 
     function get_last_from_db($user, $db, $result_name) {
         if(!$user->is_logged_in()){
@@ -7,7 +7,7 @@
         }
         try{
             // для давления нужно менять запрос так как запрашивать нужно две строки на каждую дату
-            if($result_name === 'давление')
+            if($result_name === 'pressure')
             {
                 $get_last_query = $db->prepare('
                     SELECT DISTINCT result_date, current_value
@@ -22,7 +22,7 @@
                 ');
                 $get_last_query->execute(array(
                     'user_id' => $_SESSION['user_id'],
-                    'result_name' => 'верхнее давление'
+                    'result_name' => 'upper_blood_pressure'
                 ));
 
                 $upper_row_count = $get_last_query->rowCount();
@@ -31,7 +31,7 @@
                     $upper_pressure_rows = $get_last_query->fetchAll(PDO::FETCH_ASSOC);
                     $get_last_query->execute(array(
                         'user_id' => $_SESSION['user_id'],
-                        'result_name' => 'нижнее давление'
+                        'result_name' => 'lower_blood_pressure'
                     ));
                     $lower_pressure_results = $get_last_query;
                     if($lower_pressure_results->rowCount() != $upper_row_count){
