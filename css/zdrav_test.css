@@ -130,7 +130,7 @@
 }
 #btn_endtest_continue {
 	display: inline-block;
-	margin: 20px 240px;
+	margin: 5% auto 4% 10%;
 	padding: 10px 15px;
 	border-radius: 5px;
 	background-color: rgb(53,209,35);
@@ -157,26 +157,27 @@
 }
 
 #create-lk-content > p {
+	margin: 0% auto auto 10%;
 	color: #16325C;
 	font-size: 15px;
 }
 
 .lk-text-center {
+	margin-left: 0 !important;
 	text-align: center;
 	font-size: 17px;
 	color: #16325C;
 }
 
 .fa-check {
-	margin-left: 30px;
-	margin-right: 20px;
+	margin-right: 2%;
 	color: #00B0D2;
 }
 
 /* Mobile */
 @media screen and (max-width: 700px) {
 	
-	#content_test, #content_loading {
+	#content_test, #content_loading, #create-lk-content {
 		width: 95%;
 	}
 	
