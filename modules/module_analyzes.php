@@ -92,6 +92,13 @@
 	
 	<p class="text2">В нашем сервисе есть возможность заказать рекомендованные анализы с <br> бесплатным выездом сестры на дом или в офис и с бесплатной их расшифровкой</p>
     
-	<div class="plus_life_analyzes help">+ 2 года жизни</div>
+    <?php if ($user->is_logged_in()) {
+        /* todo */
+    } else if ($_SESSION['result_test']['homebodycheck'] == 1 && $_SESSION['result_test']['count_bodycheck'] != "0") {
+        echo '<div class="plus_life_analyzes help">+ 4 года жизни</div>';
+    } else {
+        echo '<div class="plus_life_analyzes help">+ 2 года жизни</div>';
+    }
+    ?>
     </div>
 </div>

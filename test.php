@@ -1,7 +1,7 @@
 <?php include('includes/config.php'); ?>
 <?php
 	// TODO: закрыть доступ тем кто не прошел тест
-	
+
 	function recToBuy ($dead) {
 		$listToBuy = array();
 		$txtListToBuy = '';
@@ -246,10 +246,6 @@
 		}
 
 		include './modules/module_analyzes.php';
-
-		if ($_SESSION['result_test']['homebodycheck'] == 1) {
-			include './modules/module_homebodycheck.php';
-		}
 
 		if ($_SESSION['result_test']['healthyfood'] == 1) {
 			include './modules/module_healthyfood.php';
