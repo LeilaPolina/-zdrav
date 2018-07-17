@@ -1,25 +1,18 @@
+<?php include("rec_analyses.php"); ?>
 <div class="req_analyzes threeb">
     <div class="analyzes-content">
 	<div class="icon_analyzes icon_rec"></div>
 
-	<p class="text1"><strong>Рекомендуем сдать следующие комплексы анализов</strong></p>
+	<p class="text1"><strong>Рекомендуем сдать следующие комплексы анализов и обследований</strong></p>
 
 	<div class="result_analyzes">
-		<div>По результатам теста вам рекомендуется сдать следующие анализы</div>
-		<div>Рекомендуемый минимум</div>
 		<div class="rec_min">
+        <div class="analyzes-list-title">Анализы</div>
 			<ul>
 				<li>Общий анализ крови<a class="help-reverse" href="" onclick="return false">Подробнее</a></li>
 				<li>Биохимическй анализ крови<a class="help-reverse" href="" onclick="return false">Подробнее</a></li>
 				<li>Общий анализ мочи<a class="help-reverse" href="" onclick="return false">Подробнее</a></li>
-			</ul>
-		</div>
-		<div>Индивидуальный набор</div>
-		<div class="rec_individual">
-			<ul>
                 <?php
-                include("rec_analyses.php");
-
                 if($an_gastro) {
 				    echo '<li>Гастрокомплекс<a class="help-reverse" href=""';
                     echo 'onclick="return false">Подробнее</a></li>';
@@ -58,13 +51,47 @@
                     echo 'false">Подробнее</a></li>';
                 }
                 ?>
-			</ul>
+            </ul>
+            </div>
+            <a class="rec-button-analyzes" href="" onclick="return false">Перейти</a>
+
+            <div class="checkup-list">
+            <div class="analyzes-list-title">Обследования</div>
+            <ul>
+                <li>Измерение давления<a class="help-reverse" href="" onclick="return false">Подробнее</a></li>
+                <li>ЭКГ<a class="help-reverse" href="" onclick="return false">Подробнее</a></li>
+                <li>УЗИ брюшной полости<a class="help-reverse" href="" onclick="return false">Подробнее</a></li>
+                <li>УЗИ мочевого органа и мочеточников<a class="help-reverse" href="" onclick="return false">Подробнее</a></li>
+                <?php
+                    if($ch_uzi_liver) {
+                        echo '<li>УЗИ печени и желчного органа';
+                        echo '<a class="help-reverse" href="" onclick="return false">Подробнее</a></li>';
+                    }
+                    if($ch_uzi_mammary) {
+                        echo '<li>УЗИ молочных желез';
+                        echo '<a class="help-reverse" href="" onclick="return false">Подробнее</a></li>';
+                    }
+                    if($ch_uzi_vessels) {
+                        echo '<li>УЗИ сосудов нижних конечностей (вены + артерии)';
+                        echo '<a class="help-reverse" href="" onclick="return false">Подробнее</a></li>';
+                    }
+                    if($ch_uzi_heart) {
+                        echo '<li>УЗИ сердца';
+                        echo '<a class="help-reverse" href="" onclick="return false">Подробнее</a></li>';
+                    }
+                    if($ch_xray_lungs) {
+                        echo '<li>Рентген легких';
+                        echo '<a class="help-reverse" href="" onclick="return false">Подробнее</a></li>';
+                    }
+                ?>
+            </ul>
+            </div>
+            <a class="rec-button-analyzes" href="" onclick="return false">Перейти</a>
 		</div>
-    </div>
-	<a class="rec-button-analyzes" href="" onclick="return false">Перейти</a>
+    
+	
 	<p class="text2">В нашем сервисе есть возможность заказать рекомендованные анализы с <br> бесплатным выездом сестры на дом или в офис и с бесплатной их расшифровкой</p>
     
 	<div class="plus_life_analyzes help">+ 2 года жизни</div>
-
     </div>
 </div>

@@ -864,11 +864,10 @@ a.be-dad > p:before {
 }
 
 .result_analyzes {
-	width:600px;
 	background: #FAFBFC;
 	border-radius: 4px;
 	display: inline-block;
-	margin: 25px 19px 20px 100px;
+	margin: 0px 19px 20px 100px;
 }
 
 .result_analyzes ul {
@@ -946,23 +945,17 @@ a.be-dad > p:before {
 	color: rgba(22, 50, 92, 0.8);
 }
 
-.result_analyzes > div:first-child {
-	font-family: Open Sans;
-	line-height: 16px;
-	font-size: 15px;
-	color: rgba(22, 50, 92, 0.8);
-	margin-left:12px;
-}
-
-.result_analyzes > div:nth-child(2) {
+.analyzes-list-title {
 	font-family: Open Sans;
 	font-style: normal;
 	font-weight: bold;
 	line-height: 16px;
 	font-size: 12px;
 	color: rgba(22, 50, 92, 0.8);
-	margin-top:23px;
-	margin-left:12px;
+	margin-bottom: 15px;
+	margin-left: 12px;
+	display: inline-block;
+	margin-top: 15px;
 }
 
 .result_analyzes > div:nth-child(4) {
@@ -976,7 +969,8 @@ a.be-dad > p:before {
 	margin-left:12px;
 }
 
-.rec_min, .rec_individual {
+.rec_min, .checkup-list {
+	display: inline-block;
 	margin-top:8px;
 }
 /*
@@ -1081,7 +1075,7 @@ a.be-dad > p:before {
 	height:27px;
 }
 
-.rec_min a.help-reverse , .rec_individual a.help-reverse {
+.result_analyzes a.help-reverse {
 	position: absolute;
 	margin:0;
 	width:66px;
