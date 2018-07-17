@@ -17,6 +17,6 @@ if ($user->is_logged_in()) {
     $ch_uzi_mammary = ($_SESSION['result_test']['sex'] == 'ж');
     $ch_uzi_vessels = ($_SESSION['result_test']['smoke'] == 1);
     $ch_uzi_heart = ($_SESSION['result_test']['healthyheart'] == 1);
-    $ch_xray_lungs = ($_SESSION['result_test']['smoke'] == 1) || (strpos($_SESSION['result_test']['dead'], "Рак, Легких") !== false);
+    $ch_xray_lungs = ($_SESSION['result_test']['smoke'] == 1) || (strpos($_SESSION['result_test']['dead'], "Легких") !== false);
 }
 ?>
