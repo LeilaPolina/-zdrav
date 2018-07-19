@@ -1,6 +1,6 @@
 <?php include("rec_analyses.php"); ?>
 <div class="req_analyzes threeb">
-    <div class="analyzes-content">
+    <div class="module-content">
 	<div class="icon_analyzes icon_rec"></div>
 
 	<p class="text1"><strong>Рекомендуем сдать следующие комплексы анализов и обследований</strong></p>
@@ -53,7 +53,7 @@
                 ?>
             </ul>
             </div>
-            <a class="rec-button-analyzes" href="" onclick="return false">Перейти</a>
+            <a class="rec-button-new" href="" onclick="return false">Перейти</a>
 
             <div class="checkup-list">
             <div class="analyzes-list-title">Обследования</div>
@@ -86,7 +86,7 @@
                 ?>
             </ul>
             </div>
-            <a class="rec-button-analyzes" href="" onclick="return false">Перейти</a>
+            <a class="rec-button-new" href="" onclick="return false">Перейти</a>
 		</div>
     
 	

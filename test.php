@@ -1,7 +1,7 @@
 <?php include('includes/config.php'); ?>
 <?php
 	// TODO: закрыть доступ тем кто не прошел тест
-
+	
 	function recToBuy ($dead) {
 		$listToBuy = array();
 		$txtListToBuy = '';
@@ -66,8 +66,8 @@
 			$lifecount += -(int)$_SESSION['result_test']['count_smoking'];
 		}
 
-		if ($_SESSION['result_test']['homebodycheck'] == 1) {
-			$lifecount += -(int)$_SESSION['result_test']['count_bodycheck'];
+		if ($_SESSION['result_test']['cold'] == "4 раза в год или больше") {
+			$lifecount += 1;
 		}
 
 		if ($_SESSION['result_test']['healthyfood'] == 1) {
@@ -239,7 +239,7 @@
 	<div class="rec-list">
 		<?php 
 		
-			include './modules/module_mass.php';
+		include './modules/module_mass.php';
 
 		if ($_SESSION['result_test']['smoke'] == 1) {
 			include './modules/module_smoke.php';
@@ -251,16 +251,31 @@
 			include './modules/module_healthyfood.php';
 		}
 
+		if ($_SESSION['result_test']['cold'] == "4 раза в год или больше") {
+			include './modules/module_immunity.php';
+		}
+
 		if ($_SESSION['result_test']['healthyheart'] == 1 || $_SESSION['result_test']['work'] == "Физически тяжелая") {
-			include './modules/module_tester.php';
+			include './modules/module_ekg.php';
 		}
 
 		if ($_SESSION['result_test']['healthyheart'] == 1) {
 			include './modules/module_healthyheart.php';
 		}
 
+		include './modules/module_scales.php';
+
 		if ($_SESSION['result_test']['personal_manager'] == 1) {
 			include './modules/module_personal_manager.php';
+		}
+
+		$job = $_SESSION['result_test']['work'];
+		if($job == "Руководящая" || $job == "Творческая" || $job == "Офисная" || $job == "Не работаю" || $_SESSION['result_test']['sport'] == "Занимаюсь более 1 раза в неделю") {
+			include './modules/module_smart_watch.php';
+		}
+
+		if(/* тестер холестерина */) {
+
 		}
 
 		?>

@@ -137,10 +137,10 @@ body {
 	font-size: 15px;
 	text-align: center;
 	color: #FFFFFF;
-	width:26px;
-	height:26px;
+	width: 30px;
+	height: 30px;
 	background-color: #00B0D2;
-	border-radius: 13px;
+	border-radius: 15px;
 }
 
 .rec_numb_text {
@@ -171,13 +171,15 @@ body {
 	background-color: white;
 	box-shadow: 0px 2px 2px rgba(46, 53, 54, 0.118631);
 	border-radius: 3px;
+	position: relative;
+	margin-top: 6px;
 }
 
 .rec-content {
 	margin: 50px 0px 0px 50px;
 }
 
-.analyzes-content {
+.module-content {
 	display: inline-block;
 	margin-top: 20px;
 }
@@ -901,7 +903,8 @@ a.be-dad > p:before {
 	line-height: 22px;
 	font-size: 15px;
 	color: rgba(22, 50, 92, 0.8);
-	margin-left: 85px;
+	margin-left: 95px;
+	display: inline-block;
 }
 
 .plus_life_analyzes {
@@ -918,7 +921,7 @@ a.be-dad > p:before {
 	margin-bottom: 30px;
 }
 
-.rec-button-analyzes {
+.rec-button-new {
 	display: inline-block;
 	vertical-align: top;
 	margin-top: 18px;
@@ -935,6 +938,9 @@ a.be-dad > p:before {
 	text-decoration: none;
 }
 
+.button-immunity {
+	margin-left: 152px;
+}
 
 .result_analyzes li {
 	position: relative;
@@ -1073,6 +1079,12 @@ a.be-dad > p:before {
 	background:url('../images/icons/symbols-icon-personal-manager23x27.PNG') no-repeat;
 	width:23px;
 	height:27px;
+}
+
+.icon-immunity {
+	background:url('../images/icons/symbols-icon-immunitet.PNG') no-repeat;
+	width: 26px;
+	height: 26px;
 }
 
 .result_analyzes a.help-reverse {
