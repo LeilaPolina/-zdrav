@@ -1,7 +1,7 @@
 <?php include('includes/config.php'); ?>
 <?php
 	if(!$_SESSION['test_completed']){
-		header('Location: index.html');
+		header('Location: https://здравствую.рф/');
 	}
 	
 	function recToBuy ($dead) {
