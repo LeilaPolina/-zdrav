@@ -213,9 +213,9 @@ body {
 }
 
 .private-office {
-	padding:43px 26px 28px 32px;
-	height:926px;
-	margin-top:24px;
+	padding:0px 26px 28px 32px;
+	/*height:926px;
+	margin-top:24px;*/
 }
 
 .general-information > div , .lifestyle > div{
@@ -286,7 +286,8 @@ body {
     line-height: 30px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 61px;
+	margin-top: 30px;
+	margin-bottom: 30px;
     background: #00B0D2;
     border-radius: 4px;
     color: white;
@@ -294,7 +295,8 @@ body {
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
-    border:0;
+	border:0;
+	cursor: pointer;
 }
 
 .input-name > p,.input-sex > p,.input-birth > p,.input-height > p,.input-weight > p,.input-work > p,.input-smoke > p,.input-sport > p,.input-food > p,.input-children > p,.input-alcohol > p,.input-genetic_risks > p,.input-sick_before > p,.input-chronic_dis > p,.input-email > p,.input-telephone > p {

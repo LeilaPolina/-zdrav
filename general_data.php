@@ -88,6 +88,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/test.css" />
+	<link rel="stylesheet" href="css/accordion.css" />
 	<script src="jquery/jquery-3.1.1.min.js"></script>
 	<script>
 		window.index_mass = '<?php echo $index_mass; ?>';
@@ -103,6 +104,7 @@
 	<script src="scripts/multiselect.js"></script>
 	<script src="scripts/multiselect.js"></script>
 	<script src="scripts/signout.js"></script>
+	<script src="scripts/accordions.js"></script>
 
 	<!-- Yandex.Metrika counter --> 
 	<script type="text/javascript">
@@ -222,228 +224,235 @@
 	</div>
 	</div>
 
-	<div class="private-office threeb">
-		<div class="lk">
-			<p>Личный кабинет</p>
-			<p>Общие сведения (анамнез)</p>
-		</div>
-		<div class="input-block">
-			<form name="personal-inf"  id="save_gen_data">
-				<div class="general-information">
-					<p>Общая информация</p>
-					<div class="input-name">
-						<p>Как к Вам обращаться</p>
-						<?php
-							echo '<input type="text" value="'.$essential_data_row['user_name'].'" id="iname">';							
-						?>
-					</div>	
-					<div class="input-sex">		
-						<p>Пол</p>
-						<?php
-							if($general_data_row['user_sex'] == 'male'){
-								echo '<input type="radio" checked="checked" name="sex" value="Мужской" id="iman">';
-								echo '<label for="man">Мужской</label>';
-								echo '<input type="radio" name="sex" value="Женский" id="iwoman">';
-								echo '<label for="woman">Женский</label>';
-							}
-							else{
-								echo '<input type="radio" name="sex" value="Мужской" id="iman">';
-								echo '<label for="man">Мужской</label>';
-								echo '<input type="radio" checked="checked" name="sex" value="Женский" id="iwoman">';
-								echo '<label for="woman">Женский</label>';
-							}
-						?>
-					</div>
-					<div class="input-birth">
-						<p>Год рождения</p>
-						<?php
-							echo '<input type="text" value="'.$user_birth_year.'"  placeholder="гггг" id="iyear">';
-						?>
-					</div>
-					<div class="input-height">
-						<p>Рост, см</p>
-						<?php
-							echo '<input type="text" value="'.$general_data_row['user_height'].'" id="iheight">';
-						?>
-					</div>
-					<div class="input-weight">
-						<p>Вес, кг</p>
-						<?php
-							echo '<input type="text" value="'.$general_data_row['user_weight'].'" id="iweight">';
-						?>
-					</div>
-				</div>
+	<form name="personal-inf"  id="save_gen_data">
+	<div class="accordion">
+		<p>
+			<span class="accordions-left">Общие сведения</span>
+			<span class="accordions-right">Открыть</span>
+		</p>		
+	</div>
 
-				<div class="lifestyle">
-					<p>Образ жизни</p>
-					<div class="input-work">
-						<p>Работа</p>
-						
-						<select name="work" id="iwork">
-						<?php							
-							$work_query = $db->query('SELECT job_conditions_type_name, job_conditions_type_id FROM job_conditions_types ORDER BY job_conditions_type_id');
-							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['job_conditions_type_id'] == $general_data_row['user_job_conditions']){				
-									echo '<option value='.$row['job_conditions_type_id'].' selected>'.$row[	'job_conditions_type_name'].'</option>';
-								}
-								else{								
-									echo '<option value='.$row['job_conditions_type_id'].'>'.$row[	'job_conditions_type_name'].'</option>';
-								}
-							}
-						?>
-						</select>
-						
-					</div>
-					
-					<div class="input-smoke">
-						<p>Курение</p>
-												
-						<select name="smoking" id="ismoke">
-						<?php
-							$smoking_query = $db->query('SELECT smoking_type_name, smoking_type_id FROM smoking_types ORDER BY smoking_type_id');
-							while ($row = $smoking_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['smoking_type_id'] == $general_data_row['user_smoking']){						
-									echo '<option value='.$row['smoking_type_id'].' selected>'.$row['smoking_type_name'].'</option>';
-								}
-								else{								
-									echo '<option value='.$row['smoking_type_id'].'>'.$row['smoking_type_name'].'</option>';
-								}
-							}
-						?>
-						</select>
-						
-					</div>
-					
-					<div class="input-sport">
-						<p>Спорт</p>
-												
-						<select name="sport" id="isport">
-						<?php
-							$sport_query = $db->query('SELECT sport_activity_type_name, sport_activity_type_id FROM sport_activity_types ORDER BY sport_activity_type_id');
-							while ($row = $sport_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['sport_activity_type_id'] == $general_data_row['user_sport_activity']){								
-									echo '<option value='.$row['sport_activity_type_id'].' selected>'.$row['sport_activity_type_name'].'</option>';
-								}
-								else{								
-									echo '<option value='.$row['sport_activity_type_id'].'>'.$row['sport_activity_type_name'].'</option>';
-								}
-							}
-						?>
-						</select>
-					</div>
-					<div class="input-food">
-						<p>Питание</p>						
-						<select name="food" id="ifood">
-						<?php
-							$food_query = $db->query('SELECT diet_type_name, diet_type_id FROM diet_types ORDER BY diet_type_id');
-							while ($row = $food_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['diet_type_id'] == $general_data_row['user_diet']){								
-									echo '<option value='.$row['diet_type_id'].' selected>'.$row['diet_type_name'].'</option>';
-								}
-								else{								
-									echo '<option value='.$row['diet_type_id'].'>'.$row['diet_type_name'].'</option>';
-								}
-							}
-						?>
-						</select>
-						
-					</div>
-					<div class="input-children">
-						<p>Дети</p>
-						
-						<select name="children" id="ichildren">
-						<?php
-							$children_query = $db->query('SELECT children_type_name, children_type_id FROM children_types ORDER BY children_type_id');
-							while ($row = $children_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['children_type_id'] == $general_data_row['user_children']){								
-									echo '<option value='.$row['children_type_id'].' selected>'.$row['children_type_name'].'</option>';
-								}
-								else{								
-									echo '<option value='.$row['children_type_id'].'>'.$row['children_type_name'].'</option>';
-								}
-							}
-						?>
-						</select>
-						
-					</div>
-					
-					<div class="input-alcohol">
-						<p>Алкоголь</p>
-						
-						<select name="alcohol" id="ialcohol">
-						<?php
-							$alcohol_query = $db->query('SELECT alcohol_type_name, alcohol_type_id FROM alcohol_types ORDER BY alcohol_type_id');
-							while ($row = $alcohol_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['alcohol_type_id'] == $general_data_row['user_alcohol']){
-									echo '<option value='.$row['alcohol_type_id'].' selected>'.$row['alcohol_type_name'].'</option>';
-								}
-								else{								
-									echo '<option value='.$row['alcohol_type_id'].'>'.$row['alcohol_type_name'].'</option>';
-								}
-							}
-						?>
-						</select>
-					</div>
-				</div>
-
-				<div class="diseases">
-					<p>Заболевания</p>
-					<div class="input-genetic_risks">
-						<p>Генетические риски</p>
-						<div class="gen-risks-selectBox" onclick="showCheckboxes()">
-							<select id="gen_risks">
-								<option>Нажмите, чтобы развернуть</option>
-							</select>
-							<div class="gen-risks-overSelect"></div>
-						</div>						
-						<div id="gen-risks-checkboxes">						
-							<?php
-								$risks_query = $db->query('SELECT relatives_death_causes_type_id, relatives_death_causes_type_name FROM relatives_death_causes_types ORDER BY relatives_death_causes_type_id');
-								while ($row = $risks_query->fetch(PDO::FETCH_ASSOC)){
-									if(in_array($row['relatives_death_causes_type_id'], $relatives_death_causes)){
-										echo '<label><input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group" checked>'.$row['relatives_death_causes_type_name'].'</label>';
+	<div class="panel">
+		<div class="service-content">
+			<div class="private-office threeb">
+				<div class="input-block">
+					<form name="personal-inf"  id="save_gen_data">
+						<div class="general-information">
+							<p>Общая информация</p>
+							<div class="input-name">
+								<p>Как к Вам обращаться</p>
+								<?php
+									echo '<input type="text" value="'.$essential_data_row['user_name'].'" id="iname">';							
+								?>
+							</div>	
+							<div class="input-sex">		
+								<p>Пол</p>
+								<?php
+									if($general_data_row['user_sex'] == 'male'){
+										echo '<input type="radio" checked="checked" name="sex" value="Мужской" id="iman">';
+										echo '<label for="man">Мужской</label>';
+										echo '<input type="radio" name="sex" value="Женский" id="iwoman">';
+										echo '<label for="woman">Женский</label>';
 									}
 									else{
-										echo '<label><input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group">'.$row['relatives_death_causes_type_name'].'</label>';
+										echo '<input type="radio" name="sex" value="Мужской" id="iman">';
+										echo '<label for="man">Мужской</label>';
+										echo '<input type="radio" checked="checked" name="sex" value="Женский" id="iwoman">';
+										echo '<label for="woman">Женский</label>';
 									}
-								}
-							?>
+								?>
+							</div>
+							<div class="input-birth">
+								<p>Год рождения</p>
+								<?php
+									echo '<input type="text" value="'.$user_birth_year.'"  placeholder="гггг" id="iyear">';
+								?>
+							</div>
+							<div class="input-height">
+								<p>Рост, см</p>
+								<?php
+									echo '<input type="text" value="'.$general_data_row['user_height'].'" id="iheight">';
+								?>
+							</div>
+							<div class="input-weight">
+								<p>Вес, кг</p>
+								<?php
+									echo '<input type="text" value="'.$general_data_row['user_weight'].'" id="iweight">';
+								?>
+							</div>
 						</div>
-					</div>
-					<div class="input-sick_before">
-						<p>Чем болел(а) раньше</p>
-						<?php
-							echo '<input type="text" value="'.$general_data_row['user_diseases'].'" id="isick">';
-						?>
-					</div>
-					<div class="input-chronic_dis">
-						<p>Хронические заболевания</p>
-						<?php
-							echo '<input type="text" value="'.$general_data_row['user_chronical'].'" id="ichronic">';
-						?>
-					</div>
-				</div>
 
-				<div class="contacts-po">
-					<p>Контакты</p>
-					<div class="input-email">
-						<p>e-mail</p>
-						<?php
-							echo '<input type="text" value="'.$contact_data_row['contact_value'].'" id="iemail">';
-						?>
-					</div>
-					<div class="input-telephone">
-						<p>Телефон</p>
-						<?php
-							echo '<input type="text" value="'.$essential_data_row['user_phone'].'" placeholder="(xxx) xxx-xx-xx" id="itele">';
-						?>
-					</div>
+						<div class="lifestyle">
+							<p>Образ жизни</p>
+							<div class="input-work">
+								<p>Работа</p>
+								
+								<select name="work" id="iwork">
+								<?php							
+									$work_query = $db->query('SELECT job_conditions_type_name, job_conditions_type_id FROM job_conditions_types ORDER BY job_conditions_type_id');
+									while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
+										if($row['job_conditions_type_id'] == $general_data_row['user_job_conditions']){				
+											echo '<option value='.$row['job_conditions_type_id'].' selected>'.$row[	'job_conditions_type_name'].'</option>';
+										}
+										else{								
+											echo '<option value='.$row['job_conditions_type_id'].'>'.$row[	'job_conditions_type_name'].'</option>';
+										}
+									}
+								?>
+								</select>
+								
+							</div>
+							
+							<div class="input-smoke">
+								<p>Курение</p>
+														
+								<select name="smoking" id="ismoke">
+								<?php
+									$smoking_query = $db->query('SELECT smoking_type_name, smoking_type_id FROM smoking_types ORDER BY smoking_type_id');
+									while ($row = $smoking_query->fetch(PDO::FETCH_ASSOC)){
+										if($row['smoking_type_id'] == $general_data_row['user_smoking']){						
+											echo '<option value='.$row['smoking_type_id'].' selected>'.$row['smoking_type_name'].'</option>';
+										}
+										else{								
+											echo '<option value='.$row['smoking_type_id'].'>'.$row['smoking_type_name'].'</option>';
+										}
+									}
+								?>
+								</select>
+								
+							</div>
+							
+							<div class="input-sport">
+								<p>Спорт</p>
+														
+								<select name="sport" id="isport">
+								<?php
+									$sport_query = $db->query('SELECT sport_activity_type_name, sport_activity_type_id FROM sport_activity_types ORDER BY sport_activity_type_id');
+									while ($row = $sport_query->fetch(PDO::FETCH_ASSOC)){
+										if($row['sport_activity_type_id'] == $general_data_row['user_sport_activity']){								
+											echo '<option value='.$row['sport_activity_type_id'].' selected>'.$row['sport_activity_type_name'].'</option>';
+										}
+										else{								
+											echo '<option value='.$row['sport_activity_type_id'].'>'.$row['sport_activity_type_name'].'</option>';
+										}
+									}
+								?>
+								</select>
+							</div>
+							<div class="input-food">
+								<p>Питание</p>						
+								<select name="food" id="ifood">
+								<?php
+									$food_query = $db->query('SELECT diet_type_name, diet_type_id FROM diet_types ORDER BY diet_type_id');
+									while ($row = $food_query->fetch(PDO::FETCH_ASSOC)){
+										if($row['diet_type_id'] == $general_data_row['user_diet']){								
+											echo '<option value='.$row['diet_type_id'].' selected>'.$row['diet_type_name'].'</option>';
+										}
+										else{								
+											echo '<option value='.$row['diet_type_id'].'>'.$row['diet_type_name'].'</option>';
+										}
+									}
+								?>
+								</select>
+								
+							</div>
+							<div class="input-children">
+								<p>Дети</p>
+								
+								<select name="children" id="ichildren">
+								<?php
+									$children_query = $db->query('SELECT children_type_name, children_type_id FROM children_types ORDER BY children_type_id');
+									while ($row = $children_query->fetch(PDO::FETCH_ASSOC)){
+										if($row['children_type_id'] == $general_data_row['user_children']){								
+											echo '<option value='.$row['children_type_id'].' selected>'.$row['children_type_name'].'</option>';
+										}
+										else{								
+											echo '<option value='.$row['children_type_id'].'>'.$row['children_type_name'].'</option>';
+										}
+									}
+								?>
+								</select>
+								
+							</div>
+							
+							<div class="input-alcohol">
+								<p>Алкоголь</p>
+								
+								<select name="alcohol" id="ialcohol">
+								<?php
+									$alcohol_query = $db->query('SELECT alcohol_type_name, alcohol_type_id FROM alcohol_types ORDER BY alcohol_type_id');
+									while ($row = $alcohol_query->fetch(PDO::FETCH_ASSOC)){
+										if($row['alcohol_type_id'] == $general_data_row['user_alcohol']){
+											echo '<option value='.$row['alcohol_type_id'].' selected>'.$row['alcohol_type_name'].'</option>';
+										}
+										else{								
+											echo '<option value='.$row['alcohol_type_id'].'>'.$row['alcohol_type_name'].'</option>';
+										}
+									}
+								?>
+								</select>
+							</div>
+						</div>
+
+						<div class="diseases">
+							<p>Заболевания</p>
+							<div class="input-genetic_risks">
+								<p>Генетические риски</p>
+								<div class="gen-risks-selectBox" onclick="showCheckboxes()">
+									<select id="gen_risks">
+										<option>Нажмите, чтобы развернуть</option>
+									</select>
+									<div class="gen-risks-overSelect"></div>
+								</div>						
+								<div id="gen-risks-checkboxes">						
+									<?php
+										$risks_query = $db->query('SELECT relatives_death_causes_type_id, relatives_death_causes_type_name FROM relatives_death_causes_types ORDER BY relatives_death_causes_type_id');
+										while ($row = $risks_query->fetch(PDO::FETCH_ASSOC)){
+											if(in_array($row['relatives_death_causes_type_id'], $relatives_death_causes)){
+												echo '<label><input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group" checked>'.$row['relatives_death_causes_type_name'].'</label>';
+											}
+											else{
+												echo '<label><input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group">'.$row['relatives_death_causes_type_name'].'</label>';
+											}
+										}
+									?>
+								</div>
+							</div>
+							<div class="input-sick_before">
+								<p>Чем болел(а) раньше</p>
+								<?php
+									echo '<input type="text" value="'.$general_data_row['user_diseases'].'" id="isick">';
+								?>
+							</div>
+							<div class="input-chronic_dis">
+								<p>Хронические заболевания</p>
+								<?php
+									echo '<input type="text" value="'.$general_data_row['user_chronical'].'" id="ichronic">';
+								?>
+							</div>
+						</div>
+
+						<div class="contacts-po">
+							<p>Контакты</p>
+							<div class="input-email">
+								<p>e-mail</p>
+								<?php
+									echo '<input type="text" value="'.$contact_data_row['contact_value'].'" id="iemail">';
+								?>
+							</div>
+							<div class="input-telephone">
+								<p>Телефон</p>
+								<?php
+									echo '<input type="text" value="'.$essential_data_row['user_phone'].'" placeholder="(xxx) xxx-xx-xx" id="itele">';
+								?>
+							</div>
+						</div>						
 				</div>
-				<input type="submit" id="save_gen_data_button" value="Сохранить" class="save-btn">
-			
-			</form>
+			</div>
 		</div>
 	</div>
+	<input type="submit" id="save_gen_data_button" value="Сохранить" class="save-btn">			
+	</form>
 
 	<div class="time-link threeb">
 		<div class="img-time"></div>

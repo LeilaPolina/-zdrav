@@ -1,6 +1,8 @@
 <?php include('includes/config.php'); ?>
 <?php
-	// TODO: закрыть доступ тем кто не прошел тест
+	if(!$_SESSION['test_completed']){
+		header('Location: index.html');
+	}
 	
 	function recToBuy ($dead) {
 		$listToBuy = array();
@@ -94,11 +96,12 @@
 	<title>Общие сведения</title>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/multiselect.css" />
+	<link rel="stylesheet" type="text/css" href="css/accordion.css" />
 	<link rel="stylesheet" href="css/test.css" />
 	<link rel="stylesheet" type="text/css" href="css/registration_login_windows.css" />
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/multiselect.css" />
 
 	<script src="jquery/jquery-3.1.1.min.js"></script>
 	<script>
@@ -122,6 +125,8 @@
 	<script src="scripts/registration.js"></script>
 	<script src="scripts/test_margins.js"></script>
 	<script src="scripts/multiselect.js"></script>
+	<script src="scripts/accordions.js"></script>
+	
 	
 	<!-- Yandex.Metrika counter --> 
 	<script type="text/javascript">
@@ -274,22 +279,23 @@
 			include './modules/module_smart_watch.php';
 		}
 
-		if(/* тестер холестерина */) {
+		//if(/* тестер холестерина */) {
 
-		}
+		//}
 
 		?>
 	</div>
-	
-	<div class="private-office threeb">
-		<div class="lk">
-			<p>Личный кабинет</p>
-			<p>Общие сведения</p>
-			<p>(анамнез)</p>
-		</div>
-		<div class="input-block">
-			
-			<form name="personal-inf"  id="register">
+
+	<form name="personal-inf"  id="register">
+	<div class="accordion">
+		<p>
+			<span class="accordions-left">Общие сведения</span>
+			<span class="accordions-right">Открыть</span>
+		</p>		
+	</div>
+	<div class="panel">
+		<div class="service-content">
+			<div class="private-office input-block">
 				<div class="general-information">
 					<p>Общая информация</p>
 					<div class="input-name">
@@ -502,12 +508,11 @@
 							<input type="text" value=""  id="itele">
 					</div>
 				</div>
-				
-				<input type="submit" id="register-button" value="Создать личный кабинет" class="save-btn">
-			</form>
+			</div>
 		</div>
 	</div>
-	
+	<input type="submit" id="register-button" value="Создать личный кабинет" class="save-btn">
+	</form>	
 
 	<div class="time-link threeb">
 		<div class="img-time"></div>

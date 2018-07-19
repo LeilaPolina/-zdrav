@@ -1,0 +1,61 @@
+.accordion {
+    width: 100%;
+    height: 80px;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.1);
+}
+
+.acc-active > p > .accordions-right::after {
+    content: "";
+    background: url(../images/icons/new_arrow_reversed.png) no-repeat;
+    background-size: contain;
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 18px;
+    height: 12px;
+    float: right;
+}
+
+.panel {
+    width: 100%;
+    padding-top: 1px;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.1);
+    transition: max-height 0.2s ease-out;
+    /*display: none;*/
+    overflow: hidden;
+    max-height: 0;
+}
+
+.accordions-left {
+    font-family: Open sans;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 27px;
+    margin-left: 28px;
+    float: left;
+    color: #16325C;
+}
+
+.accordions-right {
+    font-family: Open sans;
+    font-size: 13px;
+    margin-top: 33px;
+    margin-right: 19px;
+    float: right;
+    color: #16325C;
+}
+
+.accordions-right::after {
+    content: "";
+    background: url(../images/icons/new_arrow.png) no-repeat;
+    background-size: contain;
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 18px;
+    height: 12px;
+    float: right;
+}
