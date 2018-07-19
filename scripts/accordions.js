@@ -2,6 +2,9 @@ $(document).ready(function() {
     let accordions = $(".accordion");
 
     accordions.each(function(index) {
+        var hash = window.location.hash;
+        
+
         let acc = $(this),
             panel = acc.next(),
             acc_text = acc.children().children(".accordions-right");

@@ -5,6 +5,6 @@
 	<div>Рекомендуем воспользоваться сервисом «Здоровое сердце»</div>
 	<div class="plus_life help">+ 2 года жизни</div>
 
-	<a class="rec-button" href="" onclick="return false">Перейти</a>
+	<a class="rec-button" href="services.php#healthy-heart">Перейти</a>
 
 </div>

@@ -4,6 +4,6 @@
 
 	<div class="rec-text">Рекомендуем приобрести фитнес браслет</div>
 
-	<a class="rec-button" href="" onclick="return false">Перейти</a>
+	<a class="rec-button" href="shop.php">Перейти</a>
 
 </div>

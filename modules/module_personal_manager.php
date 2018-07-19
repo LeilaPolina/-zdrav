@@ -4,6 +4,6 @@
 
 	<div class="rec-text">Рекомендуем воспользоваться услугой «Персональный <br> менеджер здоровья»</div>
 
-	<a class="rec-button" href="" onclick="return false">Перейти</a>
+	<a class="rec-button" href="services.php#personal-manager">Перейти</a>
 
 </div>

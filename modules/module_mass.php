@@ -17,6 +17,6 @@
 		}
 	?>
 
-	<a class="rec-button" href="" onclick="return false">Перейти</a>
+	<a class="rec-button" href="services.php#weight">Перейти</a>
 
 </div>
