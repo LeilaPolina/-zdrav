@@ -265,57 +265,6 @@ h2.service-title {
     bottom: 15px;
 }
 
-.contact-column-left > .container-radio {
-    display: inline-block;
-    position: relative;
-    padding-top: 2px;
-    padding-left: 25px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    font-size: 13px;
-    color: #1F2F47;
-}
-
-.container-radio input {
-    position: absolute;
-    opacity: 0;
-}
-
-.checkmark-radio {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 16px;
-    width: 16px;
-    border: solid;
-    border-radius: 50%;
-    border-color: #D8DDE6;
-    border-width: thin;
-}
-
-.container-radio:hover input ~ .checkmark-radio {
-    background-color: #ccc;
-}
-
-.checkmark-radio:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-.container-radio input:checked ~ .checkmark-radio:after {
-    display: block;
-}
-  
-.container-radio .checkmark-radio:after {
-    top: 4px;
-    left: 4px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #00B0D2;
-}
-
 .service-analyses {
     margin-top: 30px;
     margin-left: 20px;
@@ -378,64 +327,6 @@ h2.service-title {
 .questionmark:hover .tooltip-content {
     visibility: visible;
 }
-
-.container {
-    display: inline-block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    font-size: 12px;
-    line-height: 15px;
-    color: #16325C;
-}
-  
-.container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
-  
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 16px;
-    width: 16px;
-    background-color: #FFFFFF;
-    border: solid #D8DDE6 1px;
-    border-radius: 2px;
-  }
-  
-.container:hover input ~ .checkmark {
-    background-color: #ccc;
-}
-  
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-  
-.container input:checked ~ .checkmark:after {
-    display: block;
-}
-  
-.container .checkmark:after {
-    left: 5px;
-    top: 1px;
-    width: 5px;
-    height: 9px;
-    border: solid #00B0D2;
-    border-width: 0 2px 2px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-} 
 
 .contact-column-right {
     display: inline-block;

@@ -98,6 +98,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/multiselect.css" />
 	<link rel="stylesheet" type="text/css" href="css/accordion.css" />
+	<link rel="stylesheet" type="text/css" href="css/input_radio.css" />
 	<link rel="stylesheet" href="css/test.css" />
 	<link rel="stylesheet" type="text/css" href="css/registration_login_windows.css" />
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
@@ -534,6 +535,41 @@
 		<p class="info">Создать семейный профиль</p>
 		<p class="allfam">(ребенок, муж, жена, мама, папа, родственник)</p>
 		<a class="" href="" onclick="return false">+ Добавить члена семьи</a>
+	</div>
+
+	
+	<div class="threeb cashback">
+		<div class="cashback-container-top">
+			<p><strong>Кэшбек</strong> (3% от всех заказов сделанных через сайт)</p>
+			<p>Сумма в обработке <strong>205р</strong> Доступно к снятию <strong>634р</strong></p>
+		</div>
+		<div class="cashback-container-bottom">
+			<div class="cashback-bottom-box">
+				<p>Перевести</p>
+				<input type="text">
+				<p class="text-lower">минимальная сумма снятия 500р</p>
+			</div>
+			<div class="cashback-bottom-box">
+				<label class="container-radio">
+                	<input type="radio" name="cashback">
+                	<span class="checkmark-radio"></span>
+                	<span>На телефон</span>
+            	</label>
+				<input type="text">
+			</div>
+			<div class="cashback-bottom-box">
+				<label class="container-radio">
+                	<input type="radio" name="cashback">
+                	<span class="checkmark-radio"></span>
+                	<span>На карту</span>
+				</label>
+				<img src="images/icons/cards.PNG">
+				<input type="text">
+			</div>
+		</div>
+		<div class="cashback-button-container">
+			<a class="cashback-button" href="#">Отправить</a>
+		</div>
 	</div>
 
 	<div class="services">

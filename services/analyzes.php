@@ -4,7 +4,7 @@
                     <div class="service-analyses">
                         <h1>По результатам теста вам рекомендуется сдать следующие анализы</h1>
 
-                        <label class="container">
+                        <label class="container-checkbox">
                             <input type="checkbox" checked="checked" class="analysis-checkbox">
                             <span class="checkmark"></span>
                             <span>Биохимическй анализ крови</span>
@@ -17,7 +17,7 @@
                             </div>
                             <a class="blood-info btn-info">Подробнее</a>
                         </div><br>
-                        <label class="container">
+                        <label class="container-checkbox">
                             <input type="checkbox" checked="checked" class="analysis-checkbox">
                             <span class="checkmark"></span>
                             <span>Общий анализ мочи</span>
@@ -30,7 +30,7 @@
                             </div>
                             <a class="pee-info btn-info">Подробнее</a>
                         </div><br>
-                        <label class="container">
+                        <label class="container-checkbox">
                             <input type="checkbox" class="analysis-checkbox">
                             <span class="checkmark"></span>
                             <span>Гастрокомплекс</span>
@@ -43,7 +43,7 @@
                             </div>
                             <a class="gastro-info btn-info">Подробнее</a>
                         </div><br>
-                        <label class="container">
+                        <label class="container-checkbox">
                             <input type="checkbox" class="analysis-checkbox">
                             <span class="checkmark"></span>
                             <span>Диагностика диабета, биохимический</span>
@@ -56,7 +56,7 @@
                             </div>
                             <a class="diabetes-info btn-info">Подробнее</a>
                         </div><br>
-                        <label class="container">
+                        <label class="container-checkbox">
                             <input type="checkbox" class="analysis-checkbox">
                             <span class="checkmark"></span>
                             <span>Кардиологический</span>
@@ -69,7 +69,7 @@
                             </div>
                             <a class="cardio-info btn-info">Подробнее</a>
                         </div><br>
-                        <label class="container">
+                        <label class="container-checkbox">
                             <input type="checkbox" class="analysis-checkbox">
                             <span class="checkmark"></span>
                             <span>Онкологический для мужчин, биохимический</span>
@@ -82,7 +82,7 @@
                             </div>
                             <a class="onco-m-info btn-info">Подробнее</a>
                         </div><br>
-                        <label class="container">
+                        <label class="container-checkbox">
                             <input type="checkbox" class="analysis-checkbox">
                             <span class="checkmark"></span>
                             <span>Онкологический для женщин, биохимический</span>
@@ -95,7 +95,7 @@
                             </div>
                             <a class="onco-f-info btn-info">Подробнее</a>
                         </div><br>
-                        <label class="container">
+                        <label class="container-checkbox">
                             <input type="checkbox" class="analysis-checkbox">
                             <span class="checkmark"></span>
                             <span>Диагностика сосудистых заболеваний головного мозга</span>
@@ -109,7 +109,7 @@
                             <a class="vessels-info btn-info">Подробнее</a>
                         </div><br>
                         
-                        <label class="container">
+                        <label class="container-checkbox">
                             <input type="checkbox" class="analysis-checkbox">
                             <span class="checkmark"></span>
                             <span>Гормональный профиль (комплекс) для мужчин</span>
@@ -122,7 +122,7 @@
                             </div>
                             <a class="hormones-m-info btn-info">Подробнее</a>
                         </div><br>
-                        <label class="container">
+                        <label class="container-checkbox">
                             <input type="checkbox" class="analysis-checkbox">
                             <span class="checkmark"></span>
                             <span>Гормональный профиль (комплекс) для женщин</span>
@@ -135,7 +135,7 @@
                             </div>
                             <a class="hormones-f-info btn-info">Подробнее</a>
                         </div><br>
-                        <label class="container">
+                        <label class="container-checkbox">
                             <input type="checkbox" class="analysis-checkbox">
                             <span class="checkmark"></span>
                             <span>Комплексный анализ крови на витамины (A, D, E, K, C, B1, B5, B6, В9, B12)</span>

@@ -175,6 +175,81 @@ body {
 	margin-top: 6px;
 }
 
+.cashback {
+	font-size: 15px;
+	font-family: Open Sans;
+	color: #374963;
+	padding-bottom: 30px;
+}
+
+.cashback-container-top {
+	padding-top: 30px;
+	margin-left: 40px;
+}
+
+.cashback-container-top > p {
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+
+.cashback-container-bottom {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-left: 40px;
+}
+
+.cashback-bottom-box {
+	width: 33%;
+}
+
+.cashback-bottom-box > input[type=text] {
+	width: 70%;
+	height: 32px;
+	font-size: 20px;
+	color: #374963;
+}
+
+.cashback-bottom-box > .container-radio {
+	margin-top: 11px;
+	margin-bottom: 13px;
+}
+
+.cashback-bottom-box > p {
+	font-size: 13px;
+}
+
+.cashback-bottom-box > .text-lower {
+	font-size: 12px;
+	margin-top: 2%;
+	color: #6F949E;
+}
+
+.cashback-bottom-box > img {
+	margin-left: 25%;
+	vertical-align: middle;
+}
+
+.cashback-button-container {
+	display: flex;
+	justify-content: center;
+}
+
+.cashback-button {
+	display: block;
+	width: 140px;
+	height: 32px;
+	background: #00B0D2;
+	border-radius: 4px;
+	font-family: Open Sans;
+	line-height: normal;
+	font-size: 15px;
+	line-height: 32px;
+	text-align: center;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
 .rec-content {
 	margin: 50px 0px 0px 50px;
 }

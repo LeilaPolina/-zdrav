@@ -16,7 +16,7 @@
                     <p class="total">Стоимость</p> <p class="checkup-pre-price">5900 руб.</p>
                     <h1 class="additional">Дополнительно можно провести следующие обследования:</h1>
                     
-                    <label class="container">
+                    <label class="container-checkbox">
                             <input type="checkbox" checked="checked" class="checkup-checkbox">
                             <span class="checkmark"></span>
                             <span>УЗИ брюшной полости на дому</span>
@@ -33,7 +33,7 @@
                         <p>селезенку.</p>
                     </div>
 
-                    <label class="container">
+                    <label class="container-checkbox">
                             <input type="checkbox" checked="checked" class="checkup-checkbox">
                             <span class="checkmark"></span>
                             <span>УЗИ печени и желчного органа</span>
@@ -43,7 +43,7 @@
                         <div class="uzi-price">+ 1500 руб.</div>
                     </div><br>
 
-                    <label class="container">
+                    <label class="container-checkbox">
                             <input type="checkbox" checked="checked" class="checkup-checkbox">
                             <span class="checkmark"></span>
                             <span>УЗИ мочевого органа и мочеточников</span>
@@ -53,7 +53,7 @@
                         <div class="uzi-price">+ 1500 руб.</div>
                     </div><br>
 
-                    <label class="container">
+                    <label class="container-checkbox">
                             <input type="checkbox" checked="checked" class="checkup-checkbox">
                             <span class="checkmark"></span>
                             <span>УЗИ сосудов нижних конечностей (вены + артерии)</span>
@@ -63,7 +63,7 @@
                         <div class="uzi-price">+ 1500 руб.</div>
                     </div><br>
 
-                    <label class="container">
+                    <label class="container-checkbox">
                             <input type="checkbox" checked="checked" class="checkup-checkbox">
                             <span class="checkmark"></span>
                             <span>УЗИ сердца</span>
@@ -73,7 +73,7 @@
                         <div class="uzi-price">+ 2000 руб.</div>
                     </div><br>
 
-                    <label class="container">
+                    <label class="container-checkbox">
                             <input type="checkbox" checked="checked" class="checkup-checkbox">
                             <span class="checkmark"></span>
                             <span>Рентген легких на дому</span>

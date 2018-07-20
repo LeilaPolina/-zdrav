@@ -41,6 +41,8 @@
     <link rel="stylesheet" href="css/services_windows.css" />
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/demo_btn.css" />
+    <link rel="stylesheet" type="text/css" href="css/input_radio.css" />
+    <link rel="stylesheet" type="text/css" href="css/input_checkbox.css" />
     <script src="jquery/jquery-3.1.1.min.js"></script>
     <script src="jquery/jquery.maskedinput.min.js"></script>
     <script src="scripts/demo.js"></script>
