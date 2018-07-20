@@ -243,8 +243,15 @@
 
 	<div class="rec-list">
 		<?php 
-		
+		$job = $_SESSION['result_test']['work'];
+
 		include './modules/module_mass.php';
+
+		include './modules/module_scales.php';
+
+		if($_SESSION['result_test']['food'] == "Не здоровое" || strpos($_SESSION['result_test']['dead'], "Инсульт") !== false) {
+			include './modules/module_tester.php';
+		}
 
 		if ($_SESSION['result_test']['smoke'] == 1) {
 			include './modules/module_smoke.php';
@@ -260,28 +267,29 @@
 			include './modules/module_immunity.php';
 		}
 
-		if ($_SESSION['result_test']['healthyheart'] == 1 || $_SESSION['result_test']['work'] == "Физически тяжелая") {
-			include './modules/module_ekg.php';
-		}
-
 		if ($_SESSION['result_test']['healthyheart'] == 1) {
 			include './modules/module_healthyheart.php';
 		}
 
-		include './modules/module_scales.php';
+		if ($_SESSION['result_test']['healthyheart'] == 1 || $job == "Физически тяжелая") {
+			include './modules/module_ekg.php';
+		}
+		
+		if($_SESSION['result_test']['healthyheart'] == 1 || $job == "На ногах") {
+			include './modules/module_tonometer.php';
+		}
 
 		if ($_SESSION['result_test']['personal_manager'] == 1) {
 			include './modules/module_personal_manager.php';
 		}
 
-		$job = $_SESSION['result_test']['work'];
 		if($job == "Руководящая" || $job == "Творческая" || $job == "Офисная" || $job == "Не работаю" || $_SESSION['result_test']['sport'] == "Занимаюсь более 1 раза в неделю") {
 			include './modules/module_smart_watch.php';
 		}
 
-		//if(/* тестер холестерина */) {
-
-		//}
+		if(strpos($_SESSION['result_test']['dead'], "Сахарный диабет") !== false) {
+			include './modules/module_glucose.php';
+		}
 
 		?>
 	</div>
