@@ -1,9 +1,10 @@
 <?php include('includes/config.php'); ?>
 <?php
+	/*
 	if(!$_SESSION['test_completed']){
 		header('Location: https://здравствую.рф/');
 	}
-	
+	*/
 	function recToBuy ($dead) {
 		$listToBuy = array();
 		$txtListToBuy = '';
@@ -99,6 +100,7 @@
 	<link rel="stylesheet" type="text/css" href="css/multiselect.css" />
 	<link rel="stylesheet" type="text/css" href="css/accordion.css" />
 	<link rel="stylesheet" type="text/css" href="css/input_radio.css" />
+	<link rel="stylesheet" type="text/css" href="css/input_toggle.css" />
 	<link rel="stylesheet" href="css/test.css" />
 	<link rel="stylesheet" type="text/css" href="css/registration_login_windows.css" />
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
@@ -127,7 +129,7 @@
 	<script src="scripts/test_margins.js"></script>
 	<script src="scripts/multiselect.js"></script>
 	<script src="scripts/accordions.js"></script>
-	
+	<script src="scripts/reminders.js"></script>
 	
 	<!-- Yandex.Metrika counter --> 
 	<script type="text/javascript">
@@ -571,6 +573,95 @@
 			<a class="cashback-button" href="#">Отправить</a>
 		</div>
 	</div>
+
+	<div id="reminders" class="accordion">
+        <p>
+            <span class="accordions-left">Напоминания</span>
+            <span class="accordions-right">Открыть</span>
+        </p>
+    </div>
+    <div class="panel">
+        <div class="panel-content">
+            <h1 class="reminders-title">Добавить напоминание</h1>
+			<div class="reminders-container">
+				<div class="reminders-box">
+					<p>Вид напоминания</p>
+					<select>
+						<option>Принять лекарство</option>
+						<option>Сдать анализы</option>
+						<option>Пройти обследование</option>
+						<option>Посетить врача</option>
+						<option>Другое</option>
+					</select>
+				</div>
+				<div class="reminders-box">
+					<p>Повторение</p>
+					<select>
+						<option>Один раз</option>
+						<option>Каждый день</option>
+						<option>Раз в неделю</option>
+						<option>Раз в месяц</option>
+						<option>Раз в 3 месяца</option>
+						<option>Раз в 6 месяцев</option>
+						<option>Раз в год</option>
+					</select>
+				</div>
+				<div class="reminders-box">
+					<p>Дата</p>
+					<input type="date">
+				</div>
+				<div class="reminders-box">
+					<p>Время</p>
+					<input type="text" id="reminders-time">
+				</div>
+			</div>
+			<div class="reminders-container">
+				<div class="reminders-box">
+					<p>Уведомление</p>
+					<select>
+						<option>SMS</option>
+						<option>Почта</option>
+						<option>Viber</option>
+						<option>WhatsApp</option>
+					</select>
+				</div>
+				<div class="reminders-box">
+					<p>Название</p>
+					<input type="text">
+				</div>
+			</div>
+			<a class="save-rem-button">Добавить</a>
+			<h1 class="reminders-title">Мои напоминания</h1>
+			<table class="table-reminders">
+				<tr>
+					<td class="rem-type">Пройти обследование</td>
+					<td class="rem-info">Раз в 6 месяцев</td>
+					<td class="rem-info">23.03 в 10:00</td>
+					<td class="rem-info">WhatsApp</td>
+					<td class="rem-name">Онкомаркеры</td>
+					<td>
+						<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="rem-type">Сдать анализы</td>
+					<td class="rem-info">1 раз в год</td>
+					<td class="rem-info">23.03 в 10:00</td>
+					<td class="rem-info">Почта</td>
+					<td class="rem-name">УЗИ молочной железы</td>
+					<td>
+						<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+						</label>
+					</td>
+				</tr>
+			</table>
+        </div>
+    </div>
 
 	<div class="services">
 		<p>Сервисы</p>
