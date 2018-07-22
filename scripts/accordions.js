@@ -11,7 +11,7 @@ function open_acc(acc, panel, acc_text){
 
 $(document).ready(function() {
     let accordions = $(".accordion");
-
+    
     let hash = window.location.hash;
     if(hash != ""){
         let acc;

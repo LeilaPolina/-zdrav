@@ -46,7 +46,7 @@
     <script src="jquery/jquery-3.1.1.min.js"></script>
     <script src="jquery/jquery.maskedinput.min.js"></script>
     <script src="scripts/demo.js"></script>
-    <script src="scripts/services_modal_texts.js"></script>
+    <script src="scripts/info_modal_texts.js"></script>
     <script src="scripts/info_modals.js"></script>
     <script src="scripts/services.js"></script>
     <script src="scripts/accordions.js"></script>

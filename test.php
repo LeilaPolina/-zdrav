@@ -130,6 +130,7 @@
 	<script src="scripts/test_margins.js"></script>
 	<script src="scripts/multiselect.js"></script>
 	<script src="scripts/accordions.js"></script>
+	<script src="scripts/info_modal_texts.js"></script>
 	<script src="scripts/info_modals.js"></script>
 	<script src="scripts/reminders.js"></script>
 	

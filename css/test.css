@@ -1177,6 +1177,7 @@ a.be-dad > p:before {
 	font-size: 13px;
 	color: #00B0D2;
 	text-decoration: none;
+	cursor: pointer;
 }
 /* 
 .help-reverse:before {
