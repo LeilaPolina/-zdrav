@@ -26,7 +26,7 @@
         <div class="modal-text-content">
             <h1 class="modal-title" id="info-modal-title"></h1>
             <p class="modal-text" id="info-modal-text"></p>
-            <button id="notify-me-button" class="modal-button close-modal">ОК</button>
+            <button class="modal-button close-modal">ОК</button>
         </div>
     </div>
 </div>

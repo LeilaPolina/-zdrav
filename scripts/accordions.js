@@ -14,8 +14,14 @@ $(document).ready(function() {
 
     let hash = window.location.hash;
     if(hash != ""){
-        let acc = $(hash),
-            panel = acc.next(),
+        let acc;
+        if (hash == "#register") {
+            acc = $("#register-acc");
+        } else {
+            acc = $(hash);
+        }
+
+        let panel = acc.next(),
             acc_text = acc.children().children(".accordions-right");        
 
         open_acc(acc, panel, acc_text);

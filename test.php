@@ -300,7 +300,7 @@
 	</div>
 
 	<form name="personal-inf"  id="register">
-	<div class="accordion">
+	<div id="register-acc" class="accordion">
 		<p>
 			<span class="accordions-left">Общие сведения</span>
 			<span class="accordions-right">Открыть</span>
