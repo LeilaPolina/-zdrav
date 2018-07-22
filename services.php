@@ -38,7 +38,7 @@
     <title>Сервисы</title>
     <link rel="stylesheet" href="css/test.css" />
     <link rel="stylesheet" href="css/services.css" />
-    <link rel="stylesheet" href="css/services_windows.css" />
+    <link rel="stylesheet" href="css/info_modals.css" />
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/demo_btn.css" />
     <link rel="stylesheet" type="text/css" href="css/input_radio.css" />
@@ -47,6 +47,7 @@
     <script src="jquery/jquery.maskedinput.min.js"></script>
     <script src="scripts/demo.js"></script>
     <script src="scripts/services_modal_texts.js"></script>
+    <script src="scripts/info_modals.js"></script>
     <script src="scripts/services.js"></script>
     <script src="scripts/accordions.js"></script>
 
@@ -302,37 +303,8 @@
     </div>
     <!--button class="button-unregistered-wip">Open unregistered Modal</button-->
     <!--button class="button-registered-wip">Open registered Modal</button-->
-    <div id="unregistered-wip" class="modal-window modal-hidden">
-        <div class="modal-content">
-            <span class="close close-cross">×</span>
-            <div class="modal-text-content">
-                <h1 class="modal-title">Сервис в разработке</h1>
-                <p class="modal-text">Данный сервис находится в разработке. Зарегистрируйте Личный кабинет, оставьте заявку и мы сообщим вам когда им можно будет воспользоваться.</p>
-                <button id="register-button" class="modal-button" onclick="window.location = 'test.php#register';">Зарегистрироваться</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="registered-wip" class="modal-window modal-hidden">
-        <div class="modal-content">
-            <span class="close close-cross">×</span>
-            <div class="modal-text-content">
-                <h1 class="modal-title">Сервис в разработке</h1>
-                <p class="modal-text">Данный сервис находится в разработке. Мы сообщим вам, когда им можно будет воспользоваться.</p>
-                <button id="notify-me-button" class="modal-button close">ОК</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="info-modal" class="modal-window modal-hidden">
-        <div class="modal-content">
-            <span class="close close-cross">×</span>
-            <div class="modal-text-content">
-                <h1 class="modal-title" id="info-modal-title"></h1>
-                <p class="modal-text" id="info-modal-text"></p>
-                <button id="notify-me-button" class="modal-button close">ОК</button>
-            </div>
-        </div>
-    </div>
+    <?php 
+        include 'info_modals.php';
+    ?>
 </body>
 </html>

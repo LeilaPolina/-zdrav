@@ -248,6 +248,7 @@ body {
 	text-align: center;
 	color: #FFFFFF;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .rec-content {
@@ -1249,6 +1250,7 @@ a.be-dad > p:before {
 	text-decoration: none;
 	margin-top: 25px;
 	margin-bottom: 35px;
+	cursor: pointer;
 }
 
 .table-reminders {

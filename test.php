@@ -101,6 +101,7 @@
 	<link rel="stylesheet" type="text/css" href="css/accordion.css" />
 	<link rel="stylesheet" type="text/css" href="css/input_radio.css" />
 	<link rel="stylesheet" type="text/css" href="css/input_toggle.css" />
+	<link rel="stylesheet" href="css/info_modals.css" />
 	<link rel="stylesheet" href="css/test.css" />
 	<link rel="stylesheet" type="text/css" href="css/registration_login_windows.css" />
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
@@ -129,6 +130,7 @@
 	<script src="scripts/test_margins.js"></script>
 	<script src="scripts/multiselect.js"></script>
 	<script src="scripts/accordions.js"></script>
+	<script src="scripts/info_modals.js"></script>
 	<script src="scripts/reminders.js"></script>
 	
 	<!-- Yandex.Metrika counter --> 
@@ -570,7 +572,7 @@
 			</div>
 		</div>
 		<div class="cashback-button-container">
-			<a class="cashback-button" href="#">Отправить</a>
+			<a class="cashback-button button-unregistered-wip">Отправить</a>
 		</div>
 	</div>
 
@@ -630,7 +632,7 @@
 					<input type="text">
 				</div>
 			</div>
-			<a class="save-rem-button">Добавить</a>
+			<a class="save-rem-button button-unregistered-wip">Добавить</a>
 			<h1 class="reminders-title">Мои напоминания</h1>
 			<table class="table-reminders">
 				<tr>
@@ -740,6 +742,9 @@
     ?>
 </div>
 
+<?php 
+	include("info_modals.php");
+?>
 
 <!--#######################Register Test Modal#####################################-->  
 <div class="modal-window" id="test-register-modal"> 
@@ -775,7 +780,6 @@
 		</div>
 	</div>
 </div>
-		
 		
 <!--######################Confirm modal######################################-->
 <div class="modal-window" id="confirm-modal">
