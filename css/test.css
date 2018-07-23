@@ -825,7 +825,7 @@ a.be-dad > p:before {
 }
 /*SIGN OUT*/
 #sign-out-lk > p:before {
-	background:url('sign_out.PNG') no-repeat;
+	background:url('sign_out.png') no-repeat;
 	width:15px;
 }
 
