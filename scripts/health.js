@@ -245,13 +245,82 @@ $( document ).ready(function() {
 		});
 	}
 	
+	function show_graph(index1_values,index_name,index2_values) {
+		var data = [],layout={};
+		var dates=["05.06.2017", "25.09.2017", "01.01.2018", "15.05.2018","01.07.2018"];
+		if(index2_values!=undefined) {
+			var trace1 = {
+				  y: index1_values,
+				  x: dates, 
+				  mode: 'lines',
+				  name: 'Верхнее давление'
+			};
+			var trace2 = {
+			  y: index2_values,
+			  x: dates, 
+			  mode: 'lines',
+			  name: 'Нижнее давление'
+			};
+			data=[trace1,trace2];
+			layout = {title:"График "+index_name};
+		}
+		else {
+			 var trace = {
+				  y: index1_values,
+				  x: dates, 
+				  type: 'scatter'
+			};
+			data=[trace];
+			layout = {title:"График "+$("#"+index_name+"-index").text() };			
+		}
+		
+		Plotly.newPlot('graph-modal-body', data,layout);
+		$(".modebar").css("display","none");
+		$(".modebar--hover").css("display","none");
+		$("#graph-modal").css("display","block");
+	}
+	
+	
+	function get_rand_value_in_range(min, max) {
+		var x=Math.random() * (max - min) + min ;
+		return x.toFixed(1);
+	}
+
+	function generate_random_index_values(index_name) {
+		var lower_norm=indexes_array[index_name].lower_norm;
+		var upper_norm=indexes_array[index_name].upper_norm;
+		var rand_values=[];
+		for(i=0;i<4;i++) {
+			if(index_name=="upper_blood_pressure" || index_name=="lower_blood_pressure"){
+				rand_values.push(Math.round(get_rand_value_in_range(lower_norm,upper_norm)));
+			}
+			else {
+				rand_values.push(get_rand_value_in_range(lower_norm,upper_norm));
+			}
+		}
+		rand_values.push(indexes_array[index_name].val);
+		return rand_values;
+	}
+	
 	$(".graph").click(function(e){
 		e.preventDefault();
 		var btn_id=e.target.id;
 		var name=btn_id.split('-')[0];
-		ask_last_results(name, show_dates_results);
+		if(name=="pressure") {
+			show_graph(generate_random_index_values('upper_blood_pressure'),"Давление",generate_random_index_values('lower_blood_pressure'));
+		}
+		else {
+			show_graph(generate_random_index_values(name),name);
+		}
+		/*
+		ask_last_results(name, show_dates_results);*/
 	});
 
+	$("#graph-close").click(function(e){
+		e.preventDefault();
+		$("#graph-modal").css("display","none");
+	});
+	
 	if(document.getElementById('go-to-result-test-save')){
 		fill_demo_values();
 		if(show_other_indexes==true) {

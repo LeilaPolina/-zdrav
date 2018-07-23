@@ -21,7 +21,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="erythrocytes-brd"></td>
 					<td class="date-col index-date" id="erythrocytes-date">&mdash;</td>
-					<td class="index-col index-name">Эритроциты</td>
+					<td class="index-col index-name" id="erythrocytes-index">Эритроциты</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="erythrocytes-span">&mdash;</span>
 					</td>
@@ -42,7 +42,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="hemoglobin-brd"></td>
 					<td class="date-col index-date" id="hemoglobin-date">&mdash;</td>
-					<td class="index-col index-name">Гемоглобин</td>
+					<td class="index-col index-name" id="hemoglobin-index">Гемоглобин</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="hemoglobin-span">&mdash;</span>
 					</td>
@@ -63,7 +63,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="hematocrit-brd"></td>
 					<td class="date-col index-date" id="hematocrit-date">&mdash;</td>
-					<td class="index-col index-name">Гематокрит</td>
+					<td class="index-col index-name" id="hematocrit-index">Гематокрит</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="hematocrit-span">&mdash;</span>
 					</td>
@@ -85,7 +85,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="avg_erythrocytes-brd"></td>
 					<td class="date-col index-date" id="avg_erythrocytes-date">&mdash;</td>
-					<td class="index-col index-name">Средний объем эритроцита (MCV), фл</td>
+					<td class="index-col index-name" id="avg_erythrocytes-index">Средний объем эритроцита (MCV), фл</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="avg_erythrocytes-span">&mdash;</span>
 					</td>
@@ -106,7 +106,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="avg_hemoglobin_content_in_erythrocytes-brd"></td>
 					<td class="date-col index-date" id="avg_hemoglobin_content_in_erythrocytes-date">&mdash;</td>
-					<td class="index-col index-name">Среднее содержание гемоглобина в эритроците (MCH), пг</td>
+					<td class="index-col index-name" id="avg_hemoglobin_content_in_erythrocytes-index">Среднее содержание гемоглобина в эритроците (MCH), пг</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="avg_hemoglobin_content_in_erythrocytes-span">&mdash;</span>
 					</td>
@@ -127,7 +127,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="avg_hemoglobin_concentration_in_erythrocytes-brd"></td>
 					<td class="date-col index-date" id="avg_hemoglobin_concentration_in_erythrocytes-date">&mdash;</td>
-					<td class="index-col index-name">Средняя  концентрация гемоглобина в эритроците (MCHС), г/дл</td>
+					<td class="index-col index-name" id="avg_hemoglobin_concentration_in_erythrocytes-index">Средняя  концентрация гемоглобина в эритроците (MCHС), г/дл</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="avg_hemoglobin_concentration_in_erythrocytes-span">&mdash;</span>
 					</td>
@@ -148,7 +148,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="color_index-brd"></td>
 					<td class="date-col index-date" id="color_index-date">&mdash;</td>
-					<td class="index-col index-name">Цветовой показатель</td>
+					<td class="index-col index-name" id="color_index-index">Цветовой показатель</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="color_index-span">&mdash;</span>
 					</td>
@@ -169,7 +169,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="reticulocytes-brd"></td>
 					<td class="date-col index-date" id="reticulocytes-date">&mdash;</td>
-					<td class="index-col index-name">Ретикулоциты (RTC), %</td>
+					<td class="index-col index-name" id="reticulocytes-index">Ретикулоциты (RTC), %</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="reticulocytes-span">&mdash;</span>
 					</td>
@@ -190,7 +190,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="platelets-brd"></td>
 					<td class="date-col index-date" id="platelets-date">&mdash;</td>
-					<td class="index-col index-name">Тромбоциты (PLT), 10*9 клеток/л</td>
+					<td class="index-col index-name" id="platelets-index">Тромбоциты (PLT), 10*9 клеток/л</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="platelets-span">&mdash;</span>
 					</td>
@@ -211,7 +211,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="leucocytes-brd"></td>
 					<td class="date-col index-date" id="leucocytes-date">&mdash;</td>
-					<td class="index-col index-name">Лейкоциты (WBC), 10*9 клеток/л</td>
+					<td class="index-col index-name" id="leucocytes-index">Лейкоциты (WBC), 10*9 клеток/л</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="leucocytes-span">&mdash;</span>
 					</td>
@@ -232,7 +232,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="segment_nuclear_neutrophils-brd"></td>
 					<td class="date-col index-date" id="segment_nuclear_neutrophils-date">&mdash;</td>
-					<td class="index-col index-name">Сегментоядерные нейтрофилы (NE%), %</td>
+					<td class="index-col index-name" id="segment_nuclear_neutrophils-index">Сегментоядерные нейтрофилы (NE%), %</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="segment_nuclear_neutrophils-span">&mdash;</span>
 					</td>
@@ -253,7 +253,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="stab_neutrophils-brd"></td>
 					<td class="date-col index-date" id="stab_neutrophils-date">&mdash;</td>
-					<td class="index-col index-name">Палочкоядерные нейтрофилы, %</td>
+					<td class="index-col index-name" id="stab_neutrophils-index">Палочкоядерные нейтрофилы, %</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="stab_neutrophils-span">&mdash;</span>
 					</td>
@@ -274,7 +274,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="myelocytes-brd"></td>
 					<td class="date-col index-date" id="myelocytes-date">&mdash;</td>
-					<td class="index-col index-name">Миелоциты (Mie), %</td>
+					<td class="index-col index-name" id="myelocytes-index">Миелоциты (Mie), %</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="myelocytes-span">&mdash;</span>
 					</td>
@@ -295,7 +295,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="meta_myelocytes-brd"></td>
 					<td class="date-col index-date" id="meta_myelocytes-date">&mdash;</td>
-					<td class="index-col index-name">Метамиелоциты (юные), %</td>
+					<td class="index-col index-name" id="meta_myelocytes-index">Метамиелоциты (юные), %</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="meta_myelocytes-span">&mdash;</span>
 					</td>
@@ -316,7 +316,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="lymphocytes-brd"></td>
 					<td class="date-col index-date" id="lymphocytes-date">&mdash;</td>
-					<td class="index-col index-name">Лимфоциты (LYM%), %</td>
+					<td class="index-col index-name" id="lymphocytes-index">Лимфоциты (LYM%), %</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="lymphocytes-span">&mdash;</span>
 					</td>
@@ -337,7 +337,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="monocytes-brd"></td>
 					<td class="date-col index-date" id="monocytes-date">&mdash;</td>
-					<td class="index-col index-name">Моноциты (MON%), %</td>
+					<td class="index-col index-name" id="monocytes-index">Моноциты (MON%), %</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="monocytes-span">&mdash;</span>
 					</td>
@@ -358,7 +358,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="eosinophils-brd"></td>
 					<td class="date-col index-date" id="eosinophils-date">&mdash;</td>
-					<td class="index-col index-name">Эозинофилы (EO%), %</td>
+					<td class="index-col index-name" id="eosinophils-index">Эозинофилы (EO%), %</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="eosinophils-span">&mdash;</span>
 					</td>
@@ -379,7 +379,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="basophils-brd"></td>
 					<td class="date-col index-date" id="basophils-date">&mdash;</td>
-					<td class="index-col index-name">Базофилы (BA%), %</td>
+					<td class="index-col index-name" id="basophils-index">Базофилы (BA%), %</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="basophils-span">&mdash;</span>
 					</td>
@@ -400,7 +400,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="plasmocytes-brd"></td>
 					<td class="date-col index-date" id="plasmocytes-date">&mdash;</td>
-					<td class="index-col index-name">Плазматические клетки (плазмоциты), %</td>
+					<td class="index-col index-name" id="plasmocytes-index">Плазматические клетки (плазмоциты), %</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="plasmocytes-span">&mdash;</span>
 					</td>
@@ -421,7 +421,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="ESR-brd"></td>
 					<td class="date-col index-date" id="ESR-date">&mdash;</td>
-					<td class="index-col index-name">СОЭ (ESR), мм/час %</td>
+					<td class="index-col index-name" id="ESR-index">СОЭ (ESR), мм/час %</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="ESR-span">&mdash;</span>
 					</td>
@@ -438,7 +438,5 @@
 						</div>
 					</td>
 				</tr>
-				
-				
 			</table>
 		</div>

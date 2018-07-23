@@ -353,3 +353,37 @@
 	font-size:1.25em;
 }
 
+
+/*Graph modal*/
+#graph-modal-content {
+	height:510px;
+	width:1020px;
+}
+
+#graph-modal-header {
+	padding-top:0 !important;
+}
+
+#graph-modal-body-wrapper {
+	position:relative;
+}
+
+#graph-input-wrapper{
+	position:absolute;
+	top:40%;
+	display:inline-block;
+}
+
+#graph-modal-body{
+	margin:5px 0 0 0;
+	display:inline-block
+}
+
+.graph-label{
+	font-size:12px;
+}
+
+#show-btn{
+	margin:5px 0 0 0;
+}
+

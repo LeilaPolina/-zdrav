@@ -15,6 +15,7 @@
 	
 	<!--SCRIPTS-->
     <script src="jquery/jquery-3.1.1.min.js"></script>
+	<script src="scripts/plotly-latest.min.js"></script>
 	<script src="scripts/errors.js"></script>
 	<script src="scripts/init_indexes.js"></script>
 	<script src="scripts/demo_indexes.js"></script>
@@ -167,7 +168,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="cholesterol-brd"></td>
 					<td class="date-col index-date" id="cholesterol-date">&mdash;</td>
-					<td class="index-col index-name">Холестерин общий</td>
+					<td class="index-col index-name" id="cholesterol-index">Холестерин общий</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="cholesterol-span">&mdash;</span>
 					</td>
@@ -188,7 +189,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="glucose-brd" ></td>
 					<td class="date-col index-date" id="glucose-date">&mdash;</td>
-					<td class="index-col index-name">Сахар</td>
+					<td class="index-col index-name" id="glucose-index">Сахар</td>
 					<td class="value-col index-value">
 						<span class="index-span" id="glucose-span">&mdash;</span>
 					</td>
@@ -209,7 +210,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="blood-pressure-brd"></td>
 					<td class="date-col index-date" id="blood-pressure-date">&mdash;</td>
-					<td class="index-col index-name">Давление</td>
+					<td class="index-col index-name" id="pressure-index">Давление</td>
 					<td class="value-col index-value">
 						
 						<div class="blood-spans-wrapper">
@@ -223,7 +224,7 @@
 					</td>
 					<td class="estimation-col index-estimation" id="blood-pressure-estm">&mdash;</td>
 					<td class="graph-col index-graph">
-						<div class="index-graph-img-wrapper graph" id="blood-pressure-graph"></div>
+						<div class="index-graph-img-wrapper graph" id="pressure-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
@@ -235,7 +236,7 @@
 				<tr class="indexes-row">
 					<td class="border-col" id="weight-brd"></td>
 					<td class="date-col index-date" id="weight-date">&mdash;</td>
-					<td class="index-col index-name">Вес</td>
+					<td class="index-col index-name" id="weight-index">Вес</td>
 					<td class="value-col index-value">
 						<span class="index-span" id="weight-span">&mdash;</span>
 					</td>
@@ -313,6 +314,32 @@
 						<a id="acticle" href="#"></a></p>
 						<div id="modal-recommendations">
 							<p id="recommendations-p"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	<!--#################################Modal Window For Graph#################################-->
+	<div class="modal-window" id="graph-modal">
+			<div class="modal-window-content"  id="graph-modal-content">
+				<div class="modal-window-body">
+					<div class="modal-header sm-body" id="reason_header">
+						<span class="close" id="graph-close">&times;</span>
+						<div class="modal-title" id="graph-modal-title"></div>
+					</div>
+					<div id="graph-modal-body-wrapper">
+						<div id="graph-modal-body"></div>
+						<div class="input-date" id="graph-input-wrapper">
+								с <input type="date" class="modal-input" id="graph-date-1"  disabled>
+								по <input type="date" class="modal-input" id="graph-date-2"  disabled><br>
+								<div>
+									<input type="checkbox" id="show-all" />
+									<label class="graph-label" for="show-all">Все</label>
+									<input type="checkbox" id="show-forecast" />
+									<label class="graph-label" for="show-forecast">Показать прогноз</label><br>
+									<a type="button" class="modal-btn" id="show-btn" disabled>Показать</a>
+								</div>
 						</div>
 					</div>
 				</div>
