@@ -165,12 +165,12 @@
 	<div class="wrapper">
 		<div class="menu-logo"></div>
 		<div class="menu-nav">
-			<a id="general-inf" href="general_data.php" style=""><p>Общие сведения</p></a>
-			<a id="health-in-numbers" href="health.php" style=""><p>Моё здоровье в цифрах</p></a>
-			<a id="my-documents" href="docs.php" style=""><p>Мои документы</p></a>
-			<a id="shop" href="shop.php" style=""><p>Магазин</p></a>
-			<a id="services" href="" style="" onclick="return false"><p>Сервисы</p></a>
-			<a id="sign-out-lk" href="services.php" style=""><p>Выход</p></a>
+			<a id="general-inf" href="general_data.php"><p>Общие сведения</p></a>
+			<a id="health-in-numbers" href="health.php"><p>Моё здоровье в цифрах</p></a>
+			<a id="my-documents" href="docs.php"><p>Мои документы</p></a>
+			<a id="shop" href="shop.php"><p>Магазин</p></a>
+			<a id="services" href="services.php"><p>Сервисы</p></a>
+			<a id="sign-out-lk" href=""><p>Выход</p></a>
 		</div>
 	</div>
 </div>

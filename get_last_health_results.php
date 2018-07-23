@@ -6,7 +6,6 @@
             return 'none';
         }
         try{
-            // для давления нужно менять запрос так как запрашивать нужно две строки на каждую дату
             if($result_name === 'pressure')
             {
                 $get_last_query = $db->prepare('
@@ -52,8 +51,7 @@
                 else{
                     return 'none';
                 }
-            } 
-            // для всех остальных результатов нужно только по одной строке       
+            }       
             else{
                 $get_last_query = $db->prepare('
                     SELECT DISTINCT result_date, current_value
