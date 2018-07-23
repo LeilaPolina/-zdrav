@@ -568,7 +568,7 @@
                 	<span class="checkmark-radio"></span>
                 	<span>На карту</span>
 				</label>
-				<img src="images/icons/cards.PNG">
+				<img src="images/icons/cards.png">
 				<input type="text">
 			</div>
 		</div>
