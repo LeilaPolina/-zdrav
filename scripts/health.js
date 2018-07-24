@@ -271,7 +271,11 @@ $( document ).ready(function() {
 				  type: 'scatter'
 			};
 			data=[trace];
-			layout = {title:"График "+$("#"+index_name+"-index").text() };			
+			layout = {
+				title:"График "+$("#"+index_name+"-index").text(),
+				xaxis:{fixedrange: true},
+				yaxis:{fixedrange: true},
+				};			
 		}
 		
 		Plotly.newPlot('graph-modal-body', data,layout);
@@ -304,6 +308,7 @@ $( document ).ready(function() {
 	
 	$(".graph").click(function(e){
 		e.preventDefault();
+		if(document.getElementById('go-to-result-test-save')){
 		var btn_id=e.target.id;
 		var name=btn_id.split('-')[0];
 		if(name=="pressure") {
@@ -312,6 +317,7 @@ $( document ).ready(function() {
 		else {
 			show_graph(generate_random_index_values(name),name);
 		}
+	}
 		/*
 		ask_last_results(name, show_dates_results);*/
 	});
