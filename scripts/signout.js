@@ -1,5 +1,5 @@
 $(document).ready(function(){
-				$("#sign-out-lk").click(function (e) {
+				$(".sign-out").click(function (e) {
 				e.preventDefault();
 				$.ajax({
 				type : 'POST',

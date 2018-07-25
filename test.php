@@ -127,6 +127,7 @@
 	<script src="jquery/jquery.maskedinput.min.js"></script>
 	<script src="scripts/result_test.js"></script>	
 	<script src="scripts/registration.js"></script>
+	<script src="scripts/header.js"></script>
 	<script src="scripts/test_margins.js"></script>
 	<script src="scripts/multiselect.js"></script>
 	<script src="scripts/accordions.js"></script>
@@ -189,19 +190,9 @@
 </head>
 <body>
 
-
-<div class="header-menu">
-	<div class="wrapper">
-		<div class="menu-logo"></div>
-		<div class="menu-nav">
-			<a id="general-inf" href="test.php" style=""><p>Общие сведения</p></a>
-			<a id="health-in-numbers" href="health.php" style=""><p>Моё здоровье в цифрах</p></a>
-			<a id="my-documents" href="docs.php" style=""><p>Мои документы</p></a>
-			<a id="shop" href="shop.php" style=""><p>Магазин</p></a>
-			<a id="services" href="services.php" style="" onclick=""><p>Сервисы</p></a>
-		</div>
-	</div>
-</div>
+<?php
+	include 'header.php';
+?>
 
 <div class="main">
 
