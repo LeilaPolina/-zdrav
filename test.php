@@ -5,90 +5,8 @@
 		header('Location: https://здравствую.рф/');
 	}
 	*/
-	function recToBuy ($dead) {
-		$listToBuy = array();
-		$txtListToBuy = '';
-		if (strpos($dead,'Сердце') === true) {
-		array_unshift($listToBuy,'домашний ЭКГ монитор, тонометр');
-		}
-		if (strpos($dead,'Инсульт') === true) {
-		array_unshift($listToBuy,'тестер холестерина');
-		}
-		if (strpos($dead,'Сахарный диабет') === true) {
-		array_unshift($listToBuy,'глюкометр');
-		}
-		$txtListToBuy = implode(", ", $listToBuy);
-		return $txtListToBuy;
-	}
 
-	function getIndexMass ($weight, $height) {
-		$weight = (int) $weight;
-		$height = (int) $height;
-		if ($height == 0) {
-			$height = 1;
-		}
-		return round($weight / pow($height/100, 2), 2);
-	}
-
-	function getTxtIndexMass ($index_mass) {
-		$txt = '';
-		$count_weight = '';
-		if ($index_mass < 15) {
-			$txt = '<b>острому дефициту</b> веса';
-		} elseif ($index_mass >= 15 and $index_mass < 20) {
-			$txt = '<b>дефициту</b> веса';
-		} elseif ($index_mass >= 20 and $index_mass < 25) {
-			$txt = '<b>нормальному</b> весу';
-		} elseif ($index_mass >= 25 and $index_mass < 30) {
-			$txt = '<b>избыточному</b> весу';
-		} elseif ($index_mass >= 30) {
-			$txt = '<b>ожирению</b>';
-		}
-		return $txt;
-	}
-
-	function getLifetimeIndexMass ($index_mass) {
-		$count_weight = '';
-		if ($index_mass < 15) {
-			$count_weight = '-2';
-		} elseif ($index_mass >= 15 and $index_mass < 20) {
-			$count_weight = '0';
-		} elseif ($index_mass >= 25 and $index_mass < 30) {
-			$count_weight = '-2';
-		} elseif ($index_mass >= 30) {
-			$count_weight = '-4';
-		}
-		return $count_weight;
-	}
-
-	function get_lifecount($lifetime_index_mass){
-		$lifecount = 2; /* +2 всем за анализы */
-		$lifecount += -(int)$lifetime_index_mass;
-		
-		if ($_SESSION['result_test']['smoke'] == 1) {
-			$lifecount += -(int)$_SESSION['result_test']['count_smoking'];
-		}
-
-		if ($_SESSION['result_test']['cold'] == "4 раза в год или больше") {
-			$lifecount += 1;
-		}
-
-		if ($_SESSION['result_test']['healthyfood'] == 1) {
-			$lifecount += -(int)$_SESSION['result_test']['count_food'];
-		}
-
-		if ($_SESSION['result_test']['healthyheart'] == 1) {
-			$lifecount += 2;
-		}
-
-		return $lifecount;
-	}
-
-	$index_mass = getIndexMass($_SESSION['result_test']['weight'], $_SESSION['result_test']['height']);
-	$txt_index_mass = getTxtIndexMass($index_mass);
-	$lifetime_index_mass = getLifetimeIndexMass($index_mass);
-	$toBuy = recToBuy ($_SESSION['result_test']['dead']);
-	$lifecount = get_lifecount($lifetime_index_mass);
+	include('modules/general_data_src.php');
 ?>
 
 <!DOCTYPE html>
@@ -134,6 +52,8 @@
 	<script src="scripts/info_modal_texts.js"></script>
 	<script src="scripts/info_modals.js"></script>
 	<script src="scripts/reminders.js"></script>
+	<script src="scripts/save_general_data.js"></script>
+	<script src="scripts/signout.js"></script>
 	
 	<!-- Yandex.Metrika counter --> 
 	<script type="text/javascript">
@@ -222,15 +142,20 @@
 					
 				</div>
 				<div class="lifetime">
-					Согласно тесту расчетная продолжительность вашей жизни составит <b><?php if ($_SESSION['result_test']['lifetime'] - (date("Y") - $_SESSION['result_test']['year_birth']) < 5) { echo date("Y") - $_SESSION['result_test']['year_birth'] + 5; } else { echo $_SESSION['result_test']['lifetime']; } ?> лет</b> </br>
+					Согласно тесту расчетная продолжительность вашей жизни составит <b><?php 
+						if ($user_data_arr['lifetime'] - (date("Y") - $user_data_arr['year_birth']) < 5) { 
+							echo date("Y") - $user_data_arr['year_birth'] + 5; 
+						} else { 
+							echo $user_data_arr['lifetime']; 
+						} ?> лет</b> </br>
 					Максимальная возможная продолжительность жизни может составить
-					<b><?php if ($_SESSION['result_test']['lifetime'] - (date("Y") - $_SESSION['result_test']['year_birth']) < 5){
-						echo date("Y") - $_SESSION['result_test']['year_birth'] + 5 + $lifecount;
+					<b><?php if ($user_data_arr['lifetime'] - (date("Y") - $user_data_arr['year_birth']) < 5){
+						echo date("Y") - $user_data_arr['year_birth'] + 5 + $lifecount;
 						echo ' лет';
 					}
 					else 
 					{
-						echo $_SESSION['result_test']['lifetime'] + $lifecount;
+						echo $user_data_arr['lifetime'] + $lifecount;
 						echo ' лет';
 					} ?></b>
 				</div>
@@ -239,59 +164,66 @@
 	</div>
 
 	<div class="rec-list">
-		<?php 
-		$job = $_SESSION['result_test']['work'];
+		<?php
 
 		include './modules/module_mass.php';
 
 		include './modules/module_scales.php';
 
-		if($_SESSION['result_test']['food'] == "Не здоровое" || strpos($_SESSION['result_test']['dead'], "Инсульт") !== false) {
+		if($user_data_arr['module_tester']) {
 			include './modules/module_tester.php';
 		}
 
-		if ($_SESSION['result_test']['smoke'] == 1) {
+		if ($user_data_arr['give_up_smoking']) {
 			include './modules/module_smoke.php';
 		}
 
 		include './modules/module_analyzes.php';
 
-		if ($_SESSION['result_test']['healthyfood'] == 1) {
+		if ($user_data_arr['healthyfood']) {
 			include './modules/module_healthyfood.php';
 		}
 
-		if ($_SESSION['result_test']['cold'] == "4 раза в год или больше") {
+		if ($user_data_arr['immunity'] == "4 раза в год или больше") {
 			include './modules/module_immunity.php';
 		}
 
-		if ($_SESSION['result_test']['healthyheart'] == 1) {
+		if ($user_data_arr['healthyheart']) {
 			include './modules/module_healthyheart.php';
 		}
 
-		if ($_SESSION['result_test']['healthyheart'] == 1 || $job == "Физически тяжелая") {
+		if ($user_data_arr['healthyheart'] || $user_data_arr['job'] == "Физически тяжелая") {
 			include './modules/module_ekg.php';
 		}
 		
-		if($_SESSION['result_test']['healthyheart'] == 1 || $job == "На ногах") {
+		if($user_data_arr['healthyheart'] || $user_data_arr['job'] == "На ногах") {
 			include './modules/module_tonometer.php';
 		}
 
-		if ($_SESSION['result_test']['personal_manager'] == 1) {
+		if ($user_data_arr['personal_manager']) {
 			include './modules/module_personal_manager.php';
 		}
 
-		if($job == "Руководящая" || $job == "Творческая" || $job == "Офисная" || $job == "Не работаю" || $_SESSION['result_test']['sport'] == "Занимаюсь более 1 раза в неделю") {
+		if($user_data_arr['smart_watch']) {
 			include './modules/module_smart_watch.php';
 		}
 
-		if(strpos($_SESSION['result_test']['dead'], "Сахарный диабет") !== false) {
+		if(in_array("Сахарный диабет", $user_data_arr['risks'])) {
 			include './modules/module_glucose.php';
 		}
 
 		?>
 	</div>
 
-	<form name="personal-inf"  id="register">
+	<?php 
+		if(!$user->is_logged_in()){
+			echo '<form name="personal-inf"  id="register">';
+		}
+		else{
+			echo '<form name="personal-inf"  id="save_gen_data">';
+		}
+	?>
+	
 	<div id="register-acc" class="accordion">
 		<p>
 			<span class="accordions-left">Общие сведения</span>
@@ -306,13 +238,13 @@
 					<div class="input-name">
 						<p>Как к Вам обращаться</p>
 						<?php
-							echo '<input type="text" id="iname">';
+							echo '<input type="text" value="'.$user_data_arr['name'].'" id="iname">';
 						?>
 					</div>	
 					<div class="input-sex">		
 						<p>Пол</p>
 						<?php
-							if($_SESSION['result_test']['sex'] == 'м'){								
+							if($user_data_arr['sex'] == 'male'){								
 								echo '<input type="radio" checked="checked" name="sex" value="Мужской" id="iman">';
 								echo '<label for="man">Мужской</label>';
 								echo '<input type="radio" name="sex" value="Женский" id="iwoman">';
@@ -329,19 +261,19 @@
 					<div class="input-birth">
 						<p>Год рождения</p>
 						<?php
-							echo '<input type="text" value="'.$_SESSION['result_test']['year_birth'].'" placeholder="гггг" id="iyear">';
+							echo '<input type="text" value="'.$user_data_arr['year_birth'].'" placeholder="гггг" id="iyear">';
 						?>
 					</div>
 					<div class="input-height">
 						<p>Рост, см</p>
 						<?php
-							echo '<input type="text" value="'.$_SESSION['result_test']['height'].'" id="iheight">';
+							echo '<input type="text" value="'.$user_data_arr['height'].'" id="iheight">';
 						?>
 					</div>
 					<div class="input-weight">
 						<p>Вес, кг</p>
 						<?php
-							echo '<input type="text" value="'.$_SESSION['result_test']['weight'].'" id="iweight">';
+							echo '<input type="text" value="'.$user_data_arr['weight'].'" id="iweight">';
 						?>
 					</div>
 				</div>
@@ -355,7 +287,7 @@
 						<?php
 							$work_query = $db->query('SELECT job_conditions_type_name, job_conditions_type_id FROM job_conditions_types ORDER BY job_conditions_type_id');
 							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['job_conditions_type_name'] == $_SESSION['result_test']['work']){								
+								if($row['job_conditions_type_name'] == $user_data_arr['job']){								
 									echo '<option value='.$row['job_conditions_type_id'].' selected>'.$row[	'job_conditions_type_name'].'</option>';
 								}
 								else{								
@@ -375,7 +307,7 @@
 						<?php
 							$work_query = $db->query('SELECT smoking_type_name, smoking_type_id FROM smoking_types ORDER BY smoking_type_id');
 							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['smoking_type_name'] == $_SESSION['result_test']['smoking']){								
+								if($row['smoking_type_name'] == $user_data_arr['smoking']){								
 									echo '<option value='.$row['smoking_type_id'].' selected>'.$row['smoking_type_name'].'</option>';
 								}
 								else{								
@@ -394,7 +326,7 @@
 						<?php
 							$work_query = $db->query('SELECT sport_activity_type_name, sport_activity_type_id FROM sport_activity_types ORDER BY sport_activity_type_id');
 							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['sport_activity_type_name'] == $_SESSION['result_test']['sport']){								
+								if($row['sport_activity_type_name'] == $user_data_arr['sport']){								
 									echo '<option value='.$row['sport_activity_type_id'].' selected>'.$row['sport_activity_type_name'].'</option>';
 								}
 								else{								
@@ -410,7 +342,7 @@
 						<?php
 							$work_query = $db->query('SELECT diet_type_name, diet_type_id FROM diet_types ORDER BY diet_type_id');
 							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['diet_type_name'] == $_SESSION['result_test']['food']){								
+								if($row['diet_type_name'] == $user_data_arr['diet']){								
 									echo '<option value='.$row['diet_type_id'].' selected>'.$row['diet_type_name'].'</option>';
 								}
 								else{								
@@ -428,7 +360,7 @@
 						<?php
 							$work_query = $db->query('SELECT children_type_name, children_type_id FROM children_types ORDER BY children_type_id');
 							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['children_type_name'] == $_SESSION['result_test']['children']){								
+								if($row['children_type_name'] == $user_data_arr['children']){								
 									echo '<option value='.$row['children_type_id'].' selected>'.$row['children_type_name'].'</option>';
 								}
 								else{								
@@ -447,7 +379,7 @@
 						<?php
 							$work_query = $db->query('SELECT alcohol_type_name, alcohol_type_id FROM alcohol_types ORDER BY alcohol_type_id');
 							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['alcohol_type_name'] == $_SESSION['result_test']['alcohol']){								
+								if($row['alcohol_type_name'] == $user_data_arr['alcohol']){								
 									echo '<option value='.$row['alcohol_type_id'].' selected>'.$row['alcohol_type_name'].'</option>';
 								}
 								else{								
@@ -472,17 +404,8 @@
 						<div id="gen-risks-checkboxes">
 							<?php
 								$risks_query = $db->query('SELECT relatives_death_causes_type_id, relatives_death_causes_type_name FROM relatives_death_causes_types ORDER BY relatives_death_causes_type_id');
-								$relatives_death_causes = explode(', ', $_SESSION['result_test']['dead']);
-								
-								$cancer_types = array('Легких' => 'легких', 'Молочной железы' => 'молочной железы', 'Кишечника' => 'кишечника', 'Печени' => 'печени', 'Предстательной железы' => 'предстательной железы', 'Кожи' => 'кожи', 'Шейки матки' => 'шейки матки', 'Другой' => 'другой');
-								foreach($cancer_types as $key => $value){
-									if(in_array($key, $relatives_death_causes)){
-										array_push($relatives_death_causes, "Рак ".$value);
-									}
-								}
-								
-								while ($row = $risks_query->fetch(PDO::FETCH_ASSOC)){
-									if(in_array($row['relatives_death_causes_type_name'], $relatives_death_causes)){
+								while ($row = $risks_query->fetch(PDO::FETCH_ASSOC)){									
+									if(in_array($row['relatives_death_causes_type_name'], $user_data_arr['risks'])){
 										echo '<label><input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group" checked>'.$row['relatives_death_causes_type_name'].'</label>';
 									}
 									else{
@@ -494,11 +417,11 @@
 					</div>
 					<div class="input-sick_before">
 						<p>Чем болел(а) раньше</p>
-						<input type="text" value="" id="isick">
+						<?php echo '<input type="text" value="'.$user_data_arr['diseases'].'" id="isick">'; ?>
 					</div>
 					<div class="input-chronic_dis">
 						<p>Хронические заболевания</p>
-						<input type="text" value="" id="ichronic">
+						<?php echo '<input type="text" value="'.$user_data_arr['chronical'].'" id="ichronic">' ?>
 						</div>
 				</div>
 
@@ -506,17 +429,25 @@
 					<p>Контакты</p>
 					<div class="input-email">
 						<p>e-mail</p>
-						<input type="text" value="" id="iemail">
+						<?php echo '<input type="text" value="'.$user_data_arr['email'].'" id="iemail">'; ?>
 					</div>
 					<div class="input-telephone">
 						<p>Телефон</p>
-							<input type="text" value=""  id="itele">
+						<?php echo '<input type="text" value="'.$user_data_arr['phone'].'"  id="itele">'; ?>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<input type="submit" id="register-button" value="Создать личный кабинет" class="save-btn">
+	<?php
+		if(!$user->is_logged_in()){
+			echo '<input type="hidden" id="ilifetime" value="'.$user_data_arr['lifetime'].'">';
+			echo '<input type="submit" id="register-button" value="Создать личный кабинет" class="save-btn">';
+		}
+		else{
+			echo '<input type="submit" id="save_gen_data_button" value="Сохранить" class="save-btn">';
+		}
+	?>
 	</form>	
 
 	<div class="time-link threeb">

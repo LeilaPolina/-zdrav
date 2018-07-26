@@ -1,84 +1,8 @@
 <?php include('includes/config.php'); ?>
 <?php
-	
 	if(!$user->is_logged_in()){ header('Location: index.html'); }
-	
-	$cur_user_id = $_SESSION['user_id'];
 
-	function getIndexMass ($weight, $height) {
-		$weight = (int) $weight;
-		$height = (int) $height;
-		if ($height == 0) {
-			$height = 1;
-		}
-		return round($weight / pow($height/100, 2), 2);
-	}
-
-	function getTxtIndexMass ($index_mass) {
-		$txt = '';
-		if ($index_mass < 15) {
-			$txt = 'Острый дефицит веса';
-		} elseif ($index_mass >= 15 and $index_mass < 20) {
-			$txt = 'Дефицит веса';
-		} elseif ($index_mass >= 20 and $index_mass < 25) {
-			$txt = 'Нормальный вес';
-		} elseif ($index_mass >= 25 and $index_mass < 30) {
-			$txt = 'Избыточный вес';
-		} elseif ($index_mass >= 30) {
-			$txt = 'Ожирение';
-		}
-		
-		return $txt;
-	}
-	
-	function get_essential_data($db, $cur_user_id){
-		$get_essential_data = $db->prepare('SELECT user_name, user_phone FROM users WHERE user_id = :user_id');
-		$get_essential_data->execute(array(
-			':user_id' => $cur_user_id
-		));
-		return $get_essential_data->fetch(PDO::FETCH_ASSOC);
-	}
-	
-	function get_general_data($db, $cur_user_id){		
-		$get_general_data = $db->prepare('SELECT user_sex, user_age, user_height, user_weight, user_job_conditions, user_smoking, user_alcohol, user_family_status, user_children, user_sport_activity, user_diet, user_diseases, user_chronical FROM user_data WHERE user_data_user_id = :user_id');
-		$get_general_data->execute(array(
-			':user_id' => $cur_user_id
-		));
-		return $get_general_data->fetch(PDO::FETCH_ASSOC);
-	}
-	
-	function get_contact_data($db, $cur_user_id){
-		$get_contact_data = $db->prepare('SELECT contact_value FROM contacts_con_user WHERE contacts_con_user_user_id = :user_id AND contacts_con_user_contact_id = (SELECT contact_id FROM contact_types WHERE contact_type = :contact_type)');
-		$get_contact_data->execute(array(
-			':user_id' => $cur_user_id,
-			':contact_type' => 'email'
-		));
-		return $get_contact_data->fetch(PDO::FETCH_ASSOC);
-	}
-	
-	function get_risks_data($db, $cur_user_id){
-		$get_risks_data = $db->prepare('SELECT relatives_death_causes_con_user_relatives_death_causes_type_id FROM relatives_death_causes_con_user WHERE relatives_death_causes_con_user_user_id = :user_id');
-		$get_risks_data->execute(array(
-			':user_id' => $cur_user_id
-		));
-		$relatives_death_causes = array();
-		$relatives_death_causes_ind = 0;
-		while($risks_row = $get_risks_data->fetch(PDO::FETCH_ASSOC)){
-			$relatives_death_causes[$relatives_death_causes_ind] = $risks_row['relatives_death_causes_con_user_relatives_death_causes_type_id'];
-			$relatives_death_causes_ind++;
-		}
-		return $relatives_death_causes;
-	}
-	
-	$essential_data_row = get_essential_data($db, $cur_user_id);	
-	$general_data_row = get_general_data($db, $cur_user_id);	
-	$contact_data_row = get_contact_data($db, $cur_user_id);
-	$relatives_death_causes = get_risks_data($db, $cur_user_id);
-
-	$user_birth_year = substr($general_data_row['user_age'], 0, 4);
-	
-	$index_mass = getIndexMass($general_data_row['user_weight'], $general_data_row['user_height']);
-	$txt_index_mass = getTxtIndexMass($index_mass);
+	include('modules/general_data_src.php');
 ?>
 
 <!DOCTYPE html>
@@ -102,10 +26,9 @@
 	<!-- MULTISELECT -->
 	<link rel="stylesheet" type="text/css" href="css/multiselect.css" />
 	<script src="scripts/multiselect.js"></script>
-	<script src="scripts/multiselect.js"></script>
+	<script src="scripts/header.js"></script>
 	<script src="scripts/signout.js"></script>
 	<script src="scripts/accordions.js"></script>
-	<script src="scripts/header.js"></script>
 
 	<!-- Yandex.Metrika counter --> 
 	<script type="text/javascript">
@@ -230,13 +153,13 @@
 							<div class="input-name">
 								<p>Как к Вам обращаться</p>
 								<?php
-									echo '<input type="text" value="'.$essential_data_row['user_name'].'" id="iname">';							
+									echo '<input type="text" value="'.$user_data_arr['name'].'" id="iname">';							
 								?>
 							</div>	
 							<div class="input-sex">		
 								<p>Пол</p>
 								<?php
-									if($general_data_row['user_sex'] == 'male'){
+									if($user_data_arr['sex'] == 'male'){
 										echo '<input type="radio" checked="checked" name="sex" value="Мужской" id="iman">';
 										echo '<label for="man">Мужской</label>';
 										echo '<input type="radio" name="sex" value="Женский" id="iwoman">';
@@ -253,19 +176,19 @@
 							<div class="input-birth">
 								<p>Год рождения</p>
 								<?php
-									echo '<input type="text" value="'.$user_birth_year.'"  placeholder="гггг" id="iyear">';
+									echo '<input type="text" value="'.$user_data_arr['year_birth'].'"  placeholder="гггг" id="iyear">';
 								?>
 							</div>
 							<div class="input-height">
 								<p>Рост, см</p>
 								<?php
-									echo '<input type="text" value="'.$general_data_row['user_height'].'" id="iheight">';
+									echo '<input type="text" value="'.$user_data_arr['height'].'" id="iheight">';
 								?>
 							</div>
 							<div class="input-weight">
 								<p>Вес, кг</p>
 								<?php
-									echo '<input type="text" value="'.$general_data_row['user_weight'].'" id="iweight">';
+									echo '<input type="text" value="'.$user_data_arr['weight'].'" id="iweight">';
 								?>
 							</div>
 						</div>
@@ -279,7 +202,7 @@
 								<?php							
 									$work_query = $db->query('SELECT job_conditions_type_name, job_conditions_type_id FROM job_conditions_types ORDER BY job_conditions_type_id');
 									while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-										if($row['job_conditions_type_id'] == $general_data_row['user_job_conditions']){				
+										if($row['job_conditions_type_name'] == $user_data_arr['job']){				
 											echo '<option value='.$row['job_conditions_type_id'].' selected>'.$row[	'job_conditions_type_name'].'</option>';
 										}
 										else{								
@@ -298,7 +221,7 @@
 								<?php
 									$smoking_query = $db->query('SELECT smoking_type_name, smoking_type_id FROM smoking_types ORDER BY smoking_type_id');
 									while ($row = $smoking_query->fetch(PDO::FETCH_ASSOC)){
-										if($row['smoking_type_id'] == $general_data_row['user_smoking']){						
+										if($row['smoking_type_name'] == $user_data_arr['smoking']){						
 											echo '<option value='.$row['smoking_type_id'].' selected>'.$row['smoking_type_name'].'</option>';
 										}
 										else{								
@@ -317,7 +240,7 @@
 								<?php
 									$sport_query = $db->query('SELECT sport_activity_type_name, sport_activity_type_id FROM sport_activity_types ORDER BY sport_activity_type_id');
 									while ($row = $sport_query->fetch(PDO::FETCH_ASSOC)){
-										if($row['sport_activity_type_id'] == $general_data_row['user_sport_activity']){								
+										if($row['sport_activity_type_name'] == $user_data_arr['sport']){								
 											echo '<option value='.$row['sport_activity_type_id'].' selected>'.$row['sport_activity_type_name'].'</option>';
 										}
 										else{								
@@ -333,7 +256,7 @@
 								<?php
 									$food_query = $db->query('SELECT diet_type_name, diet_type_id FROM diet_types ORDER BY diet_type_id');
 									while ($row = $food_query->fetch(PDO::FETCH_ASSOC)){
-										if($row['diet_type_id'] == $general_data_row['user_diet']){								
+										if($row['diet_type_name'] == $user_data_arr['diet']){								
 											echo '<option value='.$row['diet_type_id'].' selected>'.$row['diet_type_name'].'</option>';
 										}
 										else{								
@@ -351,7 +274,7 @@
 								<?php
 									$children_query = $db->query('SELECT children_type_name, children_type_id FROM children_types ORDER BY children_type_id');
 									while ($row = $children_query->fetch(PDO::FETCH_ASSOC)){
-										if($row['children_type_id'] == $general_data_row['user_children']){								
+										if($row['children_type_name'] == $user_data_arr['children']){								
 											echo '<option value='.$row['children_type_id'].' selected>'.$row['children_type_name'].'</option>';
 										}
 										else{								
@@ -370,7 +293,7 @@
 								<?php
 									$alcohol_query = $db->query('SELECT alcohol_type_name, alcohol_type_id FROM alcohol_types ORDER BY alcohol_type_id');
 									while ($row = $alcohol_query->fetch(PDO::FETCH_ASSOC)){
-										if($row['alcohol_type_id'] == $general_data_row['user_alcohol']){
+										if($row['alcohol_type_name'] == $user_data_arr['alcohol']){
 											echo '<option value='.$row['alcohol_type_id'].' selected>'.$row['alcohol_type_name'].'</option>';
 										}
 										else{								
@@ -396,7 +319,7 @@
 									<?php
 										$risks_query = $db->query('SELECT relatives_death_causes_type_id, relatives_death_causes_type_name FROM relatives_death_causes_types ORDER BY relatives_death_causes_type_id');
 										while ($row = $risks_query->fetch(PDO::FETCH_ASSOC)){
-											if(in_array($row['relatives_death_causes_type_id'], $relatives_death_causes)){
+											if(in_array($row['relatives_death_causes_type_name'], $user_data_arr['risks'])){
 												echo '<label><input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group" checked>'.$row['relatives_death_causes_type_name'].'</label>';
 											}
 											else{
@@ -409,13 +332,13 @@
 							<div class="input-sick_before">
 								<p>Чем болел(а) раньше</p>
 								<?php
-									echo '<input type="text" value="'.$general_data_row['user_diseases'].'" id="isick">';
+									echo '<input type="text" value="'.$user_data_arr['diseases'].'" id="isick">';
 								?>
 							</div>
 							<div class="input-chronic_dis">
 								<p>Хронические заболевания</p>
 								<?php
-									echo '<input type="text" value="'.$general_data_row['user_chronical'].'" id="ichronic">';
+									echo '<input type="text" value="'.$user_data_arr['chronical'].'" id="ichronic">';
 								?>
 							</div>
 						</div>
@@ -425,13 +348,13 @@
 							<div class="input-email">
 								<p>e-mail</p>
 								<?php
-									echo '<input type="text" value="'.$contact_data_row['contact_value'].'" id="iemail">';
+									echo '<input type="text" value="'.$user_data_arr['email'].'" id="iemail">';
 								?>
 							</div>
 							<div class="input-telephone">
 								<p>Телефон</p>
 								<?php
-									echo '<input type="text" value="'.$essential_data_row['user_phone'].'" placeholder="(xxx) xxx-xx-xx" id="itele">';
+									echo '<input type="text" value="'.$user_data_arr['phone'].'" placeholder="(xxx) xxx-xx-xx" id="itele">';
 								?>
 							</div>
 						</div>						

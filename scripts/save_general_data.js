@@ -53,6 +53,7 @@ $(document).ready(function(){
 				//alert(answer.result);
 				if(answer.result=="OK"){
 					alert("Ваши данные были сохранены!");
+					window.location.replace('test.php');
 				}
 				if(answer.result==701) {
 					alert("Что-то пошло не так. Мы работаем над этим!");

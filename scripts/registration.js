@@ -76,6 +76,7 @@ $(document).ready(function(){
 	var sex="", birth_year="", height="", weight="", work="", sport="", food="", children="", risks="", sick="", chronic="", smoking="", alcohol="";
 	var offered_user_name="", offered_user_phone="";
 	var user_email="", user_name="", user_password="";	
+	var lifetime="";
 	
 	$("#register").submit(function(e){ 
 		e.preventDefault();
@@ -110,6 +111,8 @@ $(document).ready(function(){
 		});
 		save_risks_array = uniq_fast(save_risks_array);
 		risks = save_risks_array.join('_');
+
+		lifetime = $('#ilifetime').val();
 		
 		$("#phone-number").val(offered_user_phone);
 		$("#phone-number").trigger('input');
@@ -159,7 +162,7 @@ $(document).ready(function(){
 			alert("Что-то пошло не так. Мы работаем над этим!");
 		}
 		success_modal.style.display = "none";
-		window.location.replace('general_data.php');
+		window.location.replace('test.php');
 	}
 	
 	function send_user_data(callback) {
@@ -167,7 +170,7 @@ $(document).ready(function(){
 		$.ajax({
 			type : 'POST',
 			url: 'process_new_user_data.php',
-			data: {sex: sex, birth_year: birth_year, height: height, weight: weight, work: work, sport: sport, food: food, children: children, risks: risks, sick: sick, chronic: chronic, smoking: smoking, alcohol: alcohol, user_email: user_email, user_phone: user_phone, user_password: user_password, user_name: user_name},
+			data: {sex: sex, birth_year: birth_year, height: height, weight: weight, work: work, sport: sport, food: food, children: children, risks: risks, sick: sick, chronic: chronic, smoking: smoking, alcohol: alcohol, user_email: user_email, user_phone: user_phone, user_password: user_password, user_name: user_name, lifetime: lifetime},
 			dataType : 'text',
 			success : callback,
 			

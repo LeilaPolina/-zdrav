@@ -6,9 +6,9 @@
 	<?php
 	if($user->is_logged_in()) {
 		/* todo */
-	} else if($_SESSION['result_test']['count_food'] != "0") {
+	} else if($user_data_arr['count_food'] != "0") {
 		echo '<div class="plus_life help">+ ';
-		echo -(int)$_SESSION['result_test']['count_food']; 
+		echo -(int)$user_data_arr['count_food']; 
 		echo ' года жизни</div>';
 	}
 	?> 

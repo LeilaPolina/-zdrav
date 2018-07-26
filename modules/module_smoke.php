@@ -4,7 +4,7 @@
 
 	<div class="rec-text">Курение</div>
 	<p class="rec-text">Если Вы хотите бросить курить, то рекомендуем воспользоваться одной из <br> наших программ по отказу от курения</p>
-	<div class="plus_life help">+ <?php echo -(int)$_SESSION['result_test']['count_smoking']; ?> года жизни</div>
+	<div class="plus_life help">+ <?php echo -(int)$user_data_arr['count_smoking']; ?> года жизни</div>
 
 	<a class="rec-button" href="services.php#smoking">Перейти</a>
 
