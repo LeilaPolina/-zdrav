@@ -71,6 +71,7 @@
     <script src="scripts/demo.js"></script>
 	<script src="scripts/signout.js"></script>
     <script src="scripts/docs.js"></script>
+    <script src="scripts/header.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
@@ -129,30 +130,9 @@
 	
 </head>
 <body>
-    <div class="header-menu">
-	<div class="wrapper">
-		<div class="menu-logo"></div>
-		<div class="menu-nav">
-            <?php 
-                if($user->is_logged_in()){
-                    echo '<a id="general-inf" href="general_data.php" style=""><p>Общие сведения</p></a>';
-                }
-                else{
-                    echo '<a id="general-inf" href="test.php" style=""><p>Общие сведения</p></a>';
-                }
-            ?>
-			<a id="health-in-numbers" href="health.php" style=""><p>Моё здоровье в цифрах</p></a>
-			<a id="my-documents" href="docs.php" style=""><p>Мои документы</p></a>
-			<a id="shop" href="shop.php" style=""><p>Магазин</p></a>
-			<a id="services" href="services.php" style="" onclick=""><p>Сервисы</p></a>
-			<?php 
-                if($user->is_logged_in()){
-                    echo '<a id="sign-out-lk" href="#" style=""><p>Выход</p></a>';
-                }
-            ?>
-		</div>
-	</div>
-    </div>
+    <?php
+	    include 'header.php';
+    ?>
 
     <div class="main">
     <div class="content">

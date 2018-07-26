@@ -105,6 +105,7 @@
 	<script src="scripts/multiselect.js"></script>
 	<script src="scripts/signout.js"></script>
 	<script src="scripts/accordions.js"></script>
+	<script src="scripts/header.js"></script>
 
 	<!-- Yandex.Metrika counter --> 
 	<script type="text/javascript">
@@ -160,22 +161,9 @@
 </head>
 <body>
 
-
-<div class="header-menu">
-	<div class="wrapper">
-		<div class="menu-logo"></div>
-		<div class="menu-nav">
-			<a id="general-inf" href="general_data.php"><p>Общие сведения</p></a>
-			<a id="health-in-numbers" href="health.php"><p>Моё здоровье в цифрах</p></a>
-			<a id="my-documents" href="docs.php"><p>Мои документы</p></a>
-			<a id="shop" href="shop.php"><p>Магазин</p></a>
-			<a id="services" href="services.php"><p>Сервисы</p></a>
-			<a id="sign-out-lk" href=""><p>Выход</p></a>
-		</div>
-	</div>
-</div>
-
-
+<?php
+	include 'header.php';
+?>
 
 <div class="main">
 
