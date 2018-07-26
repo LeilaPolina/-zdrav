@@ -4,9 +4,7 @@
 
 	<div class="rec-text">Рекомендуем воспользоваться сервисом индивидуального <br> подбора здорового питания</div>
 	<?php
-	if($user->is_logged_in()) {
-		/* todo */
-	} else if($user_data_arr['count_food'] != "0") {
+	if($user_data_arr['count_food'] != "0") {
 		echo '<div class="plus_life help">+ ';
 		echo -(int)$user_data_arr['count_food']; 
 		echo ' года жизни</div>';
