@@ -45,7 +45,7 @@ function checkUser(callback)  {
 
 function checkUpdadeResult(answer) {
 	if(answer.result==true) {
-		window.location.replace('general_data.php');
+		window.location.replace('test.php');
 	}
 	else {
 		alert("Не удалось обновить пароль");
@@ -64,7 +64,7 @@ function checkIsRegisteredUser(answer){
 			dataType : 'json', 
 			success : function(data){
 				if(data.result==true) {
-					window.location.replace('general_data.php');
+					window.location.replace('test.php');
 				}
 				else {
 					$("#wrong-log-pass").text("Неверный номер или пароль");
