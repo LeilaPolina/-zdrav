@@ -8,10 +8,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/test.css" />
 	<link rel="stylesheet" type="text/css" href="css/health.css" />
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
 	<link rel="stylesheet" type="text/css" href="css/registration_login_windows.css" />
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<!--DEMO Zdrav Test Styles-->
-	<link rel="stylesheet" type="text/css" href="css/demo_btn.css" />
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
 	
 	<!--SCRIPTS-->
     <script src="jquery/jquery-3.1.1.min.js"></script>
@@ -100,8 +101,8 @@
 			<?php 
 				if(!$user->is_logged_in()){
 					echo '<div class="demo-div">';
-					echo '<p>Демонстрационный режим</p>';
-					echo '<p>Мое здоровье в цифрах</p>';
+					echo '<h2 class="pagename">Демонстрационный режим</h2>';                    
+                    echo '<h1 class="pagename">Мое здоровье в цифрах</h1>';
 					echo '<br/>';
 					echo '<ul class="demo-ul">';
 						echo '<li><p>Данный сервис предоставлен в демонстрационном режиме<p></li>';
@@ -113,8 +114,8 @@
 					echo '</div>';
 				}
 				else{
-					echo '<p>Личный кабинет</p>';
-					echo '<p>Мое здоровье в цифрах</p>';
+					echo '<h2 class="pagename">Личный кабинет</h2>';                    
+                    echo '<h1 class="pagename">Мое здоровье в цифрах</h1>';
 				}
 			?>
 			<!-- /DEMO PART -->

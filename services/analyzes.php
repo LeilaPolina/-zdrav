@@ -44,7 +44,14 @@
                             <a class="gastro btn-info">Подробнее</a>
                         </div><br>
                         <label class="container-checkbox">
-                            <input type="checkbox" class="analysis-checkbox">
+                            <?php
+                                if($an_gastro){
+                                    echo '<input type="checkbox" checked="checked" class="analysis-checkbox">';
+                                }
+                                else{
+                                    echo '<input type="checkbox" class="analysis-checkbox">';
+                                }
+                            ?>
                             <span class="checkmark"></span>
                             <span>Диагностика диабета, биохимический</span>
                         </label>
@@ -57,7 +64,14 @@
                             <a class="diabetes btn-info">Подробнее</a>
                         </div><br>
                         <label class="container-checkbox">
-                            <input type="checkbox" class="analysis-checkbox">
+                            <?php
+                                if($an_cardio){
+                                    echo '<input type="checkbox" checked="checked" class="analysis-checkbox">';
+                                }
+                                else{
+                                    echo '<input type="checkbox" class="analysis-checkbox">';
+                                }
+                            ?>
                             <span class="checkmark"></span>
                             <span>Кардиологический</span>
                         </label>
@@ -70,7 +84,14 @@
                             <a class="cardio btn-info">Подробнее</a>
                         </div><br>
                         <label class="container-checkbox">
-                            <input type="checkbox" class="analysis-checkbox">
+                            <?php
+                                if($an_onco_m){
+                                    echo '<input type="checkbox" checked="checked" class="analysis-checkbox">';
+                                }
+                                else{
+                                    echo '<input type="checkbox" class="analysis-checkbox">';
+                                }
+                            ?>
                             <span class="checkmark"></span>
                             <span>Онкологический для мужчин, биохимический</span>
                         </label>
@@ -83,7 +104,14 @@
                             <a class="onco_m btn-info">Подробнее</a>
                         </div><br>
                         <label class="container-checkbox">
-                            <input type="checkbox" class="analysis-checkbox">
+                            <?php
+                                if($an_onco_f){
+                                    echo '<input type="checkbox" checked="checked" class="analysis-checkbox">';
+                                }
+                                else{
+                                    echo '<input type="checkbox" class="analysis-checkbox">';
+                                }
+                            ?>
                             <span class="checkmark"></span>
                             <span>Онкологический для женщин, биохимический</span>
                         </label>
@@ -96,7 +124,14 @@
                             <a class="onco_f btn-info">Подробнее</a>
                         </div><br>
                         <label class="container-checkbox">
-                            <input type="checkbox" class="analysis-checkbox">
+                            <?php
+                                if($an_vessels){
+                                    echo '<input type="checkbox" checked="checked" class="analysis-checkbox">';
+                                }
+                                else{
+                                    echo '<input type="checkbox" class="analysis-checkbox">';
+                                }
+                            ?>
                             <span class="checkmark"></span>
                             <span>Диагностика сосудистых заболеваний головного мозга</span>
                         </label>
@@ -110,7 +145,14 @@
                         </div><br>
                         
                         <label class="container-checkbox">
-                            <input type="checkbox" class="analysis-checkbox">
+                            <?php
+                                if($an_hormones_m){
+                                    echo '<input type="checkbox" checked="checked" class="analysis-checkbox">';
+                                }
+                                else{
+                                    echo '<input type="checkbox" class="analysis-checkbox">';
+                                }
+                            ?>
                             <span class="checkmark"></span>
                             <span>Гормональный профиль (комплекс) для мужчин</span>
                         </label>
@@ -123,7 +165,14 @@
                             <a class="hormones_m btn-info">Подробнее</a>
                         </div><br>
                         <label class="container-checkbox">
-                            <input type="checkbox" class="analysis-checkbox">
+                            <?php
+                                if($an_hormones_f){
+                                    echo '<input type="checkbox" checked="checked" class="analysis-checkbox">';
+                                }
+                                else{
+                                    echo '<input type="checkbox" class="analysis-checkbox">';
+                                }
+                            ?>
                             <span class="checkmark"></span>
                             <span>Гормональный профиль (комплекс) для женщин</span>
                         </label>
@@ -136,7 +185,14 @@
                             <a class="hormones_f btn-info">Подробнее</a>
                         </div><br>
                         <label class="container-checkbox">
-                            <input type="checkbox" class="analysis-checkbox">
+                            <?php
+                                if($an_vitamins){
+                                    echo '<input type="checkbox" checked="checked" class="analysis-checkbox">';
+                                }
+                                else{
+                                    echo '<input type="checkbox" class="analysis-checkbox">';
+                                }
+                            ?>
                             <span class="checkmark"></span>
                             <span>Комплексный анализ крови на витамины (A, D, E, K, C, B1, B5, B6, В9, B12)</span>
                         </label>

@@ -118,3 +118,25 @@
 	font-size: 21px;
 	line-height: 19px !important;
 }
+
+.modal-submit-btn {
+    width: 100px;
+    cursor: pointer;
+    background-color: #00B0D2; 
+    border: 0;
+    width: 180px;
+    height: 32px; 
+    border-radius: 5px; 
+    color: #FFFFFF;
+    display: inline-block;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.modal-input {
+	height:32px;
+	border:none;
+	border: 1px solid #A8B7C7;
+	box-sizing: border-box;
+	border-radius:3px;
+}

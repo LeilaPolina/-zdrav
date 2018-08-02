@@ -63,9 +63,9 @@
     <meta charset="utf-8">
     <title>Документы</title>
     <link rel="stylesheet" href="css/test.css">
-    <link rel="stylesheet" href="css/upload_file_form.css">
+    <link rel="stylesheet" href="css/modals.css">
     <link rel="stylesheet" href="css/docs.css">
-    <link rel="stylesheet" type="text/css" href="css/demo_btn.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <script src="jquery/jquery-3.1.1.min.js"></script>
     <script src="jquery/jquery.maskedinput.min.js"></script>
     <script src="scripts/demo.js"></script>

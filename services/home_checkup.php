@@ -17,7 +17,7 @@
                     <h1 class="additional">Дополнительно можно провести следующие обследования:</h1>
                     
                     <label class="container-checkbox">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox">
+                            <input type="checkbox" checked="checked" class="checkup-checkbox" id="uzi-stomach">
                             <span class="checkmark"></span>
                             <span>УЗИ брюшной полости на дому</span>
                     </label>
@@ -34,7 +34,14 @@
                     </div>
 
                     <label class="container-checkbox">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox">
+                            <?php
+                                if($ch_uzi_liver){
+                                    echo '<input type="checkbox" checked="checked" class="checkup-checkbox" id="uzi-liver">';
+                                }
+                                else{
+                                    echo '<input type="checkbox" class="checkup-checkbox" id="uzi-liver">';
+                                }
+                            ?>
                             <span class="checkmark"></span>
                             <span>УЗИ печени и желчного органа</span>
                     </label>
@@ -44,7 +51,7 @@
                     </div><br>
 
                     <label class="container-checkbox">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox">
+                            <input type="checkbox" checked="checked" class="checkup-checkbox" id="uzi-pee">
                             <span class="checkmark"></span>
                             <span>УЗИ мочевого органа и мочеточников</span>
                     </label>
@@ -54,7 +61,14 @@
                     </div><br>
 
                     <label class="container-checkbox">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox">
+                            <?php
+                                if($ch_uzi_vessels){
+                                    echo '<input type="checkbox" checked="checked" class="checkup-checkbox" id="uzi-vessels">';
+                                }
+                                else{
+                                    echo '<input type="checkbox" class="checkup-checkbox" id="uzi-vessels">';
+                                }
+                            ?>
                             <span class="checkmark"></span>
                             <span>УЗИ сосудов нижних конечностей (вены + артерии)</span>
                     </label>
@@ -64,7 +78,14 @@
                     </div><br>
 
                     <label class="container-checkbox">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox">
+                            <?php
+                                if($ch_uzi_heart){
+                                    echo '<input type="checkbox" checked="checked" class="checkup-checkbox" id="uzi-heart">';
+                                }
+                                else{
+                                    echo '<input type="checkbox" class="checkup-checkbox" id="uzi-heart">';
+                                }
+                            ?>
                             <span class="checkmark"></span>
                             <span>УЗИ сердца</span>
                     </label>
@@ -74,7 +95,14 @@
                     </div><br>
 
                     <label class="container-checkbox">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox">
+                            <?php
+                                if($ch_xray_lungs){
+                                    echo '<input type="checkbox" checked="checked" class="checkup-checkbox" id="uzi-lungs">';
+                                }
+                                else{
+                                    echo '<input type="checkbox" class="checkup-checkbox" id="uzi-lungs">';
+                                }
+                            ?>
                             <span class="checkmark"></span>
                             <span>Рентген легких на дому</span>
                     </label>
@@ -88,5 +116,28 @@
                     <hr>
                     <h1 class="inline">Стоимость для Москвы</h1>
                     <p class="total-number" id="checkup-price">10000 руб.</p>
-                    <button class="inline">Заказать</button>
+                    <button class="inline" id="order-home-checkup">Заказать</button>
                     <p id="checkup-cashback">Кэшбэк <strong>100 руб.</strong> (3%)<p>
+                    
+                    <!-- ORDER MODAL -->
+                    <div id="order-home-checkup-modal" class="modal-window">
+                        <div class="modal-window-content">
+                            <div class="modal-window-body sm-body">
+                                <div class="modal_header">
+                                        <span class="close" id="order-home-checkup-modal-close">&times;</span>
+                                        <div class="modal-title">Заказать домашний медосмотр</div>
+                                </div>
+                                
+                                <label for="user-phone-for-order">Номер телефона</label>
+                                <br />
+                                <input type=text id="user-phone-for-order" class="modal-input" />
+                                <br />
+                                <input type=button id="submit-home-checkup-order" value="Подтвердить" class="modal-submit-btn" />
+                              
+                                <span id="error_msg"> </span>
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /ORDER MODAL -->

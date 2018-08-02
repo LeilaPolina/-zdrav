@@ -63,5 +63,73 @@ $(document).ready(function() {
     checkup_boxes.change(function(){
         $(this).toggleClass("checkbox-checked");
         calculateCheckupPrice();
-    })
-})
+    });
+
+    // ORDER HOMECHECKUP PART
+    $("#order-home-checkup").click(function(e){
+        e.preventDefault();
+        $("#order-home-checkup-modal").css('display', 'block');
+    });
+
+    $("#order-home-checkup-modal-close").click(function (e) {
+        e.preventDefault();    
+        $("#order-home-checkup-modal").css('display', 'none');
+        $("#error_msg").text("");
+    });
+
+    window.onclick = function(e) {
+        var modal = document.getElementById('order-home-checkup-modal');
+        if (e.target == modal) {
+            $("#order-home-checkup-modal").css({'display':'none'});
+            $("#error_msg").text("");
+        }
+    }
+
+    $("#user-phone-for-order").mask("+7 (999) 999-99-99");
+    $("#user-phone-for-order").trigger('input');
+
+    $("#submit-home-checkup-order").click(function(e){
+        e.preventDefault();
+        order_home_checkup();
+    });
+});
+
+function check_order_checkup_answer(data){
+    if(data.result != "OK"){
+        alert("В данный момент сервис недоступен. Попробуйте позднее!");
+    }
+    else{
+        alert("Заказ успешно оформлен!");
+    }
+}
+
+function send_home_checkup_order(callback){
+    $.ajax({
+        type: 'POST',
+        url: 'orders/order_homecheckup.php',
+        data: {
+            home_checkup: true,
+            user_phone: $("#user-phone-for-order").val(),
+            uzi_stomach: $("#uzi-stomach").is(':checked'),
+            uzi_liver: $("#uzi-liver").is(':checked'),
+            uzi_pee: $("#uzi-pee").is(':checked'),
+            uzi_vessels: $("#uzi-vessels").is(':checked'),
+            uzi_heart: $("#uzi-heart").is(':checked'),
+            uzi_lungs: $("#uzi-lungs").is(':checked')
+        },
+        dataType: 'json',
+        success: callback,
+        error: get_error
+    });
+}
+
+function order_home_checkup(){
+    // dummy validation
+    if($("#user-phone-for-order").val().indexOf('_') != -1){
+        $("#error_msg").text("Введите корректный номер телефона!");
+    }
+    else{
+        send_home_checkup_order(check_order_checkup_answer);
+    }
+}    
+// ORDER HOMECHECKUP PART ENDS

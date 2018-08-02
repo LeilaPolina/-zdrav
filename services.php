@@ -1,34 +1,12 @@
 <?php include_once('includes/config.php'); ?>
 <?php
-
-    function getIndexMass ($weight, $height, $db) {
-		$weight = (int) $weight;
-		$height = (int) $height;
-		if ($height == 0) {
-			$height = 1;
-		}
-		return round($weight / pow($height/100, 2), 2);
-    }
+    include_once('modules/general_data_src.php');
+    include_once('modules/rec_analyses.php');
     
-    function getUserData ($user, $db) {
-        $user_data_query = $db->prepare('SELECT user_height, user_weight, user_sex FROM user_data WHERE user_data_user_id = :user_id');
-        $user_data_query->execute(array(':user_id' => $_SESSION['user_id']));
-        return $user_data_query->fetch(PDO::FETCH_ASSOC);
-    }
-
-    if ($user->is_logged_in()) {
-        $user_data_row = getUserData ($user, $db);
-
-        $user_weight = $user_data_row['user_weight'];
-        $user_height = $user_data_row['user_height'];
-        $user_sex = $user_data_row['user_sex'];
-        $index_mass = getIndexMass ($user_weight, $user_height, $db);
-    } else {
-        $user_weight = $_SESSION['result_test']['weight'];
-        $user_height = $_SESSION['result_test']['height'];
-        $user_sex = $_SESSION['result_test']['sex'];
-        $index_mass = getIndexMass ($user_weight, $user_height, $db);
-    }
+    $user_weight = $user_data_arr['weight'];
+    $user_height = $user_data_arr['height'];
+    $user_sex = $user_data_arr['sex'];
+    $index_mass = getIndexMass ($user_weight, $user_height);
 ?>
 
 <!DOCTYPE html>
@@ -40,9 +18,10 @@
     <link rel="stylesheet" href="css/services.css" />
     <link rel="stylesheet" href="css/info_modals.css" />
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/demo_btn.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/input_radio.css" />
     <link rel="stylesheet" type="text/css" href="css/input_checkbox.css" />
+    <link rel="stylesheet" href="css/modals.css" />
     <script src="jquery/jquery-3.1.1.min.js"></script>
     <script src="jquery/jquery.maskedinput.min.js"></script>
     <script src="scripts/demo.js"></script>
@@ -51,6 +30,7 @@
     <script src="scripts/services.js"></script>
     <script src="scripts/accordions.js"></script>
     <script src="scripts/header.js"></script>
+    <script src="scripts/errors.js"></script>
 
 	<!-- FINISH -->
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
