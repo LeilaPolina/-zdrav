@@ -1,9 +1,18 @@
 <div class="threeb">
-<div class="icon-immunity icon_rec"></div>
-    <div class="module-content">
-    
-        <div class="text2">Рекомендуем воспользоваться услугой «Поднятие иммунитета»</div>
-        <a class="rec-button-new button-immunity" href="services.php#immunity">Перейти</a>
-        <div class="plus_life_analyzes">+ 1 год жизни</div>
-    </div>
+	<div class="rec-wrapper">
+	<div class="rec-icon-container">
+		<div class="icon-immunity"></div>
+	</div>
+	<div class="rec-container">
+		<div class="rec-text-container">
+			<div class="rec-text">Рекомендуем воспользоваться услугой «Поднятие иммунитета»</div>
+		</div>
+		<div class="rec-button-container">
+			<a class="rec-button" href="services.php#immunity">Перейти</a>
+		</div>
+		<div class="plus-life">
+            + 1 год жизни
+		</div>
+	</div>
+	</div>
 </div>

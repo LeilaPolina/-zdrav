@@ -18,6 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="css/multiselect.css" />
 	<link rel="stylesheet" type="text/css" href="css/accordion.css" />
 	<link rel="stylesheet" type="text/css" href="css/input_radio.css" />
+	<link rel="stylesheet" type="text/css" href="css/input_checkbox.css" />
 	<link rel="stylesheet" type="text/css" href="css/input_toggle.css" />
 	<link rel="stylesheet" href="css/info_modals.css" />
 	<link rel="stylesheet" href="css/test.css" />
@@ -46,7 +47,6 @@
 	<script src="scripts/result_test.js"></script>	
 	<script src="scripts/registration.js"></script>
 	<script src="scripts/header.js"></script>
-	<script src="scripts/test_margins.js"></script>
 	<script src="scripts/multiselect.js"></script>
 	<script src="scripts/accordions.js"></script>
 	<script src="scripts/info_modal_texts.js"></script>
@@ -54,6 +54,7 @@
 	<script src="scripts/reminders.js"></script>
 	<script src="scripts/save_general_data.js"></script>
 	<script src="scripts/signout.js"></script>
+	<script src="scripts/responsive_tooltips.js"></script>
 	
 	<!-- Yandex.Metrika counter --> 
 	<script type="text/javascript">
@@ -115,32 +116,30 @@
 ?>
 
 <div class="main">
-
-	<div class="recommendations">
+	<div class="recommendations-top">
 		<div class="personal-recommendations threeb">
-			<a class="link-for-toggle" href="" onclick="return false">
-				<div class="img-rec"></div>
-				<div class="per-rec"><p>Личные рекомендации</p></div>
-				<div class="rec-numb">
-					<?php echo "+";echo $lifecount; ?>
-				</div> 
-				<div class="rec_numb_text">
-					<?php if ($lifecount == 1) { 
-							echo 'год жизни';
-						} 
-						elseif ($lifecount > 1 && $lifecount < 5) { 
-							echo 'года жизни';
-						}
-						elseif ($lifecount > 5) { 
-							echo 'лет жизни';
-						} ?>
+			<div class="main-rec-container">
+				<div class="main-rec-text-container">
+					<div class="rec-icon-main"></div>
+					<div class="rec-text-main">Личные рекомендации</div>
 				</div>
-				
-			</a>
-			<div class="toggle-inf hide">
-				<div class="video-rec">
-					
+				<div class="rec-sum-container">
+					<div class="rec-numb">
+						<?php echo "+";echo $lifecount; ?>
+					</div> 
+					<div class="rec_numb_text">
+						<?php if ($lifecount == 1) { 
+								echo 'год жизни';
+							} 
+							elseif ($lifecount > 1 && $lifecount < 5) { 
+								echo 'года жизни';
+							}
+							elseif ($lifecount > 5) { 
+								echo 'лет жизни';
+							} ?>
+					</div>
 				</div>
+			</div>
 				<div class="lifetime">
 					Согласно тесту расчетная продолжительность вашей жизни составит <b><?php 
 						if ($user_data_arr['lifetime'] - (date("Y") - $user_data_arr['year_birth']) < 5) { 
@@ -151,15 +150,22 @@
 					Максимальная возможная продолжительность жизни может составить
 					<b><?php if ($user_data_arr['lifetime'] - (date("Y") - $user_data_arr['year_birth']) < 5){
 						echo date("Y") - $user_data_arr['year_birth'] + 5 + $lifecount;
-						echo ' лет';
+						echo ' лет ';
 					}
 					else 
 					{
 						echo $user_data_arr['lifetime'] + $lifecount;
-						echo ' лет';
+						echo ' лет ';
 					} ?></b>
+					<div class="questionmark">
+						<span class="tooltip-content">
+							Тест и расчет возможной продолжительности жизни основаны на
+							статистических данных по средней продолжительности жизни мужчин и женщин в России
+							на 2017г, а так же на исследованиях Всемирной организации здравоохранения о факторах
+							влияющих на продолжительность жизни
+						</span>
+					</div>
 				</div>
-			</div>
 		</div>
 	</div>
 
@@ -231,210 +237,235 @@
 		</p>		
 	</div>
 	<div class="panel">
-		<div class="service-content">
-			<div class="private-office input-block">
-				<div class="general-information">
-					<p>Общая информация</p>
-					<div class="input-name">
-						<p>Как к Вам обращаться</p>
-						<?php
-							echo '<input type="text" value="'.$user_data_arr['name'].'" id="iname">';
-						?>
-					</div>	
-					<div class="input-sex">		
-						<p>Пол</p>
-						<?php
-							if($user_data_arr['sex'] == 'male'){								
-								echo '<input type="radio" checked="checked" name="sex" value="Мужской" id="iman">';
-								echo '<label for="man">Мужской</label>';
-								echo '<input type="radio" name="sex" value="Женский" id="iwoman">';
-								echo '<label for="woman">Женский</label>';
-							}
-							else{
-								echo '<input type="radio" name="sex" value="Мужской" id="iman">';
-								echo '<label for="man">Мужской</label>';
-								echo '<input type="radio" checked="checked" name="sex" value="Женский" id="iwoman">';
-								echo '<label for="woman">Женский</label>';
-							}
-						?>
-					</div>
-					<div class="input-birth">
-						<p>Год рождения</p>
-						<?php
-							echo '<input type="text" value="'.$user_data_arr['year_birth'].'" placeholder="гггг" id="iyear">';
-						?>
-					</div>
-					<div class="input-height">
-						<p>Рост, см</p>
-						<?php
-							echo '<input type="text" value="'.$user_data_arr['height'].'" id="iheight">';
-						?>
-					</div>
-					<div class="input-weight">
-						<p>Вес, кг</p>
-						<?php
-							echo '<input type="text" value="'.$user_data_arr['weight'].'" id="iweight">';
-						?>
-					</div>
+		<div class="user-data-wrapper">
+			<div class="data-category-title">Общая информация</div>
+			<div class="data-container">
+				<div class="data-box">
+					<div class="input-title">Как к Вам обращаться</div>
+					<?php
+						echo '<input type="text" value="'.$user_data_arr['name'].'" id="iname">';
+					?>
 				</div>
-
-				<div class="lifestyle">
-					<p>Образ жизни</p>
-					<div class="input-work">
-						<p>Работа</p>
-						
-						<select name="work" id="iwork">
-						<?php
-							$work_query = $db->query('SELECT job_conditions_type_name, job_conditions_type_id FROM job_conditions_types ORDER BY job_conditions_type_id');
-							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['job_conditions_type_name'] == $user_data_arr['job']){								
-									echo '<option value='.$row['job_conditions_type_id'].' selected>'.$row[	'job_conditions_type_name'].'</option>';
+				<div class="data-box short">
+					<div class="input-title">Пол</div>
+					<?php
+								if($user_data_arr['sex'] == 'male'){
+									/*
+									echo '<input type="radio" checked="checked" name="sex" value="Мужской" id="iman">';
+									echo '<label for="man">Мужской</label>';
+									echo '<input type="radio" name="sex" value="Женский" id="iwoman">';
+									echo '<label for="woman">Женский</label>';
+									*/
+									echo '<label class="container-radio">';
+									echo '<input type="radio" checked="checked" name="sex" value="Мужской" id="iman">';
+									echo '<span class="checkmark-radio"></span>';
+									echo '<span>Мужской</span>';
+									echo '</label>';
+	
+									echo '<label class="container-radio">';
+									echo '<input type="radio" name="sex" value="Женский" id="iwoman">';
+									echo '<span class="checkmark-radio"></span>';
+									echo '<span>Женский</span>';
+									echo '</label>';
 								}
-								else{								
-									echo '<option value='.$row['job_conditions_type_id'].'>'.$row[	'job_conditions_type_name'].'</option>';
+								else{
+									/*
+									echo '<input type="radio" name="sex" value="Мужской" id="iman">';
+									echo '<label for="man">Мужской</label>';
+									echo '<input type="radio" checked="checked" name="sex" value="Женский" id="iwoman">';
+									echo '<label for="woman">Женский</label>';
+									*/
+	
+									echo '<label class="container-radio">';
+									echo '<input type="radio"name="sex" value="Мужской" id="iman">';
+									echo '<span class="checkmark-radio"></span>';
+									echo '<span>Мужской</span>';
+									echo '</label>';
+	
+									echo '<label class="container-radio">';
+									echo '<input type="radio" checked="checked" name="sex" value="Женский" id="iwoman">';
+									echo '<span class="checkmark-radio"></span>';
+									echo '<span>Женский</span>';
+									echo '</label>';
 								}
-							}
-						?>
-						</select>
-						
-					</div>
-					
-					<div class="input-smoke">
-						<p>Курение</p>
-												
-						<select name="smoking" id="ismoke">
-
-						<?php
-							$work_query = $db->query('SELECT smoking_type_name, smoking_type_id FROM smoking_types ORDER BY smoking_type_id');
-							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['smoking_type_name'] == $user_data_arr['smoking']){								
-									echo '<option value='.$row['smoking_type_id'].' selected>'.$row['smoking_type_name'].'</option>';
-								}
-								else{								
-									echo '<option value='.$row['smoking_type_id'].'>'.$row['smoking_type_name'].'</option>';
-								}
-							}
-						?>
-						</select>
-						
-					</div>
-					
-					<div class="input-sport">
-						<p>Спорт</p>
-												
-						<select name="sport" id="isport">
-						<?php
-							$work_query = $db->query('SELECT sport_activity_type_name, sport_activity_type_id FROM sport_activity_types ORDER BY sport_activity_type_id');
-							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['sport_activity_type_name'] == $user_data_arr['sport']){								
-									echo '<option value='.$row['sport_activity_type_id'].' selected>'.$row['sport_activity_type_name'].'</option>';
-								}
-								else{								
-									echo '<option value='.$row['sport_activity_type_id'].'>'.$row['sport_activity_type_name'].'</option>';
-								}
-							}
-						?>
-						</select>
-					</div>
-					<div class="input-food">
-						<p>Питание</p>						
-						<select name="food" id="ifood">
-						<?php
-							$work_query = $db->query('SELECT diet_type_name, diet_type_id FROM diet_types ORDER BY diet_type_id');
-							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['diet_type_name'] == $user_data_arr['diet']){								
-									echo '<option value='.$row['diet_type_id'].' selected>'.$row['diet_type_name'].'</option>';
-								}
-								else{								
-									echo '<option value='.$row['diet_type_id'].'>'.$row['diet_type_name'].'</option>';
-								}
-							}
-						?>
-						</select>
-						
-					</div>
-					<div class="input-children">
-						<p>Дети</p>
-						
-						<select name="children" id="ichildren">
-						<?php
-							$work_query = $db->query('SELECT children_type_name, children_type_id FROM children_types ORDER BY children_type_id');
-							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['children_type_name'] == $user_data_arr['children']){								
-									echo '<option value='.$row['children_type_id'].' selected>'.$row['children_type_name'].'</option>';
-								}
-								else{								
-									echo '<option value='.$row['children_type_id'].'>'.$row['children_type_name'].'</option>';
-								}
-							}
-						?>
-						</select>
-						
-					</div>
-					
-					<div class="input-alcohol">
-						<p>Алкоголь</p>
-						
-						<select name="alcohol" id="ialcohol">
-						<?php
-							$work_query = $db->query('SELECT alcohol_type_name, alcohol_type_id FROM alcohol_types ORDER BY alcohol_type_id');
-							while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
-								if($row['alcohol_type_name'] == $user_data_arr['alcohol']){								
-									echo '<option value='.$row['alcohol_type_id'].' selected>'.$row['alcohol_type_name'].'</option>';
-								}
-								else{								
-									echo '<option value='.$row['alcohol_type_id'].'>'.$row['alcohol_type_name'].'</option>';
-								}
-							}
-						?>
-						</select>
-					</div>
+							?>
 				</div>
-
-				<div class="diseases">
-					<p>Заболевания</p>
-					<div class="input-genetic_risks">
-						<p>Генетические риски</p>
-						<div class="gen-risks-selectBox" onclick="showCheckboxes()">
-							<select id="gen_risks">
-								<option>Нажмите, чтобы развернуть</option>
-							</select>
-							<div class="gen-risks-overSelect"></div>
-						</div>
-						<div id="gen-risks-checkboxes">
-							<?php
-								$risks_query = $db->query('SELECT relatives_death_causes_type_id, relatives_death_causes_type_name FROM relatives_death_causes_types ORDER BY relatives_death_causes_type_id');
-								while ($row = $risks_query->fetch(PDO::FETCH_ASSOC)){									
-									if(in_array($row['relatives_death_causes_type_name'], $user_data_arr['risks'])){
-										echo '<label><input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group" checked>'.$row['relatives_death_causes_type_name'].'</label>';
+				<div class="data-box short">
+					<div class="input-title">Год рождения</div>
+					<?php
+						echo '<input type="text" value="'.$user_data_arr['year_birth'].'" placeholder="гггг" id="iyear">';
+					?>
+				</div>
+				<div class="data-box short">
+					<div class="input-title">Рост, см</div>
+					<?php
+						echo '<input type="text" value="'.$user_data_arr['height'].'" id="iheight">';
+					?>
+				</div>
+				<div class="data-box short">
+					<div class="input-title">Вес, кг</div>
+					<?php
+						echo '<input type="text" value="'.$user_data_arr['weight'].'" id="iweight">';
+					?>
+				</div>
+			</div>
+			<div class="data-category-title">Образ жизни</div>
+			<div class="data-container">
+				<div class="data-box">
+					<div class="input-title">Работа</div>
+					<select name="work" id="iwork">
+						<?php
+								$work_query = $db->query('SELECT job_conditions_type_name, job_conditions_type_id FROM job_conditions_types ORDER BY job_conditions_type_id');
+								while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
+									if($row['job_conditions_type_name'] == $user_data_arr['job']){								
+										echo '<option value='.$row['job_conditions_type_id'].' selected>'.$row[	'job_conditions_type_name'].'</option>';
 									}
-									else{
-										echo '<label><input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group">'.$row['relatives_death_causes_type_name'].'</label>';
+									else{								
+										echo '<option value='.$row['job_conditions_type_id'].'>'.$row[	'job_conditions_type_name'].'</option>';
 									}
 								}
 							?>
-						</div>
-					</div>
-					<div class="input-sick_before">
-						<p>Чем болел(а) раньше</p>
-						<?php echo '<input type="text" value="'.$user_data_arr['diseases'].'" id="isick">'; ?>
-					</div>
-					<div class="input-chronic_dis">
-						<p>Хронические заболевания</p>
-						<?php echo '<input type="text" value="'.$user_data_arr['chronical'].'" id="ichronic">' ?>
-						</div>
+					</select>
 				</div>
-
-				<div class="contacts-po">
-					<p>Контакты</p>
-					<div class="input-email">
-						<p>e-mail</p>
-						<?php echo '<input type="text" value="'.$user_data_arr['email'].'" id="iemail">'; ?>
+				<div class="data-box">
+					<div class="input-title">Курение</div>
+					<select name="smoking" id="ismoke">
+						<?php
+								$work_query = $db->query('SELECT smoking_type_name, smoking_type_id FROM smoking_types ORDER BY smoking_type_id');
+								while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
+									if($row['smoking_type_name'] == $user_data_arr['smoking']){								
+										echo '<option value='.$row['smoking_type_id'].' selected>'.$row['smoking_type_name'].'</option>';
+									}
+									else{								
+										echo '<option value='.$row['smoking_type_id'].'>'.$row['smoking_type_name'].'</option>';
+									}
+								}
+						?>
+					</select>
+	
+				</div>
+				<div class="data-box">
+					<div class="input-title">Спорт</div>
+	
+					<select name="sport" id="isport">
+						<?php
+								$work_query = $db->query('SELECT sport_activity_type_name, sport_activity_type_id FROM sport_activity_types ORDER BY sport_activity_type_id');
+								while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
+									if($row['sport_activity_type_name'] == $user_data_arr['sport']){								
+										echo '<option value='.$row['sport_activity_type_id'].' selected>'.$row['sport_activity_type_name'].'</option>';
+									}
+									else{								
+										echo '<option value='.$row['sport_activity_type_id'].'>'.$row['sport_activity_type_name'].'</option>';
+									}
+								}
+							?>
+					</select>
+				</div>
+				<div class="data-box">
+					<div class="input-title">Питание</div>
+					<select name="food" id="ifood">
+						<?php
+								$work_query = $db->query('SELECT diet_type_name, diet_type_id FROM diet_types ORDER BY diet_type_id');
+								while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
+									if($row['diet_type_name'] == $user_data_arr['diet']){								
+										echo '<option value='.$row['diet_type_id'].' selected>'.$row['diet_type_name'].'</option>';
+									}
+									else{								
+										echo '<option value='.$row['diet_type_id'].'>'.$row['diet_type_name'].'</option>';
+									}
+								}
+						?>
+					</select>
+	
+				</div>
+				<div class="data-box">
+					<div class="input-title">Дети</div>
+	
+					<select name="children" id="ichildren">
+						<?php
+								$work_query = $db->query('SELECT children_type_name, children_type_id FROM children_types ORDER BY children_type_id');
+								while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
+									if($row['children_type_name'] == $user_data_arr['children']){								
+										echo '<option value='.$row['children_type_id'].' selected>'.$row['children_type_name'].'</option>';
+									}
+									else{								
+										echo '<option value='.$row['children_type_id'].'>'.$row['children_type_name'].'</option>';
+									}
+								}
+						?>
+					</select>
+	
+				</div>
+				<div class="data-box">
+					<div class="input-title">Алкоголь</div>
+	
+					<select name="alcohol" id="ialcohol">
+						<?php
+								$work_query = $db->query('SELECT alcohol_type_name, alcohol_type_id FROM alcohol_types ORDER BY alcohol_type_id');
+								while ($row = $work_query->fetch(PDO::FETCH_ASSOC)){
+									if($row['alcohol_type_name'] == $user_data_arr['alcohol']){								
+										echo '<option value='.$row['alcohol_type_id'].' selected>'.$row['alcohol_type_name'].'</option>';
+									}
+									else{								
+										echo '<option value='.$row['alcohol_type_id'].'>'.$row['alcohol_type_name'].'</option>';
+									}
+								}
+						?>
+					</select>
+				</div>
+			</div>
+	
+			<div class="data-category-title">Заболевания</div>
+			<div class="data-container">
+				<div class="data-box long">
+					<div class="input-title">Генетические риски</div>
+					<div class="gen-risks-selectBox" onclick="showCheckboxes()">
+						<select id="gen_risks">
+							<option>Нажмите, чтобы развернуть</option>
+						</select>
+						<div class="gen-risks-overSelect"></div>
 					</div>
-					<div class="input-telephone">
-						<p>Телефон</p>
-						<?php echo '<input type="text" value="'.$user_data_arr['phone'].'"  id="itele">'; ?>
+					<div id="gen-risks-checkboxes">
+						<?php
+									$risks_query = $db->query('SELECT relatives_death_causes_type_id, relatives_death_causes_type_name FROM relatives_death_causes_types ORDER BY relatives_death_causes_type_id');
+									while ($row = $risks_query->fetch(PDO::FETCH_ASSOC)){									
+										if(in_array($row['relatives_death_causes_type_name'], $user_data_arr['risks'])){
+											echo '<label class="container-checkbox">';
+											echo '<input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group" checked>';
+											echo '<span class="checkmark"></span>';
+											echo '<span>'.$row['relatives_death_causes_type_name'].'</span>';
+											echo '</label>';
+										}
+										else{
+											echo '<label class="container-checkbox">';
+											echo '<input type="checkbox" value='.$row['relatives_death_causes_type_id'].' name="risks_group">';
+											echo '<span class="checkmark"></span>';
+											echo '<span>'.$row['relatives_death_causes_type_name'].'</span>';
+											echo '</label>';
+										}
+									}
+						?>
 					</div>
+				</div>
+				<div class="data-box long">
+					<div class="input-title">Чем болел(а) раньше</div>
+					<?php echo '<input type="text" value="'.$user_data_arr['diseases'].'" id="isick">'; ?>
+				</div>
+				<div class="data-box long">
+					<div class="input-title">Хронические заболевания</div>
+					<?php echo '<input type="text" value="'.$user_data_arr['chronical'].'" id="ichronic">' ?>
+				</div>
+			</div>
+	
+			<div class="data-category-title">Контакты</div>
+			<div class="data-container">
+				<div class="data-box">
+					<div class="input-title">E-mail</div>
+					<?php echo '<input type="text" value="'.$user_data_arr['email'].'" id="iemail">'; ?>
+				</div>
+				<div class="data-box">
+					<div class="input-title">Телефон</div>
+					<?php echo '<input type="text" value="'.$user_data_arr['phone'].'"  id="itele">'; ?>
 				</div>
 			</div>
 		</div>
@@ -450,52 +481,83 @@
 	?>
 	</form>	
 
-	<div class="time-link threeb">
-		<div class="img-time"></div>
-		<p class="info">Предоставить временный доступ к Личному кабинету по ссылке:</p>
-		<p id="acctual-link">http://site.ru/url&2333?</p>
-		<a class="" href="" onclick="return false">Открыть доступ</a>
+	<div class="threeb">
+		<div class="rec-wrapper">
+			<div class="rec-icon-container">
+				<div class="icon-chain"></div>
+			</div>
+			<div class="rec-container">
+				<div class="rec-text-container">
+					<div class="rec-text">Предоставить временный доступ к Личному кабинету по ссылке:</div>
+					<div class="rec-text-additional">http://site.ru/url&2333?</div>
+				</div>
+				<div class="rec-button-container">
+					<a class="rec-button-white" href="#">Открыть доступ</a>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<div class="family-profile threeb">
-		<div class="img-family"></div>
-		<p class="info">Создать семейный профиль</p>
-		<p class="allfam">(ребенок, муж, жена, мама, папа, родственник)</p>
-		<a class="" href="" onclick="return false">+ Добавить члена семьи</a>
+	<div class="threeb">
+		<div class="rec-wrapper">
+			<div class="rec-icon-container">
+				<div class="icon-family"></div>
+			</div>
+			<div class="rec-container">
+				<div class="rec-text-container">
+					<div class="rec-text">Создать семейный профиль</div>
+					<div class="rec-text-additional">(ребенок, муж, жена, мама, папа, родственник)</div>
+				</div>
+				<div class="rec-button-container">
+					<a class="rec-button-white" href="#">+ Добавить члена семьи</a>
+				</div>
+			</div>
+		</div>
 	</div>
-
 	
 	<div class="threeb cashback">
+	<div class="rec-wrapper">
 		<div class="cashback-container-top">
-			<p><strong>Кэшбек</strong> (3% от всех заказов сделанных через сайт)</p>
-			<p>Сумма в обработке <strong>205р</strong> Доступно к снятию <strong>634р</strong></p>
+			<div>
+				<strong>Кэшбек</strong> (3% от всех заказов сделанных через сайт)
+				<div class="questionmark">
+					<span class="tooltip-content">
+						Время обработки кэшбека от 15 до 60 дней с момента оплаты заказа. Срок
+						обработки зависит от срока предоставления финансовых отчетов нашими партнерами
+					</span>
+				</div>
+			</div>
+			<div>Сумма в обработке <strong>205р</strong> Доступно к снятию <strong>634р</strong></div>
 		</div>
 		<div class="cashback-container-bottom">
 			<div class="cashback-bottom-box">
-				<p>Перевести</p>
-				<input type="text">
-				<p class="text-lower">минимальная сумма снятия 500р</p>
+					<div>Перевести</div>
+					<input type="text">
+					<div class="rec-text-additional">минимальная сумма снятия 500р</div>
 			</div>
 			<div class="cashback-bottom-box">
 				<label class="container-radio">
                 	<input type="radio" name="cashback">
                 	<span class="checkmark-radio"></span>
                 	<span>На телефон</span>
-            	</label>
+            	</label><br>
 				<input type="text">
 			</div>
 			<div class="cashback-bottom-box">
+				<div class="cashback-card-info">
 				<label class="container-radio">
                 	<input type="radio" name="cashback">
                 	<span class="checkmark-radio"></span>
                 	<span>На карту</span>
 				</label>
 				<img src="images/icons/cards.png">
+				</div>
 				<input type="text">
 			</div>
 		</div>
 		<div class="cashback-button-container">
 			<a class="cashback-button button-unregistered-wip">Отправить</a>
+		</div>
 		</div>
 	</div>
 
@@ -510,7 +572,7 @@
             <h1 class="reminders-title">Добавить напоминание</h1>
 			<div class="reminders-container">
 				<div class="reminders-box">
-					<p>Вид напоминания</p>
+					<p>Вид</p>
 					<select>
 						<option>Принять лекарство</option>
 						<option>Сдать анализы</option>
@@ -539,8 +601,8 @@
 					<p>Время</p>
 					<input type="text" id="reminders-time">
 				</div>
-			</div>
-			<div class="reminders-container">
+
+			
 				<div class="reminders-box">
 					<p>Уведомление</p>
 					<select>
@@ -555,7 +617,7 @@
 					<input type="text">
 				</div>
 			</div>
-			<a class="save-rem-button button-unregistered-wip">Добавить</a>
+			<a class="rec-button button-unregistered-wip">Добавить</a>
 			<h1 class="reminders-title">Мои напоминания</h1>
 			<table class="table-reminders">
 				<tr>
@@ -585,81 +647,221 @@
 					</td>
 				</tr>
 			</table>
+
+			<div class="reminders-block-mobile">
+				<div class="table-rem-mobile">
+					<div class="rem-line">
+						<div>Вид:</div>
+						<div>Пройти обследование</div>	
+					</div>
+					<div class="rem-line">
+						<div>Повторение:</div>
+						<div>Раз в 6 месяцев</div>
+					</div>
+					<div class="rem-line">
+						<div>Дата:</div>
+						<div>23.03</div>	
+					</div>
+					<div class="rem-line">
+						<div>Время:</div>
+						<div>10:00</div>
+					</div>
+					<div class="rem-line">
+						<div>Уведомление:</div>
+						<div>WhatsApp</div>
+					</div>
+					<div class="rem-line">
+						<div>Название:</div>
+						<div>Онкомаркеры</div>
+					</div>
+					<div class="rem-line">
+						<div>Статус:</div>
+						<div>
+							<label class="switch">
+  							<input type="checkbox">
+  							<span class="slider"></span>
+							</label>
+						</div>	
+					</div>
+				</div>
+			</div>
+
         </div>
     </div>
 
 	<div class="services">
-		<p>Сервисы</p>
-		<a class="all-serv">Активировать все сервисы</a>
-		<div class="click-services">
-			
-				<a class="weight-control threeb" href="" onclick="return false">
-					<p>Контроль веса</p>
-					<div class="trigger"></div>
-				</a>
-
-				<a class="be-mom threeb" href="" onclick="return false">
-					<p>Хочу быть мамой</p>
-					<div class="trigger"></div>
-				</a>
-
-				<a class="be-dad threeb" href="" onclick="return false">
-					<p>Хочу быть папой</p>
-					<div class="trigger"></div>
-				</a>
-
-				<a class="wait-kid threeb" href="" onclick="return false">
-					<p>Жду малыша</p>
-					<div class="trigger"></div>
-				</a>
-
-				<a class="healthy-heart threeb" href="" onclick="return false">
-					<p>Здоровое сердце</p>
-					<div class="trigger"></div>
-				</a>
-
-				<a class="personal-health-manager threeb" href="" onclick="return false">
-					<p>Персональный менеджер здоровья</p>
-					<div class="trigger"></div>
-				</a>
-
-				<a class="analyzes threeb" href="" onclick="return false">
-					<p>Сдача анализов</p>
-					<div class="trigger"></div>
-				</a>
-
-				<a class="home-bodycheck threeb" href="" onclick="return false">
-					<p>Домашний медосмотр</p>
-					<div class="trigger"></div>
-				</a>
-
-				<a class="give-up-smoking threeb" href="" onclick="return false">
-					<p>Отказ от курения</p>
-					<div class="trigger"></div>
-				</a>
-
-				<a class="healthy-eating threeb" href="" onclick="return false">
-					<p>Здоровое питание</p>
-					<div class="trigger"></div>
-				</a>
+		<div class="title">Сервисы</div>
+		<div class="global-toggle">
+			Активировать все сервисы
+			<label class="switch">
+  				<input type="checkbox">
+  				<span class="slider"></span>
+			</label>
+		</div>
+		<div class="services-toggles">
+				<div class="service-box threeb">
+					<div>
+						<div class="rec-icon-container">
+							<div class="icon-mass-index"></div>
+						</div>
+						Контроль веса
+					</div>
+					<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+					</label>
+				</div>
 				
-				<a class="immunity threeb" href="" onclick="return false">
-					<p>Поднятие иммунитета</p>
-					<div class="trigger"></div>
-				</a>
-				
-				<a class="reminder threeb" href="" onclick="return false">
-					<p>Напоминания</p>
-					<div class="trigger"></div>
-				</a>
-			
+				<div class="service-box threeb">
+					<div>
+						<div class="rec-icon-container">
+							<div class="icon-be-mom"></div>
+						</div>
+						Хочу быть мамой
+					</div>
+					<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+					</label>
+				</div>
+
+				<div class="service-box threeb">
+					<div>
+						<div class="rec-icon-container">
+							<div class="icon-be-dad"></div>
+						</div>
+						Хочу быть папой
+					</div>
+					<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+					</label>
+				</div>
+
+				<div class="service-box threeb">
+					<div>
+						<div class="rec-icon-container">
+							<div class="icon-expecting"></div>
+						</div>
+						Жду малыша
+					</div>
+					<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+					</label>
+				</div>
+
+				<div class="service-box threeb">
+					<div>
+						<div class="rec-icon-container">
+							<div class="icon-healthyheart"></div>
+						</div>
+						Здоровое сердце
+					</div>
+					<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+					</label>
+				</div>
+
+				<div class="service-box threeb">
+					<div>
+						<div class="rec-icon-container">
+							<div class="icon-personal-manager"></div>
+						</div>
+						Персональный менеджер здоровья
+					</div>
+					<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+					</label>
+				</div>
+
+				<div class="service-box threeb">
+					<div>
+						<div class="rec-icon-container">
+							<div class="icon-analyzes"></div>
+						</div>
+						Сдача анализов
+					</div>
+					<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+					</label>
+				</div>
+
+				<div class="service-box threeb">
+					<div>
+						<div class="rec-icon-container">
+							<div class="icon-homebodycheck"></div>
+						</div>
+						Домашний медосмотр
+					</div>
+					<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+					</label>
+				</div>
+
+				<div class="service-box threeb">
+					<div>
+						<div class="rec-icon-container">
+							<div class="icon-smoke"></div>
+						</div>
+						Отказ от курения
+					</div>
+					<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+					</label>
+				</div>
+
+				<div class="service-box threeb">
+					<div>
+						<div class="rec-icon-container">
+							<div class="icon-healthyfood"></div>
+						</div>
+						Здоровое питание
+					</div>
+					<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+					</label>
+				</div>
+
+				<div class="service-box threeb">
+					<div>
+						<div class="rec-icon-container">
+							<div class="icon-immunity"></div>
+						</div>
+						Поднятие иммунитета
+					</div>
+					<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+					</label>
+				</div>
+
+				<div class="service-box threeb">
+					<div>
+						<div class="rec-icon-container">
+							<div class=""></div>
+						</div>
+						Генетический скрининг организма
+					</div>
+					<label class="switch">
+  						<input type="checkbox">
+  						<span class="slider"></span>
+					</label>
+				</div>
+			</div>
 		</div>
 	<div class="instructions">
    		<input type="checkbox" id="how_video" name="video" value="how_video">
     	<label for="video">Показывать видеоинструкции?</label>
   	</div>
 	<hr>
-	</div>
+	
 	<?php
         include("footer.php");
     ?>

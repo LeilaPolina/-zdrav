@@ -1,96 +1,89 @@
-<?php include("rec_analyses.php"); ?>
-<div class="req_analyzes threeb">
-    <div class="module-content">
-	<div class="icon_analyzes icon_rec"></div>
+<?php 
+    include("rec_analyses.php");
+    include("rec_analyses_generation.php");
+?>
 
-	<p class="text1"><strong>Рекомендуем сдать следующие комплексы анализов и обследований</strong></p>
+<div class="threeb">
+    <div class="rec-wrapper">
+    <div class="rec-icon-container">
+        <div class="icon-analyzes icon-rec"></div>
+    </div>
 
-	<div class="result_analyzes">
-		<div class="rec_min">
-        <div class="analyzes-list-title">Анализы</div>
-			<ul>
-				<li>Общий анализ крови<a class="help-reverse" href="services.php#analyzes">Подробнее</a></li>
-				<li>Биохимическй анализ крови<a class="blood-info btn-info help-reverse">Подробнее</a></li>
-				<li>Общий анализ мочи<a class="pee-info btn-info help-reverse">Подробнее</a></li>
+    <div class="rec-container analyzes">
+    <div class="rec-text-container">
+        <div class="rec-text">Рекомендуем сдать следующие комплексы анализов и обследований</div>
+    </div>
+        <div class="analyzes-list-container">
+			<ul class="rec-list">
+                <li class="analyzes-list-title">Анализы</li>
                 <?php
+                generate_list_item("Общий анализ крови",true);
+                generate_list_item("Биохимическй анализ крови",true,"blood","Рекомендовано сдавать данный анализ (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)");
+                generate_list_item("Общий анализ мочи",true,"pee","Рекомендовано сдавать данный анализ (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)");
                 if($an_gastro) {
-				    echo '<li>Гастрокомплекс<a class="gastro-info btn-info help-reverse">';
-                    echo 'Подробнее</a></li>';
+                    generate_list_item("Гастрокомплекс",true,"gastro","Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>заболеваниям ЖКТ</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)");
                 }
                 if($an_diabetes) {
-				    echo '<li>Диагностика диабета, биохимический<a class="diabetes-info btn-info help-reverse">';
-                    echo 'Подробнее</a></li>';
+                    generate_list_item("Диагностика диабета, биохимический",true,"diabetes","Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>диабету</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)");
                 }
                 if($an_cardio) {
-				    echo '<li>Кардиологический<a class="cardio-info btn-info help-reverse">';
-                    echo 'Подробнее</a></li>';
+                    generate_list_item("Кардиологический",true,"cardio","Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к заболеваниям <strong>сердечно сосудистой системы</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)");
                 }
                 if($an_onco_m){
-				    echo '<li>Онкологический для мужчин, биохимический<a class="onco-m-info btn-info help-';
-                    echo 'reverse">Подробнее</a></li>';
+                    generate_list_item("Онкологический для мужчин, биохимический",true,"onco_m","Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>раковым</strong> заболеваниям (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)");
                 }
                 if($an_onco_f){
-				    echo '<li>Онкологический для женщин, биохимический<a class="onco-f-info btn-info help-';
-                    echo 'reverse">Подробнее</a></li>';
+                    generate_list_item("Онкологический для женщин, биохимический",true,"onco_f","Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>раковым</strong> заболеваниям (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)");
                 }
                 if($an_vessels){
-				    echo '<li>Диагностика сосудистых заболеваний головного мозга<a ';
-                    echo 'class="vessels-info btn-info help-reverse">Подробнее</a></li>';
+                    generate_list_item("Диагностика сосудистых заболеваний головного мозга",true,"vessels","Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к заболеваниям <strong>сосудистой системы головного мозга</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)");
                 }
                 if($an_hormones_m){
-				    echo '<li>Гормональный профиль (комплекс) для мужчин<a class="hormones-m-info btn-info help-';
-                    echo 'reverse" href="services.php#analyzes">Подробнее</a></li>';
+                    generate_list_item("Гормональный профиль (комплекс) для мужчин",true,"hormones_m","Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)");
                 }
                 if($an_hormones_f){
-				    echo '<li>Гормональный профиль (комплекс) для женщин<a class="hormones-f-info btn-info help-';
-                    echo 'reverse">Подробнее</a></li>';
+                    generate_list_item("Гормональный профиль (комплекс) для женщин",true,"hormones_f","Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)");
                 }
                 if($an_vitamins){
-				    echo '<li>Комплексный анализ крови на витамины (A, D, E, K, C, B1, B5, ';
-                    echo 'B6, В9, B12)<a class="vitamins-info btn-info help-reverse">';
-                    echo 'Подробнее</a></li>';
+                    generate_list_item("Комплексный анализ крови на витамины",true,"vitamins","Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)");
                 }
                 ?>
             </ul>
             </div>
-            <a class="rec-button-new" href="services.php#analyzes">Перейти</a>
+            <a class="rec-button" href="services.php#analyzes">Перейти</a>
 
-            <div class="checkup-list">
-            <div class="analyzes-list-title">Обследования</div>
-            <ul>
-                <li>Измерение давления<a class="help-reverse" href="services.php#home-checkup">Подробнее</a></li>
-                <li>ЭКГ<a class="help-reverse" href="services.php#home-checkup">Подробнее</a></li>
-                <li>УЗИ брюшной полости<a class="help-reverse" href="services.php#home-checkup">Подробнее</a></li>
-                <li>УЗИ мочевого органа и мочеточников<a class="help-reverse" href="services.php#home-checkup">Подробнее</a></li>
+            <div class="analyzes-list-container">
+                <ul class="rec-list">
+                <li class="analyzes-list-title">Обследования</li>
                 <?php
+                    generate_list_item("Измерение давления",false);
+                    generate_list_item("ЭКГ",false);
+                    generate_list_item("УЗИ брюшной полости",false);
+                    generate_list_item("УЗИ мочевого органа и мочеточников",false);
                     if($ch_uzi_liver) {
-                        echo '<li>УЗИ печени и желчного органа';
-                        echo '<a class="help-reverse" href="services.php#home-checkup">Подробнее</a></li>';
+                        generate_list_item("УЗИ печени и желчного органа",false);
                     }
                     if($ch_uzi_mammary) {
-                        echo '<li>УЗИ молочных желез';
-                        echo '<a class="help-reverse" href="services.php#home-checkup">Подробнее</a></li>';
+                        generate_list_item("УЗИ молочных желез",false);
                     }
                     if($ch_uzi_vessels) {
-                        echo '<li>УЗИ сосудов нижних конечностей (вены + артерии)';
-                        echo '<a class="help-reverse" href="services.php#home-checkup">Подробнее</a></li>';
+                        generate_list_item("УЗИ сосудов нижних конечностей (вены + артерии)",false);
                     }
                     if($ch_uzi_heart) {
-                        echo '<li>УЗИ сердца';
-                        echo '<a class="help-reverse" href="services.php#home-checkup">Подробнее</a></li>';
+                        generate_list_item("УЗИ сердца",false);
                     }
                     if($ch_xray_lungs) {
-                        echo '<li>Рентген легких';
-                        echo '<a class="help-reverse" href="services.php#home-checkup">Подробнее</a></li>';
+                        generate_list_item("Рентген легких",false);
                     }
                 ?>
             </ul>
             </div>
-            <a class="rec-button-new" href="services.php#home-checkup">Перейти</a>
-		</div>
+        <a class="rec-button" href="services.php#home-checkup">Перейти</a>
     
-	
-	<p class="text2">В нашем сервисе есть возможность заказать рекомендованные анализы с <br> бесплатным выездом сестры на дом или в офис и с бесплатной их расшифровкой</p>
-    <div class="plus_life_analyzes help">+ 2 года жизни</div>
+        <div class="rec-text-container">
+            <div class="rec-text">В нашем сервисе есть возможность заказать рекомендованные анализы с бесплатным выездом сестры на дом или в офис и с бесплатной их расшифровкой</div>
+        </div>
+        <div class="plus-life">+ 2 года жизни</div>
+        </div>
     </div>
 </div>

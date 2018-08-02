@@ -5,6 +5,7 @@
 .gen-risks-selectBox select {
   width: 100%;
   font-weight: bold;
+  color: #16325C;
 }
 
 .gen-risks-overSelect {
@@ -15,12 +16,11 @@
   bottom: 0;
 }
 
-#gen-risks-checkboxes {  
+#gen-risks-checkboxes {
+  width: 100%;
 	background-color: white;
 	display: none;
 	border: 1px #dadada solid;
-	width: 572px;
-	position: absolute;
 	z-index: 10000;
 	border-radius:4px;
 	padding:0 0 7px 0;

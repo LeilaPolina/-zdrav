@@ -67,15 +67,15 @@ function getIndexMass ($weight, $height) {
 function getTxtIndexMass ($index_mass) {
     $txt = '';
     if ($index_mass < 15) {
-        $txt = 'Острый дефицит веса';
+        $txt = '<b>Острому дефициту веса</b>';
     } elseif ($index_mass >= 15 and $index_mass < 20) {
-        $txt = 'Дефицит веса';
+        $txt = '<b>Дефициту веса</b>';
     } elseif ($index_mass >= 20 and $index_mass < 25) {
-        $txt = 'Нормальный вес';
+        $txt = '<b>Нормальному весу</b>';
     } elseif ($index_mass >= 25 and $index_mass < 30) {
-        $txt = 'Избыточный вес';
+        $txt = '<b>Избыточному весу</b>';
     } elseif ($index_mass >= 30) {
-        $txt = 'Ожирение';
+        $txt = '<b>Ожирению</b>';
     }
     
     return $txt;

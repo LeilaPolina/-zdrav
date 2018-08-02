@@ -368,7 +368,7 @@ button {
     color: #1F2F47;
 }
 
-.order-info-lower {
+.order.btn-info {
     font-size: 12px;
     text-align: center;
     cursor: pointer;
