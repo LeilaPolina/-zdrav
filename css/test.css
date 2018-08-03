@@ -69,7 +69,7 @@ body {
 	display: none;
 	width: 30px;
 	height: 30px;
-	background: url("../images/icons/responsive-navbar.png") no-repeat;
+	background: url("../images/icons/responsive-navbar.PNG") no-repeat;
 	background-size: contain;
 }
 
@@ -347,29 +347,29 @@ body {
 }
 
 .health-icon {
-	background:url('../images/icons/health_menu_icon.png') no-repeat;
+	background:url('../images/icons/health_menu_icon.PNG') no-repeat;
 }
 
 .documents-icon {
-	background:url('../images/icons/document_menu_icon.png') no-repeat;
+	background:url('../images/icons/document_menu_icon.PNG') no-repeat;
 }
 
 .shop-icon {
-	background:url('../images/icons/store_menu_icon.png') no-repeat;
+	background:url('../images/icons/store_menu_icon.PNG') no-repeat;
 }
 
 .services-icon {
-	background:url('../images/icons/services_menu_icon.png') no-repeat;
+	background:url('../images/icons/services_menu_icon.PNG') no-repeat;
 	width:15px;
 }
 
 .sign-out-icon {
-	background:url('../images/icons/sign_out.png') no-repeat;
+	background:url('../images/icons/sign_out.PNG') no-repeat;
 	width:15px;
 }
 
 .rec-icon-main {
-	background: url('../images/icons/Openheart.png') no-repeat;
+	background: url('../images/icons/Openheart.PNG') no-repeat;
 	display: inline-block;
 	width:33px;
 	height:25px;
@@ -730,7 +730,7 @@ td.rem-name {
 .questionmark {
     display: inline-block;
     content: "";
-    background: url("../images/icons/symbols-icon-question.png") no-repeat;
+    background: url("../images/icons/symbols-icon-question.PNG") no-repeat;
     background-size: contain;
     position: relative;
     width: 16px;
