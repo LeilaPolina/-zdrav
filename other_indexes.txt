@@ -34,7 +34,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="erythrocytes-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="erythrocytes-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -55,7 +55,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="hemoglobin-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="hemoglobin-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -76,7 +76,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="hematocrit-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="hematocrit-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -98,7 +98,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="avg_erythrocytes-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="avg_erythrocytes-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -119,7 +119,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="avg_hemoglobin_content_in_erythrocytes-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="avg_hemoglobin_content_in_erythrocytes-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -140,7 +140,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="avg_hemoglobin_concentration_in_erythrocytes-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="avg_hemoglobin_concentration_in_erythrocytes-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -161,7 +161,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="color_index-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="color_index-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -182,7 +182,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="reticulocytes-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="reticulocytes-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -203,7 +203,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="platelets-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="platelets-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -224,7 +224,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="leucocytes-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="leucocytes-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -245,7 +245,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="segment_nuclear_neutrophils-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="segment_nuclear_neutrophils-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -266,7 +266,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="stab_neutrophils-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="stab_neutrophils-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -287,7 +287,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="myelocytes-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="myelocytes-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -308,7 +308,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="meta_myelocytes-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="meta_myelocytes-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -329,7 +329,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="lymphocytes-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="lymphocytes-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -350,7 +350,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="monocytes-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="monocytes-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -371,7 +371,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="eosinophils-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="eosinophils-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -392,7 +392,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="basophils-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="basophils-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -413,7 +413,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="plasmocytes-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="plasmocytes-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -434,7 +434,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="ESR-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="ESR-reason"></a>
 						</div>
 					</td>
 				</tr>

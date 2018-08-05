@@ -20,6 +20,7 @@
 	<script src="scripts/errors.js"></script>
 	<script src="scripts/init_indexes.js"></script>
 	<script src="scripts/demo_indexes.js"></script>
+	<script src="scripts/diseases.js"></script>
     <script src="scripts/health.js"></script>
 	<script src="scripts/reason_models.js"></script>
 	<script src="jquery/jquery.maskedinput.min.js"></script>
@@ -163,7 +164,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="cholesterol-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="cholesterol-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -184,7 +185,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="glucose-reason">Причина</a>
+							<a href="#" class="index-reason-a" id="glucose-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -210,7 +211,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a"  id="blood-reason">Причина</a>
+							<a href="#" class="index-reason-a"  id="blood-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -231,7 +232,7 @@
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a"  id="weight-reason">Причина</a>
+							<a href="#" class="index-reason-a"  id="weight-reason"></a>
 						</div>
 					</td>
 				</tr>
@@ -282,7 +283,7 @@
 				
 					<div class="modal-header sm-body" id="reason_header">
 						<span class="close" id="reason-close">&times;</span>
-						<div class="modal-title">Причины</div>
+						<div class="modal-title">Возможные причины отклонения от нормы</div>
 					</div>
 					
 					<div id="reason-container">

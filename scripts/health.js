@@ -4,8 +4,8 @@ function show_add_modal(obj_x_coord) {
 	$("#health-modal").css("top",obj_x_coord.top+5);
 	$("#health-modal").css("left",obj_x_coord.left-200);
     $("#health-modal").css("display","block"); 
-    var top=$("#health-modal").offset().top;
-    $('body,html').animate({scrollTop: top}, 1500);
+   // var top=$("#health-modal").offset().top;
+    //$('body,html').animate({scrollTop: top}, 1500);
 }
 
 function set_border_colors_and_estimation_values(brd_id,estimatimation_id,border_kind) {
@@ -35,6 +35,7 @@ function set_border_colors_and_estimation_values(brd_id,estimatimation_id,border
 			  $(brd_id).css("background-color","green"); 
 			  $(estimatimation_id).css("color","green");
 			  $(estimatimation_id).text("Норма");
+
 		   }  
 		}
 	
@@ -45,6 +46,12 @@ function set_values(index_name,index_value,index_date,border_kind) {
    var estimatimation_id="#"+index_name+"-estm";
    $(date_id).text(index_date);
    $(value_span_id).text(index_value);
+   if(border_kind==0) {
+   	$("#"+index_name+"-reason").text("");
+   }
+   else {
+   	$("#"+index_name+"-reason").text("Причина");
+   }
    set_border_colors_and_estimation_values(brd_id,estimatimation_id,border_kind);
 }
 

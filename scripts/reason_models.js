@@ -1,5 +1,9 @@
 $( document ).ready(function() {
-   
+
+	
+   if(indexes_array["cholesterol"].border_kind!=0) {
+		$("#cholesterol-reason").text("Причина");
+	}
    /*SHOW CHOLESTEROL MODAL REASON*/
    $("#cholesterol-reason").click(function(e){
 	    e.preventDefault();
@@ -272,15 +276,9 @@ $( document ).ready(function() {
 	$("#erythrocytes-reason").click(function(e) {
 		e.preventDefault();
 		if(indexes_array["erythrocytes"].border_kind!=0) {
-			var lower_norm=indexes_array["erythrocytes"].lower_norm;
-			var upper_norm=indexes_array["erythrocytes"].upper_norm;
 			$("#index-norm").text("Ваша норма 3.8 – 5.3 клеток/л");
 			$("#possible-reasons-wrapper").html(
-				'<div class="reasons-d"><p class="reasons-header">Эритремия</p>'+
-					'<p class="reasons-p">Эритремия заболевание кроветворной системы, при которой наблюдается увеличение содержания клеток крови в крови, преимущественно красных кровяных телец (эритроцитов).</p></br>'+
-					'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
-						'<a class="reasons-a" href="https://www.polismed.com/articles-ehritremija-prichiny-laboratornaja-diagnostika-simptomy-lechenie.html">Эритремия</a>'+
-					'</div>'+
+				erythremia+
 
 				'<div class="reasons-d"><p class="reasons-header">Хронические болезни легких и сердца</p>'+
 					'<p class="reasons-p">Повышение уровня эритроцитов крови могут вызываться нарушением работы сердца приводящей к сердечной недостаточности или болезнями легких, которые приводят к дыхательной недостаточности.</p></div>'+
@@ -320,8 +318,6 @@ $( document ).ready(function() {
 $("#hemoglobin-reason").click(function(e) {
 		e.preventDefault();
 		if(indexes_array["hemoglobin"].border_kind!=0) {
-			var lower_norm=indexes_array["hemoglobin"].lower_norm;
-			var upper_norm=indexes_array["hemoglobin"].upper_norm;
 			$("#index-norm").text("Ваша норма 115.0 – 150.0  г/л");
 			$("#possible-reasons-wrapper").html(
 				'<div class="reasons-d"><p class="reasons-header">Анемия</p>'+
@@ -371,15 +367,9 @@ $("#hemoglobin-reason").click(function(e) {
 	$("#hematocrit-reason").click(function(e) {
 		e.preventDefault();
 		if(indexes_array["hematocrit"].border_kind!=0) {
-			var lower_norm=indexes_array["hematocrit"].lower_norm;
-			var upper_norm=indexes_array["hematocrit"].upper_norm;
 			$("#index-norm").text("Ваша норма 34.0 – 42.0 %");
 			$("#possible-reasons-wrapper").html(
-				'<div class="reasons-d"><p class="reasons-header">Эритремия</p>'+
-					'<p class="reasons-p">Эритремия заболевание кроветворной системы, при которой наблюдается увеличение содержания клеток крови в крови, преимущественно красных кровяных телец (эритроцитов).</p></br>'+
-					'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
-						'<a class="reasons-a" href="https://www.polismed.com/articles-ehritremija-prichiny-laboratornaja-diagnostika-simptomy-lechenie.html">Эритремия</a>'+
-					'</div>'+
+				erythremia+
 					'<div class="reasons-d"><p class="reasons-header">Эритроцитоз</p>'+
 					'<p class="reasons-p">Эритроцитоз - патологическое состояние при котором наблюдается повышенная концентрация эритроцитов в крови.</p></br>'+
 					'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
@@ -389,6 +379,722 @@ $("#hemoglobin-reason").click(function(e) {
 			$("#reason-modal-content").css("height",480);
 			$("#reason-modal").css("display","block");
 		}
+	
+	});
+
+	$("#avg_erythrocytes-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["avg_erythrocytes"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 77.0 – 95.0 фл.");
+			if(indexes_array["avg_erythrocytes"].border_kind==-1 || indexes_array["avg_erythrocytes"].border_kind==-2) {
+				$("#possible-reasons-wrapper").html(
+					iron_deficiency_anemia+
+					thalassemia+
+					porphyrin_disorder+
+					lead_poisoning
+				);
+			}
+
+			if(indexes_array["avg_erythrocytes"].border_kind==1 || indexes_array["avg_erythrocytes"].border_kind==2) {
+				$("#possible-reasons-wrapper").html(
+					folic_deficiency_anemia+
+					b12_deficiency_anemia+
+					hemolytic_anemia
+				);
+			}
+
+			$("#reason-modal-content").css("height",510);
+			$("#reason-modal").css("display","block");
+		}
+	
+	});
+
+
+	$("#avg_hemoglobin_content_in_erythrocytes-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["avg_hemoglobin_content_in_erythrocytes"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 25.0 – 33.0 пг.");
+			if(indexes_array["avg_hemoglobin_content_in_erythrocytes"].border_kind==-1 || indexes_array["avg_hemoglobin_content_in_erythrocytes"].border_kind==-2) {
+				$("#possible-reasons-wrapper").html(
+					iron_deficiency_anemia+
+					thalassemia+
+					porphyrin_disorder+
+					lead_poisoning+
+					'<div class="reasons-d"><p class="reasons-header">Хронические инфекционно-воспалительные болезни</p>'+
+						'<ul id="possible-reasons">'+
+										'<li>Пневмония;</li>'+
+										'<li>Ангина;</li>'+
+										'<li>Грипп;</li>'+
+										'<li>Бронхит;</li>'+
+										'<li>Ларингит;</li>'+
+										'<li>Гепатит;</li>'+
+										'<li>Холецистит;</li>'+
+										'<li>Болень Крона;</li>'+
+										'<li>Гастрит;</li>'+
+										'<li>Энтерит;</li>'+
+										'<li>Пиелонефрит;</li>'+
+										'<li>Вагинит;</li>'+
+										'<li>Эндометрит;</li>'+
+										'<li>Аднексит;</li>'+
+									'</ul>'+
+					'<div>'
+				);
+			}
+
+			if(indexes_array["avg_hemoglobin_content_in_erythrocytes"].border_kind==1 || indexes_array["avg_hemoglobin_content_in_erythrocytes"].border_kind==2) {
+				$("#possible-reasons-wrapper").html(
+					folic_deficiency_anemia+
+					b12_deficiency_anemia+
+					hemolytic_anemia+
+					'<div class="reasons-d"><p class="reasons-header">Гипотиреоз</p>'+
+						'<p class="reasons-p">Под гипотиреозом подразумевается хроническая недостаточность гормонов щитовидной железы на уровне периферических тканей организма. В результате происходит снижение интенсивности обменных процессов и одновременно жизненных функций организма.</p></br>'+
+						'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-gipotireoz-prichiny-simptomy-sovremennaja-diagnostika-i-ehffektivnoe-lechenie.html">Гипотиреоз</a>'+	
+					'</div>'
+				);
+			}
+			
+			$("#reason-modal-content").css("height",515);
+			$("#reason-modal").css("display","block");
+		}
+	
+	});
+
+	$("#avg_hemoglobin_concentration_in_erythrocytes-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["avg_hemoglobin_concentration_in_erythrocytes"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 31.0 – 36.0 г/дл.");
+			if(indexes_array["avg_hemoglobin_concentration_in_erythrocytes"].border_kind==-1 || indexes_array["avg_hemoglobin_concentration_in_erythrocytes"].border_kind==-2) {
+				$("#possible-reasons-wrapper").html(iron_deficiency_anemia);
+			}
+			if(indexes_array["avg_hemoglobin_concentration_in_erythrocytes"].border_kind==1 || indexes_array["avg_hemoglobin_concentration_in_erythrocytes"].border_kind==2) {
+				$("#possible-reasons-wrapper").html(ovalocytosis);
+			}
+			$("#reason-modal-content").css("height",325);
+			$("#reason-modal").css("display","block");
+		}
+	
+	});
+
+
+	$("#color_index-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["color_index"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 0.9 – 1.1");
+			if(indexes_array["color_index"].border_kind==-1 || indexes_array["color_index"].border_kind==-2) {
+				$("#possible-reasons-wrapper").html(chronic_bleeding);
+				$("#reason-modal-content").css("height",350);
+			}
+			if(indexes_array["color_index"].border_kind==1 || indexes_array["color_index"].border_kind==2) {
+				$("#possible-reasons-wrapper").html(folic_deficiency_anemia + b12_deficiency_anemia);
+				$("#reason-modal-content").css("height",500);
+			}
+			
+			$("#reason-modal").css("display","block");
+		}
+	
+	});
+
+	$("#reticulocytes-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["reticulocytes"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 0.3 – 1.5%");
+			if(indexes_array["reticulocytes"].border_kind==-1 || indexes_array["reticulocytes"].border_kind==-2) {
+				$("#possible-reasons-wrapper").html(
+					hemolytic_anemia+malaria+iron_deficiency_anemia+acute_bleeding+cancer+
+					exhausting_diseases+aplastic_anemia+b12_deficiency_anemia+folic_deficiency_anemia+thalassemia+radiation_sickness+
+					sickle_cell_anemia+
+					'<div class="reasons-d"><p class="reasons-header">Алкоголизм</p>'+
+					'</div>'	
+				);
+			}
+
+			if(indexes_array["reticulocytes"].border_kind==1 || indexes_array["reticulocytes"].border_kind==2) {
+				$("#possible-reasons-wrapper").html(hemolytic_anemia+malaria+iron_deficiency_anemia+acute_bleeding+sickle_cell_anemia+exhausting_diseases);
+			}
+
+			$("#reason-modal-content").css("height",600);
+			$("#reason-modal").css("display","block");
+		}
+	
+	});
+
+
+	$("#platelets-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["platelets"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 150.0 – 500.0 клеток/л");
+			if(indexes_array["platelets"].border_kind==-1 || indexes_array["platelets"].border_kind==-2) {
+				$("#possible-reasons-wrapper").html(
+					'<div class="reasons-d"><p class="reasons-header">Наследственные тромбоцитопении</p>'+
+						'<p class="reasons-p">Возможные причины:</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Врожденная тромбоцитопения;</li>'+
+							'<li>Синдром Уискотта-Олдрича;</li>'+
+							'<li>Синдром Бернара-Сулье;</li>'+
+							'<li>Аномалия Чедиака-Хигаси;</li>'+
+							'<li>Синдром Фанкони;</li>'+
+							'<li>Краснуха у новорожденных;</li>'+
+							'<li>Гистиоцитоз;</li>'+
+						'</ul>'+
+					'</div>'+
+					aplastic_anemia+b12_deficiency_anemia+folic_deficiency_anemia+
+					'<div class="reasons-d"><p class="reasons-header">Поражение костного мозга</p>'+
+						'<p class="reasons-p">Возможные причины:</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Лучевая болезнь;</li>'+
+							'<li>Туберкулез костей;</li>'+
+						'</ul>'+
+					'</div>'+
+					'<div class="reasons-d"><p class="reasons-header">Инфекционные поражения</p>'+
+						'<p class="reasons-p">Возможные причины:</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Вирусные инфекции;</li>'+
+							'<li>Бактериальные поражения;</li>'+
+							'<li>Риккетсиоз;</li>'+
+							'<li>Малярия;</li>'+
+							'<li>Токсоплазмоз;</li>'+
+						'</ul>'+
+					'</div>'+
+					'<div class="reasons-d"><p class="reasons-header">Побочные действия лекарств</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Препараты подавляющие рост и размножение клеток (цитостатики);</li>'+
+							'<li>Болеутоляющие препараты;</li>'+
+							'<li>Антигистаминные препараты;</li>'+
+							'<li>Антибиотики;</li>'+
+							'<li>Психотропные препараты;</li>'+
+							'<li>Мочегонные препараты;</li>'+
+							'<li>Противосудорожные препараты;</li>'+
+							'<li>Дефицит витамина К;</li>'+
+							'<li>Препараты: резерпин, дигоксин, гепарин, нитроглицерин;</li>'+
+							'<li>Гормональные препараты: преднизолон, эстрогены;</li>'+
+						'</ul>'+
+					'</div>'
+				);
+			}
+			if(indexes_array["platelets"].border_kind==1 || indexes_array["platelets"].border_kind==2) {
+				$("#possible-reasons-wrapper").html(hemolytic_anemia+exhausting_diseases+cancer+acute_bleeding+erythremia+rheumatic_diseases+
+					'<div class="reasons-d"><p class="reasons-header">Хирургические вмешательства</p></div>'	
+				);
+			}
+			$("#reason-modal-content").css("height",600);
+			$("#reason-modal").css("display","block");
+		}
+	
+	});
+
+
+	$("#leucocytes-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["leucocytes"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 5.0 – 14.5 клеток/л");
+			if(indexes_array["leucocytes"].border_kind==-1 || indexes_array["leucocytes"].border_kind==-2) {
+				$("#possible-reasons-wrapper").html(aplastic_anemia+rheumatic_diseases+radiation_sickness+viral_infections);
+			}
+			if(indexes_array["leucocytes"].border_kind==1 || indexes_array["leucocytes"].border_kind==2) {
+				$("#possible-reasons-wrapper").html(
+					cancer+
+					'<div class="reasons-d"><p class="reasons-header">Бактериальные инфекции</p>'+
+						'<ul id="possible-reasons">'+
+										'<li>Пневмония;</li>'+
+										'<li>Туберкулез;</li>'+
+										'<li>Грипп;</li>'+
+										'<li>Бронхит;</li>'+
+										'<li>Ларингит;</li>'+
+										'<li>Цистит;</li>'+
+										'<li>Холецистит;</li>'+
+										'<li>Простатит;</li>'+
+										'<li>Эндометрит;</li>'+
+										'<li>Бронхоэктатическая болезнь;</li>'+
+										'<li>Сепсис;</li></br>'+
+									'</ul>'+
+					'<div>'+
+					'<div class="reasons-d"><p class="reasons-header">Гнойные поражения, некроз тканей.</p>'+
+						'<p class="reasons-p">Абсцессы, флегмоны, фурункулы.</p></br>'+
+					'<div>'+
+					poisoning_and_intoxication+
+					allergy+'</br>'+
+					blood_diseases
+				);
+			}
+			$("#reason-modal-content").css("height",600);
+			$("#reason-modal").css("display","block");
+		}
+	
+	});	
+
+
+
+
+	$("#segment_nuclear_neutrophils-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["segment_nuclear_neutrophils"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 35.0 – 58.0 %");
+			if(indexes_array["segment_nuclear_neutrophils"].border_kind==-1 || indexes_array["segment_nuclear_neutrophils"].border_kind==-2) {
+				$("#possible-reasons-wrapper").html(
+					radiation_sickness+viral_infections+
+					'<div class="reasons-d"><p class="reasons-header">Бактериальные инфекции</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Бактериальный эндокардит;</li>'+
+							'<li>Туберкулез;</li>'+
+							'<li>Брюшной тиф;</li>'+
+							'<li>Паратиф;</li>'+
+							'<li>Бруцеллез;</li></ul>'+
+					'</div>'+
+					'<div class="reasons-d"><p class="reasons-header">Побочные действия лекарств</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Сульфаниламидные препараты;</li>'+
+							'<li>Стероидные гормоны;</li>'+
+							'<li>Противосудорожные препараты;</li>'+
+							'<li>Антитиреоидные препараты;</li>'+
+							'<li>Обезболивающие противовоспалительные препараты;</li>'+
+						'</ul>'+
+					'</div>'
+
+
+				);
+			}
+			if(indexes_array["segment_nuclear_neutrophils"].border_kind==1 || indexes_array["segment_nuclear_neutrophils"].border_kind==2) {
+				$("#possible-reasons-wrapper").html(
+					'<div class="reasons-d"><p class="reasons-header">Хронические инфекции</p>'+
+						'<ul id="possible-reasons">'+
+										'<li>Цистит;</li>'+
+										'<li>Гепатит;</li>'+
+										'<li>Бронхит;</li>'+
+										'<li>Ларингит;</li>'+
+										'<li>Гепатит;</li>'+
+										'<li>Холецистит;</li>'+
+										'<li>Болень Крона;</li>'+
+										'<li>Бронхоэктатическая болезнь;</li>'+
+										'<li>Энтерит;</li>'+
+										'<li>Пиелонефрит;</li>'+
+										'<li>Неспецифический язвенный колит;</li>'+
+										'<li>Эндометрит;</li></br>'+
+									'</ul>'+
+					'<div>'+
+					'<div class="reasons-d"><p class="reasons-header">Нагноительные процессы</p>'+
+						'<ul id="possible-reasons">'+
+										'<li>Абсцесс;</li>'+
+										'<li>Фурункул;</li>'+
+										'<li>Сепсис;</li></br>'+
+									'</ul>'+
+					'<div>'+
+					cancer+ 
+					'<div class="reasons-d"><p class="reasons-header">Острый гепатит или обострение хронического</p>'+
+						'<p class="reasons-p">Гепатит - заболевание, при котором поражение печени имеет воспалительный характер.</p>'+
+						'</br><p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/subject-gepatit.html">Гепатит</a>'+		
+					'</div>'
+				);
+			}
+			$("#reason-modal-content").css("height",600);
+			$("#reason-modal").css("display","block");
+		}
+	
+	});
+
+	$("#stab_neutrophils-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["stab_neutrophils"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 0.0 – 5.0 %");
+				$("#possible-reasons-wrapper").html(
+					'<div class="reasons-d"><p class="reasons-header">Гнойные бактериальные поражения</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Пневмония;</li>'+
+							'<li>Туберкулез;</li>'+
+							'<li>Болезнь Крона;</li>'+
+							'<li>Эндометрит;</li>'+
+							'<li>Ларингит;</li>'+
+							'<li>Бронхоэктатическая болезнь;</li>'+
+							'<li>Сепсис;</li>'+
+							'<li>Холецистит;</li>'+
+							'<li>Цистит;</li>'+
+							'<li>Грипп;</li>'+
+							'<li>Гепатит;</li></ul>'+
+					'</div>'+
+					'<div class="reasons-d"><p class="reasons-header">Инфекционные болезни</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Пневмония;</li>'+
+							'<li>Туберкулез;</li>'+
+							'<li>Болезнь Крона;</li>'+
+							'<li>Эндометрит;</li>'+
+							'<li>Ларингит;</li>'+
+							'<li>Бронхоэктатическая болезнь;</li>'+
+							'<li>Сепсис;</li>'+
+							'<li>Холецистит;</li>'+
+							'<li>Цистит;</li>'+
+							'<li>Грипп;</li></ul>'+
+					'</div>'+
+
+					'<div class="reasons-d"><p class="reasons-header">Инфаркт, инсульт, гангрена</p>'+
+						'</br><p class="reasons-p">Читайте подробнее в статьях: : </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-ishemicheskaja-bolezn-serdca-stenokardija-simptomy-narushenija-krovoobrashhenija-serdca-infarkt-miokarda-lechenie-narushenijj-krovoobrashhenija-serdca.html">Инфаркт</a></br>'+		
+						'<a class="reasons-a" href="https://www.polismed.com/articles-insul-t-01.html">Инсульт</a></br>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-gangrena-prichiny-simptomy-diagnostika-i-lechenie-patologii.html">Гангрена</a>'+
+					'</div>'
+				);
+			$("#reason-modal-content").css("height",500);
+			$("#reason-modal").css("display","block");
+		}
+	});
+
+	$("#myelocytes-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["myelocytes"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 0.0 – 0.0 %");
+			$("#possible-reasons-wrapper").html(
+				'<div class="reasons-d"><p class="reasons-header">Гнойные бактериальные поражения</p>'+
+					'<p class="reasons-p">Воспалительные заболевания у взрослых: </p>'+
+						 '<ul id="possible-reasons">'+
+							'<li>Болезнь Крона;</li>'+
+							'<li>Бронхоэктатическая болезнь;</li>'+
+							'<li>Бронхит;</li>'+
+							'<li>Туберкулез;</li>'+
+							'<li>Ларингит;</li>'+
+							'<li>Сепсис;</li>'+
+							'<li>Грипп;</li>'+
+							'<li>Холецистит;</li>'+
+							'<li>Простатит;</li>'+
+							'<li>Цистит;</li>'+
+						'</ul>'+
+				'</div>'+
+				acute_bleeding+
+				'<div class="reasons-d"><p class="reasons-header">Миелобластный лейкоз</p>'+
+					'<p class="reasons-p">Миелобластный лейкоз - злокачественное заболевание крови, характеризующиеся бесконтрольным ростом незрелых клеток крови (миелобластов). Накапливаясь в костном мозге, периферической крови и внутренних органах, вызывают тяжелые нарушения функций всех систем организма.</p>'+	 
+					'</br><p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+					'<a class="reasons-a" href="https://www.polismed.com/articles-mieloblastnyjj-lejjkoz-01.html">Миелобластный лейкоз</a>'+	
+				'</div>'+
+				poisoning_and_intoxication+
+				'<div class="reasons-d"><p class="reasons-header">Острые инфекционные болезни</p>'+
+				'</div>'
+			);
+		
+			$("#reason-modal-content").css("height",600);
+			$("#reason-modal").css("display","block");
+		}
+	
+	});
+
+
+	$("#meta_myelocytes-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["meta_myelocytes"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 0.0 – 0.0 %");
+			$("#possible-reasons-wrapper").html(
+				'<div class="reasons-d"><p class="reasons-header">Гнойные бактериальные поражения</p>'+
+					'<p class="reasons-p">Воспалительные заболевания у взрослых: </p>'+
+						 '<ul id="possible-reasons">'+
+							'<li>Болезнь Крона;</li>'+
+							'<li>Бронхоэктатическая болезнь;</li>'+
+							'<li>Бронхит;</li>'+
+							'<li>Туберкулез;</li>'+
+							'<li>Ларингит;</li>'+
+							'<li>Сепсис;</li>'+
+							'<li>Грипп;</li>'+
+							'<li>Холецистит;</li>'+
+							'<li>Простатит;</li>'+
+							'<li>Цистит;</li>'+
+						'</ul>'+
+				'</div>'+
+				poisoning_and_intoxication+
+				'<div class="reasons-d"><p class="reasons-header">Острые инфекционные болезни</p>'+
+				'</div>'
+			);
+		
+			$("#reason-modal-content").css("height",550);
+			$("#reason-modal").css("display","block");
+		}
+	
+	});
+
+
+
+	$("#lymphocytes-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["lymphocytes"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 30.0 – 55.0 %");
+			if(indexes_array["lymphocytes"].border_kind==-1 || indexes_array["lymphocytes"].border_kind==-2) {
+				$("#possible-reasons-wrapper").html(
+					rheumatic_diseases+
+					cancer+radiation_sickness+
+					'<div class="reasons-d"><p class="reasons-header">Стероидные препараты или цитостатические средства</p></div>'+
+					'<div class="reasons-d"><p class="reasons-header">Лимфогранулематоз</p>'+
+						'<p class="reasons-p">Лимфогранулематоз - злокачественное заболевание лимфотической системы. В его основе лежит образование опухолевых клеток в лимфатических узлах, с последующим их ростом и распространением по всему организму.</p>'+
+						'</br><p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-limfogranulematoz-01.html">Лимфогранулематоз</a>'+	
+					'<div></br>'+
+					'<div class="reasons-d"><p class="reasons-header">Иммунодефицитные состояния (первичные, ВИЧ, СПИД)</p></div>'
+				);
+			}
+			if(indexes_array["lymphocytes"].border_kind==1 || indexes_array["lymphocytes"].border_kind==2) {
+				$("#possible-reasons-wrapper").html(
+					viral_infections+
+					'<div class="reasons-d"><p class="reasons-header">Болезни кроветворной системы</p>'+
+						'<ul id="possible-reasons">'+
+										'<li>Острый лимфолейкоз;</li>'+
+										'<li>Хронический лимфолейкоз;</li>'+
+										'<li>Инфекционный мононуклеоз;</li>'+
+										'<li>Макроглобулинемия Вальденстрема;</li>'+
+										'<li>Лимфосаркома;</li>'+
+									'</ul>'+
+					'</div>'+
+					'<div class="reasons-d"><p class="reasons-header">Инфекционные болезни</p>'+
+						'<ul id="possible-reasons">'+
+										'<li>Туберкулез;</li>'+
+										'<li>Сифилис;</li>'+
+										'<li>Малярия;</li>'+
+										'<li>Брюшной тиф;</li>'+
+										'<li>Бруцеллез;</li>'+
+										'<li>Дифтерия;</li>'+
+										'<li>Токсоплазмоз;</li>'+
+									'</ul>'+
+					'</div>'
+					
+				);
+			}
+			$("#reason-modal-content").css("height",600);
+			$("#reason-modal").css("display","block");
+		}
+	
+	});
+
+
+	$("#monocytes-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["monocytes"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 2.0 – 10.0 %");
+				$("#possible-reasons-wrapper").html(
+					'<div class="reasons-d"><p class="reasons-header">Инфекционный мононуклеоз</p>'+
+						'<p class="reasons-p">Инфекционный мононуклеоз (“болезнь поцелуев”) - вирусное инфекционное заболевание, имеет преимущественно капельный механизм передачи, характеризуется лихорадкой, увеличением лимфатических узлов и специфическими изменениями в анализе крови.</p>'+
+					'</div>'+aplastic_anemia+blood_diseases+
+					'<div class="reasons-d"><p class="reasons-header">Период восстановления после острых состояний</p></div>'+
+					'<div class="reasons-d"><p class="reasons-header">Ранний период после операций</p></div>'+
+					'<div class="reasons-d"><p class="reasons-header">Ревматические болезни</p></div>'+
+					'<div class="reasons-d"><p class="reasons-header">Применение стероидных препаратов</p></div>'
+
+				);
+			
+			$("#reason-modal-content").css("height",600);
+			$("#reason-modal").css("display","block");
+		}
+	
+	});
+
+
+	$("#eosinophils-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["eosinophils"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 0.5 – 5.0 %");
+			if(indexes_array["eosinophils"].border_kind==-1 || indexes_array["eosinophils"].border_kind==-2) {
+				$("#possible-reasons-wrapper").html(
+					'<div class="reasons-d"><p class="reasons-header">Острые инфекционные болезни</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Брюшной тиф;</li>'+
+							'<li>Дизентерия;</li>'+
+							'<li>Сепсис;</li>'+
+						'</ul>'+
+					'</div>'+
+					'<div class="reasons-d"><p class="reasons-header">Травмы, ожоги, роды, шок</p>'+
+					'<p class="reasons-p">Травмы:</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Вывихи;</li>'+
+							'<li>Переломы;</li>'+
+							'<li>Ожог;</li>'+
+							'<li>Отморожение;</li>'+
+						'</ul>'+
+					'</div>'		
+					
+				);
+				$("#reason-modal-content").css("height",500);
+			}
+			if(indexes_array["eosinophils"].border_kind==1 || indexes_array["eosinophils"].border_kind==2) {
+				$("#possible-reasons-wrapper").html(
+					blood_diseases+
+					'<div class="reasons-d"><p class="reasons-header">Паразитарные болезни</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Энтеробиоз;</li>'+
+							'<li>Описторхоз;</li>'+
+							'<li>Аскаридоз;</li>'+
+							'<li>Лямблиоз;</li>'+
+							'<li>Трихинеллез;</li>'+
+						'</ul>'+
+					'</div>'+
+					allergy+'</br><div class="reasons-d"><p class="reasons-header">Инфекционные болезни</p></div>'
+					/*'<div class="reasons-d"><p class="reasons-header">Аллергии</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Бронхиальная астма;</li>'+
+							'<li>Сенная лихорадка;</li>'+
+							'<li>Атопический дерматит;</li>'+
+							'<li>Поллиноз;</li>'+
+							'<li>Отек Квинке;</li>'+
+							'<li>Экзема;</li>'+
+							'<li>Себорейный дерматит;</li>'+
+							'<li>Индивидуальная непереносимость лекарств;</li>'+	
+						'</ul>'+
+					'</div>'*/
+					
+				);
+				$("#reason-modal-content").css("height",570);
+			}
+			
+			$("#reason-modal").css("display","block");
+		}
+	
+	});
+
+
+	$("#basophils-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["basophils"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 0.0 – 1.0 %");
+				$("#possible-reasons-wrapper").html(
+					blood_diseases+
+					'<div class="reasons-d"><p class="reasons-header">Хронические болезни кишечника</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Неспецифичеcкий язвенный колит;</li>'+
+							'<li>Дивертикулит;</li>'+
+							'<li>Дизентерия;</li>'+
+							'<li>Болезнь Крона;</li>'+
+							'<li>Язвенная болезнь желудка;</li>'+
+							'<li>Язвенная двенадцатиперстной кишки;</li>'+
+						'</ul>'+
+					'</div>'+
+					hemolytic_anemia+
+					allergy
+				);
+			$("#reason-modal-content").css("height",570);
+			$("#reason-modal").css("display","block");
+		}
+	});
+
+
+	$("#plasmocytes-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["plasmocytes"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 0.0 – 1.0 %");
+				$("#possible-reasons-wrapper").html(
+					'<div class="reasons-d"><p class="reasons-header">Вирусные заболевания</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Краснуха;</li>'+
+							'<li>Ветрянка (ветряная оспа);</li>'+
+							'<li>Инфекционный мононуклеоз;</li>'+
+							'<li>Корь;</li>'+
+							'<li>Коклюш;</li>'+
+							'<li>Скарлатина;</li>'+
+						'</ul>'+
+					'</div>'+
+					'<div class="reasons-d"><p class="reasons-header">Хронические инфекционные болезни</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Пневмония;</li>'+
+							'<li>Грипп;</li>'+
+							'<li>Бронхит;</li>'+
+							'<li>Ларингит;</li>'+
+							'<li>Холецистит;</li>'+
+							'<li>Цистит;</li>'+
+							'<li>Простатит;</li>'+
+							'<li>Эндометрит;</li>'+
+							'<li>Туберкулез;</li>'+
+						'</ul>'+
+					'</div>'+
+					cancer+
+					'<div class="reasons-d"><p class="reasons-header">Миеломная болезнь (плазмоцитома)</p>'+
+						'<p class="reasons-p">Миеломная болезнь злокачественная болезнь крови, при которой опухолевые клетки формируются из клеток предшественников лимфоцитов. Аномальные клетки вытесняют здоровые клетки из костного мозга. Преимущественно поражается кровеносная, костная, иммунная и почечная система организма.</p></br>'+
+						'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-mielomnaja-bolezn-plazmocitoma-prichiny-simptomy-diagnostika-lechenie-i-prognoz.html">Миеломная болезнь</a>'+
+					'</div>'
+				);
+			$("#reason-modal-content").css("height",570);
+			$("#reason-modal").css("display","block");
+		}
+	
+	
+	});
+
+
+	$("#ESR-reason").click(function(e) {
+		e.preventDefault();
+		if(indexes_array["ESR"].border_kind!=0) {
+			$("#index-norm").text("Ваша норма 2.0 – 12.0 мм/час");
+			if(indexes_array["ESR"].border_kind==-1 || indexes_array["ESR"].border_kind==-2) {
+				$("#possible-reasons-wrapper").html(
+
+					'<div class="reasons-d"><p class="reasons-header">Недостаточность кровообращения</p>'+
+						'<p class="reasons-p">Возможные причины:</p>'+
+						'<ul id="possible-reasons">'+
+							'<li>Ишемическая болезнь сердца;</li>'+
+							'<li>Атеросклероз;</li>'+
+							'<li>Сердечная аритмия;</li>'+
+							'<li>Кардиосклероз;</li>'+
+							'<li>Миокардит;</li>'+
+							'<li>Миокардиодистрофия;</li>'+
+							'<li>Перикардит;</li>'+
+							'<li>Пороки сердца;</li></br>'+
+						'</ul>'+
+					'<div>'+
+					'<div class="reasons-d"><p class="reasons-header">Эритроцитоз</p>'+
+						'<p class="reasons-p">Эритроцитоз - патологическое состояние при котором наблюдается повышенная концентрация эритроцитов в крови.</p></br>'+
+						'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/articles-ehritrocitoz-prichiny-pervichnogo-i-vtorichnogo-ehritrocitoza.html">Эритроцитоз </a>'+
+					'</div>'
+
+				);
+				$("#reason-modal-content").css("height",570);
+			}
+			if(indexes_array["ESR"].border_kind==1 || indexes_array["ESR"].border_kind==2) {
+				$("#possible-reasons-wrapper").html(
+					'<div class="reasons-d"><p class="reasons-header">Острые и хронические инфекции</p>'+
+							'<ul id="possible-reasons">'+
+								'<li>Пневмония;</li>'+
+								'<li>Бронхит;</li>'+
+								'<li>Грипп;</li>'+
+								'<li>Ангина;</li>'+
+								'<li>Ларингит;</li>'+
+								'<li>Энтерит;</li>'+
+								'<li>Болезнь Крона;</li>'+
+								'<li>Гематит;</li>'+
+								'<li>Цистит;</li>'+
+								'<li>Неспецифичеcкий язвенный колит;</li>'+
+								'<li>Пиелонефрит;</li>'+
+								'<li>Простатит;</li>'+
+							'</ul>'+
+					'</div>'+
+
+					'<div class="reasons-d"><p class="reasons-header">Воспалительные процессы и разрушения тканей организма</p>'+
+							'<ul id="possible-reasons">'+
+								'<li>Гангрена;</li>'+
+								'<li>Перикардит;</li>'+
+								'<li>Плеврит;</li>'+
+								'<li>Бурсит;</li>'+
+								'<li>Тендовагинит;</li>'+
+								'<li>Тромбоз вен;</li>'+
+							'</ul>'+
+					'</div>'+
+					poisoning_and_intoxication+
+					'<div class="reasons-d"><p class="reasons-header">Злокачественные опухоли</p>'+
+						'<ul id="possible-reasons">'+
+										'<li>Рак гортани;</li>'+
+										'<li>Рак лёгких;</li>'+
+										'<li>Рак кожи;</li>'+
+										'<li>Рак печени;</li>'+
+										'<li>Рак прямой кишки;</li>'+
+										'<li>Рак поджелудочной железы;</li>'+
+										'<li>Рак желудка;</li>'+
+										'<li>Рак толстого кишечника;</li>'+
+										'<li>Рак матки;</li>'+
+									'</ul>'+
+					'</div>'+
+					'<div class="reasons-d"><p class="reasons-header">Гипо/гипертиреоз</p>'+
+						'<p class="reasons-p">Снижение концентрации гормонов щитовидной железы (гипотиреоз) или повышение концентрации гормонов щитовидной железы (гипертиреоз)являются распространенными патологическими состояниями, к которым приводят многие заболевания.</p></br>'+
+						'<p class="reasons-p">Подробнее об этом заболевании читайте в статье: </p>'+
+						'<a class="reasons-a" href="https://www.polismed.com/subject-shhitovidnaja-zheleza.html">Щитовидная железа</a>'+
+					'</div>'+
+					'<div class="reasons-d"><p class="reasons-header">Травматичные операции</p></div>'
+				);
+				$("#reason-modal-content").css("height",600);
+		}
+		
+		$("#reason-modal").css("display","block");
+	}
 	
 	});
 });
