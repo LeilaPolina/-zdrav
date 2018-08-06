@@ -20,8 +20,11 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/input_radio.css" />
-    <link rel="stylesheet" type="text/css" href="css/input_checkbox.css" />
+    <link rel="stylesheet" type="text/css" href="css/input_checkbox.css" />    
     <link rel="stylesheet" href="css/modals.css" />
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
     <script src="jquery/jquery-3.1.1.min.js"></script>
     <script src="jquery/jquery.maskedinput.min.js"></script>
     <script src="scripts/demo.js"></script>
@@ -30,12 +33,7 @@
     <script src="scripts/services.js"></script>
     <script src="scripts/accordions.js"></script>
     <script src="scripts/header.js"></script>
-    <script src="scripts/errors.js"></script>
-
-	<!-- FINISH -->
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
-	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-	
+    <script src="scripts/errors.js"></script>	
     <script src="scripts/signout.js"></script>
     
     <!-- Yandex.Metrika counter --> 
@@ -264,7 +262,8 @@
     <!--button class="button-unregistered-wip">Open unregistered Modal</button-->
     <!--button class="button-registered-wip">Open registered Modal</button-->
     <?php 
-        include 'info_modals.php';
+        include('info_modals.php');
+        include('registration_modals.php');
     ?>
 </body>
 </html>
