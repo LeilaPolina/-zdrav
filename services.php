@@ -35,6 +35,7 @@
     <script src="scripts/header.js"></script>
     <script src="scripts/errors.js"></script>	
     <script src="scripts/signout.js"></script>
+    <script src="scripts/registration.js"></script>
     
     <!-- Yandex.Metrika counter --> 
     <script type="text/javascript">

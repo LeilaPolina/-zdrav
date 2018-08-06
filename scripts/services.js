@@ -65,7 +65,7 @@ $(document).ready(function() {
         calculateCheckupPrice();
     });
 
-    // ORDER HOMECHECKUP PART
+// ORDER HOMECHECKUP PART
     $("#order-home-checkup").click(function(e){
         e.preventDefault();
         $("#order-home-checkup-modal").css('display', 'block');
@@ -94,12 +94,19 @@ $(document).ready(function() {
     });
 });
 
-function check_order_checkup_answer(data){
+function check_order_checkup_answer(data){    
+    $("#order-home-checkup-modal").css('display', 'none');
     if(data.result != "OK"){
         alert("В данный момент сервис недоступен. Попробуйте позднее!");
     }
     else{
-        alert("Заказ успешно оформлен!");
+        if($("#flag_if_logged_in").val() == "not_logged_in"){
+            //alert("Заказ успешно оформлен! Предлагаем создать личный кабинет, чтобы получить доступ ко всем возможностям нашего сервиса");
+            get_data_for_registration(begin_registration);
+        }
+        else{
+            alert("Заказ успешно оформлен!");
+        }
     }
 }
 

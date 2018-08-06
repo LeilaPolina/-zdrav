@@ -425,6 +425,10 @@ if(!$user->is_logged_in()){
     $user_data_arr['whynotbodycheck'] = $_SESSION['result_test']['whynotbodycheck'];
     $user_data_arr['risks'] = process_risks_from_test($_SESSION['result_test']['dead']);
 
+    $user_data_arr['sleep'] = $_SESSION['result_test']['sleep'];
+    $user_data_arr['family_status'] = $_SESSION['result_test']['family'];
+    $user_data_arr['education'] = $_SESSION['result_test']['education'];
+
     $user_data_arr = get_recommendations_data($user, $user_data_arr);
 
     $user_data_arr['lifetime'] = $_SESSION['result_test']['lifetime'];

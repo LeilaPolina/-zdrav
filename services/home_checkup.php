@@ -121,7 +121,7 @@
                     
                     <!-- ORDER MODAL -->
                     <div id="order-home-checkup-modal" class="modal-window">
-                        <div class="modal-window-content">
+                        <div class="modal-window-content order-homecheckup-window">
                             <div class="modal-window-body sm-body">
                                 <div class="modal_header">
                                         <span class="close" id="order-home-checkup-modal-close">&times;</span>
@@ -133,7 +133,15 @@
                                 <input type=text id="user-phone-for-order" class="modal-input" />
                                 <br />
                                 <input type=button id="submit-home-checkup-order" value="Подтвердить" class="modal-submit-btn" />
-                              
+                                
+                                <?php
+                                    if($user->is_logged_in()){
+                                        echo '<input type="hidden" id="flag_if_logged_in" value="logged_in">';
+                                    }
+                                    else{
+                                        echo '<input type="hidden" id="flag_if_logged_in" value="not_logged_in">';
+                                    }
+                                ?>
                                 <span id="error_msg"> </span>
                                 <br />
 

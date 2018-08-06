@@ -64,6 +64,65 @@ function validatePhoneNumber(callback)  {
 			success: callback
 		});
 	}
+
+function get_data_for_registration(callback){
+    $.ajax({
+        type : 'POST',
+        url: 'get_data_for_registration.php',
+        data: {get_reg_data: true},
+        dataType : 'json',
+        success : callback,        
+        error: function (jqXHR, exception) {
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+        }
+    });
+}
+
+var sex="", birth_year="", height="", weight="", work="", sport="", food="", children="", risks="", sick="", chronic="", smoking="", alcohol="";
+var offered_user_name="", offered_user_phone="";
+var user_email="", user_name="", user_password="";
+var lifetime="";
+// variable to know if values must be processed as ids or words when saved to db
+var from_ids = 1;
+
+function begin_registration(data){
+    birth_year = data.result.year_birth;
+    height = data.result.height;
+    weight = data.result.weight;    
+    sex = data.result.sex;
+    
+    work = data.result.job;
+    smoking = data.result.smoking;
+    alcohol = data.result.alcohol;
+    sport = data.result.sport;
+    food = data.result.diet;
+    children = data.result.children;
+    risks = data.result.risks.join('_');
+
+	lifetime = data.result.lifetime;
+	from_ids = 0;
+    
+    offered_user_phone = $("#user-phone-for-order").val();
+    $("#phone-number").val(offered_user_phone);
+    $("#phone-number").trigger('input');
+
+    $("#test-register-modal").css('display', 'block');
+}
 	
 $(document).ready(function(){
 
@@ -73,10 +132,6 @@ $(document).ready(function(){
 	$("#phone-number").mask("+7 (999) 999-99-99");
 	$("#itele").mask("+7 (999) 999-99-99");
 	$("#itele").trigger('input');
-	var sex="", birth_year="", height="", weight="", work="", sport="", food="", children="", risks="", sick="", chronic="", smoking="", alcohol="";
-	var offered_user_name="", offered_user_phone="";
-	var user_email="", user_name="", user_password="";	
-	var lifetime="";
 	
 	$("#register").submit(function(e){ 
 		e.preventDefault();
@@ -120,10 +175,10 @@ $(document).ready(function(){
 
 		test_reg_modal.style.display = "block";
 	});
-
 	
 	$("#test-register-btn").click(function (e) {
 		e.preventDefault();
+		//alert("sex:"+sex + " birth_year" + birth_year + " height" + height + " weight" + weight + " work" + work + " sport" + sport + " food" + food + " children" + children + " risks" + risks + " smoking" + smoking + " alcohol" + alcohol + " user_email" + user_email + " user_name" + user_name + " user_password" + user_password);
 		phone_number = $("#phone-number").val();
 		validatePhoneNumber(checkAnswer);			
 	});
@@ -161,17 +216,18 @@ $(document).ready(function(){
 		if(answer.result==701) {
 			alert("Что-то пошло не так. Мы работаем над этим!");
 		}
-		success_modal.style.display = "none";
+		alert("Ваши данные успешно сохранены!");
 		window.location.replace('test.php');
 	}
 	
 	function send_user_data(callback) {
 	    user_name = $("#username").val();
+		success_modal.style.display = "none";
 		$.ajax({
 			type : 'POST',
 			url: 'process_new_user_data.php',
-			data: {sex: sex, birth_year: birth_year, height: height, weight: weight, work: work, sport: sport, food: food, children: children, risks: risks, sick: sick, chronic: chronic, smoking: smoking, alcohol: alcohol, user_email: user_email, user_phone: user_phone, user_password: user_password, user_name: user_name, lifetime: lifetime},
-			dataType : 'text',
+			data: {from_ids: from_ids, sex: sex, birth_year: birth_year, height: height, weight: weight, work: work, sport: sport, food: food, children: children, risks: risks, sick: sick, chronic: chronic, smoking: smoking, alcohol: alcohol, user_email: user_email, user_phone: user_phone, user_password: user_password, user_name: user_name, lifetime: lifetime},
+			dataType : 'json',
 			success : callback,
 			
 			error: function (jqXHR, exception) {

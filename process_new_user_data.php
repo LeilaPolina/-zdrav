@@ -1,6 +1,7 @@
 <?php include_once('includes/config.php'); ?>
 <?php
 	include_once('check_phone_number.php');
+	//include_once('modules/general_data_src.php');
 
 	// === EMAIL ===
 	function send_notification_email($user_name, $user_phone){
@@ -26,7 +27,7 @@
 		$user_health_data['sleep'] = $result_test['sleep'];
 		$user_health_data['cold'] = $result_test['cold'];
 		$user_health_data['bodycheck'] = $result_test['bodycheck'];
-		$user_health_data['whynotbodycheck'] = $result_test['whynotbodycheck'];		
+		$user_health_data['whynotbodycheck'] = $result_test['whynotbodycheck'];
 		return $user_health_data;
 	}
 	
@@ -39,7 +40,6 @@
 			$hashed_password=$result[0]['user_password'];
 			if (password_verify($user_essentials['user_password'], $hashed_password)) {
 				$_SESSION['user_id'] = $result[0]['user_id'];
-				$_SESSION['loggedin'] = true;
 				return true;
 			}
 			else {
@@ -63,19 +63,45 @@
 	
 	function save_health($db, $user_health_data){
 		$user_health_data = prepare_health_data($user_health_data);
+		if($user_health_data['from_ids']){
+			$ins_health_data = $db->prepare('INSERT INTO user_data 
+				(user_data_user_id,user_sex,user_age,user_height,user_weight,user_job_conditions,user_education, user_smoking,
+				user_alcohol,user_family_status,user_children,user_sport_activity,user_diet,user_sleep,user_immunity,
+				user_last_exam_date,user_exam_prevention_causes,user_diseases,user_chronical)
+				VALUES (:user_data_user_id, :user_sex, :user_age, :user_height, :user_weight, 
+				:user_job_conditions, 
+				(SELECT education_type_id FROM education_types WHERE education_type_name = :user_education), 
+				:user_smoking, 
+				:user_alcohol, 
+				(SELECT family_status_type_id FROM family_status_types WHERE family_status_type_name = :user_family_status), 
+				:user_children, 
+				:user_sport_activity, 
+				:user_diet, 
+				(SELECT sleep_type_id FROM sleep_types WHERE sleep_type_name = :user_sleep), 
+				(SELECT immunity_type_id FROM immunity_types WHERE immunity_type_name = :user_immunity), 
+				(SELECT last_exam_date_type_id FROM last_exam_date_types WHERE last_exam_date_type_name = :user_last_exam_date), 
+				(SELECT exam_prevention_causes_type_id FROM exam_prevention_causes_types WHERE exam_prevention_causes_type_name = :user_exam_prevention_causes), :user_diseases, :user_chronical)');
 		
-		$ins_health_data = $db->prepare('INSERT INTO user_data 
-		(user_data_user_id,user_sex,user_age,user_height,user_weight,user_job_conditions,user_education, user_smoking,
-		user_alcohol,user_family_status,user_children,user_sport_activity,user_diet,user_sleep,user_immunity,
-		user_last_exam_date,user_exam_prevention_causes,user_diseases,user_chronical)
-		VALUES (:user_data_user_id, :user_sex, :user_age, :user_height, :user_weight, :user_job_conditions, 
-		(SELECT education_type_id FROM education_types WHERE education_type_name = :user_education), :user_smoking, :user_alcohol, 
-		(SELECT family_status_type_id FROM family_status_types WHERE family_status_type_name = :user_family_status), :user_children, 
-		:user_sport_activity, :user_diet, 
-		(SELECT sleep_type_id FROM sleep_types WHERE sleep_type_name = :user_sleep), 
-		(SELECT immunity_type_id FROM immunity_types WHERE immunity_type_name = :user_immunity), 
-		(SELECT last_exam_date_type_id FROM last_exam_date_types WHERE last_exam_date_type_name = :user_last_exam_date), 
-		(SELECT exam_prevention_causes_type_id FROM exam_prevention_causes_types WHERE exam_prevention_causes_type_name = :user_exam_prevention_causes), :user_diseases, :user_chronical)');	
+		}
+		else{
+			$ins_health_data = $db->prepare('INSERT INTO user_data 
+				(user_data_user_id,user_sex,user_age,user_height,user_weight,user_job_conditions,user_education, user_smoking,
+				user_alcohol,user_family_status,user_children,user_sport_activity,user_diet,user_sleep,user_immunity,
+				user_last_exam_date,user_exam_prevention_causes,user_diseases,user_chronical)
+				VALUES (:user_data_user_id, :user_sex, :user_age, :user_height, :user_weight,
+				(SELECT job_conditions_type_id FROM job_conditions_types WHERE job_conditions_type_name = :user_job_conditions),
+				(SELECT education_type_id FROM education_types WHERE education_type_name = :user_education), 
+				(SELECT smoking_type_id FROM smoking_types WHERE smoking_type_name = :user_smoking), 
+				(SELECT alcohol_type_id FROM alcohol_types WHERE alcohol_type_name = :user_alcohol),
+				(SELECT family_status_type_id FROM family_status_types WHERE family_status_type_name = :user_family_status), 
+				(SELECT children_type_id FROM children_types WHERE children_type_name = :user_children),
+				(SELECT sport_activity_type_id FROM sport_activity_types WHERE sport_activity_type_name = :user_sport_activity),
+				(SELECT diet_type_id FROM diet_types WHERE diet_type_name = :user_diet),
+				(SELECT sleep_type_id FROM sleep_types WHERE sleep_type_name = :user_sleep), 
+				(SELECT immunity_type_id FROM immunity_types WHERE immunity_type_name = :user_immunity), 
+				(SELECT last_exam_date_type_id FROM last_exam_date_types WHERE last_exam_date_type_name = :user_last_exam_date), 
+				(SELECT exam_prevention_causes_type_id FROM exam_prevention_causes_types WHERE exam_prevention_causes_type_name = :user_exam_prevention_causes), :user_diseases, :user_chronical)');
+		}
 		
 		$user_birth_year = $user_health_data['birth_year']."-12-30";
 
@@ -101,19 +127,32 @@
 			':user_diseases' => $user_health_data['sick'],
 			':user_chronical' => $user_health_data['chronic']
 		));
-		
+
 		if($user_health_data['risks'] != ""){
-			$ins_dead = $db->prepare('INSERT INTO relatives_death_causes_con_user (relatives_death_causes_con_user_user_id,relatives_death_causes_con_user_relatives_death_causes_type_id) VALUES (:relatives_death_causes_con_user_user_id, :relatives_death_causes_type_id)');
+			if($user_health_data['from_ids']){
+				$ins_dead = $db->prepare('INSERT INTO relatives_death_causes_con_user 
+				(relatives_death_causes_con_user_user_id,relatives_death_causes_con_user_relatives_death_causes_type_id) 
+				VALUES (:relatives_death_causes_con_user_user_id, :relatives_death_causes_type)');
+			}
+			else{
+				$ins_dead = $db->prepare('INSERT INTO relatives_death_causes_con_user 
+				(relatives_death_causes_con_user_user_id,relatives_death_causes_con_user_relatives_death_causes_type_id) 
+				VALUES (
+					:relatives_death_causes_con_user_user_id, 
+					(SELECT relatives_death_causes_type_id FROM relatives_death_causes_types WHERE relatives_death_causes_type_name = :relatives_death_causes_type)					
+				)');
+			}
 			
 			$relatives_death_causes = explode('_', $user_health_data['risks']);
-			$relatives_death_causes = array_unique($relatives_death_causes);
+			$relatives_death_causes = array_unique($relatives_death_causes);			
+			$relatives_death_causes = array_diff($relatives_death_causes, ['Рак', 'Легких', 'Молочной железы', 'Кишечника', 'Печени', 'Предстательной железы', 'Кожи', 'Шейки матки', 'Другой']);
 			foreach ($relatives_death_causes as $death_cause) {
 				$ins_dead->execute(array(
 					':relatives_death_causes_con_user_user_id' => $_SESSION['user_id'],
-					':relatives_death_causes_type_id' => $death_cause
+					':relatives_death_causes_type' => $death_cause
 				));
-			}				
-		}		
+			}
+		}
 	}
 	
 	function save_contacts($db, $user_contacts){
@@ -128,24 +167,24 @@
 	}
 	
 	function save_data($user, $db, $user_essentials, $user_health_data, $user_contacts) {
-		//global $db,$user;
-		try {
+		try {	
 			save_user($user, $db, $user_essentials);
 			
-			if(new_user_id_to_session($db, $user_essentials)==true) {	
+			if(new_user_id_to_session($db, $user_essentials)==true) {
 				save_health($db, $user_health_data);
 				save_contacts($db, $user_contacts);
-				send_notification_email($user_essentials['user_name'], $user_essentials['user_phone']);
-				$_SESSION['result_test'] = array();
+				//send_notification_email($user_essentials['user_name'], $user_essentials['user_phone']);
+				
 				return "OK";
+				$_SESSION['result_test'] = array();
+				$_SESSION['loggedin'] = true;
 			}
 			else{
 				return 701;
-			}
-			
+			}		
 		}		
 		catch(Exception $e) {
-			//return $e->getMessage();
+			return $e->getMessage();
 			return 701;
 		}
 	}
@@ -177,7 +216,8 @@
 			'chronic'=>$_POST['chronic'],
 			'smoking'=>$_POST['smoking'],
 			'alcohol'=>$_POST['alcohol'],
-			'lifetime'=>$_POST['lifetime']
+			'lifetime'=>$_POST['lifetime'],
+			'from_ids'=>$_POST['from_ids']
 		);
 		$user_email=trim(preg_replace('/ /','',$_POST['user_email']));
 		$user_contacts = array(
