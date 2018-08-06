@@ -175,16 +175,16 @@
 				save_contacts($db, $user_contacts);
 				//send_notification_email($user_essentials['user_name'], $user_essentials['user_phone']);
 				
-				return "OK";
 				$_SESSION['result_test'] = array();
 				$_SESSION['loggedin'] = true;
+				return "OK";
 			}
 			else{
 				return 701;
 			}		
 		}		
 		catch(Exception $e) {
-			return $e->getMessage();
+			//return $e->getMessage();
 			return 701;
 		}
 	}
