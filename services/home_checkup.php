@@ -127,7 +127,7 @@
                                         <span class="close" id="order-home-checkup-modal-close">&times;</span>
                                         <div class="modal-title">Заказать домашний медосмотр</div>
                                 </div>
-                                
+                                <br />
                                 <label for="user-phone-for-order">Номер телефона</label>
                                 <br />
                                 <input type=text id="user-phone-for-order" class="modal-input" />
