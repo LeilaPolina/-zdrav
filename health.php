@@ -251,9 +251,6 @@
 	?>
 
 	</div>
-	
-	
-	
 	<!--#################################Modal#################################-->
 		<div id="health-modal">
 			<div id="health-numbers-content">
@@ -311,18 +308,40 @@
 						<span class="close" id="graph-close">&times;</span>
 						<div class="modal-title" id="graph-modal-title"></div>
 					</div>
-					<div id="graph-modal-body-wrapper">
-						<div id="graph-modal-body"></div>
+					<div id="graph-table-wrapper">
+						<table id="graph-table">
+						</table>
+					</div>
+					<div id="graph-main">
+						<div id="graph-modal-body-wrapper">
+							<div id="graph-modal-body"></div>
+						</div>
+
+						<div id="img-labels-container"> 
+							<div class="label-img-wrapper" id="upper_border_label">
+								<img src="images/icons/upper_norm.png"/>Верхняя граница
+							</div>
+							<div class="label-img-wrapper" id="lower_border_label">
+								<img src="images/icons/lower_norm.png"/> Нижняя граница</br>
+							</div>
+							<div class="label-img-wrapper" id="lower_blood_upper_border_label">
+								<img src="images/icons/lower_blood_upper.png"/>Верхняя граница (ниж.давл)
+							</div>
+							<div class="label-img-wrapper" id="lower_blood_lower_border_label">
+								<img src="images/icons/lower_blood_lower.png"/> Нижняя граница (ниж.давл)</br>
+							</div>
+						</div>
+
 						<div class="input-date" id="graph-input-wrapper">
-								с <input type="date" class="modal-input" id="graph-date-1"  disabled>
-								по <input type="date" class="modal-input" id="graph-date-2"  disabled><br>
-								<div>
-									<input type="checkbox" id="show-all" />
-									<label class="graph-label" for="show-all">Все</label>
-									<input type="checkbox" id="show-forecast" />
-									<label class="graph-label" for="show-forecast">Показать прогноз</label><br>
-									<a type="button" class="modal-btn" id="show-btn" disabled>Показать</a>
-								</div>
+							с <input type="date" class="modal-input" id="graph-date-1"  disabled>
+							по <input type="date" class="modal-input" id="graph-date-2"  disabled>
+							<div id="show-forecast-wrapper">
+								<input type="checkbox" id="show-all" />
+								<label class="graph-label" for="show-all">Все</label>
+								<input type="checkbox" id="show-forecast" />
+								<label class="graph-label" for="show-forecast">Показать прогноз</label>
+								<a type="button" class="modal-btn" id="show-btn" disabled>Показать</a>
+							</div>
 						</div>
 					</div>
 				</div>

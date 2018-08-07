@@ -356,8 +356,8 @@
 
 /*Graph modal*/
 #graph-modal-content {
-	height:510px;
-	width:1020px;
+	height:500px;
+	width:1030px;
 }
 
 #graph-modal-header {
@@ -369,9 +369,10 @@
 }
 
 #graph-input-wrapper{
-	position:absolute;
-	top:40%;
+	/*position:absolute;
+	top:40%;*/
 	display:inline-block;
+	margin-left: 50px;
 }
 
 #graph-modal-body{
@@ -387,3 +388,64 @@
 	margin:5px 0 0 0;
 }
 
+
+.graph-head {
+	font-size: 13px;
+	background-color: #90D2DF
+}
+
+.graph-row{
+	background-color: #E3FAFD;
+}
+
+.graph-row td {
+	text-align: center;
+	font-size: 12px;
+}
+
+#show-forecast-wrapper {
+	display: inline;
+}
+
+.label-img-wrapper {
+	display:inline;
+}
+
+#img-labels-container {
+	font-size:11px;
+	margin-left: 50px; 
+}
+
+#lower_border_label {
+	margin-left:5px;
+}
+
+#lower_blood_lower_border_label {
+	margin-left:9px;
+	display: none;
+}
+
+#lower_blood_upper_border_label {
+	display: none;
+}
+
+.label-img-wrapper img {
+	width:20px;
+	height:12px;
+}
+
+#graph-main {
+	position:absolute;
+	right:0;
+	width:70%;
+	padding-bottom: 30px;
+}
+
+#graph-table-wrapper {
+	position: absolute;
+	width: 25%;
+	top:90px;
+	left: 25px;
+	height:300px;
+	overflow: auto;
+}
