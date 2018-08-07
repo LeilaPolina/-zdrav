@@ -135,7 +135,7 @@
 							elseif ($lifecount > 1 && $lifecount < 5) { 
 								echo 'года жизни';
 							}
-							elseif ($lifecount > 5) { 
+							elseif ($lifecount >= 5) { 
 								echo 'лет жизни';
 							} ?>
 					</div>

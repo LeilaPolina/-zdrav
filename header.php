@@ -18,9 +18,9 @@
 				<a id="services" href="services.php">
 					<p><span class="header-icon services-icon"></span> Сервисы</p>
                 </a>
-                <?php if($user->is_logged_in) {
-                echo '<a href="#">';
-				echo '<p><span class="sign-out header-icon sign-out-icon"></span> Выход</p>';
+                <?php if($user->is_logged_in()) {
+                echo '<a class="sign-out" href="#">';
+				echo '<p><span class="header-icon sign-out-icon"></span> Выход</p>';
                 echo '</a>';
                 }
                 ?>
@@ -47,9 +47,9 @@
 		<a id="services" href="services.php">
 			<p><span class="header-icon services-icon"></span> Сервисы</p>
         </a>
-        <?php if($user->is_logged_in) {
-        echo '<a href="#">';
-		echo '<p><span class="sign-out header-icon sign-out-icon"></span> Выход</p>';
+        <?php if($user->is_logged_in()) {
+        echo '<a class="sign-out" href="#">';
+		echo '<p><span class="header-icon sign-out-icon"></span> Выход</p>';
         echo '</a>';
         }
         ?>
