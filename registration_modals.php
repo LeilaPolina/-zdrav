@@ -53,7 +53,7 @@
 						</div>
 						<div class="input-password">
 							<p class="modal-label">Используйте пароль <a href="#" id="rand-confirm-password" style="text-decoration:none">hjkjjjas</a><i class="fa fa-question-circle help-icon" data-title="Нажмите на пароль"></i> или введите другой</p>
-							<input type="text" name="confirm-password" id="confirm-password" class="modal-input">
+							<input type="password" name="confirm-password" id="confirm-password" class="modal-input">
 						</div>
 					</div>
 					<a type="button" class="modal-btn" id="confirm-btn" >Подтвердить</a>
