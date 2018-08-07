@@ -152,6 +152,7 @@ function process_risks_from_test($dead){
             array_push($relatives_death_causes, "Рак ".$value);
         }
     }
+	//$relatives_death_causes = array_diff($relatives_death_causes, ['Рак', 'Легких', 'Молочной железы', 'Кишечника', 'Печени', 'Предстательной железы', 'Кожи', 'Шейки матки', 'Другой']);
     return $relatives_death_causes;
 }
 

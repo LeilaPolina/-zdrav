@@ -23,8 +23,8 @@
 	
 	
 	if(isset($_POST['phone'])) {
-	    //echo json_encode(array('result' => 7777));
-		$result=send_code_smsc_ru($_POST['phone']);
+	    echo json_encode(array('result' => 7777));
+		/*$result=send_code_smsc_ru($_POST['phone']);
 		 if($result==0) {
 			 $result=send_code_smsc_ru($_POST['phone']);
 			 if($result==0) {
@@ -38,7 +38,7 @@
 		 else {
 			 echo json_encode(array('result' => $result));
 			 
-		}
+		}*/
 	}
 	
 	if(isset($_POST['signout'])) { 

@@ -63,65 +63,6 @@ function validatePhoneNumber(callback)  {
 			dataType : 'json',
 			success: callback
 		});
-	}
-
-function get_data_for_registration(callback){
-    $.ajax({
-        type : 'POST',
-        url: 'get_data_for_registration.php',
-        data: {get_reg_data: true},
-        dataType : 'json',
-        success : callback,        
-        error: function (jqXHR, exception) {
-            var msg = '';
-            if (jqXHR.status === 0) {
-                msg = 'Not connect.\n Verify Network.';
-            } else if (jqXHR.status == 404) {
-                msg = 'Requested page not found. [404]';
-            } else if (jqXHR.status == 500) {
-                msg = 'Internal Server Error [500].';
-            } else if (exception === 'parsererror') {
-                msg = 'Requested JSON parse failed.';
-            } else if (exception === 'timeout') {
-                msg = 'Time out error.';
-            } else if (exception === 'abort') {
-                msg = 'Ajax request aborted.';
-            } else {
-                msg = 'Uncaught Error.\n' + jqXHR.responseText;
-            }
-        }
-    });
-}
-
-var sex="", birth_year="", height="", weight="", work="", sport="", food="", children="", risks="", sick="", chronic="", smoking="", alcohol="";
-var offered_user_name="", offered_user_phone="";
-var user_email="", user_name="", user_password="";
-var lifetime="";
-// variable to know if values must be processed as ids or words when saved to db
-var from_ids = 1;
-
-function begin_registration(data){
-    birth_year = data.result.year_birth;
-    height = data.result.height;
-    weight = data.result.weight;    
-    sex = data.result.sex;
-    
-    work = data.result.job;
-    smoking = data.result.smoking;
-    alcohol = data.result.alcohol;
-    sport = data.result.sport;
-    food = data.result.diet;
-    children = data.result.children;
-    risks = data.result.risks.join('_');
-
-	lifetime = data.result.lifetime;
-	from_ids = 0;
-    
-    offered_user_phone = $("#user-phone-for-order").val();
-    $("#phone-number").val(offered_user_phone);
-    $("#phone-number").trigger('input');
-
-    $("#test-register-modal").css('display', 'block');
 }
 	
 $(document).ready(function(){
@@ -132,6 +73,13 @@ $(document).ready(function(){
 	$("#phone-number").mask("+7 (999) 999-99-99");
 	$("#itele").mask("+7 (999) 999-99-99");
 	$("#itele").trigger('input');
+	
+	var sex="", birth_year="", height="", weight="", work="", sport="", food="", children="", risks="", sick="", chronic="", smoking="", alcohol="";
+	var offered_user_name="", offered_user_phone="";
+	var user_email="", user_name="", user_password="";
+	var lifetime="";
+	// variable to know if values must be processed as ids or words when saved to db
+	var from_ids = 1;
 	
 	$("#register").submit(function(e){ 
 		e.preventDefault();

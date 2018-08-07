@@ -102,6 +102,7 @@ function check_order_checkup_answer(data){
     else{
         if($("#flag_if_logged_in").val() == "not_logged_in"){
             //alert("Заказ успешно оформлен! Предлагаем создать личный кабинет, чтобы получить доступ ко всем возможностям нашего сервиса");
+            // function from registration_from_not_general_data_page.js
             get_data_for_registration(begin_registration);
         }
         else{
@@ -114,6 +115,7 @@ function send_home_checkup_order(callback){
     $.ajax({
         type: 'POST',
         url: 'orders/order_homecheckup.php',
+        async: false,
         data: {
             home_checkup: true,
             user_phone: $("#user-phone-for-order").val(),
@@ -123,7 +125,7 @@ function send_home_checkup_order(callback){
             uzi_vessels: $("#uzi-vessels").is(':checked'),
             uzi_heart: $("#uzi-heart").is(':checked'),
             uzi_lungs: $("#uzi-lungs").is(':checked')
-        },
+        },        
         dataType: 'json',
         success: callback,
         error: get_error
