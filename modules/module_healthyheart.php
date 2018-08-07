@@ -8,7 +8,7 @@
 			<div class="rec-text">Рекомендуем воспользоваться сервисом «Здоровое сердце»</div>
 		</div>
 		<div class="rec-button-container">
-			<a class="rec-button" href="services.php#healthy-heart">Перейти</a>
+			<a class="rec-button" href="services.php#healthy-heart" target="_blank">Перейти</a>
 		</div>
 		<div class="plus-life">
 			+ 2 года жизни 

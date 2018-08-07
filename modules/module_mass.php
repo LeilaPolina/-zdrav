@@ -11,7 +11,7 @@
 			?> кг. Рекомендуем воспользоваться одной из наших программ по контролю за весом</div>
 		</div>
 		<div class="rec-button-container">
-			<a class="rec-button" href="services.php#weight">Перейти</a>
+			<a class="rec-button" href="services.php#weight" target="_blank">Перейти</a>
 		</div>
 	<?php
 		if($lifetime_index_mass != 0) {

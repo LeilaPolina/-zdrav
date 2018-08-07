@@ -8,7 +8,7 @@
 			<div class="rec-text">Если Вы хотите бросить курить, то рекомендуем воспользоваться одной из наших программ по отказу от курения</div>
 		</div>
 		<div class="rec-button-container">
-			<a class="rec-button" href="services.php#smoking">Перейти</a>
+			<a class="rec-button" href="services.php#smoking" target="_blank">Перейти</a>
 		</div>
 		<div class="plus-life">
 			+ <?php echo -(int)$user_data_arr['count_smoking']; ?> года жизни

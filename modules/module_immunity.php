@@ -8,7 +8,7 @@
 			<div class="rec-text">Рекомендуем воспользоваться услугой «Поднятие иммунитета»</div>
 		</div>
 		<div class="rec-button-container">
-			<a class="rec-button" href="services.php#immunity">Перейти</a>
+			<a class="rec-button" href="services.php#immunity" target="_blank">Перейти</a>
 		</div>
 		<div class="plus-life">
             + 1 год жизни

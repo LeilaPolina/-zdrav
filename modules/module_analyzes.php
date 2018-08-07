@@ -50,7 +50,7 @@
                 ?>
             </ul>
             </div>
-            <a class="rec-button" href="services.php#analyzes">Перейти</a>
+            <a class="rec-button" href="services.php#analyzes" target="_blank">Перейти</a>
 
             <div class="analyzes-list-container">
                 <ul class="rec-list">
@@ -78,7 +78,7 @@
                 ?>
             </ul>
             </div>
-        <a class="rec-button" href="services.php#home-checkup">Перейти</a>
+        <a class="rec-button" href="services.php#home-checkup" target="_blank">Перейти</a>
     
         <div class="rec-text-container">
             <div class="rec-text">В нашем сервисе есть возможность заказать рекомендованные анализы с бесплатным выездом сестры на дом или в офис и с бесплатной их расшифровкой</div>

@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div class="rec-button-container">
-			<a class="rec-button" href="services.php#personal-manager">Перейти</a>
+			<a class="rec-button" href="services.php#personal-manager" target="_blank">Перейти</a>
 		</div>
 	</div>
 	</div>

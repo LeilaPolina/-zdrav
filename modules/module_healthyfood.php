@@ -8,7 +8,7 @@
 			<div class="rec-text">Рекомендуем воспользоваться сервисом индивидуального подбора здорового питания</div>
 		</div>
 		<div class="rec-button-container">
-			<a class="rec-button" href="services.php#food">Перейти</a>
+			<a class="rec-button" href="services.php#food" target="_blank">Перейти</a>
 		</div>
 		<?php
 		if($user_data_arr['count_food'] != "0") {
