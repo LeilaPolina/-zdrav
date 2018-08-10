@@ -293,10 +293,11 @@ $( document ).ready(function() {
 		return last_date;
 	}
 
-	function get_trace(index_values,dates,type,mode,name) {
+	function get_trace(y_values,x_values,type,mode,name,text,textposition, color) {
 		var trace = {
-			  y: index_values,
-			  x: dates, 
+			  y: y_values,
+			  x: x_values, 
+			  line: {color:'',width:5}
 		};
 		if(type!="") {
 			trace.type=type;
@@ -308,6 +309,20 @@ $( document ).ready(function() {
 		if(name!="") {
 			trace.name=name;
 		}
+
+		if(text!="") {
+			trace.text=text;
+		}
+
+		if(textposition!="") {
+			trace.textposition=textposition;
+		}
+
+		if(color!="") {
+			trace.line.color=color;
+			trace.line.width=1;
+		}
+
 		return trace;		
 	}
 
@@ -321,8 +336,7 @@ $( document ).ready(function() {
 	      		y1: y1,
 		        line: {
 			        color: color,
-			        width: 1.5,
-			        dash: 'dashdot',
+			        width: 1.5
 		      	}
 			};
 			return line_obj;
@@ -347,45 +361,81 @@ $( document ).ready(function() {
 	function get_layout(index_name) {
 		var layout={
 				xaxis:{fixedrange: true},
-				yaxis:{fixedrange: true}
+				yaxis:{fixedrange: true},
+				showlegend: false
 			};
 		if(index_name=='Давление') {
 			layout.title="График "+index_name;
-			layout.shapes=get_shapes(index_name,to_graph_date(indexes_array['upper_blood_pressure'].date));
+			//layout.shapes=get_shapes(index_name,to_graph_date(indexes_array['upper_blood_pressure'].date));
 		}
 		else {
 			layout.title="График "+$("#"+index_name+"-index").text();
-			layout.shapes=get_shapes(index_name,to_graph_date(indexes_array[index_name].date));
+			//layout.shapes=get_shapes(index_name,to_graph_date(indexes_array[index_name].date));
 		}
 		return layout;
 	}
+
+
+	function get_norms(index_name) {
+        var ten_percent=(indexes_array[index_name].upper_norm-indexes_array[index_name].lower_norm)*0.1;
+        var norms={upper:0, lower:0};
+        norms.upper=indexes_array[index_name].upper_norm - ten_percent;
+        norms.lower=indexes_array[index_name].lower_norm + ten_percent;
+        return norms;
+    }
+
+    function get_blood_pressure_graph_date(index1_values,index2_values) {
+    	var data=[];
+    	var upper_blood_pressure_upper_line=get_trace(new Array(dates.length).fill(indexes_array['upper_blood_pressure'].upper_norm), dates,'scatter','lines+text','',['Верхняя граница (верх.давл)'],'top right','#FFB794');
+		var upper_blood_pressure_lower_line=get_trace(new Array(dates.length).fill(indexes_array['upper_blood_pressure'].lower_norm), dates,'scatter','lines+text','',['Нижняя граница (верх.давл)'],'bottom right','#FFB794');
+		var upper_pressure_norms=get_norms('upper_blood_pressure');
+		var upper_blood_pressure_upper_norm_line=get_trace(new Array(dates.length).fill(upper_pressure_norms.upper), dates,'scatter','lines+text','',['Верхняя граница нормы (верх.давл)'],'bottom right','#FBFF94');
+		var upper_blood_pressure_lower_norm_line=get_trace(new Array(dates.length).fill(upper_pressure_norms.lower), dates,'scatter','lines+text','',['Нижняя граница нормы (верх.давл)'],'top right','#FBFF94');
+
+		var lower_blood_pressure_upper_line=get_trace(new Array(dates.length).fill(indexes_array['lower_blood_pressure'].upper_norm), dates,'scatter','lines+text','',['Верхняя граница (ниж.давл)'],'top right','#FFB794');
+		var lower_blood_pressure_lower_line=get_trace(new Array(dates.length).fill(indexes_array['lower_blood_pressure'].lower_norm), dates,'scatter','lines+text','',['Нижняя граница (ниж.давл)'],'bottom right','#FFB794');
+		var lower_pressure_norms=get_norms('lower_blood_pressure');
+		var lower_blood_pressure_upper_norm_line=get_trace(new Array(dates.length).fill(lower_pressure_norms.upper), dates,'scatter','lines+text','',['Верхняя граница нормы (ниж.давл)'],'bottom right','#FBFF94');
+		var lower_blood_pressure_lower_norm_line=get_trace(new Array(dates.length).fill(lower_pressure_norms.lower), dates,'scatter','lines+text','',['Нижняя граница нормы (ниж.давл)'],'top right','#FBFF94');
+
+		data=[get_trace(index1_values,dates,"",'lines','Верхнее давление'),
+		get_trace(index2_values,dates,"",'lines','Нижнее давление'),upper_blood_pressure_upper_line,upper_blood_pressure_lower_line,upper_blood_pressure_upper_norm_line,
+		upper_blood_pressure_lower_norm_line,lower_blood_pressure_upper_line,lower_blood_pressure_lower_line,lower_blood_pressure_upper_norm_line,
+		lower_blood_pressure_lower_norm_line];
+
+		return data;
+    }
 
 	function get_graph_data(dates,index_name,index1_values,index2_values) {
 		var data = [], last_date;
 		if(index_name=="Давление") {
 			last_date=to_graph_date(indexes_array['upper_blood_pressure'].date);
 			dates.push(last_date);
-			data=[get_trace(index1_values,dates,"",'lines','Верхнее давление'),get_trace(index2_values,dates,"",'lines','Нижнее давление')];
-		}
+			data=get_blood_pressure_graph_date(index1_values,index2_values);
+	}
 		else {
 			last_date=to_graph_date(indexes_array[index_name].date);
 			dates.push(last_date);
-
-			data=[get_trace(index1_values,dates,'scatter',"","")];	
+			var upper_line=get_trace(new Array(dates.length).fill(indexes_array[index_name].upper_norm), dates,'scatter','lines+text','',['Верхняя граница'],'top right','#FFB794');
+			var lower_line=get_trace(new Array(dates.length).fill(indexes_array[index_name].lower_norm), dates,'scatter','lines+text','',['Нижняя граница'],'bottom right','#FFB794');
+			var norms=get_norms(index_name);
+			var upper_norm_line=get_trace(new Array(dates.length).fill(norms.upper), dates,'scatter','lines+text','',['Верхняя граница  нормы'],'bottom right','#FBFF94');
+			var lower_norm_line=get_trace(new Array(dates.length).fill(norms.lower), dates,'scatter','lines+text','',['Нижняя граница нормы'],'top right','#FBFF94');
+			data=[get_trace(index1_values,dates,'scatter'),upper_line,lower_line,upper_norm_line,lower_norm_line];	
 		}
 		return data;
 	}
 
 	function show_graph(index1_values,index_name,index2_values) {
-		Plotly.newPlot('graph-modal-body', get_graph_data(dates,index_name,index1_values,index2_values),get_layout(index_name));
+		Plotly.newPlot('graph-modal-body', get_graph_data(dates,index_name,index1_values,index2_values),get_layout(index_name),{staticPlot: true});
 		$(".modebar").css("display","none");
 		$(".modebar--hover").css("display","none");
-		if(index_name=="Давление"){
+		/*if(index_name=="Давление"){
 			$("#upper_border_label").html('<img src="images/icons/upper_norm.png"/>Верхняя граница (верх.давл)');
 			$("#lower_border_label").html('<img src="images/icons/lower_norm.png"/>Нижняя граница (верх.давл)</br>');
 			$("#lower_blood_upper_border_label").css("display","inline");
 			$("#lower_blood_lower_border_label").css("display","inline");
-		}
+		}*/
 		$("#graph-modal").css("display","block");
 	}
 	
@@ -436,10 +486,10 @@ $( document ).ready(function() {
 		$("#graph-modal").css("display","none");
 		$("#graph-table").empty();
 		dates.pop();
-		$("#upper_border_label").html('<img src="images/icons/upper_norm.png"/> Верхняя граница');
+		/*$("#upper_border_label").html('<img src="images/icons/upper_norm.png"/> Верхняя граница');
 		$("#lower_border_label").html('<img src="images/icons/lower_norm.png"/> Нижняя граница</br>');
 		$("#lower_blood_upper_border_label").css("display","none");
-		$("#lower_blood_lower_border_label").css("display","none");
+		$("#lower_blood_lower_border_label").css("display","none");*/
 	});
 	
 	if(document.getElementById('go-to-result-test-save')){

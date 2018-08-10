@@ -356,7 +356,7 @@
 
 /*Graph modal*/
 #graph-modal-content {
-	height:500px;
+	height:580px;
 	width:1030px;
 }
 
@@ -377,7 +377,7 @@
 
 #graph-modal-body{
 	margin:5px 0 0 0;
-	display:inline-block
+	display:inline-block;
 }
 
 .graph-label{
@@ -391,7 +391,7 @@
 
 .graph-head {
 	font-size: 13px;
-	background-color: #90D2DF
+	background-color: #90D2DF;
 }
 
 .graph-row{

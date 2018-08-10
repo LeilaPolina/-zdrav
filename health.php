@@ -317,7 +317,7 @@
 							<div id="graph-modal-body"></div>
 						</div>
 
-						<div id="img-labels-container"> 
+					<!--	<div id="img-labels-container"> 
 							<div class="label-img-wrapper" id="upper_border_label">
 								<img src="images/icons/upper_norm.png"/>Верхняя граница
 							</div>
@@ -330,7 +330,7 @@
 							<div class="label-img-wrapper" id="lower_blood_lower_border_label">
 								<img src="images/icons/lower_blood_lower.png"/> Нижняя граница (ниж.давл)</br>
 							</div>
-						</div>
+						</div>-->
 
 						<div class="input-date" id="graph-input-wrapper">
 							с <input type="date" class="modal-input" id="graph-date-1"  disabled>
