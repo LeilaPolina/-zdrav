@@ -1,13 +1,12 @@
                     <p class="inline">Данная услуга предоставляется совместно с нашим партнером клиникой </p>
                     <img src="images/icons/neomed_logo.png" class="img-inline neomed-logo">
                     <h1>В стандартный домашний медосмотр входят следующие процедуры</h1>
-                    <div class="inline">
+                    <div class="checkup-list inline">
                         <p><i class="fa fa-check" aria-hidden="true"></i>Измерение веса и роста</p>
                         <p><i class="fa fa-check" aria-hidden="true"></i>Измерение давления</p>
                         <p><i class="fa fa-check" aria-hidden="true"></i>Экспресс анализ на сахар, холестерин, гемоглобин</p>
                         <p><i class="fa fa-check" aria-hidden="true"></i>ЭКГ (проверка сердца)</p>
                         <p><i class="fa fa-check" aria-hidden="true"></i>Проверка зрения</p>
-                        <p><i class="fa fa-check" aria-hidden="true"></i>Проверка легких (спирография)</p>
                     </div>
                     <div class="inline">
                         <img src="images/home_checkup.png" class="inline img-checkup">

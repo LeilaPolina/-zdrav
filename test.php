@@ -175,11 +175,7 @@
 
 		include './modules/module_mass.php';
 
-		include './modules/module_scales.php';
-
-		if($user_data_arr['module_tester']) {
-			include './modules/module_tester.php';
-		}
+		include './modules/module_shop.php';
 
 		if ($user_data_arr['give_up_smoking']) {
 			include './modules/module_smoke.php';
@@ -199,6 +195,17 @@
 			include './modules/module_healthyheart.php';
 		}
 
+		if ($user_data_arr['personal_manager']) {
+			include './modules/module_personal_manager.php';
+		}
+
+		/*
+		include './modules/module_scales.php';
+
+		if($user_data_arr['module_tester']) {
+			include './modules/module_tester.php';
+		}
+
 		if ($user_data_arr['healthyheart'] || $user_data_arr['job'] == "Физически тяжелая") {
 			include './modules/module_ekg.php';
 		}
@@ -206,18 +213,15 @@
 		if($user_data_arr['healthyheart'] || $user_data_arr['job'] == "На ногах") {
 			include './modules/module_tonometer.php';
 		}
-
-		if ($user_data_arr['personal_manager']) {
-			include './modules/module_personal_manager.php';
+		
+		if(in_array("Сахарный диабет", $user_data_arr['risks'])) {
+			include './modules/module_glucose.php';
 		}
 
 		if($user_data_arr['smart_watch']) {
 			include './modules/module_smart_watch.php';
 		}
-
-		if(in_array("Сахарный диабет", $user_data_arr['risks'])) {
-			include './modules/module_glucose.php';
-		}
+		*/
 
 		?>
 	</div>

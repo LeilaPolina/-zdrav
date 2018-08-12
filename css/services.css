@@ -156,6 +156,10 @@ h2.service-title {
     top: 20px;
 }
 
+.checkup-list {
+    vertical-align: top;
+}
+
 .img-checkup {
     margin-left: 150px;
     position: relative;

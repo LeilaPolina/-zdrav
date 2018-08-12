@@ -355,7 +355,7 @@ $(function () {
 				}
 			});
 		} else {
-			$(btn_testing).append('<div class="btn_endtest">Завершить тест</div>');
+			$(btn_testing).append('<div class="btn_endtest">Следующий вопрос</div>');
 			
 			// Клик по кнопке завершить тест
 			$('.btn_endtest').click(function () {

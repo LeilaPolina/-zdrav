@@ -12,10 +12,6 @@
         }
         if ($cls) {
             echo '<a class="' . $cls . ' btn-info"> Подробнее</a>';
-        } else {
-            echo '<a class="" href="services.php#';
-            echo $isAnalysis == true ? 'analyzes' : 'home-checkup';
-            echo '">Подробнее</a>';
         }
         echo '</div>';
         echo '</li>';
