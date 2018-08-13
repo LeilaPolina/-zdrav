@@ -94,6 +94,21 @@ $(document).ready(function() {
     });
 });
 
+function get_order_contains(){
+    let order_items = "";
+
+    checkup_boxes = $(".checkup-checkbox");    
+    checkup_boxes.each(function(){
+        let item_name, box = $(this);
+
+        if (box.hasClass("checkbox-checked")) {
+            item_name = box.next().next().text();
+            order_items += item_name + "\n";
+        } 
+    });
+    return order_items;
+}
+
 function check_order_checkup_answer(data){    
     $("#order-home-checkup-modal").css('display', 'none');
     if(data.result != "OK"){
@@ -101,8 +116,7 @@ function check_order_checkup_answer(data){
     }
     else{
         if($("#flag_if_logged_in").val() == "not_logged_in"){
-            //alert("Заказ успешно оформлен! Предлагаем создать личный кабинет, чтобы получить доступ ко всем возможностям нашего сервиса");
-            // function from registration_from_not_general_data_page.js
+            alert("Заказ успешно оформлен! Предлагаем создать личный кабинет, чтобы получить доступ ко всем возможностям нашего сервиса");
             get_data_for_registration(begin_registration);
         }
         else{
@@ -112,19 +126,16 @@ function check_order_checkup_answer(data){
 }
 
 function send_home_checkup_order(callback){
+
     $.ajax({
         type: 'POST',
         url: 'orders/order_homecheckup.php',
         async: false,
         data: {
             home_checkup: true,
-            user_phone: $("#user-phone-for-order").val(),
-            uzi_stomach: $("#uzi-stomach").is(':checked'),
-            uzi_liver: $("#uzi-liver").is(':checked'),
-            uzi_pee: $("#uzi-pee").is(':checked'),
-            uzi_vessels: $("#uzi-vessels").is(':checked'),
-            uzi_heart: $("#uzi-heart").is(':checked'),
-            uzi_lungs: $("#uzi-lungs").is(':checked')
+            user_phone: $("#user-phone-for-order").val(),            
+            price: $("#checkup-price").text(),
+            order_items: get_order_contains()
         },        
         dataType: 'json',
         success: callback,
