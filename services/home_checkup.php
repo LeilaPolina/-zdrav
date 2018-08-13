@@ -110,6 +110,212 @@
                         <div class="uzi-price">+ 5000 руб.</div>
                     </div><br>
 
+                    <!-- ANALYZES -->
+                    
+                    <h1 class="additional">Также можно заказать анализы из списка:</h1>
+
+                    <label class="container-checkbox">
+                        <input type="checkbox" checked="checked" class="checkup-checkbox">
+                        <span class="checkmark"></span>
+                        <span>Биохимический анализ крови</span>
+                    </label>
+                    <div class="info-right">
+                        <div class="analysis-price uzi-price">+ 3780 руб.</div>
+                        <div class="questionmark">
+                            <span class="tooltip-content">Рекомендовано сдавать данный анализ (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                        </div>
+                        <a class="blood btn-info">Подробнее</a>
+                    </div><br>
+
+                    <label class="container-checkbox">
+                        <input type="checkbox" checked="checked" class="checkup-checkbox">
+                        <span class="checkmark"></span>
+                        <span>Общий анализ мочи</span>
+                    </label>                    
+                    <div class="info-right">
+                        <div class="analysis-price uzi-price">+ 340 руб.</div>
+                        <div class="questionmark">
+                            <span class="tooltip-content">Рекомендовано сдавать данный анализ (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                        </div>
+                        <a class="pee btn-info">Подробнее</a>
+                    </div><br>
+
+                    <label class="container-checkbox">
+                        <input type="checkbox" class="checkup-checkbox">
+                        <span class="checkmark"></span>
+                        <span>Гастрокомплекс</span>
+                    </label>                    
+                    <div class="info-right">
+                        <div class="analysis-price uzi-price">+ 3240 руб.</div>
+                        <div class="questionmark">
+                            <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>заболеваниям ЖКТ</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                        </div>
+                        <a class="gastro btn-info">Подробнее</a>
+                    </div><br>
+
+                    <label class="container-checkbox">
+                    <?php
+                            if($an_gastro){
+                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                            }
+                            else{
+                                echo '<input type="checkbox" class="checkup-checkbox">';
+                            }
+                        ?>
+                        <span class="checkmark"></span>
+                        <span>Диагностика диабета, биохимический</span>
+                    </label>
+                    <div class="info-right">
+                        <div class="analysis-price uzi-price">+ 4220 руб.</div>
+                        <div class="questionmark">
+                            <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>диабету</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                        </div>
+                        <a class="diabetes btn-info">Подробнее</a>
+                    </div><br>
+
+                    <label class="container-checkbox">
+                        <?php
+                            if($an_cardio){
+                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                            }
+                            else{
+                                echo '<input type="checkbox" class="checkup-checkbox">';
+                            }
+                        ?>
+                        <span class="checkmark"></span>
+                        <span>Кардиологический</span>
+                    </label>
+                    <div class="info-right">
+                        <div class="analysis-price uzi-price">+ 5530 руб.</div>
+                        <div class="questionmark">
+                            <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к заболеваниям <strong>сердечно сосудистой системы</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                        </div>
+                        <a class="cardio btn-info">Подробнее</a>
+                    </div><br>
+
+                    <label class="container-checkbox">
+                        <?php
+                            if($an_onco_m){
+                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                            }
+                            else{
+                                echo '<input type="checkbox" class="checkup-checkbox">';
+                            }
+                        ?>
+                        <span class="checkmark"></span>
+                        <span>Онкологический для мужчин, биохимический</span>
+                    </label>                    
+                    <div class="info-right">
+                        <div class="analysis-price uzi-price">+ 3910 руб.</div>
+                        <div class="questionmark">
+                            <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>раковым</strong> заболеваниям (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                        </div>
+                        <a class="onco_m btn-info">Подробнее</a>
+                    </div><br>
+
+                    <label class="container-checkbox">
+                        <?php
+                            if($an_onco_f){
+                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                            }
+                            else{
+                                echo '<input type="checkbox" class="checkup-checkbox">';
+                            }
+                        ?>
+                        <span class="checkmark"></span>
+                        <span>Онкологический для женщин, биохимический</span>
+                    </label>
+                    <div class="info-right">
+                        <div class="analysis-price uzi-price">+ 5720 руб.</div>
+                        <div class="questionmark">
+                            <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>раковым</strong> заболеваниям (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                        </div>
+                        <a class="onco_f btn-info">Подробнее</a>
+                    </div><br>
+
+                    <label class="container-checkbox">
+                        <?php
+                            if($an_vessels){
+                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                            }
+                            else{
+                                echo '<input type="checkbox" class="checkup-checkbox">';
+                            }
+                        ?>
+                        <span class="checkmark"></span>
+                        <span>Диагностика сосудистых заболеваний головного мозга</span>
+                    </label>
+                    <div class="info-right">
+                        <div class="analysis-price uzi-price">+ 4610 руб.</div>
+                        <div class="questionmark">
+                            <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к заболеваниям <strong>сосудистой системы головного мозга</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                        </div>
+                        <a class="vessels btn-info">Подробнее</a>
+                    </div><br>
+                    
+                    <label class="container-checkbox">
+                        <?php
+                            if($an_hormones_m){
+                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                            }
+                            else{
+                                echo '<input type="checkbox" class="checkup-checkbox">';
+                            }
+                        ?>
+                        <span class="checkmark"></span>
+                        <span>Гормональный профиль (комплекс) для мужчин</span>
+                    </label>
+                    <div class="info-right">
+                        <div class="analysis-price uzi-price">+ 2880 руб.</div>
+                        <div class="questionmark">
+                            <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                        </div>
+                        <a class="hormones_m btn-info">Подробнее</a>
+                    </div><br>
+
+                    <label class="container-checkbox">
+                        <?php
+                            if($an_hormones_f){
+                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                            }
+                            else{
+                                echo '<input type="checkbox" class="checkup-checkbox">';
+                            }
+                        ?>
+                        <span class="checkmark"></span>
+                        <span>Гормональный профиль (комплекс) для женщин</span>
+                    </label>
+                    <div class="info-right">
+                        <div class="analysis-price uzi-price">+ 6140 руб.</div>
+                        <div class="questionmark">
+                            <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                        </div>
+                        <a class="hormones_f btn-info">Подробнее</a>
+                    </div><br>
+
+                    <label class="container-checkbox">
+                        <?php
+                            if($an_vitamins){
+                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                            }
+                            else{
+                                echo '<input type="checkbox" class="checkup-checkbox">';
+                            }
+                        ?>
+                        <span class="checkmark"></span>
+                        <span>Комплексный анализ крови на витамины (A, D, E, K, C, B1, B5, B6, В9, B12)</span>
+                    </label>
+                    <div class="info-right">
+                        <div class="analysis-price uzi-price">+ 15500 руб.</div>
+                        <div class="questionmark">
+                            <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
+                        </div>
+                        <a class="vitamins btn-info">Подробнее</a>
+                    </div><br>
+
+
+                    <!-- /ANALYZES -->
+                    
                     <p><i class="fa fa-info-circle"></i> Результаты осмотра с комментариями врача будут доступны в личном кабинете в<br>течение 24 часов после прохождения обследования</p>
                     <p><i class="fa fa-info-circle"></i> Обследование проходит у вас дома или в офисе. Необходимо наличие стула, стола, а так<br>же небольшой кушетки (дивана) для УЗИ</p>
                     <hr>

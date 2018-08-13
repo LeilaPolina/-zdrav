@@ -7,7 +7,7 @@
                         <label class="container-checkbox">
                             <input type="checkbox" checked="checked" class="analysis-checkbox">
                             <span class="checkmark"></span>
-                            <span>Биохимическй анализ крови</span>
+                            <span>Биохимический анализ крови</span>
                         </label>
 
                         <div class="info-right">
