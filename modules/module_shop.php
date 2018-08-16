@@ -1,7 +1,3 @@
-<?php
-	include('general_data_src.php');
-?>
-
 <div class="threeb">
 	<div class="rec-wrapper">
 	<div class="rec-icon-container">
