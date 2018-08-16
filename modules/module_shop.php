@@ -1,25 +1,5 @@
 <?php
-        $rec_to_buy = array("умные весы");
-
-        if($user_data_arr['module_tester']) {
-            array_push($rec_to_buy, "домашний тестер холестерина");
-        }
-
-		if($user_data_arr['smart_watch']) {
-            array_push($rec_to_buy, "фитнес браслет");
-		}
-
-		if(in_array("Сахарный диабет", $user_data_arr['risks'])) {
-            array_push($rec_to_buy, "глюкометр");
-        }
-        
-        if ($user_data_arr['healthyheart'] || $user_data_arr['job'] == "Физически тяжелая") {
-            array_push($rec_to_buy, "ЭКГ монитор");
-		}
-		
-		if($user_data_arr['healthyheart'] || $user_data_arr['job'] == "На ногах") {
-            array_push($rec_to_buy, "домашний тонометр");
-		}
+	include('general_data_src.php');
 ?>
 
 <div class="threeb">
@@ -31,16 +11,8 @@
 		<div class="rec-text-container">
 			<div class="rec-text">
                 Рекомендуем приобрести: 
-                <?php 
-                    $count = 0;
-                    foreach($rec_to_buy as $item) {
-                        if ($count != count($rec_to_buy) - 1) {
-                            echo $item.", ";
-                        } else {
-                            echo $item.".";
-                        }
-                        $count++;
-                    }
+				<?php
+					echo $toBuy;
                 ?>
 				<div class="questionmark">
 				<span class="tooltip-content">

@@ -2,17 +2,24 @@
 
 <?php
 
-function recToBuy ($dead) {
-    $listToBuy = array();
+function recToBuy ($user_data_arr) {
+    $listToBuy = array("умные весы");
     $txtListToBuy = '';
-    if (in_array('Сердце', $dead)) {
-        array_unshift($listToBuy,'домашний ЭКГ монитор, тонометр');
+    if ($user_data_arr['module_tester']) {
+        array_unshift($listToBuy,'домашний тестер холестерина');
     }
-    if (in_array('Инсульт', $dead)) {
-        array_unshift($listToBuy,'тестер холестерина');
-    }
-    if (in_array('Сахарный диабет', $dead)) {
+    if (in_array('Сахарный диабет', $user_data_arr['risks'])) {
         array_unshift($listToBuy,'глюкометр');
+    }
+    if ($user_data_arr['healthyheart'] || $user_data_arr['job'] == "Физически тяжелая") {
+        array_push($rec_to_buy, "ЭКГ монитор");
+    }
+    
+    if($user_data_arr['healthyheart'] || $user_data_arr['job'] == "На ногах") {
+        array_push($rec_to_buy, "домашний тонометр");
+    }
+    if($user_data_arr['smart_watch']) {
+        array_push($rec_to_buy, "фитнес браслет");
     }
     $txtListToBuy = implode(", ", $listToBuy);
     return $txtListToBuy;
@@ -438,8 +445,8 @@ if(!$user->is_logged_in()){
     
     $index_mass = getIndexMass($user_data_arr['weight'], $user_data_arr['height']);
 	$txt_index_mass = getTxtIndexMass($index_mass);
-	$lifetime_index_mass = getLifetimeIndexMass($index_mass);
-	$toBuy = recToBuy ($user_data_arr['risks']);
+    $lifetime_index_mass = getLifetimeIndexMass($index_mass);
+	$toBuy = recToBuy ($user_data_arr);
     $lifecount = get_lifecount($lifetime_index_mass, $user_data_arr);
 }
 else{
