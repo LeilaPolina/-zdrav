@@ -22,7 +22,9 @@
                 "sample_file_5" => array("type" => "Рецепт", "name" => "Рецепт", "date" => "27 июня 2018", "extension" => "jpg"), 
                 "sample_file_6" => array("type" => "Обследование", "name" => "Узи брюшной полости", "date" => "27 июня 2018", "extension" => "jpg"), 
                 "sample_file_7" => array("type" => "Обследование", "name" => "Узи почек и мочеполовой системы", "date" => "27 июня 2018", "extension" => "jpg"), 
-                "sample_file_8" => array("type" => "Анализ", "name" => "Анализ мочи", "date" => "27 июня 2018", "extension" => "png"));
+                "sample_file_8" => array("type" => "Анализ", "name" => "Анализ мочи", "date" => "27 июня 2018", "extension" => "png"),
+                "sample_file_9" => array("type" => "Обследование", "name" => "ЭКГ", "date" => "17 июня 2018", "extension" => "png")
+            );
         }
         else{
             $folder = $folder."/".$_SESSION['user_id']."_uploads/";
