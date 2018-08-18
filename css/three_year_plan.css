@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    background: #F0F3F7;
+	font-family: Open Sans;
+}
+
+hr {
+    width: 85%;
+    color: rgba(22, 50, 92, 0.8);
+}
+
+.main {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    box-shadow: 0px 2px 2px rgba(46, 53, 54, 0.118631);
+    padding: 0.1px;
+}
+
+.imgs-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-main, .subtitle, .title {
+    text-align: center;
+}
+
+.title-main {
+    margin-top: 1.5%;
+    font-weight: 700;
+    color: rgba(22, 50, 92, 0.8);
+    font-size: 2em;
+}
+
+.title {
+    color: rgba(22, 50, 92, 0.8);
+    font-size: 1.2em;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+
+.subtitle {
+    color: #6F949E;
+}
+
+.data {
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.general-data-container, .numbers-container {
+    display: flex;
+    margin: 1% auto;
+}
+
+.general-data-container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.numbers-container {
+    flex-direction: column;
+    width: 40%;
+}
+
+.data-box {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    margin-top: 3%;
+    box-shadow: 0px 2px 2px 0px rgba(46, 53, 54, 0.118631);
+}
+
+.numbers-container > .data-box {
+    width: 100%;
+}
+
+.data-box > span:first-child {
+    font-weight: 700;
+    margin-left: 1%;
+}
+
+.data-box > span:last-child {
+    font-size: 0.9em;
+    margin-right: 1%;
+}
+
+.data-box > span {
+    color: #1F2F47;
+}
+
+.data-box.empty {
+    box-shadow: none;
+}
+
+.footnote {
+    text-align: center;
+    color: #6F949E;
+    font-size: 0.7em;
+}
+
+.checkups {
+    border-collapse: collapse;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.checkups th, .checkups td {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+.checkups th {
+    background-color: #00B0D2;
+    color: #FFFFFF;
+    font-weight: 400;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .main, .general-data-container, .numbers-container {
+        width: 95%;
+    }
+
+    .data-box {
+        width: 100%;
+    }
+
+    .data-box.empty {
+        display: none;
+    }
+
+    .checkups {
+        font-size: 0.7em;
+    }
+}
