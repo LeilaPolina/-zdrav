@@ -56,7 +56,7 @@
 	<script src="scripts/save_general_data.js"></script>
 	<script src="scripts/signout.js"></script>
 	<script src="scripts/responsive_tooltips.js"></script>
-	
+
 	<!-- Yandex.Metrika counter --> 
 	<script type="text/javascript">
 		(function (d, w, c) { 
@@ -118,7 +118,7 @@
 
 <div class="main">
 	<div class="recommendations-top">
-		<div class="personal-recommendations threeb">
+		<div class="personal-recommendations threeb blue-shadow">
 			<div class="main-rec-container">
 				<div class="main-rec-text-container">
 					<div class="rec-icon-main"></div>
@@ -172,6 +172,8 @@
 
 	<div class="rec-list">
 		<?php
+
+		include './modules/module_plan.php';
 
 		include './modules/module_mass.php';
 
@@ -479,6 +481,7 @@
 		if(!$user->is_logged_in()){
 			echo '<input type="hidden" id="ilifetime" value="'.$user_data_arr['lifetime'].'">';
 			echo '<input type="submit" id="register-button" value="Создать личный кабинет" class="save-btn">';
+			echo '<div class="footnote">И получить план профилактики здоровья на 3 года <a href="plan/demo.php" target="_blank">(пример)</a></div>';
 		}
 		else{
 			echo '<input type="submit" id="save_gen_data_button" value="Сохранить" class="save-btn">';
@@ -861,10 +864,10 @@
 				</div>
 			</div>
 		</div>
-	<div class="instructions">
+	<!--div class="instructions">
    		<input type="checkbox" id="how_video" name="video" value="how_video">
     	<label for="video">Показывать видеоинструкции?</label>
-  	</div>
+  	</div-->
 	<hr>
 	
 	<?php

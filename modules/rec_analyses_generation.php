@@ -16,8 +16,4 @@
         echo '</div>';
         echo '</li>';
     }
-
-    function generate_plan_item ($name, $reason, $OMS, $regularity) {
-        
-    }
 ?>
