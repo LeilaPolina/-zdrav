@@ -1,5 +1,3 @@
-<?php include('includes/config.php'); ?>
-
 <?php
 
 function recToBuy ($user_data_arr) {

@@ -129,8 +129,12 @@ body {
 	background-color: white;
 	box-shadow: 0px 2px 2px rgba(46, 53, 54, 0.118631);
 	border-radius: 3px;
-	margin-top: 6px;
+	margin-top: 12px;
 	padding: 0.1px;
+}
+
+.blue-shadow {
+	box-shadow: 1px 1px 3px 3px #00B0D2;
 }
 
 .rec-wrapper {
@@ -237,7 +241,7 @@ body {
     height: 36px;
     width: 200px;
     text-align: center;
-    margin: 30px auto;
+    margin: 30px auto 5px auto;
     background: #00B0D2;
     border-radius: 4px;
     color: white;
@@ -245,6 +249,16 @@ body {
     font-size: 15px;
 	border:0;
 	cursor: pointer;
+}
+
+.footnote {
+    text-align: center;
+    color: #6F949E;
+    font-size: 0.8em;
+}
+
+.footnote a {
+	color: inherit;
 }
 
 .data-category-title {
@@ -381,8 +395,7 @@ body {
 }
 
 .mass_index {
-	position: relative;
-	margin-top:24px;
+	margin-top: 1%;
 }
 
 .plus-life {
