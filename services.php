@@ -266,5 +266,37 @@
         include('info_modals.php');
         include('registration_modals.php');
     ?>
+
+    <!-- ORDER MODAL -->
+    <div id="order-modal" class="modal-window">
+        <div class="modal-window-content order-homecheckup-window">
+            <div class="modal-window-body sm-body">
+                <div class="modal_header">
+                        <span class="close" id="order-modal-close">&times;</span>
+                        <div class="modal-title">Заказать домашний медосмотр</div>
+                </div>
+                <br />
+                <label for="user-phone-for-order">Номер телефона</label>
+                <br />
+                <input type=text id="user-phone-for-order" class="modal-input" />
+                <br />
+                <input type=button id="submit-order" value="Подтвердить" class="modal-submit-btn" />
+                
+                <?php
+                    if($user->is_logged_in()){
+                        echo '<input type="hidden" id="flag_if_logged_in" value="logged_in">';
+                    }
+                    else{
+                        echo '<input type="hidden" id="flag_if_logged_in" value="not_logged_in">';
+                    }
+                ?>
+                <span id="error_msg"> </span>
+                <br />
+
+            </div>
+        </div>
+    </div>
+    <!-- /ORDER MODAL -->
+
 </body>
 </html>

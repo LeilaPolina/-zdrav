@@ -16,7 +16,7 @@
                     <h1 class="additional">Дополнительно можно провести следующие обследования:</h1>
                     
                     <label class="container-checkbox">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox" id="uzi-stomach">
+                            <input type="checkbox" checked="checked" class="checkup-option-only checkup-checkbox" id="uzi-stomach">
                             <span class="checkmark"></span>
                             <span>УЗИ брюшной полости на дому</span>
                     </label>
@@ -35,10 +35,10 @@
                     <label class="container-checkbox">
                             <?php
                                 if($ch_uzi_liver){
-                                    echo '<input type="checkbox" checked="checked" class="checkup-checkbox" id="uzi-liver">';
+                                    echo '<input type="checkbox" checked="checked" class="checkup-option-only checkup-checkbox" id="uzi-liver">';
                                 }
                                 else{
-                                    echo '<input type="checkbox" class="checkup-checkbox" id="uzi-liver">';
+                                    echo '<input type="checkbox" class="checkup-option-only checkup-checkbox" id="uzi-liver">';
                                 }
                             ?>
                             <span class="checkmark"></span>
@@ -50,7 +50,7 @@
                     </div><br>
 
                     <label class="container-checkbox">
-                            <input type="checkbox" checked="checked" class="checkup-checkbox" id="uzi-pee">
+                            <input type="checkbox" checked="checked" class="checkup-option-only checkup-checkbox" id="uzi-pee">
                             <span class="checkmark"></span>
                             <span>УЗИ мочевого органа и мочеточников</span>
                     </label>
@@ -62,10 +62,10 @@
                     <label class="container-checkbox">
                             <?php
                                 if($ch_uzi_vessels){
-                                    echo '<input type="checkbox" checked="checked" class="checkup-checkbox" id="uzi-vessels">';
+                                    echo '<input type="checkbox" checked="checked" class="checkup-option-only checkup-checkbox" id="uzi-vessels">';
                                 }
                                 else{
-                                    echo '<input type="checkbox" class="checkup-checkbox" id="uzi-vessels">';
+                                    echo '<input type="checkbox" class="checkup-option-only checkup-checkbox" id="uzi-vessels">';
                                 }
                             ?>
                             <span class="checkmark"></span>
@@ -79,10 +79,10 @@
                     <label class="container-checkbox">
                             <?php
                                 if($ch_uzi_heart){
-                                    echo '<input type="checkbox" checked="checked" class="checkup-checkbox" id="uzi-heart">';
+                                    echo '<input type="checkbox" checked="checked" class="checkup-option-only checkup-checkbox" id="uzi-heart">';
                                 }
                                 else{
-                                    echo '<input type="checkbox" class="checkup-checkbox" id="uzi-heart">';
+                                    echo '<input type="checkbox" class="checkup-option-only checkup-checkbox" id="uzi-heart">';
                                 }
                             ?>
                             <span class="checkmark"></span>
@@ -96,10 +96,10 @@
                     <label class="container-checkbox">
                             <?php
                                 if($ch_xray_lungs){
-                                    echo '<input type="checkbox" checked="checked" class="checkup-checkbox" id="uzi-lungs">';
+                                    echo '<input type="checkbox" checked="checked" class="checkup-option-only checkup-checkbox" id="uzi-lungs">';
                                 }
                                 else{
-                                    echo '<input type="checkbox" class="checkup-checkbox" id="uzi-lungs">';
+                                    echo '<input type="checkbox" class="checkup-option-only checkup-checkbox" id="uzi-lungs">';
                                 }
                             ?>
                             <span class="checkmark"></span>
@@ -115,7 +115,7 @@
                     <h1 class="additional">Также можно заказать анализы из списка:</h1>
 
                     <label class="container-checkbox">
-                        <input type="checkbox" checked="checked" class="checkup-checkbox">
+                        <input type="checkbox" checked="checked" class="an-option-only checkup-checkbox">
                         <span class="checkmark"></span>
                         <span>Биохимический анализ крови</span>
                     </label>
@@ -128,7 +128,7 @@
                     </div><br>
 
                     <label class="container-checkbox">
-                        <input type="checkbox" checked="checked" class="checkup-checkbox">
+                        <input type="checkbox" checked="checked" class="an-option-only checkup-checkbox">
                         <span class="checkmark"></span>
                         <span>Общий анализ мочи</span>
                     </label>                    
@@ -141,7 +141,7 @@
                     </div><br>
 
                     <label class="container-checkbox">
-                        <input type="checkbox" class="checkup-checkbox">
+                        <input type="checkbox" class="an-option-only checkup-checkbox">
                         <span class="checkmark"></span>
                         <span>Гастрокомплекс</span>
                     </label>                    
@@ -156,10 +156,10 @@
                     <label class="container-checkbox">
                     <?php
                             if($an_gastro){
-                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                                echo '<input type="checkbox" checked="checked" class="an-option-only checkup-checkbox">';
                             }
                             else{
-                                echo '<input type="checkbox" class="checkup-checkbox">';
+                                echo '<input type="checkbox" class="an-option-only checkup-checkbox">';
                             }
                         ?>
                         <span class="checkmark"></span>
@@ -176,10 +176,10 @@
                     <label class="container-checkbox">
                         <?php
                             if($an_cardio){
-                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                                echo '<input type="checkbox" checked="checked" class="an-option-only checkup-checkbox">';
                             }
                             else{
-                                echo '<input type="checkbox" class="checkup-checkbox">';
+                                echo '<input type="checkbox" class="an-option-only checkup-checkbox">';
                             }
                         ?>
                         <span class="checkmark"></span>
@@ -196,10 +196,10 @@
                     <label class="container-checkbox">
                         <?php
                             if($an_onco_m){
-                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                                echo '<input type="checkbox" checked="checked" class="an-option-only checkup-checkbox">';
                             }
                             else{
-                                echo '<input type="checkbox" class="checkup-checkbox">';
+                                echo '<input type="checkbox" class="an-option-only checkup-checkbox">';
                             }
                         ?>
                         <span class="checkmark"></span>
@@ -216,10 +216,10 @@
                     <label class="container-checkbox">
                         <?php
                             if($an_onco_f){
-                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                                echo '<input type="checkbox" checked="checked" class="an-option-only checkup-checkbox">';
                             }
                             else{
-                                echo '<input type="checkbox" class="checkup-checkbox">';
+                                echo '<input type="checkbox" class="an-option-only checkup-checkbox">';
                             }
                         ?>
                         <span class="checkmark"></span>
@@ -236,10 +236,10 @@
                     <label class="container-checkbox">
                         <?php
                             if($an_vessels){
-                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                                echo '<input type="checkbox" checked="checked" class="an-option-only checkup-checkbox">';
                             }
                             else{
-                                echo '<input type="checkbox" class="checkup-checkbox">';
+                                echo '<input type="checkbox" class="an-option-only checkup-checkbox">';
                             }
                         ?>
                         <span class="checkmark"></span>
@@ -256,10 +256,10 @@
                     <label class="container-checkbox">
                         <?php
                             if($an_hormones_m){
-                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                                echo '<input type="checkbox" checked="checked" class="an-option-only checkup-checkbox">';
                             }
                             else{
-                                echo '<input type="checkbox" class="checkup-checkbox">';
+                                echo '<input type="checkbox" class="an-option-only checkup-checkbox">';
                             }
                         ?>
                         <span class="checkmark"></span>
@@ -276,10 +276,10 @@
                     <label class="container-checkbox">
                         <?php
                             if($an_hormones_f){
-                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                                echo '<input type="checkbox" checked="checked" class="an-option-only checkup-checkbox">';
                             }
                             else{
-                                echo '<input type="checkbox" class="checkup-checkbox">';
+                                echo '<input type="checkbox" class="an-option-only checkup-checkbox">';
                             }
                         ?>
                         <span class="checkmark"></span>
@@ -296,14 +296,14 @@
                     <label class="container-checkbox">
                         <?php
                             if($an_vitamins){
-                                echo '<input type="checkbox" checked="checked" class="checkup-checkbox">';
+                                echo '<input type="checkbox" checked="checked" class="an-option-only checkup-checkbox">';
                             }
                             else{
-                                echo '<input type="checkbox" class="checkup-checkbox">';
+                                echo '<input type="checkbox" class="an-option-only checkup-checkbox">';
                             }
                         ?>
                         <span class="checkmark"></span>
-                        <span>Комплексный анализ крови на витамины (A, D, E, K, C, B1, B5, B6, В9, B12)</span>
+                        <span>Комплексный анализ крови на витамины</span>
                     </label>
                     <div class="info-right">
                         <div class="analysis-price uzi-price">+ 15500 руб.</div>
@@ -324,33 +324,4 @@
                     <button class="inline" id="order-home-checkup">Заказать</button>
                     <p id="checkup-cashback">Кэшбэк <strong>100 руб.</strong> (3%)<p>
                     
-                    <!-- ORDER MODAL -->
-                    <div id="order-home-checkup-modal" class="modal-window">
-                        <div class="modal-window-content order-homecheckup-window">
-                            <div class="modal-window-body sm-body">
-                                <div class="modal_header">
-                                        <span class="close" id="order-home-checkup-modal-close">&times;</span>
-                                        <div class="modal-title">Заказать домашний медосмотр</div>
-                                </div>
-                                <br />
-                                <label for="user-phone-for-order">Номер телефона</label>
-                                <br />
-                                <input type=text id="user-phone-for-order" class="modal-input" />
-                                <br />
-                                <input type=button id="submit-home-checkup-order" value="Подтвердить" class="modal-submit-btn" />
-                                
-                                <?php
-                                    if($user->is_logged_in()){
-                                        echo '<input type="hidden" id="flag_if_logged_in" value="logged_in">';
-                                    }
-                                    else{
-                                        echo '<input type="hidden" id="flag_if_logged_in" value="not_logged_in">';
-                                    }
-                                ?>
-                                <span id="error_msg"> </span>
-                                <br />
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /ORDER MODAL -->
+                    

@@ -194,7 +194,7 @@
                                 }
                             ?>
                             <span class="checkmark"></span>
-                            <span>Комплексный анализ крови на витамины (A, D, E, K, C, B1, B5, B6, В9, B12)</span>
+                            <span>Комплексный анализ крови на витамины</span>
                         </label>
 
                         <div class="info-right">
@@ -213,7 +213,7 @@
 
                         <div class="contact">
                         <div class="contact-column-left">
-                            <button class="button-wider" type="submit">Заказать</button>
+                            <button class="button-wider" id="order-analyzes">Заказать</button>
                             <p class="order-info">Кэшбэк <strong id="an-cashback"></strong> (3%)</p>
                             <p class="order btn-info">Подробнее о заказе</p>
                         </div>
