@@ -1,13 +1,8 @@
 <?php
+	include_once('includes/keys.php');
 // SMSC.RU API (smsc.ru) версия 3.7 (09.10.2017)
 
-define("SMSC_LOGIN", "zdrav_rf");			// логин клиента
-define("SMSC_PASSWORD", "biohacking32");	// пароль
-define("SMSC_POST", 0);					// использовать метод POST
-define("SMSC_HTTPS", 0);				// использовать HTTPS протокол
-define("SMSC_CHARSET", "windows-1251");	// кодировка сообщения: utf-8, koi8-r или windows-1251 (по умолчанию)
-define("SMSC_DEBUG", 0);				// флаг отладки
-define("SMTP_FROM", "api@smsc.ru");     // e-mail адрес отправителя
+
 
 // Функция отправки SMS
 //
