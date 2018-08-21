@@ -2,7 +2,9 @@
 <?php
 	/*
 	if(!$_SESSION['test_completed']){
-		header('Location: https://здравствую.рф/');
+	    if(!$user->is_logged_in()){
+		    header('Location: https://здравствую.рф/');
+	    }
 	}
 	*/
 
