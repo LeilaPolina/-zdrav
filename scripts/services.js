@@ -3,6 +3,7 @@ function check_order_answer(data){
     order_analyzes = false;
     $("#order-modal").css('display', 'none');
     if(data.result != "OK"){
+        //alert(data);
         alert("В данный момент сервис недоступен. Попробуйте позднее!");
     }
     else{
@@ -18,8 +19,7 @@ function check_order_answer(data){
 // function gets ONLY homecheckup contains, without analyzes part (even if they are in homecheckup block)
 function get_order_checkup_contains(order_homecheckup){
     let order_items = "";
-    if(order_homecheckup === true){        
-        order_items = "Стандартный домашний медосмотр\n";
+    if(order_homecheckup === true){
         checkup_boxes = $(".checkup-option-only");    
         checkup_boxes.each(function(){
             let item_name, box = $(this);
@@ -74,7 +74,7 @@ function send_order(callback, order_homecheckup, order_analyzes){
             order_an_items: get_order_an_contains(order_homecheckup, order_analyzes),            
             order_checkup_items: get_order_checkup_contains(order_homecheckup)
         },        
-        dataType: 'json',
+        dataType: 'html',
         success: callback,
         error: get_error
     });

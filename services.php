@@ -1,8 +1,33 @@
 <?php include_once('includes/config.php'); ?>
 <?php
     include_once('modules/general_data_src.php');
-    include_once('modules/rec_analyses.php');
+    include_once('modules/rec_analyses.php');    
+
+    function get_an_prices($db){
+        $get_an_prices = $db->prepare('SELECT complex_name, complex_price
+                                    FROM complex_types');
+        $get_an_prices->execute();        
+        $an_prices = array();
+        while($an_prices_row = $get_an_prices->fetch(PDO::FETCH_ASSOC)){
+            $an_prices[$an_prices_row['complex_name']] = $an_prices_row['complex_price'];
+        }
+        return $an_prices;
+    }
+
+    function get_checkup_prices($db){
+        $get_checkup_prices = $db->prepare('SELECT home_checkup_name, home_checkup_price
+                                        FROM home_checkup_types;');
+        $get_checkup_prices->execute();
+        $checkup_prices = array();
+        while($checkup_prices_row = $get_checkup_prices->fetch(PDO::FETCH_ASSOC)){
+            $checkup_prices[$checkup_prices_row['complex_name']] = $checkup_prices_row['complex_price'];
+        }
+        return $checkup_prices;
+    }
     
+    $an_prices = get_an_prices($db);
+    $checkup_prices = get_checkup_prices($db);
+
     $user_weight = $user_data_arr['weight'];
     $user_height = $user_data_arr['height'];
     $user_sex = $user_data_arr['sex'];

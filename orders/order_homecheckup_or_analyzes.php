@@ -47,6 +47,7 @@
 
     function get_total_price($db, $complex_arr, $homecheckup_arr){
         try{
+            $order_info = array('total_price' => 0, 'complexes' => array());
             $complexes_price = 0;
             $every_item = array();
             $get_complexes_sum = $db->prepare('SELECT complex_name, complex_price
@@ -70,6 +71,7 @@
 
                 while($row = $get_complexes_sum->fetch(PDO::FETCH_ASSOC)){
                     $complexes_price += $row['complex_price'];
+                    array_push($order_info['complexes'], array('name' => $complex, 'price' => $row['complex_price']));
                 }
 
                 // get complex items
@@ -84,8 +86,8 @@
 
             $price_substract = get_repeating_items_price($every_item);
             $homecheckup_only_price = get_homecheckup_only_price($db, $homecheckup_arr);
-
-            return $homecheckup_only_price + $complexes_price - $price_substract;
+            $order_info['total_price'] = $homecheckup_only_price + $complexes_price - $price_substract;
+            return $order_info;
         }
         catch(Exception $e){
             return $e->getMessage();
@@ -102,14 +104,44 @@
         // === /EMAIL === 
     }
 
-    function process_order($db, $complex_arr, $homecheckup_arr, $order_str, $user_phone){
-        try{            
-            $total_price = get_total_price($db, $complex_arr, $homecheckup_arr);
-            $order_content = "Домашний медосмотр\nСостав заказа:\n".$order_str.
-                            "\nОбщая сумма: ".$total_price.
-                            "\nКОНЕЦ ЗАКАЗА";
-            
+    function save_order($db, $user, $order_content, $total_price, $user_phone){
+        if($user->is_logged_in()){
+            $save_order = $db->prepare('INSERT INTO user_orders 
+                                    (user_orders_user_id, user_phone, user_orders_contains, user_orders_price, user_orders_date, user_orders_status) 
+                                    VALUES (:user_id, :user_phone, :order_contains, :price, now(), :order_status)');                                    
+            $save_order->execute(array(
+                ':user_id' => $_SESSION['user_id'], 
+                ':user_phone' => $user_phone,
+                ':order_contains' => $order_content, 
+                ':price' => $total_price,
+                ':order_status' => "поступил"
+            ));
+        }
+        else{
+            $save_order = $db->prepare('INSERT INTO user_orders 
+                                    (user_phone, user_orders_contains, user_orders_price, user_orders_date, user_orders_status) 
+                                    VALUES (:user_phone, :order_contains, :price, now(), :order_status)');            
+            $save_order->execute(array(
+                ':user_phone' => $user_phone,
+                ':order_contains' => $order_content, 
+                ':price' => $total_price,
+                ':order_status' => "поступил"
+            ));
+        }
+    }
+
+    function process_order($db, $user, $complex_arr, $homecheckup_arr, $user_phone){
+        try{
+            $order_info = get_total_price($db, $complex_arr, $homecheckup_arr);
+
+            $order_content = "Домашний медосмотр\nСостав заказа:\n";
+            foreach($order_info['complexes'] as $complex){
+                $order_content = $order_content.$complex['name']." ".$complex['price']."\n";
+            }
+            $order_content = $order_content."\nОбщая сумма: ".$order_info['total_price']."\nКОНЕЦ ЗАКАЗА";
+
             if($user_phone){
+                save_order($db, $user, $order_content, $order_info['total_price'], $user_phone);
                 //send_email($order_content, $user_phone);
                 return 'OK';
             }
@@ -121,20 +153,16 @@
     }
 
     if(isset($_POST['order']) && $_POST['order'] == true){
-        $order_an_str = $_POST['order_an_items'];
-        $order_checkup_str = $_POST['order_checkup_items'];
         $_POST['order'] = false;
 
         $user_phone = $_POST['user_phone'];
-        $order_str = $order_checkup_str.$order_an_str;
+        $complex_arr = explode("\n", $_POST['order_an_items']);
+        $homecheckup_arr = explode("\n", $_POST['order_checkup_items']);
 
-        $complex_arr = explode("\n", $order_an_str);
         array_pop($complex_arr);
-
-        $homecheckup_arr = explode("\n", $order_checkup_str);        
         array_pop($homecheckup_arr);
 
-        echo json_encode(array('result' => process_order($db, $complex_arr, $homecheckup_arr, $order_str, $user_phone)));
+        echo json_encode(array('result' => process_order($db, $user, $complex_arr, $homecheckup_arr, $user_phone)));
     }
     
     if(isset($_POST['get_price']) && $_POST['get_price'] == true){
@@ -142,11 +170,13 @@
         $order_checkup_str = $_POST['order_checkup_items'];
 
         $complex_arr = explode("\n", $order_an_str);
-        array_pop($complex_arr);
+        $homecheckup_arr = explode("\n", $order_checkup_str); 
 
-        $homecheckup_arr = explode("\n", $order_checkup_str);        
+        array_pop($complex_arr);      
         array_pop($homecheckup_arr);
+
+        $total_price = get_total_price($db, $complex_arr, $homecheckup_arr)['total_price'];
         
-        echo json_encode(array('result' => get_total_price($db, $complex_arr, $homecheckup_arr)));
+        echo json_encode(array('result' => $total_price));
     }
 ?>
