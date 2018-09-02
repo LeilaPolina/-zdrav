@@ -150,6 +150,22 @@ function calculateCheckupPrice(data) {
     order_analyzes = false;
 }
 
+function send_notification(msg){
+    $.ajax({
+        type: 'POST',
+        url: 'orders/order_service_in_dev.php',
+        data: {
+            message: msg,
+            notify: true
+        },        
+        dataType: 'json',
+        success: function(data){
+            //alert(data.result);
+        },
+        error: get_error
+    });
+}
+
 order_homecheckup = false;
 order_analyzes = false;
 

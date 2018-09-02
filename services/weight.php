@@ -57,7 +57,7 @@
         </div>
         <?php
                             if($user->is_logged_in()) {
-                                echo '<button type="submit">Заказать</button>';
+                                echo '<button type="submit" onclick="send_notification(\'Контроль веса\nКонсультация с диетологом\')">Заказать</button>';
                             } else {
                                 echo '<p>Чтобы воспользоваться данным сервисом, необходимо <a href="test.php#register">создать личный кабинет.</a></p>';
                             }
@@ -72,7 +72,7 @@
     <img class="img-center" src="images/banners/dnevnik.png">
     <?php
         if($user->is_logged_in()) {
-            echo '<button class="button-center" onclick="window.open(\'https://здравствую.рф/tvoy_dnevnik.php#/\',\'_blank\');">Начать</button>';
+            echo '<button class="button-center"  onclick="send_notification(\'Контроль веса\nТвой дневник\')">Начать</button>';
         } else {
             echo '<p>Чтобы воспользоваться данным сервисом, необходимо <a href="test.php#register">создать личный кабинет.</a></p><br>';
         }

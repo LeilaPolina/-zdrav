@@ -4,47 +4,47 @@
 	<div class="analysis-line">
 		<div class="analysis-title">Общий анализ крови</div>
 		<a class="btn-standart">Ввести</a>
-		<a class="btn-standart">Заказать</a>
+		<a class="btn-standart" onclick="send_notification('Стать мамой\nСдача анализов')">Заказать</a>
 	</div>
 	<div class="analysis-line">
 		<div class="analysis-title">Общий анализ мочи</div>
 		<a class="btn-standart">Ввести</a>
-		<a class="btn-standart">Заказать</a>
+		<a class="btn-standart" onclick="send_notification('Стать мамой\nСдача анализов')">Заказать</a>
 	</div>
 	<div class="analysis-line">
 		<div class="analysis-title">Биохимический анализ крови</div>
 		<a class="btn-standart">Ввести</a>
-		<a class="btn-standart">Заказать</a>
+		<a class="btn-standart" onclick="send_notification('Стать мамой\nСдача анализов')">Заказать</a>
 	</div>
 	<div class="analysis-line">
 		<div class="analysis-title">На группу крови</div>
 		<a class="btn-standart">Ввести</a>
-		<a class="btn-standart">Заказать</a>
+		<a class="btn-standart" onclick="send_notification('Стать мамой\nСдача анализов')">Заказать</a>
 	</div>
 	<div class="analysis-line">
 		<div class="analysis-title">Соскоб с шейки матки на ПЦР-исследование</div>
 		<a class="btn-standart">Ввести</a>
-		<a class="btn-standart">Заказать</a>
+		<a class="btn-standart" onclick="send_notification('Стать мамой\nСдача анализов')">Заказать</a>
 	</div>
 	<div class="analysis-line">
 		<div class="analysis-title">На ВИЧ, сифилис, гонококки, микоплазмы</div>
 		<a class="btn-standart">Ввести</a>
-		<a class="btn-standart">Заказать</a>
+		<a class="btn-standart" onclick="send_notification('Стать мамой\nСдача анализов')">Заказать</a>
 	</div>
 	<div class="analysis-line">
 		<div class="analysis-title">Кишечную палочку, стафилококк</div>
 		<a class="btn-standart">Ввести</a>
-		<a class="btn-standart">Заказать</a>
+		<a class="btn-standart" onclick="send_notification('Стать мамой\nСдача анализов')">Заказать</a>
 	</div>
 	<div class="analysis-line">
 		<div class="analysis-title">Свертываемость крови</div>
 		<a class="btn-standart">Ввести</a>
-		<a class="btn-standart">Заказать</a>
+		<a class="btn-standart" onclick="send_notification('Стать мамой\nСдача анализов')">Заказать</a>
 	</div>
 	<div class="analysis-line">
 		<div class="analysis-title">Гормоны</div>
 		<a class="btn-standart">Ввести</a>
-		<a class="btn-standart">Заказать</a>
+		<a class="btn-standart" onclick="send_notification('Стать мамой\nСдача анализов')">Заказать</a>
 	</div>
 </div>
 <h1 class="title-background">Шаг 2: Пройти следующие обследования</h1>
@@ -52,12 +52,12 @@
 	<div class="analysis-line">
 		<div class="analysis-title">УЗИ молочной и щитовидной железы</div>
 		<a class="btn-standart">Ввести</a>
-		<a class="btn-standart">Заказать</a>
+		<a class="btn-standart" onclick="send_notification('Стать мамой\nПройти обследование')">Заказать</a>
 	</div>
 	<div class="analysis-line">
 		<div class="analysis-title">УЗИ органов малого таза</div>
 		<a class="btn-standart">Ввести</a>
-		<a class="btn-standart">Заказать</a>
+		<a class="btn-standart" onclick="send_notification('Стать мамой\nПройти обследование')">Заказать</a>
 	</div>
 </div>
 <h1 class="title-background">Шаг 3: Консультация со следующими врачами</h1>
@@ -70,11 +70,11 @@
 		влагалища и инфекции</td>
 		<td>
 			Он-лайн консультация
-			<a class="btn-standart">Заказать</a>
+			<a class="btn-standart" onclick="send_notification('Стать мамой\nОнлайн консультация')">Заказать</a>
 		</td>
 		<td>
 			Визит ко врачу
-			<a class="btn-standart">Заказать</a>
+			<a class="btn-standart" onclick="send_notification('Стать мамой\nВизит к врачу')">Заказать</a>
 		</td>
 	</tr>
 	<tr>
@@ -89,11 +89,11 @@
 		подготовки к беременности</td>
 		<td>
 			Он-лайн консультация
-			<a class="btn-standart">Заказать</a>
+			<a class="btn-standart" onclick="send_notification('Стать мамой\nОнлайн консультация')">Заказать</a>
 		</td>
 		<td>
 			Визит ко врачу
-			<a class="btn-standart">Заказать</a>
+			<a class="btn-standart" onclick="send_notification('Стать мамой\nВизит к врачу')">Заказать</a>
 		</td>
 	</tr>
 	<tr>
@@ -103,11 +103,11 @@
 		вынашиваемость плода</td>
 		<td>
 			Он-лайн консультация
-			<a class="btn-standart">Заказать</a>
+			<a class="btn-standart" onclick="send_notification('Стать мамой\nОнлайн консультация')">Заказать</a>
 		</td>
 		<td>
 			Визит ко врачу
-			<a class="btn-standart">Заказать</a>
+			<a class="btn-standart" onclick="send_notification('Стать мамой\nВизит к врачу')">Заказать</a>
 		</td>
 	</tr>
 	<tr>
@@ -123,11 +123,11 @@
 		вылечены</td>
 		<td>
 			Он-лайн консультация
-			<a class="btn-standart">Заказать</a>
+			<a class="btn-standart" onclick="send_notification('Стать мамой\nОнлайн консультация')">Заказать</a>
 		</td>
 		<td>
 			Визит ко врачу
-			<a class="btn-standart">Заказать</a>
+			<a class="btn-standart" onclick="send_notification('Стать мамой\nВизит к врачу')">Заказать</a>
 		</td>
 	</tr>
 </table>

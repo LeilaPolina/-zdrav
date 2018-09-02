@@ -2,24 +2,26 @@
 <div class="analysis-line">
 	<div class="analysis-title">Спермограмма</div>
 	<a class="btn-standart">Ввести</a>
-	<a class="btn-standart">Заказать</a>
+	<a class="btn-standart" onclick="send_notification('Стать папой\nСдача анализов')">Заказать</a>
 </div>
 <div class="analysis-line">
 	<div class="analysis-title">Кровь на определение резус-фактора</div>
 	<a class="btn-standart">Ввести</a>
-	<a class="btn-standart">Заказать</a>
+	<a class="btn-standart" onclick="send_notification('Стать папой\nСдача анализов')">Заказать</a>
 </div>
 <div class="analysis-line">
 	<div class="analysis-title">Соскоб на урогенитальные инфекции</div>
 	<a class="btn-standart">Ввести</a>
-	<a class="btn-standart">Заказать</a>
+	<a class="btn-standart" onclick="send_notification('Стать папой\nСдача анализов')">Заказать</a>
 </div>
+
 <h1 class="title-background">Шаг 2: Пройти следующие обследования</h1>
 <div class="analysis-line">
 	<div class="analysis-title">Андролог</div>
 	<a class="btn-standart">Ввести</a>
-	<a class="btn-standart">Заказать</a>
+	<a class="btn-standart" onclick="send_notification('Стать папой\nПройти обследование')">Заказать</a>
 </div>
+
 <h1 class="title-background">Рекомендации</h1>
 <p class="text-information">
 	Отказаться от курения и алкоголя. Доказано, что никотин значительным образом

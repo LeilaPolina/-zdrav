@@ -15,8 +15,8 @@
                     <p><span class="text-bold">18 000 руб.</span> при оплате за год + составление плана-графика бесплатно <span class="text-bold text-green">(экономия 33%)</span></p>
                     <?php
                             if($user->is_logged_in()) {
-                                echo '<button class="button-registered-wip">Подключить</button>';
+                                echo '<button class="button-registered-wip" onclick="send_notification(\'Персональный менеджер\')">Подключить</button>';
                             } else {
-                                echo '<button class="button-unregistered-wip">Подключить</button>';
+                                echo '<button class="button-unregistered-wip" onclick="send_notification(\'Персональный менеджер\')">Подключить</button>';
                             }
                     ?>
