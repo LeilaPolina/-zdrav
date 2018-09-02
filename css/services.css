@@ -352,13 +352,26 @@ h2.service-title {
 
 button {
 	display: block;
-	margin-top: 20px;
 	width: 108px;
 	height: 32px;
     background-color: #00B0D2;
 	border: 0;
 	border-radius: 5px;
     color: #FFFFFF;
+    cursor: pointer;
+}
+
+.btn-standart {
+    display: inline-block;
+    width:178px;
+    height:32px;
+    line-height: 32px;
+    background: #00B0D2;
+    border-radius: 4px;
+    font-size: 15px;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: none;
     cursor: pointer;
 }
 
@@ -436,6 +449,135 @@ button {
     width: 550px;
 }
 
+h1.title-background {
+    background-color: rgba(109, 206, 242, 0.4);
+    text-align: center;
+    font-size: 20px;
+}
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-input-box {
+    margin: 2%;
+}
+
+.form-input-box input {
+    height: 32px;
+}
+
+.form-input-box input.fullwidth {
+    width: 100%;
+}
+
+.form-input-box input.tiny {
+    width: 20%;
+    text-align: center;
+}
+
+.input-title {
+    margin: 0;
+    font-weight: 700;
+}
+
+.input-text-additional {
+    margin-left: 3%;
+    font-size: 11px;
+    font-weight: 400;
+    color: #16325C;
+    opacity: 0.8;
+}
+
+.analysis-line {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 1%;
+    padding-right: 1%;
+    color: rgba(22, 50, 92, 0.8);
+    box-shadow: 0px 2px 2px 0px rgba(46, 53, 54, 0.118631);
+}
+
+.analysis-line a {
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+}
+
+.analysis-line .btn-standart {
+    align-self: flex-end;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.analysis-line:hover {
+    background-color: rgba(109, 206, 242, 0.4);
+}
+
+.analysis-title {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.misc-list td {
+    padding: 5px;
+    border: 1px solid #ddd;
+    text-align: center;
+    color: rgba(22, 50, 92, 0.8);
+}
+
+.misc-list td:first-child {
+    font-weight: 700;
+    text-align: center;
+}
+
+.text-information {
+    font-size: 18px !important;
+    text-indent: 2em;
+}
+
+@media screen and (max-width: 768px) {
+    .analysis-line {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .analysis-title {
+        text-align: center;
+        flex-grow: 0;
+    }
+
+    .analysis-line .btn-standart {
+        align-self: initial;
+    }
+
+    .misc-list tr {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2.5%;
+        margin-bottom: 2.5%;
+    }
+
+    .misc-list td {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.8em;
+        text-align: center;
+    }
+
+.misc-list td:first-child {
+    display: initial;
+    text-align: center;
+    }
+
+    .misc-list .btn-standart {
+        width: 35%;
+    }
+}
+
 #food > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-food.png');
     margin-right: 10px;
@@ -490,4 +632,3 @@ button {
     content: url('../images/icons/symbols-icon-pap.png');
     margin-right: 10px;
 }
-

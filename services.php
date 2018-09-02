@@ -1,7 +1,31 @@
 <?php include_once('includes/config.php'); ?>
 <?php
     include_once('modules/general_data_src.php');
-    include_once('modules/rec_analyses.php');
+    include_once('modules/rec_analyses.php');    
+    function get_an_prices($db){
+        $get_an_prices = $db->prepare('SELECT complex_name, complex_price
+                                    FROM complex_types');
+        $get_an_prices->execute();        
+        $an_prices = array();
+        while($an_prices_row = $get_an_prices->fetch(PDO::FETCH_ASSOC)){
+            $an_prices[$an_prices_row['complex_name']] = $an_prices_row['complex_price'];
+        }
+        return $an_prices;
+    }
+    function get_checkup_prices($db){
+        $get_checkup_prices = $db->prepare('SELECT home_checkup_name, home_checkup_price
+                                        FROM home_checkup_types;');
+        $get_checkup_prices->execute();
+        $checkup_prices = array();
+        while($checkup_prices_row = $get_checkup_prices->fetch(PDO::FETCH_ASSOC)){
+            $checkup_prices[$checkup_prices_row['complex_name']] = $checkup_prices_row['complex_price'];
+        }
+        return $checkup_prices;
+    }
+    
+    
+    $an_prices = get_an_prices($db);
+    $checkup_prices = get_checkup_prices($db);
     
     $user_weight = $user_data_arr['weight'];
     $user_height = $user_data_arr['height'];
@@ -13,6 +37,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Сервисы</title>
     <link rel="stylesheet" href="css/test.css" />
     <link rel="stylesheet" href="css/services.css" />
@@ -130,6 +155,7 @@
                     <?php include("services/weight.php"); ?>
                 </div>
             </div>
+            
             <div id="food" class="accordion">
                     <p>
                         <span class="accordions-left">Здоровое питание</span>
@@ -141,6 +167,7 @@
                     <?php include("services/food.php"); ?>
                 </div>
             </div>
+
             <div id="smoking" class="accordion">
                     <p>
                         <span class="accordions-left">Отказ от курения</span>
@@ -152,6 +179,7 @@
                     <?php include("services/smoking.php"); ?>
                 </div>
             </div>
+
             <div id="personal-manager" class="accordion">
                     <p>
                         <span class="accordions-left">Персональный менеджер здоровья</span>
@@ -161,28 +189,6 @@
             <div class="panel">
                 <div class="service-content">
                     <?php include("services/personal_manager.php"); ?>
-                </div>
-            </div>
-            <div id="screening" class="accordion">
-                    <p>
-                        <span class="accordions-left">Генетический скрининг организма</span>
-                        <span class="accordions-right">Открыть</span>
-                    </p>
-            </div>
-            <div class="panel">
-                <div class="service-content">
-                    <?php include("services/screening.php"); ?>
-                </div>
-            </div>
-            <div id="immunity" class="accordion">
-                    <p>
-                        <span class="accordions-left">Поднятие иммунитета</span>
-                        <span class="accordions-right">Открыть</span>
-                    </p>
-            </div>
-            <div class="panel">
-                <div class="service-content">
-                    <?php include("services/immunity.php"); ?>
                 </div>
             </div>
             
@@ -197,6 +203,7 @@
                     <?php include("services/analyzes.php"); ?>
                 </div>
             </div>
+
             <div id="home-checkup" class="accordion">
                     <p>
                         <span class="accordions-left">Домашний медосмотр</span>
@@ -208,6 +215,7 @@
                     <?php include("services/home_checkup.php"); ?>
                 </div>
             </div>
+
             <div id="healthy-heart" class="accordion">
                     <p>
                         <span class="accordions-left">Здоровое сердце</span>
@@ -219,6 +227,7 @@
                     <?php include("services/healthy_heart.php"); ?>
                 </div>
             </div>
+
             <div id="expecting" class="accordion">
                     <p>
                         <span class="accordions-left">Жду малыша</span>
@@ -230,6 +239,7 @@
                     <?php include("services/expecting.php"); ?>
                 </div>
             </div>
+
             <div id="be-mom" class="accordion">
                     <p>
                         <span class="accordions-left">Хочу быть мамой</span>
@@ -241,6 +251,7 @@
                     <?php include("services/be_mom.php"); ?>
                 </div>
             </div>
+
             <div id="be-dad" class="accordion">
                     <p>
                         <span class="accordions-left">Хочу быть папой</span>
@@ -250,6 +261,30 @@
             <div class="panel">
                 <div class="service-content">
                     <?php include("services/be_dad.php") ?>
+                </div>
+            </div>
+
+            <div id="immunity" class="accordion">
+                    <p>
+                        <span class="accordions-left">Поднятие иммунитета</span>
+                        <span class="accordions-right">Открыть</span>
+                    </p>
+            </div>
+            <div class="panel">
+                <div class="service-content">
+                    <?php include("services/immunity.php"); ?>
+                </div>
+            </div>
+
+            <div id="screening" class="accordion">
+                    <p>
+                        <span class="accordions-left">Генетический скрининг организма</span>
+                        <span class="accordions-right">Открыть</span>
+                    </p>
+            </div>
+            <div class="panel">
+                <div class="service-content">
+                    <?php include("services/screening.php"); ?>
                 </div>
             </div>
         </div>
