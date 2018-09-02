@@ -23,10 +23,9 @@
         return $checkup_prices;
     }
     
-    
     $an_prices = get_an_prices($db);
     $checkup_prices = get_checkup_prices($db);
-    
+
     $user_weight = $user_data_arr['weight'];
     $user_height = $user_data_arr['height'];
     $user_sex = $user_data_arr['sex'];

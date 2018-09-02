@@ -11,7 +11,8 @@
 	function send_code_smsc_ru($phone_number) {
 		$phone_number=preg_replace('![^0-9]+!', '', $phone_number);
 		$code=get_random_code();
-		$result=send_sms($phone_number, $code);
+		$message = "Ваш код регистрации на здравствую.рф: ".$code;
+		$result=send_sms($phone_number, $message);
 		$len=sizeof($result);
 		if($len > 2) {
 			return $code;
