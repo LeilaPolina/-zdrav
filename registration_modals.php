@@ -108,3 +108,36 @@
 			</div>
 	</div>
 </div>
+
+<!--#######################Register AND Confirm Modal#####################################-->
+<div class="modal-window" id="register-n-confirm-modal">
+	<div class="modal-window-content" id="register-n-confirm-content">
+		<div class="modal-window-body sm-body">
+			<div class="modal-header confirm_modal_header">
+				<span class="close" id="register-n-confirm-close">&times;</span>
+				<div class="modal-title">Ваш заказ успешно оформлен! Теперь нужно подтвердить номер</div>
+			</div>
+			<div class="confirm-form-wrapper" >
+				<p id="register-n-confirm-text" >На номер <span class="phone_number" id="register-n-confirm-phone">+7(925)304-26-34</span>был выслан код для <br>подтверждения телефона </p>
+				<form id="register-n-code-form" class="modal-form">
+					<div class="confirm-input">
+						<div class="input-code">
+							<p class="modal-label" >Введите полученный код</p>
+							<input type="text" name="register-n-confirm-code" id="register-n-confirm-code" class="modal-input" minlength="4" maxlength="4" >
+						</div>
+						<div class="input-password">
+							<p class="modal-label">Используйте пароль <a href="#" id="rand-register-n-confirm-password" style="text-decoration:none">hjkjjjas</a><i class="fa fa-question-circle help-icon" data-title="Нажмите на пароль"></i> или введите другой</p>
+							<input type="password" name="register-n-confirm-password" id="register-n-confirm-password" class="modal-input">
+						</div>
+					</div>
+					<div class="checkbox">
+						<p class="agree-label" >
+							<input type="checkbox" id="register-n-agree" name="agree" checked> Я согласен с условиями предоставления сервиса
+						</p>
+					</div>
+					<a type="button" class="modal-btn" id="register-n-confirm-btn" >Подтвердить</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>	
