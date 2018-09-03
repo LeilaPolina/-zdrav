@@ -16,9 +16,9 @@
     </button>
     <?php
         if ($user->is_logged_in()) {
-            echo '<button class="inline heart-btn-send button-registered-wip">Отправить</button>';
+            echo '<button class="inline heart-btn-send button-registered-wip" onclick="send_notification(\'Здоровое сердце\nЭКГ для расшифровки врачу кардиологу\')">Отправить</button>';
         } else {
-            echo '<button class="inline heart-btn-send button-unregistered-wip">Отправить</button>';
+            echo '<button class="inline heart-btn-send button-unregistered-wip" onclick="send_notification(\'Здоровое сердце\nЭКГ для расшифровки врачу кардиологу\')">Отправить</button>';
         }
     ?>
 </div>
@@ -31,7 +31,7 @@
     <i class="fa fa-check" aria-hidden="true"></i>
     <strong>Комплекс анализов «Кардиологический»</strong> позволит составить наиболее полную картину состояния сердца и дать более
     точный прогноз возможных изменений</p>
-<button class="inline heart-order-btn">Заказать</button>
+<button class="inline heart-order-btn" onclick="send_notification('Здоровое сердце\nКомплекс анализов «Кардиологический»')">Заказать</button>
 <hr class="hr-indent">
 <p class="inline heart-info">
     <i class="fa fa-check" aria-hidden="true"></i>

@@ -7,10 +7,14 @@ function check_order_answer(data){
         alert("В данный момент сервис недоступен. Попробуйте позднее!");
     }
     else{
-        if($("#flag_if_logged_in").val() == "not_logged_in"){
-            alert("Заказ успешно оформлен! Предлагаем создать личный кабинет, чтобы получить доступ ко всем возможностям нашего сервиса");
+        let wanna_register = document.getElementById('wanna_register');
+        if(wanna_register.checked && $("#flag_if_logged_in").val() == "not_logged_in"){
             get_data_for_registration(begin_registration);
         }
+        /*else if($("#flag_if_logged_in").val() == "not_logged_in"){
+            alert("Заказ успешно оформлен! Предлагаем создать личный кабинет, чтобы получить доступ ко всем возможностям нашего сервиса");
+            get_data_for_registration(begin_registration);
+        }*/
         else{
             alert("Заказ успешно оформлен!");
         }
@@ -74,7 +78,7 @@ function send_order(callback, order_homecheckup, order_analyzes){
             order_an_items: get_order_an_contains(order_homecheckup, order_analyzes),            
             order_checkup_items: get_order_checkup_contains(order_homecheckup)
         },        
-        dataType: 'html',
+        dataType: 'json',
         success: callback,
         error: get_error
     });
@@ -144,6 +148,22 @@ function calculateCheckupPrice(data) {
     $("#checkup-cashback").children().text(Math.floor(ch_total_price * 0.03) + " руб.");    
     order_homecheckup = false;
     order_analyzes = false;
+}
+
+function send_notification(msg){
+    $.ajax({
+        type: 'POST',
+        url: 'orders/order_service_in_dev.php',
+        data: {
+            message: msg,
+            notify: true
+        },        
+        dataType: 'json',
+        success: function(data){
+            //alert(data.result);
+        },
+        error: get_error
+    });
 }
 
 order_homecheckup = false;

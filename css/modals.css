@@ -130,7 +130,7 @@
 	height:386px;
 }
 
-#confirm-content {
+#confirm-content, #register-n-confirm-content {
 	width:501px;
 	height:360px;
 }
@@ -236,14 +236,14 @@
 }
 	
 #recover1-text,
-#confirm-text,#recover-text {
+#confirm-text,#register-n-confirm-text,#recover-text {
 	font-size:16px;
 	line-height:16px;
 	padding:0;
 	color: rgba(22, 50, 92, 0.8);
 }
 
-#confirm-text {
+#confirm-text,#register-n-confirm-text {
 	margin:0 0 21px 0;
 }
 
@@ -258,6 +258,7 @@
 }
 
 #confirm-btn,
+#register-n-confirm-btn,
 #recover-btn,
 #recover1-btn{
 	margin-top:30px;
@@ -405,7 +406,7 @@
 #reminder {
 	transform: scale(1.1) !important;
 	position:absolute;
-	//top: -4px;
+	/*top: -4px;*/
 	left:0px;	
 }
 	
@@ -464,7 +465,7 @@
 	display:none;
 	font-family:Open Sans;
 	position:absolute;
-	//top:25px;
+	/*top:25px;*/
 	left:140px;
  }
  
@@ -500,6 +501,7 @@
 }
  
 #rand-confirm-password,
+#rand-register-n-confirm-password,
 #rand-recover-password{
 	text-decoration:none;
 	color:#00B0D2;
@@ -508,7 +510,10 @@
 
 #rand-confirm-password:active,
 #rand-confirm-password:hover,
-#rand-confirm-password:focus{
+#rand-confirm-password:focus,
+#rand-register-n-confirm-password:active,
+#rand-register-n-confirm-password:hover,
+#rand-register-n-confirm-password:focus{
 	color:#00B0D2;
 }
 
@@ -570,6 +575,10 @@
 }
 
 .order-homecheckup-window {
-    width: 350px;
-    height: 300px;
+    width: 420px;
+}
+
+.error_msg {
+	color: red;
+	width: 100%;
 }

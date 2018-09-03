@@ -313,8 +313,7 @@
                 <label for="user-phone-for-order">Номер телефона</label>
                 <br />
                 <input type=text id="user-phone-for-order" class="modal-input" />
-                <br />
-                <input type=button id="submit-order" value="Подтвердить" class="modal-submit-btn" />
+                <p class="error_msg" id="error_msg"> </p>
                 
                 <?php
                     if($user->is_logged_in()){
@@ -322,10 +321,10 @@
                     }
                     else{
                         echo '<input type="hidden" id="flag_if_logged_in" value="not_logged_in">';
+                        echo '<input type="checkbox" id="wanna_register" checked="checked"/>Создать личный кабинет';
                     }
                 ?>
-                <span id="error_msg"> </span>
-                <br />
+                <input type=button id="submit-order" value="Подтвердить" class="modal-submit-btn" />
 
             </div>
         </div>

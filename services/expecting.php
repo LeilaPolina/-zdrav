@@ -15,9 +15,9 @@
 </div>
 <?php
 	if ($user->is_logged_in()) {
-		echo '<button class="button-registered-wip">Заказать</button>';
+		echo '<button class="button-registered-wip" onclick="send_notification(\'Жду малыша\')">Заказать</button>';
 	} else {
-		echo '<button class="button-unregistered-wip">Заказать</button>';
+		echo '<button class="button-unregistered-wip" onclick="send_notification(\'Жду малыша\')">Заказать</button>';
 	}
 ?>
 <h1>Рекомендованные обследования</h1>
