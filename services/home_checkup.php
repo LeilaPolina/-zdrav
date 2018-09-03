@@ -12,7 +12,7 @@
                         <img src="images/home_checkup.png" class="inline img-checkup">
                     </div>
                     <hr>
-                    <p class="total">Стоимость</p> <p class="checkup-pre-price">5900 руб.</p>
+                    <p class="total">Стоимость</p> <p class="checkup-pre-price">2900 руб.</p>
                     <h1 class="additional">Дополнительно можно провести следующие обследования:</h1>
                     
                     <label class="container-checkbox">
