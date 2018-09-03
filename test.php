@@ -175,8 +175,6 @@
 	<div class="rec-list">
 		<?php
 
-		include './modules/module_plan.php';
-
 		include './modules/module_mass.php';
 
 		include './modules/module_shop.php';
@@ -202,6 +200,8 @@
 		if ($user_data_arr['personal_manager']) {
 			include './modules/module_personal_manager.php';
 		}
+
+		include './modules/module_plan.php';
 
 		/*
 		include './modules/module_scales.php';

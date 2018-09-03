@@ -22,7 +22,7 @@
 					</div>
 					<div class="checkbox">
 						<p class="agree-label" >
-							<input type="checkbox" id="agree" name="agree" checked> Я согласен с условиями предоставления сервиса
+							<input type="checkbox" id="agree" name="agree" checked> Я согласен с <a href="agreement.php" target="_blank">условиями предоставления сервиса</a>
 						</p>
 					</div>
 					<div id="test-reg-btns">

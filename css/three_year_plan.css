@@ -122,7 +122,23 @@ hr {
     font-weight: 400;
 }
 
+.register-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 2.5%;
+}
 
+.register-button {
+    width: 35%;
+	height: 40px;
+	line-height: 40px;
+	background: #00B0D2;
+	border-radius: 4px;
+	font-size: 1.2em;
+	text-align: center;
+	color: #FFFFFF;
+	text-decoration: none;
+}
 
 @media screen and (max-width: 768px) {
     .main, .general-data-container, .numbers-container {

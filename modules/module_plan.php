@@ -5,13 +5,14 @@
 	</div>
 	<div class="rec-container">
 		<div class="rec-text-container">
-			<div class="rec-text">Рекомендуем ознакомиться с индивидуальным планом профилактики здоровья</div>
             <?php
                 if(!$user->is_logged_in()) {
-                    echo '<div class="rec-text-additional">Доступно только зарегистрированным пользователям</div>';
+                    echo '<div class="rec-text">После регистрации для вас будет создан Индивидуальный план профилактики здоровья на 3 года.</div>';
+                    echo '<div class="rec-text-additional">Сейчас можете посмотреть каким он будет</div>';
+                } else {
+                    echo '<div class="rec-text">Рекомендуем воспользоваться индивидуальным планом профилактики здоровья на 3 года.</div>';
                 }
             ?>
-            <div class="rec-text-additional"></div>
 		</div>
 		<div class="rec-button-container">
             <?php

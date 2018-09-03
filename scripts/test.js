@@ -491,7 +491,7 @@ $(function () {
 		
 			setTimeout(function () {
 				$('#form_test').submit();
-			}, 4000);
+			}, 500);
 		})
 	}
 });
