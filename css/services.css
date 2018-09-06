@@ -148,12 +148,12 @@ h2.service-title {
     display: inline-block;
 }
 
-.neomed-logo {
-    position: relative;
+.kdl-logo {
+    /*position: relative;*/
     width: 90px;
-    height: 50px;
+    /*height: 50px;
     left: 80px;
-    top: 20px;
+    top: 20px;*/
 }
 
 .checkup-list {
@@ -161,7 +161,7 @@ h2.service-title {
 }
 
 .img-checkup {
-    margin-left: 150px;
+    margin-left: 20px;
     position: relative;
     top: 15px;
 }

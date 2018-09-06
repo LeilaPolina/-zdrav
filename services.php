@@ -1,11 +1,11 @@
 <?php include_once('includes/config.php'); ?>
 <?php
     include_once('modules/general_data_src.php');
-    include_once('modules/rec_analyses.php');    
+    include_once('modules/rec_analyses.php');
     function get_an_prices($db){
         $get_an_prices = $db->prepare('SELECT complex_name, complex_price
                                     FROM complex_types');
-        $get_an_prices->execute();        
+        $get_an_prices->execute();
         $an_prices = array();
         while($an_prices_row = $get_an_prices->fetch(PDO::FETCH_ASSOC)){
             $an_prices[$an_prices_row['complex_name']] = $an_prices_row['complex_price'];
@@ -18,11 +18,11 @@
         $get_checkup_prices->execute();
         $checkup_prices = array();
         while($checkup_prices_row = $get_checkup_prices->fetch(PDO::FETCH_ASSOC)){
-            $checkup_prices[$checkup_prices_row['complex_name']] = $checkup_prices_row['complex_price'];
+            $checkup_prices[$checkup_prices_row['home_checkup_name']] = $checkup_prices_row['home_checkup_price'];
         }
         return $checkup_prices;
     }
-    
+
     $an_prices = get_an_prices($db);
     $checkup_prices = get_checkup_prices($db);
 
@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/input_radio.css" />
-    <link rel="stylesheet" type="text/css" href="css/input_checkbox.css" />    
+    <link rel="stylesheet" type="text/css" href="css/input_checkbox.css" />
     <link rel="stylesheet" href="css/modals.css" />
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
@@ -57,32 +57,32 @@
     <script src="scripts/services.js"></script>
     <script src="scripts/accordions.js"></script>
     <script src="scripts/header.js"></script>
-    <script src="scripts/errors.js"></script>	
+    <script src="scripts/errors.js"></script>
     <script src="scripts/signout.js"></script>
     <script src="scripts/registration_from_not_general_data_page.js"></script>
-    
-    <!-- Yandex.Metrika counter --> 
+
+    <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
-        (function (d, w, c) { 
-            (w[c] = w[c] || []).push(function() { 
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
                 try { w.yaCounter40933314 = new Ya.Metrika({
-                    id:40933314, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true 
-                    }); } catch(e) { } 
-        }); 
-        var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { 
-            n.parentNode.insertBefore(s, n); 
-        }; 
-        s.type = "text/javascript"; 
-        s.async = true; 
-        s.src = "https://mc.yandex.ru/metrika/watch.js"; 
-        if (w.opera == "[object Opera]") { 
-            d.addEventListener("DOMContentLoaded", f, false); 
-        } 
-        else { f(); } 
+                    id:40933314, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true
+                    }); } catch(e) { }
+        });
+        var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () {
+            n.parentNode.insertBefore(s, n);
+        };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        }
+        else { f(); }
     })(document, window, "yandex_metrika_callbacks");
-    </script> 
-    <noscript><div><img src="https://mc.yandex.ru/watch/40933314" style="position:absolute; left:-9999px;" alt="" /></div></noscript> 
-    <!-- /Yandex.Metrika counter -->   
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/40933314" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 
     <!-- Rating@Mail.ru counter -->
     <script type="text/javascript">
@@ -99,7 +99,7 @@
     <img src="//top-fwz1.mail.ru/counter?id=2885114;js=na" style="border:0;position:absolute;left:-9999px;" alt="" />
     </div></noscript>
     <!-- //Rating@Mail.ru counter -->
-    
+
     <!-- Google analytics -->
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -121,11 +121,11 @@
     <div class="main">
 
         <!-- DEMO PART -->
-        <?php 
+        <?php
             if(!$user->is_logged_in()){
                 echo '<div class="demo-div">';
-                echo '<h2 class="pagename">Демонстрационный режим</h2>';                    
-                echo '<h1 class="pagename">Сервисы</h1>'; 
+                echo '<h2 class="pagename">Демонстрационный режим</h2>';
+                echo '<h1 class="pagename">Сервисы</h1>';
                 echo '<br/>';
                 echo '<ul class="demo-ul">';
                     echo '<li><p>Данный сервис предоставлен в демонстрационном режиме<p></li>';
@@ -135,13 +135,13 @@
                 echo '<button class="demo-btn button-center" id="go-to-result-test-save" href="">Создать личный кабинет</button>';
                 echo '</div>';
             }
-            else{					
+            else{
                 echo '<h2 class="pagename">Личный кабинет</h2>';
                 echo '<h1 class="pagename">Сервисы</h1>';
             }
         ?>
         <!-- /DEMO PART -->
-        
+
         <div class="services-menu">
             <div id="weight" class="accordion">
                 <p>
@@ -154,7 +154,7 @@
                     <?php include("services/weight.php"); ?>
                 </div>
             </div>
-            
+
             <div id="food" class="accordion">
                     <p>
                         <span class="accordions-left">Здоровое питание</span>
@@ -190,7 +190,7 @@
                     <?php include("services/personal_manager.php"); ?>
                 </div>
             </div>
-            
+
             <div id="analyzes" class="accordion">
                     <p>
                         <span class="accordions-left">Сдача анализов</span>
@@ -288,7 +288,7 @@
             </div>
         </div>
 
-        <hr>            
+        <hr>
 		<?php
 			include("footer.php");
 		?>
@@ -296,7 +296,7 @@
     </div>
     <!--button class="button-unregistered-wip">Open unregistered Modal</button-->
     <!--button class="button-registered-wip">Open registered Modal</button-->
-    <?php 
+    <?php
         include('info_modals.php');
         include('registration_modals.php');
     ?>
@@ -314,7 +314,7 @@
                 <br />
                 <input type=text id="user-phone-for-order" class="modal-input" />
                 <p class="error_msg" id="error_msg"> </p>
-                
+
                 <?php
                     if($user->is_logged_in()){
                         echo '<input type="hidden" id="flag_if_logged_in" value="logged_in">';
