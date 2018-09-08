@@ -480,7 +480,7 @@ $(function () {
 			str += '<input type="hidden" name="'+ key +'" value="'+ result_warnings[key] +'" />';
 		}
 		str += '<input type="hidden" name="lifetime" value="'+ lifetime +'" />';
-		str += '<input type="hidden" name="url" value="'+ window.location.href +'" />';
+		str += '<input type="hidden" name="homecheckup" value="false" />';
 
 		$('body').append('<form action="test_results_processing.php" method="POST" id="form_test">'+ str +'</form>');
 

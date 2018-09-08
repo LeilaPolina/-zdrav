@@ -80,7 +80,7 @@
 
 	$_SESSION['result_test'] = $result_test;
 	$_SESSION['test_completed'] = true;
-	if(strpos($_POST['url']), 'check-up') !== false){
+	if($_POST['homecheckup'] == true){
 		header('Location: services.php#home-checkup');
 	}
 	else{
