@@ -8,6 +8,7 @@
 
 .indexes-header-wrapper {
 	position:relative;
+	height: 80px;
 }
 
 .indexes-header p {
@@ -448,4 +449,48 @@
 	left: 25px;
 	height:300px;
 	overflow: auto;
+}
+
+#graph-input-wrapper .modal-input {
+	width: auto !important;
+}
+
+
+#add-user-index-wrapper {
+			width:200px;
+			position: absolute;
+			right: 0;
+		}
+
+.input-user-index-values {
+	padding:0  !important;
+	width: 45% !important;
+}
+
+#add-user-index-modal label, .input-user-index-values, #add-user-index {
+	margin:0 0 3% 10% !important;
+	font-size: 13px;
+}
+
+#add-user-index {
+	float:none !important;
+	width:45%;
+}
+
+#add-user-index-modal .modal-window-body {
+	padding-top: 30px;
+}
+
+#add-user-index-modal {
+	display: none;
+}
+
+#add-user-index-btn {
+	width:100% !important;
+}
+
+#add-user-index-content {
+	width:450px;
+	height: 340px;
+	font-size: 10px;
 }

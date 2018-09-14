@@ -492,6 +492,17 @@ $( document ).ready(function() {
 		$("#lower_blood_lower_border_label").css("display","none");*/
 	});
 
+	$("#add-user-index-btn").click(function(e) {
+		 e.preventDefault();
+		$("#add-user-index-modal").css("display","block");
+	});
+
+
+	$("#add-user-index-close").click(function(e) {
+		 e.preventDefault();
+		$("#add-user-index-modal").css("display","none");
+	});
+
 	if(document.getElementById('go-to-result-test-save')){
 		fill_demo_values();
 		if(show_other_indexes==true) {

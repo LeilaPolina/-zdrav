@@ -13,6 +13,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<!--DEMO Zdrav Test Styles-->
 	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/docs.css" />
 	
 	<!--SCRIPTS-->
     <script src="jquery/jquery-3.1.1.min.js"></script>
@@ -81,7 +82,6 @@
 
 	<!-- /Google analytics -->
 
-
 </head>
 <?php
 	if($user->is_logged_in()){
@@ -131,16 +131,18 @@
 		
 		<div class="indexes-header-wrapper">
 			<div class="indexes-header">
-				<p>Главные показатели<p/>
+				<p>Показатели<p/>
 			</div>
-		</div>
-		
+			<div id="add-user-index-wrapper">
+			<input class="add" id="add-user-index-btn" type="submit" value="+ Добавить свой показатель" onClick=false>
+			</div>
+		</div>		
 		<div class="table-wrapper">
 			<table class="main-indexes">
 				<tr class="indexes-head">
 					<th class="border-col"></th>
-					<th class="date-col">Дата</th>
 					<th class="index-col">Показатель</th>
+					<th class="date-col">Дата</th>
 					<th class="value-col">Значение</th>
 					<th class="btn-col"></th>
 					<th class="estimation-col">Оценка</th>
@@ -150,8 +152,8 @@
 				<!--#################################Сholesterol#################################-->
 				<tr class="indexes-row">
 					<td class="border-col" id="cholesterol-brd"></td>
+					<td class="index-col index-name" id="cholesterol-index">Холестерин общий, мм/л</td>
 					<td class="date-col index-date" id="cholesterol-date">&mdash;</td>
-					<td class="index-col index-name" id="cholesterol-index">Холестерин общий</td>
 					<td class="value-col index-value">
 						<span  class="index-span" id="cholesterol-span">&mdash;</span>
 					</td>
@@ -171,8 +173,8 @@
 				<!--#################################Glucose#################################-->
 				<tr class="indexes-row">
 					<td class="border-col" id="glucose-brd" ></td>
+					<td class="index-col index-name" id="glucose-index">Сахар, мм/л</td>
 					<td class="date-col index-date" id="glucose-date">&mdash;</td>
-					<td class="index-col index-name" id="glucose-index">Сахар</td>
 					<td class="value-col index-value">
 						<span class="index-span" id="glucose-span">&mdash;</span>
 					</td>
@@ -192,8 +194,8 @@
 				<!--#################################Blood pressure#################################-->
 				<tr class="indexes-row">
 					<td class="border-col" id="blood-pressure-brd"></td>
-					<td class="date-col index-date" id="blood-pressure-date">&mdash;</td>
 					<td class="index-col index-name" id="pressure-index">Давление</td>
+					<td class="date-col index-date" id="blood-pressure-date">&mdash;</td>
 					<td class="value-col index-value">
 						
 						<div class="blood-spans-wrapper">
@@ -218,8 +220,8 @@
 				<!--#################################Weight#################################-->
 				<tr class="indexes-row">
 					<td class="border-col" id="weight-brd"></td>
+					<td class="index-col index-name" id="weight-index">Вес, кг</td>
 					<td class="date-col index-date" id="weight-date">&mdash;</td>
-					<td class="index-col index-name" id="weight-index">Вес</td>
 					<td class="value-col index-value">
 						<span class="index-span" id="weight-span">&mdash;</span>
 					</td>
@@ -236,14 +238,13 @@
 						</div>
 					</td>
 				</tr>
+				<?php if(!$user->is_logged_in()){
+					$file = file_get_contents('./other_indexes.txt', FILE_USE_INCLUDE_PATH);
+					echo $file;
+					echo '<script>show_other_indexes=true;</script>';
+			} ?>
 			</table>
 		</div>
-		
-		<?php if(!$user->is_logged_in()){
-			$file = file_get_contents('./other_indexes.txt', FILE_USE_INCLUDE_PATH);
-			echo $file;
-			echo '<script>show_other_indexes=true;</script>';
-		} ?>
 	
 	<!--#################################Footer#################################-->		
 	<?php
@@ -344,6 +345,27 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="modal-window" id="add-user-index-modal">
+			<div class="modal-window-content" id="add-user-index-content">
+				<div class="modal-window-body">
+					<div class="modal-header sm-body"">
+						<span class="close" id="add-user-index-close">&times;</span>
+						<div class="modal-title"></div>
+					</div>
+					<label for="input-user-index">Название показателя</label><br>
+					<input type="text"id="input-user-index" class="input-user-index-values"><br>
+					<label for="input-user-index-value">Единица измерения</label><br>
+					<input type="text" id="input-user-index-value" class="input-user-index-values"><br>
+					<label for="input-user-index-upperborder">Верхняя граница (не обязательно)</label><br>
+					<input type="text" id="input-user-index-upperborder" class="input-user-index-values"><br>
+					<label for="input-user-index-lowerborder">Нижняя граница (не обязательно)</label><br>
+					<input type="text" id="input-user-index-lowerborder" class="input-user-index-values"><br>
+					<input class="add" id="add-user-index" type="submit" value="+ Добавить свой показатель" onClick=false>
 				</div>
 			</div>
 		</div>

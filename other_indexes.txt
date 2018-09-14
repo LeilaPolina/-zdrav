@@ -1,442 +1,421 @@
-<!-----------------------------Other indexes------------------------------------->
-		<div class="indexes-header-wrapper">
-			<div class="indexes-header">
-				<p>Другие показатели<p/>
-			</div>
-		</div>
-		
-		<div class="table-wrapper">
-			<table class="other-indexes">
-				<tr class="indexes-head">
-					<th class="border-col"></th>
-					<th class="date-col">Дата</th>
-					<th class="index-col">Показатель</th>
-					<th class="value-col">Значение</th>
-					<th class="btn-col"></th>
-					<th class="estimation-col">Оценка</th>
-					<th class="graph-col">График</th>
-					<th class="reason-col">Причина</th>
-				</tr>
-				<!--#################################Erythrocytes#################################-->
+
 				<tr class="indexes-row">
-					<td class="border-col" id="erythrocytes-brd"></td>
-					<td class="date-col index-date" id="erythrocytes-date">&mdash;</td>
-					<td class="index-col index-name" id="erythrocytes-index">Эритроциты</td>
+					<td class="border-col" id="erythrocytes-brd" style="background-color: red;"></td>
+					<td class="index-col index-name" id="erythrocytes-index">Эритроциты  (RBC), 10*12 клеток/л</td>
+					<td class="date-col index-date" id="erythrocytes-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="erythrocytes-span">&mdash;</span>
+						<span class="index-span" id="erythrocytes-span">5.8</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="erythrocytes-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="erythrocytes-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="erythrocytes-estm" style="color: red;">Повышен</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="erythrocytes-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="erythrocytes-reason"></a>
+							<a href="#" class="index-reason-a" id="erythrocytes-reason">Причина</a>
 						</div>
 					</td>
 				</tr>
 				<!--#################################Hemoglobin#################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="hemoglobin-brd"></td>
-					<td class="date-col index-date" id="hemoglobin-date">&mdash;</td>
-					<td class="index-col index-name" id="hemoglobin-index">Гемоглобин</td>
+					<td class="border-col" id="hemoglobin-brd" style="background-color: red;"></td>
+					<td class="index-col index-name" id="hemoglobin-index">Гемоглобин (HGB), г/л</td>
+					<td class="date-col index-date" id="hemoglobin-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="hemoglobin-span">&mdash;</span>
+						<span class="index-span" id="hemoglobin-span">110</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="hemoglobin-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="hemoglobin-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="hemoglobin-estm" style="color: red;">Понижен</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="hemoglobin-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="hemoglobin-reason"></a>
+							<a href="#" class="index-reason-a" id="hemoglobin-reason">Причина</a>
 						</div>
 					</td>
 				</tr>
 				<!--#################################Hematocrit#################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="hematocrit-brd"></td>
-					<td class="date-col index-date" id="hematocrit-date">&mdash;</td>
-					<td class="index-col index-name" id="hematocrit-index">Гематокрит</td>
+					<td class="border-col" id="hematocrit-brd" style="background-color: rgb(229, 200, 46);"></td>
+					<td class="index-col index-name" id="hematocrit-index">Гематокрит  (HCT), %</td>
+					<td class="date-col index-date" id="hematocrit-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="hematocrit-span">&mdash;</span>
+						<span class="index-span" id="hematocrit-span">41</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="hematocrit-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="hematocrit-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="hematocrit-estm" style="color: rgb(229, 200, 46);">Верхняя граница</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="hematocrit-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="hematocrit-reason"></a>
+							<a href="#" class="index-reason-a" id="hematocrit-reason">Причина</a>
 						</div>
 					</td>
 				</tr>
 				
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="avg_erythrocytes-brd"></td>
-					<td class="date-col index-date" id="avg_erythrocytes-date">&mdash;</td>
+					<td class="border-col" id="avg_erythrocytes-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="avg_erythrocytes-index">Средний объем эритроцита (MCV), фл</td>
+					<td class="date-col index-date" id="avg_erythrocytes-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="avg_erythrocytes-span">&mdash;</span>
+						<span class="index-span" id="avg_erythrocytes-span">90</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="avg_erythrocytes-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="avg_erythrocytes-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="avg_erythrocytes-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="avg_erythrocytes-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="avg_erythrocytes-reason"></a>
+							<a href="#" class="index-reason-a" id="avg_erythrocytes-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="avg_hemoglobin_content_in_erythrocytes-brd"></td>
-					<td class="date-col index-date" id="avg_hemoglobin_content_in_erythrocytes-date">&mdash;</td>
+					<td class="border-col" id="avg_hemoglobin_content_in_erythrocytes-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="avg_hemoglobin_content_in_erythrocytes-index">Среднее содержание гемоглобина в эритроците (MCH), пг</td>
+					<td class="date-col index-date" id="avg_hemoglobin_content_in_erythrocytes-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="avg_hemoglobin_content_in_erythrocytes-span">&mdash;</span>
+						<span class="index-span" id="avg_hemoglobin_content_in_erythrocytes-span">30</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="avg_hemoglobin_content_in_erythrocytes-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="avg_hemoglobin_content_in_erythrocytes-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="avg_hemoglobin_content_in_erythrocytes-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="avg_hemoglobin_content_in_erythrocytes-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="avg_hemoglobin_content_in_erythrocytes-reason"></a>
+							<a href="#" class="index-reason-a" id="avg_hemoglobin_content_in_erythrocytes-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="avg_hemoglobin_concentration_in_erythrocytes-brd"></td>
-					<td class="date-col index-date" id="avg_hemoglobin_concentration_in_erythrocytes-date">&mdash;</td>
+					<td class="border-col" id="avg_hemoglobin_concentration_in_erythrocytes-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="avg_hemoglobin_concentration_in_erythrocytes-index">Средняя  концентрация гемоглобина в эритроците (MCHС), г/дл</td>
+					<td class="date-col index-date" id="avg_hemoglobin_concentration_in_erythrocytes-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="avg_hemoglobin_concentration_in_erythrocytes-span">&mdash;</span>
+						<span class="index-span" id="avg_hemoglobin_concentration_in_erythrocytes-span">35</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="avg_hemoglobin_concentration_in_erythrocytes-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="avg_hemoglobin_concentration_in_erythrocytes-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="avg_hemoglobin_concentration_in_erythrocytes-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="avg_hemoglobin_concentration_in_erythrocytes-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="avg_hemoglobin_concentration_in_erythrocytes-reason"></a>
+							<a href="#" class="index-reason-a" id="avg_hemoglobin_concentration_in_erythrocytes-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="color_index-brd"></td>
-					<td class="date-col index-date" id="color_index-date">&mdash;</td>
+					<td class="border-col" id="color_index-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="color_index-index">Цветовой показатель</td>
+					<td class="date-col index-date" id="color_index-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="color_index-span">&mdash;</span>
+						<span class="index-span" id="color_index-span">1</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="color_index-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="color_index-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="color_index-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="color_index-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="color_index-reason"></a>
+							<a href="#" class="index-reason-a" id="color_index-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="reticulocytes-brd"></td>
-					<td class="date-col index-date" id="reticulocytes-date">&mdash;</td>
+					<td class="border-col" id="reticulocytes-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="reticulocytes-index">Ретикулоциты (RTC), %</td>
+					<td class="date-col index-date" id="reticulocytes-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="reticulocytes-span">&mdash;</span>
+						<span class="index-span" id="reticulocytes-span">1.2</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="reticulocytes-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="reticulocytes-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="reticulocytes-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="reticulocytes-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="reticulocytes-reason"></a>
+							<a href="#" class="index-reason-a" id="reticulocytes-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="platelets-brd"></td>
-					<td class="date-col index-date" id="platelets-date">&mdash;</td>
+					<td class="border-col" id="platelets-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="platelets-index">Тромбоциты (PLT), 10*9 клеток/л</td>
+					<td class="date-col index-date" id="platelets-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="platelets-span">&mdash;</span>
+						<span class="index-span" id="platelets-span">445</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="platelets-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="platelets-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="platelets-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="platelets-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="platelets-reason"></a>
+							<a href="#" class="index-reason-a" id="platelets-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="leucocytes-brd"></td>
-					<td class="date-col index-date" id="leucocytes-date">&mdash;</td>
+					<td class="border-col" id="leucocytes-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="leucocytes-index">Лейкоциты (WBC), 10*9 клеток/л</td>
+					<td class="date-col index-date" id="leucocytes-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="leucocytes-span">&mdash;</span>
+						<span class="index-span" id="leucocytes-span">11.2</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="leucocytes-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="leucocytes-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="leucocytes-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="leucocytes-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="leucocytes-reason"></a>
+							<a href="#" class="index-reason-a" id="leucocytes-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="segment_nuclear_neutrophils-brd"></td>
-					<td class="date-col index-date" id="segment_nuclear_neutrophils-date">&mdash;</td>
+					<td class="border-col" id="segment_nuclear_neutrophils-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="segment_nuclear_neutrophils-index">Сегментоядерные нейтрофилы (NE%), %</td>
+					<td class="date-col index-date" id="segment_nuclear_neutrophils-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="segment_nuclear_neutrophils-span">&mdash;</span>
+						<span class="index-span" id="segment_nuclear_neutrophils-span">54</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="segment_nuclear_neutrophils-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="segment_nuclear_neutrophils-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="segment_nuclear_neutrophils-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="segment_nuclear_neutrophils-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="segment_nuclear_neutrophils-reason"></a>
+							<a href="#" class="index-reason-a" id="segment_nuclear_neutrophils-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="stab_neutrophils-brd"></td>
-					<td class="date-col index-date" id="stab_neutrophils-date">&mdash;</td>
+					<td class="border-col" id="stab_neutrophils-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="stab_neutrophils-index">Палочкоядерные нейтрофилы, %</td>
+					<td class="date-col index-date" id="stab_neutrophils-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="stab_neutrophils-span">&mdash;</span>
+						<span class="index-span" id="stab_neutrophils-span">0</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="stab_neutrophils-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="stab_neutrophils-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="stab_neutrophils-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="stab_neutrophils-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="stab_neutrophils-reason"></a>
+							<a href="#" class="index-reason-a" id="stab_neutrophils-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="myelocytes-brd"></td>
-					<td class="date-col index-date" id="myelocytes-date">&mdash;</td>
+					<td class="border-col" id="myelocytes-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="myelocytes-index">Миелоциты (Mie), %</td>
+					<td class="date-col index-date" id="myelocytes-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="myelocytes-span">&mdash;</span>
+						<span class="index-span" id="myelocytes-span">0</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="myelocytes-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="myelocytes-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="myelocytes-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="myelocytes-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="myelocytes-reason"></a>
+							<a href="#" class="index-reason-a" id="myelocytes-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="meta_myelocytes-brd"></td>
-					<td class="date-col index-date" id="meta_myelocytes-date">&mdash;</td>
+					<td class="border-col" id="meta_myelocytes-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="meta_myelocytes-index">Метамиелоциты (юные), %</td>
+					<td class="date-col index-date" id="meta_myelocytes-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="meta_myelocytes-span">&mdash;</span>
+						<span class="index-span" id="meta_myelocytes-span">0</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="meta_myelocytes-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="meta_myelocytes-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="meta_myelocytes-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="meta_myelocytes-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="meta_myelocytes-reason"></a>
+							<a href="#" class="index-reason-a" id="meta_myelocytes-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="lymphocytes-brd"></td>
-					<td class="date-col index-date" id="lymphocytes-date">&mdash;</td>
+					<td class="border-col" id="lymphocytes-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="lymphocytes-index">Лимфоциты (LYM%), %</td>
+					<td class="date-col index-date" id="lymphocytes-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="lymphocytes-span">&mdash;</span>
+						<span class="index-span" id="lymphocytes-span">31</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="lymphocytes-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="lymphocytes-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="lymphocytes-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="lymphocytes-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="lymphocytes-reason"></a>
+							<a href="#" class="index-reason-a" id="lymphocytes-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="monocytes-brd"></td>
-					<td class="date-col index-date" id="monocytes-date">&mdash;</td>
+					<td class="border-col" id="monocytes-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="monocytes-index">Моноциты (MON%), %</td>
+					<td class="date-col index-date" id="monocytes-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="monocytes-span">&mdash;</span>
+						<span class="index-span" id="monocytes-span">9</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="monocytes-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="monocytes-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="monocytes-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="monocytes-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="monocytes-reason"></a>
+							<a href="#" class="index-reason-a" id="monocytes-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="eosinophils-brd"></td>
-					<td class="date-col index-date" id="eosinophils-date">&mdash;</td>
+					<td class="border-col" id="eosinophils-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="eosinophils-index">Эозинофилы (EO%), %</td>
+					<td class="date-col index-date" id="eosinophils-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="eosinophils-span">&mdash;</span>
+						<span class="index-span" id="eosinophils-span">4</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="eosinophils-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="eosinophils-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="eosinophils-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="eosinophils-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="eosinophils-reason"></a>
+							<a href="#" class="index-reason-a" id="eosinophils-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="basophils-brd"></td>
-					<td class="date-col index-date" id="basophils-date">&mdash;</td>
+					<td class="border-col" id="basophils-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="basophils-index">Базофилы (BA%), %</td>
+					<td class="date-col index-date" id="basophils-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="basophils-span">&mdash;</span>
+						<span class="index-span" id="basophils-span">0</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="basophils-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="basophils-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="basophils-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="basophils-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="basophils-reason"></a>
+							<a href="#" class="index-reason-a" id="basophils-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="plasmocytes-brd"></td>
-					<td class="date-col index-date" id="plasmocytes-date">&mdash;</td>
+					<td class="border-col" id="plasmocytes-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="plasmocytes-index">Плазматические клетки (плазмоциты), %</td>
+					<td class="date-col index-date" id="plasmocytes-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="plasmocytes-span">&mdash;</span>
+						<span class="index-span" id="plasmocytes-span">1</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="plasmocytes-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="plasmocytes-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="plasmocytes-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="plasmocytes-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="plasmocytes-reason"></a>
+							<a href="#" class="index-reason-a" id="plasmocytes-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
 				<!--##################################################################-->
 				<tr class="indexes-row">
-					<td class="border-col" id="ESR-brd"></td>
-					<td class="date-col index-date" id="ESR-date">&mdash;</td>
+					<td class="border-col" id="ESR-brd" style="background-color: green;"></td>
 					<td class="index-col index-name" id="ESR-index">СОЭ (ESR), мм/час %</td>
+					<td class="date-col index-date" id="ESR-date">2018-07-01</td>
 					<td class="value-col index-value">
-						<span  class="index-span" id="ESR-span">&mdash;</span>
+						<span class="index-span" id="ESR-span">11</span>
 					</td>
 					<td class="btn-col">
 						<a type="button" class="pl-btn" id="ESR-btn" href="#">+</a>
 					</td>
-					<td class="estimation-col index-estimation" id="ESR-estm">&mdash;</td>
+					<td class="estimation-col index-estimation" id="ESR-estm" style="color: green;">Норма</td>
 					<td class="graph-col index-graph">
 						<div class="index-graph-img-wrapper graph" id="ESR-graph"></div>
 					</td>
 					<td class="reason-col index-reason">
 						<div class="index-reason-wrapper">
-							<a href="#" class="index-reason-a" id="ESR-reason"></a>
+							<a href="#" class="index-reason-a" id="ESR-reason" style="border-bottom: medium none;">–</a>
 						</div>
 					</td>
 				</tr>
-			</table>
-		</div>
