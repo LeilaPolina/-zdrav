@@ -137,6 +137,7 @@ function calculate_checkup_price_ajax(callback){
 function calculateAnalysisPrice(data){
     let an_total_price = data.price
         an_time = data.time;
+    $("#an-time").text(an_time + " минут");
     $("#an-price").text(an_total_price + " руб.");
     $("#an-cashback").text(Math.floor(an_total_price * 0.03) + " руб.");
     order_homecheckup = false;
