@@ -229,6 +229,14 @@ h2.service-title {
     color: #1F2F47;
 }
 
+.total-time {
+    display: inline-block;
+    text-align: right;
+    font-weight: 700;
+    font-size: 13px;
+    color: #1F2F47;
+}
+
 .checkup-pre-price {
     display: inline-block;
     margin-left: 20px;

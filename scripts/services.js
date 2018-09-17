@@ -11,10 +11,10 @@ function check_order_answer(data){
         if(wanna_register.checked && $("#flag_if_logged_in").val() == "not_logged_in"){
             get_data_for_registration(begin_registration);
         }
-        /*else if($("#flag_if_logged_in").val() == "not_logged_in"){
+        else if($("#flag_if_logged_in").val() == "not_logged_in"){
             alert("Заказ успешно оформлен! Предлагаем создать личный кабинет, чтобы получить доступ ко всем возможностям нашего сервиса");
             get_data_for_registration(begin_registration);
-        }*/
+        }
         else{
             alert("Заказ успешно оформлен!");
         }
@@ -24,15 +24,15 @@ function check_order_answer(data){
 function get_order_checkup_contains(order_homecheckup){
     let order_items = "";
     if(order_homecheckup === true){
-        checkup_boxes = $(".checkup-option-only");    
+        checkup_boxes = $(".checkup-option-only");
         checkup_boxes.each(function(){
             let item_name, box = $(this);
 
             if (box.hasClass("checkbox-checked")) {
                 item_name = box.next().next().text();
                 order_items += item_name + "\n";
-            } 
-        }); 
+            }
+        });
     }
     return order_items;
 }
@@ -41,27 +41,27 @@ function get_order_checkup_contains(order_homecheckup){
 function get_order_an_contains(order_homecheckup, order_analyzes){
     let order_items = "";
     // analyzes from homecheckup block
-    if(order_homecheckup === true){        
-        checkup_boxes = $(".an-option-only");    
+    if(order_homecheckup === true){
+        checkup_boxes = $(".an-option-only");
         checkup_boxes.each(function(){
             let item_name, box = $(this);
 
             if (box.hasClass("checkbox-checked")) {
                 item_name = box.next().next().text();
                 order_items += item_name + "\n";
-            } 
+            }
         });
-    }    
+    }
     // analyzes from analyzes block
     else if(order_analyzes === true){
-        an_boxes = $(".analysis-checkbox");    
+        an_boxes = $(".analysis-checkbox");
         an_boxes.each(function(){
             let item_name, box = $(this);
 
             if (box.hasClass("checkbox-checked")) {
                 item_name = box.next().next().text();
                 order_items += item_name + "\n";
-            } 
+            }
         });
     }
     return order_items;
@@ -75,9 +75,9 @@ function send_order(callback, order_homecheckup, order_analyzes){
         data: {
             order: order_homecheckup || order_analyzes,
             user_phone: $("#user-phone-for-order").val(),
-            order_an_items: get_order_an_contains(order_homecheckup, order_analyzes),            
+            order_an_items: get_order_an_contains(order_homecheckup, order_analyzes),
             order_checkup_items: get_order_checkup_contains(order_homecheckup)
-        },        
+        },
         dataType: 'json',
         success: callback,
         error: get_error
@@ -105,9 +105,9 @@ function calculate_an_price_ajax(callback){
         async: false,
         data: {
             get_price: true,
-            order_an_items: order_an_items,            
+            order_an_items: order_an_items,
             order_checkup_items: order_checkup_items
-        },        
+        },
         dataType: 'json',
         success: callback,
         error: get_error
@@ -125,9 +125,9 @@ function calculate_checkup_price_ajax(callback){
         async: false,
         data: {
             get_price: true,
-            order_an_items: order_an_items,            
+            order_an_items: order_an_items,
             order_checkup_items: order_checkup_items
-        },        
+        },
         dataType: 'json',
         success: callback,
         error: get_error
@@ -135,7 +135,8 @@ function calculate_checkup_price_ajax(callback){
 }
 
 function calculateAnalysisPrice(data){
-    let an_total_price = data.result
+    let an_total_price = data.price
+        an_time = data.time;
     $("#an-price").text(an_total_price + " руб.");
     $("#an-cashback").text(Math.floor(an_total_price * 0.03) + " руб.");
     order_homecheckup = false;
@@ -143,9 +144,11 @@ function calculateAnalysisPrice(data){
 }
 
 function calculateCheckupPrice(data) {
-    let ch_total_price = data.result;
+    let ch_total_price = data.price
+        ch_time = data.time;
+    $("#checkup-time").text(ch_time + " минут");
     $("#checkup-price").text(ch_total_price + " руб.");
-    $("#checkup-cashback").children().text(Math.floor(ch_total_price * 0.03) + " руб.");    
+    $("#checkup-cashback").children().text(Math.floor(ch_total_price * 0.03) + " руб.");
     order_homecheckup = false;
     order_analyzes = false;
 }
@@ -157,7 +160,7 @@ function send_notification(msg){
         data: {
             message: msg,
             notify: true
-        },        
+        },
         dataType: 'json',
         success: function(data){
             //alert(data.result);
@@ -171,8 +174,8 @@ order_analyzes = false;
 
 $(document).ready(function() {
     let an_boxes = $(".analysis-checkbox"),
-        checkup_boxes = $(".checkup-checkbox"); 
-    
+        checkup_boxes = $(".checkup-checkbox");
+
     function assignChecked() {
         an_boxes.each(function(){
             if ($(this).attr("checked")) {
@@ -188,7 +191,7 @@ $(document).ready(function() {
             }
         })
     }
-    
+
     assignChecked();
     calculate_an_price_ajax(calculateAnalysisPrice);
     calculate_checkup_price_ajax(calculateCheckupPrice);
@@ -218,7 +221,7 @@ $(document).ready(function() {
     });
 
     $("#order-modal-close").click(function (e) {
-        e.preventDefault();    
+        e.preventDefault();
         $("#order-modal").css('display', 'none');
         $("#error_msg").text("");
     });

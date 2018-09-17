@@ -355,3 +355,5 @@
                     <p class="total-number" id="checkup-price">10000 руб.</p>
                     <button class="inline" id="order-home-checkup">Заказать</button>
                     <p id="checkup-cashback">Кэшбэк <strong>100 руб.</strong> (3%)<p>
+                    <h1 class="inline">Примерная длительность обследования:</h1>
+                    <p class="total-time" id="checkup-time">0 минут</p>
