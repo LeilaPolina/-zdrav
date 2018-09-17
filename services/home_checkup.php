@@ -1,6 +1,6 @@
                     <p class="inline">Данная услуга предоставляется совместно с нашим партнером клиникой </p>
                     <img src="images/icons/kdl_logo2.png" class="img-inline kdl-logo">
-                    <h1>В стандартный домашний медосмотр входят следующие процедуры</h1>
+                    <h1>Программа профилактического обследования</h1>
                     <div class="checkup-list inline">
                         <p><i class="fa fa-check" aria-hidden="true"></i>Сейчас выделено рекомендованное Вам по результатам теста</p>
                         <p><i class="fa fa-check" aria-hidden="true"></i>Добавьте нужное Вам или уберите лишние позиции</p>
@@ -13,7 +13,7 @@
                     </div>
                     <hr>
                     <!-- <p class="total">Стоимость</p> <p class="checkup-pre-price">2900 руб.</p> -->
-                    <h1 class="additional">Можно заказать следующие обследования:</h1>
+                    <h1 class="additional">Обследования:</h1>
 
                     <label class="container-checkbox">
                         <?php
@@ -131,7 +131,7 @@
 
                     <!-- ANALYZES -->
 
-                    <h1 class="additional">Также можно заказать анализы из списка:</h1>
+                    <h1 class="additional">Анализы:</h1>
 
                     <label class="container-checkbox">
                         <input type="checkbox" checked="checked" class="an-option-only checkup-checkbox">
@@ -139,11 +139,11 @@
                         <span>Общий анализ крови</span>
                     </label>
                     <div class="info-right">
-                        <div class="analysis-price uzi-price"><?php echo $an_prices['Общий анализ крови']; ?> руб.</div>
                         <div class="questionmark">
                             <span class="tooltip-content">Рекомендовано сдавать данный анализ (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
                         </div>
                         <a class="blood btn-info">Подробнее</a>
+                        <div class="analysis-price uzi-price"><?php echo $an_prices['Общий анализ крови']; ?> руб.</div>
                     </div><br>
 
                     <label class="container-checkbox">
@@ -152,11 +152,11 @@
                         <span>Биохимический анализ крови</span>
                     </label>
                     <div class="info-right">
-                        <div class="analysis-price uzi-price"><?php echo $an_prices['Биохимический анализ крови']; ?> руб.</div>
                         <div class="questionmark">
                             <span class="tooltip-content">Рекомендовано сдавать данный анализ (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
                         </div>
                         <a class="blood btn-info">Подробнее</a>
+                        <div class="analysis-price uzi-price"><?php echo $an_prices['Биохимический анализ крови']; ?> руб.</div>
                     </div><br>
 
                     <label class="container-checkbox">
@@ -165,11 +165,11 @@
                         <span>Общий анализ мочи</span>
                     </label>
                     <div class="info-right">
-                        <div class="analysis-price uzi-price"><?php echo $an_prices['Общий анализ мочи']; ?> руб.</div>
                         <div class="questionmark">
                             <span class="tooltip-content">Рекомендовано сдавать данный анализ (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
                         </div>
                         <a class="pee btn-info">Подробнее</a>
+                        <div class="analysis-price uzi-price"><?php echo $an_prices['Общий анализ мочи']; ?> руб.</div>
                     </div><br>
 
                     <label class="container-checkbox">
@@ -178,11 +178,11 @@
                         <span>Гастрокомплекс</span>
                     </label>
                     <div class="info-right">
-                        <div class="analysis-price uzi-price"><?php echo $an_prices['Гастрокомплекс']; ?> руб.</div>
                         <div class="questionmark">
                             <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>заболеваниям ЖКТ</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
                         </div>
                         <a class="gastro btn-info">Подробнее</a>
+                        <div class="analysis-price uzi-price"><?php echo $an_prices['Гастрокомплекс']; ?> руб.</div>
                     </div><br>
 
                     <label class="container-checkbox">
@@ -198,11 +198,11 @@
                         <span>Диагностика диабета, биохимический</span>
                     </label>
                     <div class="info-right">
-                        <div class="analysis-price uzi-price"><?php echo $an_prices['Диагностика диабета, биохимический']; ?> руб.</div>
                         <div class="questionmark">
                             <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>диабету</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
                         </div>
                         <a class="diabetes btn-info">Подробнее</a>
+                        <div class="analysis-price uzi-price"><?php echo $an_prices['Диагностика диабета, биохимический']; ?> руб.</div>
                     </div><br>
 
                     <label class="container-checkbox">
@@ -218,11 +218,11 @@
                         <span>Кардиологический</span>
                     </label>
                     <div class="info-right">
-                        <div class="analysis-price uzi-price"><?php echo $an_prices['Кардиологический']; ?> руб.</div>
                         <div class="questionmark">
                             <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к заболеваниям <strong>сердечно сосудистой системы</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
                         </div>
                         <a class="cardio btn-info">Подробнее</a>
+                        <div class="analysis-price uzi-price"><?php echo $an_prices['Кардиологический']; ?> руб.</div>
                     </div><br>
 
                     <label class="container-checkbox">
@@ -238,11 +238,11 @@
                         <span>Онкологический для мужчин, биохимический</span>
                     </label>
                     <div class="info-right">
-                        <div class="analysis-price uzi-price"><?php echo $an_prices['Онкологический для мужчин, биохимический']; ?> руб.</div>
                         <div class="questionmark">
                             <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>раковым</strong> заболеваниям (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
                         </div>
                         <a class="onco_m btn-info">Подробнее</a>
+                        <div class="analysis-price uzi-price"><?php echo $an_prices['Онкологический для мужчин, биохимический']; ?> руб.</div>
                     </div><br>
 
                     <label class="container-checkbox">
@@ -258,11 +258,11 @@
                         <span>Онкологический для женщин, биохимический</span>
                     </label>
                     <div class="info-right">
-                        <div class="analysis-price uzi-price"><?php echo $an_prices['Онкологический для женщин, биохимический']; ?> руб.</div>
                         <div class="questionmark">
                             <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к <strong>раковым</strong> заболеваниям (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
                         </div>
                         <a class="onco_f btn-info">Подробнее</a>
+                        <div class="analysis-price uzi-price"><?php echo $an_prices['Онкологический для женщин, биохимический']; ?> руб.</div>
                     </div><br>
 
                     <label class="container-checkbox">
@@ -278,11 +278,11 @@
                         <span>Диагностика сосудистых заболеваний головного мозга</span>
                     </label>
                     <div class="info-right">
-                        <div class="analysis-price uzi-price"><?php echo $an_prices['Диагностика сосудистых заболеваний головного мозга']; ?> руб.</div>
                         <div class="questionmark">
                             <span class="tooltip-content">Рекомендовано сдавать данный анализ на основании возможной генетической предрасположенности к заболеваниям <strong>сосудистой системы головного мозга</strong> (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
                         </div>
                         <a class="vessels btn-info">Подробнее</a>
+                        <div class="analysis-price uzi-price"><?php echo $an_prices['Диагностика сосудистых заболеваний головного мозга']; ?> руб.</div>
                     </div><br>
 
                     <label class="container-checkbox">
@@ -298,11 +298,11 @@
                         <span>Гормональный профиль (комплекс) для мужчин</span>
                     </label>
                     <div class="info-right">
-                        <div class="analysis-price uzi-price"><?php echo $an_prices['Гормональный профиль (комплекс) для мужчин']; ?> руб.</div>
                         <div class="questionmark">
                             <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
                         </div>
                         <a class="hormones_m btn-info">Подробнее</a>
+                        <div class="analysis-price uzi-price"><?php echo $an_prices['Гормональный профиль (комплекс) для мужчин']; ?> руб.</div>
                     </div><br>
 
                     <label class="container-checkbox">
@@ -318,11 +318,11 @@
                         <span>Гормональный профиль (комплекс) для женщин</span>
                     </label>
                     <div class="info-right">
-                        <div class="analysis-price uzi-price"><?php echo $an_prices['Гормональный профиль (комплекс) для женщин']; ?> руб.</div>
                         <div class="questionmark">
                             <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
                         </div>
                         <a class="hormones_f btn-info">Подробнее</a>
+                        <div class="analysis-price uzi-price"><?php echo $an_prices['Гормональный профиль (комплекс) для женщин']; ?> руб.</div>
                     </div><br>
 
                     <label class="container-checkbox">
@@ -338,11 +338,11 @@
                         <span>Комплексный анализ крови на витамины</span>
                     </label>
                     <div class="info-right">
-                        <div class="analysis-price uzi-price">+ <?php echo $an_prices['Комплексный анализ крови на витамины']; ?> руб.</div>
                         <div class="questionmark">
                             <span class="tooltip-content">Рекомендовано сдавать данный анализ для поддержания иммунитета и эндокринной системы в норме (до 40 лет – 1 раз в 2 года, 40-60 лет 1 раз в год, старше 60 лет 1 раз в пол года)</span>
                         </div>
                         <a class="vitamins btn-info">Подробнее</a>
+                        <div class="analysis-price uzi-price"><?php echo $an_prices['Комплексный анализ крови на витамины']; ?> руб.</div>
                     </div><br>
 
 

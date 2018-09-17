@@ -289,10 +289,12 @@ h2.service-title {
 }
 
 .analysis-price {
-    display: inline;
-    margin-right: 100px;
+    display: inline-block;
+    margin-left: 100px;
     font-weight: 700;
     color: #16325C;
+    min-width: 75px;
+    text-align: right;
 }
 
 .info-right {
@@ -313,10 +315,8 @@ h2.service-title {
     content: "";
     background: url("../images/icons/symbols-icon-question.png") no-repeat;
     background-size: contain;
-    position: absolute;
     width: 16px;
     height: 16px;
-    right: 73px;
     cursor: pointer;
 }
 
