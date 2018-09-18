@@ -49,6 +49,9 @@
     function get_total_price($db, $complex_arr, $homecheckup_arr){
         try{
             $order_info = array('total_price' => 0, 'complexes' => array(), 'time' => 0);
+			if(count($complex_arr) > 0){
+				$order_info['time'] = 15;
+			}
             $complexes_price = 0;
             $every_item = array();
             $get_complexes_sum = $db->prepare('SELECT complex_name, complex_price, complex_time
@@ -73,7 +76,6 @@
                 while($row = $get_complexes_sum->fetch(PDO::FETCH_ASSOC)){
                     $complexes_price += $row['complex_price'];
                     array_push($order_info['complexes'], array('name' => $complex, 'price' => $row['complex_price']));
-                    $order_info['time'] += $row['complex_time'];
                 }
 
                 // get complex items
