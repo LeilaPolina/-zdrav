@@ -465,7 +465,6 @@ $( document ).ready(function() {
 	
 	$(".graph").click(function(e){
 		e.preventDefault();
-		alert("Hello");
 		var mql = window.matchMedia("(orientation: portrait)");
 		if(mql.matches) {
 			alert("Поверните устройство для просмотра графика");
