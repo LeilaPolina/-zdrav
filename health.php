@@ -14,6 +14,7 @@
 	<!--DEMO Zdrav Test Styles-->
 	<link rel="stylesheet" type="text/css" href="css/demo.css" />
 	<link rel="stylesheet" type="text/css" href="css/docs.css" />
+	<link rel="stylesheet" type="text/css" href="css/mobile_health.css">
 	
 	<!--SCRIPTS-->
     <script src="jquery/jquery-3.1.1.min.js"></script>
@@ -134,21 +135,23 @@
 				<p>Показатели<p/>
 			</div>
 			<div id="add-user-index-wrapper">
-			<input class="add" id="add-user-index-btn" type="submit" value="+ Добавить свой показатель" onClick=false>
+			<input class="add" id="add-user-index-btn" type="submit" value="+ Добавить свой показатель">
 			</div>
 		</div>		
 		<div class="table-wrapper">
 			<table class="main-indexes">
-				<tr class="indexes-head">
-					<th class="border-col"></th>
-					<th class="index-col">Показатель</th>
-					<th class="date-col">Дата</th>
-					<th class="value-col">Значение</th>
-					<th class="btn-col"></th>
-					<th class="estimation-col">Оценка</th>
-					<th class="graph-col">График</th>
-					<th class="reason-col">Причина</th>
-				</tr>
+				<thead >
+					<tr class="indexes-head">
+						<th class="border-col"></th>
+						<th class="index-col">Показатель</th>
+						<th class="date-col">Дата</th>
+						<th class="value-col">Значение</th>
+						<th class="btn-col"></th>
+						<th class="estimation-col">Оценка</th>
+						<th class="graph-col">График</th>
+						<th class="reason-col">Причина</th>
+					</tr>
+				</thead >
 				<!--#################################Сholesterol#################################-->
 				<tr class="indexes-row">
 					<td class="border-col" id="cholesterol-brd"></td>
@@ -253,6 +256,7 @@
 
 	</div>
 	<!--#################################Modal#################################-->
+	<div>
 		<div id="health-modal">
 			<div id="health-numbers-content">
 				<div class="modal-window-body sm-body">
@@ -274,6 +278,7 @@
 				</div>
 			</div>
 		</div>
+	
 	<!--#################################Reason Modal#################################-->
 	<div class="modal-window" id="reason-modal">
 			<div class="modal-window-content" id="reason-modal-content">

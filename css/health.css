@@ -449,18 +449,23 @@
 	left: 25px;
 	height:300px;
 	overflow: auto;
+
 }
 
 #graph-input-wrapper .modal-input {
 	width: auto !important;
 }
 
+#graph-input-wrapper, #graph-table-wrapper  {
+	padding:0 0 0 15%;
+}
+
 
 #add-user-index-wrapper {
-			width:200px;
-			position: absolute;
-			right: 0;
-		}
+	width:200px;
+	position: absolute;
+	right: 0;
+}
 
 .input-user-index-values {
 	padding:0  !important;
