@@ -63,7 +63,7 @@
 			return 'OK';
 		}
 		catch(Exception $e){
-			return 'error';
+			return $e->getMessage();
 		}
 	}
 
@@ -77,6 +77,8 @@
 		}
 		$result_test[$field] = $val;
 	}
+	
+	save_test_iteration($db, $result_test);
 
 	$_SESSION['result_test'] = $result_test;
 	$_SESSION['test_completed'] = true;
@@ -87,4 +89,5 @@
 		header('Location: test.php');
 	}
 	exit;
+	
 ?>
