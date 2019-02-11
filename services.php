@@ -45,6 +45,7 @@
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/input_radio.css" />
     <link rel="stylesheet" type="text/css" href="css/input_checkbox.css" />
+    <link rel="stylesheet" type="text/css" href="css/input_toggle.css" />
     <link rel="stylesheet" href="css/modals.css" />
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">

@@ -1,5 +1,229 @@
+body {
+    margin: 0 auto;
+    background: #F0F3F7;
+    font-family: Open Sans;
+}
 
-/* zdrav test */
+#header {
+	height: 64.73px;
+	width: 100%;
+	background: #FFFFFF;
+	box-shadow: 0px 1px 6px rgba(46, 53, 54, 0.131963), 0px 2px 14px rgba(13, 42, 54, 0.08);
+}
+
+#header > .wrap {
+	position: relative;
+	height: 100%;
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+}
+
+#logo {
+	width: 134px;
+	height: 28px;
+	background: url('../images/icons/logo-nav.PNG') no-repeat;
+	background-size: 100%;
+}
+
+#header-title {
+	flex-grow: 1;
+	color: rgba(22, 50, 92, 0.8);
+	font-size: 1.5em;
+}
+
+#main {
+	width: 930px;
+	margin: 15px auto 0 auto;
+	padding-bottom: 40px;
+}
+
+h2.title {
+	color: rgba(22, 50, 92, 0.8);
+	font-size: 1.3em;
+}
+
+.container {
+	background-color: white;
+	box-shadow: 0px 2px 2px rgba(46, 53, 54, 0.118631);
+	border-radius: 6px;
+	margin: 10px auto;
+	padding: 0.1px;
+}
+
+.container.container-login {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.container.container-login > a {
+	height: auto;
+	width: 250px;
+	margin: 10px auto;
+	padding: 7px;
+}
+
+.container.container-vidreview {
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+}
+
+.container.container-vidreview > .wrap {
+	border-radius: 7px;
+}
+
+.container.container-vidreview iframe,
+.container.container-vidreview img {
+	width: 100%;
+	height: 100%;
+}
+
+.container.container-social {
+	display: flex;
+	justify-content: space-around;
+	padding: 10px;
+}
+
+.container.container-social a {
+	display: block;
+	width: 80px;
+	height: 80px;
+}
+
+.container.container-social a.social-FB {
+	background: url("../images/landing/social-FB.png");
+}
+
+.container.container-social a.social-VK {
+	background: url("../images/landing/social-VK.png");
+}
+
+.container.container-social a.social-OK {
+	background: url("../images/landing/social-OK.png");
+}
+
+.container.container-videos {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+
+.container.container-videos > .wrap {
+	height: 200px;
+	width: 30%;
+	margin: 10px;
+}
+
+.container.container-videos .video-wrap {
+	height: 100%;
+	width: 100%;
+}
+
+.container.container.container-videos iframe {
+	height: 100%;
+	width: 100%;
+}
+
+.container.container-team {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding: 10px 5px;
+}
+
+.team-member {
+	margin: 15px auto;
+	max-width: 280px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.team-member .team-member-photo {
+	width: 250px;
+	height: 250px;
+	border: 1px solid rgba(46, 53, 54, 0.118631);
+	border-radius: 50%;
+	overflow: hidden;
+	background-size: 100%;
+}
+
+.team-member .team-member-name {
+	margin: 7px auto;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: rgba(22, 50, 92, 0.8);
+}
+
+.team-member .team-member-description {
+	color: #6F949E;
+	font-size: 0.9em;
+	text-align: center;
+	opacity: 0.9;
+}
+
+.contacts {
+	font-weight: 400;
+}
+
+.photo-1 {
+	background: url('../images/landing/photo_1.jpg') no-repeat;
+}
+
+.photo-2 {
+	background: url('../images/landing/photo_2.jpg') no-repeat;
+	background-size: 169% !important;
+	background-position: -109px -43px;
+}
+
+.photo-3 {
+	background: url('../images/landing/photo_3.jpg') no-repeat;
+	background-size: 240% !important;
+	background-position: -183px -168px;
+}
+
+.photo-4 {
+	background: url('../images/landing/photo_4.jpg') no-repeat;
+	background-size: 125% !important;
+	background-position: -27px -23px;
+}
+
+.photo-5 {
+	background: url('../images/landing/photo_5.jpg') no-repeat;
+}
+
+.photo-6 {
+	background: url('../images/landing/photo_6.jpg') no-repeat;
+}
+
+.photo-blank {
+	background: url('../images/landing/blank.png') no-repeat;
+}
+
+.blue-shadow {
+  box-shadow: 1px 1px 5px 1px #00B0D2;
+}
+
+.social-OK {
+	background: url('../images/icons/Ok-socail.PNG') no-repeat;
+}
+
+.social-VK {
+	background: url('../images/icons/Vk-socail.PNG') no-repeat;
+}
+
+.social-FB {
+	background: url('../images/icons/Fb-socail.PNG') no-repeat;
+}
+
+/* modals */
 
 #modal_test, #modal_loading, #create-lk {
 	display: none;
@@ -170,12 +394,34 @@
 }
 
 /* Mobile */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
 	
 	#content_test, #content_loading, #create-lk-content {
 		width: 95%;
 	}
 	
+	#header > .wrap {
+		width: 95%;
+	}
+
+	#main {
+		width: 90%;
+	}
+
+	#header-title {
+		font-size: 1.1em;
+	}
+
+	.container.container-login > a {
+		width: 100%;
+		margin: 10px;
+	}
+
+	/*.container.container-vidreview {
+		height: 300px;
+	}*/
+
+	.container.container-videos > .wrap {
+		width: 95%;
+	}
 }
-
-

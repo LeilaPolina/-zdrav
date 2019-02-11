@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Удобный здоровьесберегающий сервис. Индивидуальный подбор анализов и автоматическая расшифровка.">
-    <meta name="keywords" content="здоровье, профилактика, зож, здоровый образ жизни, медосотр, чекап, анализы, кровь, моча, долголетие, холестерин, глюкоза, сахар в крови, инфаркт, инсульт, рак ">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Удобный здоровьесберегающий сервис. Индивидуальный подбор анализов и автоматическая расшифровка.">
+		<meta name="keywords" content="здоровье, профилактика, зож, здоровый образ жизни, медосотр, чекап, анализы, кровь, моча, долголетие, холестерин, глюкоза, сахар в крови, инфаркт, инсульт, рак ">
 	<title>Здравствую! онлайн сервис сохранения здоровья и продления жизни</title>
 	
 	<!--STYLES-->
@@ -13,55 +13,167 @@
 	<!--Zdrav Test Styles-->
 	<link rel="stylesheet" href="css/zdrav_test.css"/>
 	<!-- Loading Elements Styles-->   
-    <link href="css/index.css" rel="stylesheet">
+		<link href="css/index.css" rel="stylesheet">
 	<!--Registration-Login Styles-->
 	<link rel="stylesheet" type="text/css" href="css/modals.css" />
 	
 	<!--SCRIPTS-->
-    <script src="jquery/jquery-3.1.1.min.js"></script>
-    <script src="scripts/zdrav_test.js"></script>	
+		<script src="jquery/jquery-3.1.1.min.js"></script>
+		<script src="scripts/zdrav_test.js"></script>	
 	<!-- JavaScript --> 
 	<script src="jquery/jquery.maskedinput.min.js"></script>
 	<script src="scripts/login.js"></script>
-    
+		
 </head>
-<body >
+<body>
 
+	<div id="header">
+		<div class="wrap">
+			<div id="logo"></div>
+			<div id="header-title">
+				Маркетплейс услуг ЗОЖ и профилактики здоровья
+			</div>
+		</div>
+	</div>
 
-	<div id="index-btns-wrapper">
+	<div id="main">
+		<div class="container container-login">
+			<a type="button" class="index-btn" href="test.php" target="_blank">Демо вход</a>
+			<a type="button" class="index-btn btn_start_test"href="#">Регистрация</a>
+			<a type="button" class="index-btn" id="lk-login" href="#">Вход для пользователей</a>
+		</div>
+
+		<div class="container container-vidreview">
+			<div class="wrap blue-shadow">
+				<img src="images/landing/review.jpg">
+			</div>
+		</div>
+
+		<h2 class="title">Мы в соцсетях</h2>
+		<div class="container container-social">
+			<a class="social-FB" href="https://www.facebook.com/zdrav.rf/" target="_blank"></a>
+			<a class="social-VK" href="https://vk.com/public157016043" target="_blank"></a>
+			<a class="social-OK" href="https://ok.ru/zdorovyebu" target="_blank"></a>
+		</div>
+
+		<h2 class="title">Видео</h2>
+		<div class="container container-videos">
+			<div class="wrap blue-shadow">
+				<div class="video-wrap">
+					<iframe src="https://www.youtube.com/embed/orbKm20Pd54" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+
+			<div class="wrap blue-shadow">
+				<div class="video-wrap">
+					<iframe src="https://www.youtube.com/embed/6xf-guv3EPQ" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>	
+				</div>			
+			</div>
+		</div>
+
+		<h2 class="title">Команда</h2>
+		<div class="container container-team">
+			<div class="team-member">
+				<div class="team-member-photo photo-1"></div>
+				<div class="team-member-name">
+					Комаров Павел
+				</div>
+				<div class="team-member-description">
+					СЕО, автор идеи, руководитель проекта
+				</div>
+			</div>
+			<div class="team-member">
+				<div class="team-member-photo photo-2"></div>
+				<div class="team-member-name">
+					Кузьмин Евгений
+				</div>
+				<div class="team-member-description">
+					Скрам мастер, аджайл коуч, организация работы команды
+				</div>
+			</div>
+			<div class="team-member">
+				<div class="team-member-photo photo-3"></div>
+				<div class="team-member-name">
+					Мария Королева
+				</div>
+				<div class="team-member-description">
+					Консультант по медицинским вопросам
+				</div>
+			</div>
+			<div class="team-member">
+				<div class="team-member-photo photo-4"></div>
+				<div class="team-member-name">
+					Полина Шестакова
+				</div>
+				<div class="team-member-description">
+					Разработка бек енд части
+				</div>
+			</div>
+			<div class="team-member">
+				<div class="team-member-photo photo-blank"></div>
+				<div class="team-member-name">
+					Лейла Велиева
+				</div>
+				<div class="team-member-description">
+					Разработка бек енд части
+				</div>
+			</div>
+			<div class="team-member">
+				<div class="team-member-photo photo-blank"></div>
+				<div class="team-member-name">
+					Леонид Стайнов 
+				</div>
+				<div class="team-member-description">
+					Разработка фронт части, верстка
+				</div>
+			</div>
+		</div>
+		<h2 class="title">Контакты<br><br><span class="contacts">7 495 131-32-73<br><br>zdrav.rf@mail.ru</span></h2>
+		
+	</div>
+
+	<!--div id="index-btns-wrapper">
 		<a type="button" class="index-btn" id="lk-login" href="#">Вход в ЛК</a><br><br>
 		<a type="button" class="index-btn btn_start_test"href="#">Тест</a><br><br>
 		<a type="button" class="index-btn" href="#">Демо</a>
-	</div>
+	</div-->
 	
-	
-  <!-- MODALS BEGIN-->
+	<!-- MODALS BEGIN-->
 
 	<div id="modal_test">
-        <div id="content_test">
-            <div class="header_modal">
-                Тест для составления индивидуального плана профилактики
-                <div id="close_modal" title="Закрыть">&#215;</div>
-            </div>
-            <div class="body_modal">
-                <div id="cont_testing">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="modal_loading">
-        <div id="content_loading">
-            <div id="load_img"><img src="images/loading.gif" /></div>
-            <div id="load_txt">Идет обработка результатов</div>
-        </div>
-    </div>	
+				<div id="content_test">
+						<div class="header_modal">
+								Тест для составления индивидуального плана профилактики
+								<div id="close_modal" title="Закрыть">&#215;</div>
+						</div>
+						<div class="body_modal">
+								<div id="cont_testing">
+										
+								</div>
+						</div>
+				</div>
+	</div>
 	
-	
-	
-	
+	<div id="create-lk">
+		<div id="create-lk-content">
+			<h1>После прохождения теста у вас будет возможность создать Личный кабинет</h1>
+			<p class="lk-text-center">Что вы получите:</p>
+			<p><i class="fa fa-check" aria-hidden="true"></i>Индивидуальный профилактический план на 3 года</p>
+			<p><i class="fa fa-check" aria-hidden="true"></i>Кэшбек 3% на услуги наших партнеров и покупки в магазине</p>
+			<p><i class="fa fa-check" aria-hidden="true"></i>Это бесплатно и анонимно</p>
+			<div id="btn_endtest_continue">Завершить тест</div>
+		</div>
+	</div>
+
+		<div id="modal_loading">
+				<div id="content_loading">
+						<div id="load_img"><img src="images/loading.gif" /></div>
+						<div id="load_txt">Идет обработка результатов</div>
+				</div>
+		</div>	
+
  <!--######################Login modal######################################-->
-  <div class="modal-window" id="login-modal">
+	<div class="modal-window" id="login-modal">
 		<div class="modal-window-content" id="login-content">
 			<div class="modal-window-body sm-body">
 				<div class="login_modal_header">
@@ -87,9 +199,9 @@
 				</div>
 			</div>
 		</div>
-  </div>
+	</div>
 	<!--######################Recover modal######################################-->
-    <div class="modal-window" id="recover-modal">
+		<div class="modal-window" id="recover-modal">
 		<div class="modal-window-content" id="recover-content">
 			<div class="modal-window-body sm-body">
 				<div class="recover_modal_header">
@@ -116,7 +228,7 @@
 				</div>
 			</div>
 		</div>
-    </div>
+		</div>
 	
 	<!--##############################Recover first step modal##########################################-->  
 	<div class="modal-window" id="recover-first-step-modal">
@@ -138,7 +250,7 @@
 				</div>
 			</div>
 		</div>
-    </div>
+		</div>
 	<!-- MODALS END-->
 </body>
 

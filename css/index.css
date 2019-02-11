@@ -17,8 +17,8 @@ body, html {
 	height:40px;
 	width:150px;
 	border-radius:4px;
-	background-color: rgb(255, 153, 0);
-	border-color: rgb(255, 153, 0);
+	background-color: #00B0D2;
+	border-color: #00B0D2;
 	color:#fff;
 	font-size: 20px;
 	text-align:center;
@@ -27,10 +27,7 @@ body, html {
 	
 }
 
-.index-btn:active,
-.index-btn:hover,
-.index-btn:focus{
+.btn_start_test {
 	background-color: rgb(255, 153, 0);
 	border-color: rgb(255, 153, 0);
-	color:#fff;	
 }

@@ -488,13 +488,13 @@ $(function () {
 		$(modal_test).hide();
 		$(modal_create_lk).show();
 
-		$("#btn_endtest_continue").onclick(function() {
+		$("#btn_endtest_continue").click(function() {
 			$(modal_create_lk).hide();
 			$(modal_loading).show();
 		
 			setTimeout(function () {
 				$('#form_test').submit();
-			}, 4000);
+			}, 500);
 		})
 	}
 });

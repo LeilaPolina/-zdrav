@@ -86,7 +86,7 @@
 		header('Location: services.php#home-checkup');
 	}
 	else{
-		header('Location: test.php');
+		header('Location: test.php#register');
 	}
 	exit;
 	

@@ -211,6 +211,65 @@ h2.service-title {
     vertical-align:top;
 }
 
+.coaches {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.coaches th {
+    font-size: 11px;
+}
+
+.coaches td {
+    padding: 3px;
+    text-align: center;
+}
+
+.coaches img {
+    width: 120px;
+    height: 150px;
+}
+
+.coaches button {
+    margin: 20px auto;
+}
+
+.coaches .switch {
+    display: block;
+    margin: auto;
+}
+
+.coaches .rating > .rating-num {
+    display: block;
+    color: #c00027;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.coach-desc {
+    color: #16325C;
+}
+
+.coaches .coaches-more {
+    text-align: end;
+    font-size: 13px;
+}
+
+.coaches .coaches-more > span {
+    cursor: pointer;
+}
+
+.coach-reviews {
+    color: #16325C;
+    cursor: pointer;
+}
+
+.coaches .access-text {
+    font-size: 13px;
+    color: #16325C;
+    margin-bottom: 3px;
+}
+
 .total {
     display: inline-block;
     margin-top: 30px;
@@ -346,6 +405,10 @@ h2.service-title {
     width: 580px;
     font-size: 13px;
     line-height: 22px;
+}
+
+.contact-column-right > p:first-child {
+    margin-top: 0;
 }
 
 .fa-info-circle {
@@ -639,4 +702,11 @@ h1.title-background {
 #be-dad > p > span.accordions-left::before {
     content: url('../images/icons/symbols-icon-pap.png');
     margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .contact-column-right {
+        width: auto;
+        margin-left: 0;
+    }
 }
