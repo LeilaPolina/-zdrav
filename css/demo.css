@@ -1,3 +1,7 @@
+.demo-btn-container {
+	display: flex;
+}
+
 .demo-btn {
     width:178px;
 	height:32px;
@@ -12,7 +16,7 @@
 	color: #FFFFFF;
     text-decoration: none;
 	cursor: pointer;
-	margin: 30px auto;
+	margin: 15px auto;
 }
 
 .demo-ul{

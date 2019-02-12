@@ -6,7 +6,6 @@
     }
 ?>
 
-<img class="img-center" src="images/video_cap.PNG">
 <h1>Программы по контролю за весом</h1>
 <form name="weight-inf">
     <div id="weight-numbers">

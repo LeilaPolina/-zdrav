@@ -1,4 +1,3 @@
-<img class="img-center" src="images/video_cap.PNG">
 <h1>Отправить файл ЭКГ для расшифровки врачу кардиологу</h1>
 <div class="cardio-form">
     <div class="heart-date-field">

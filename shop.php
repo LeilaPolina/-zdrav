@@ -92,30 +92,20 @@
     <div class="recommendations-top threeb">
 		<div class="rec-wrapper review-body">
 			<img src="images/banners/review-shop.jpg">
-		</div>
+        </div>
+        
+        <?php 
+            if(!$user->is_logged_in()){
+                echo '<h2 class="header-title">Демонтрационный режим</h2>';
+                echo '<div class="demo-btn-container">';
+                echo '<button class="demo-btn" id="go-to-result-test-save" href="">Создать личный кабинет</button>';
+                echo '</div>';
+            } else {
+                echo '<h2 class="header-title">Личный кабинет</h2>';
+            }
+        ?>
 	</div>
 
-    <!-- DEMO PART -->
-    <?php 
-        if(!$user->is_logged_in()){
-            echo '<div class="demo-div">';
-            echo '<h2 class="pagename">Демонстрационный режим</h2>';                    
-            echo '<h1 class="pagename">Магазин</h1>'; 
-            echo '<br/>';
-            echo '<ul class="demo-ul">';
-                echo '<li><p>Данный сервис предоставлен в демонстрационном режиме<p></li>';
-                echo '<li><p>Для полноценной работы необходимо создать Личный кабинет<p></li>';
-            echo '</ul>';
-            echo '<br/>';
-            echo '<button class="demo-btn" id="go-to-result-test-save" href="">Создать личный кабинет</button>';
-            echo '</div>';
-        }
-        else{					
-            echo '<h2 class="pagename">Личный кабинет</h2>';
-            echo '<h1 class="pagename">Магазин</h1>';
-        }
-    ?>
-    <!-- /DEMO PART -->
 
     <div class="content">
         <section class="row">
