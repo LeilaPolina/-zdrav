@@ -137,6 +137,13 @@
     ?>
 
     <div class="main">
+
+    <div class="recommendations-top threeb">
+		<div class="rec-wrapper review-body">
+			<img src="images/banners/review-docs.jpg">
+		</div>
+	</div>
+
     <div class="content">
         <section class="row">
             <!-- DEMO PART -->

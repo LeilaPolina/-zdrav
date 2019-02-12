@@ -121,6 +121,12 @@
     ?>
     <div class="main">
 
+        <div class="recommendations-top threeb">
+            <div class="rec-wrapper review-body">
+                <img src="images/banners/review-services.jpg">
+            </div>
+	    </div>
+
         <!-- DEMO PART -->
         <?php
             if(!$user->is_logged_in()){

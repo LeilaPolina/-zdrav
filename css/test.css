@@ -96,6 +96,11 @@ body {
 	margin-right:auto;
 }
 
+.review-body {
+	display: flex;
+	justify-content: center;
+}
+
 .recommendations-top {
 	margin-top: 2%;
 }
@@ -375,7 +380,7 @@ body {
 }
 
 .shop-icon {
-	background:url('../images/icons/store_menu_icon.PNG') no-repeat;
+	background:url('../images/icons/store_menu_icon.png') no-repeat;
 }
 
 .services-icon {

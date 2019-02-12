@@ -98,6 +98,12 @@
 
 	<!--#################################Main#################################-->
 	<div class="main">
+		<div class="recommendations-top threeb">
+			<div class="rec-wrapper review-body">
+				<img src="images/banners/review-health.jpg">
+			</div>
+		</div>
+
 		<div class="lk health-in-numbers-wrapper">			
 			<!-- DEMO PART -->
 			<?php 

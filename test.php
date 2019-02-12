@@ -119,58 +119,63 @@
 ?>
 
 <div class="main">
-	<div class="recommendations-top">
-		<div class="personal-recommendations threeb blue-shadow">
-			<div class="main-rec-container">
-				<div class="main-rec-text-container">
-					<div class="rec-icon-main"></div>
-					<div class="rec-text-main">Личные рекомендации</div>
-				</div>
-				<div class="rec-sum-container">
-					<div class="rec-numb">
-						<?php echo "+";echo $lifecount; ?>
-					</div> 
-					<div class="rec_numb_text">
-						<?php if ($lifecount == 1) { 
-								echo 'год жизни';
-							} 
-							elseif ($lifecount > 1 && $lifecount < 5) { 
-								echo 'года жизни';
-							}
-							elseif ($lifecount >= 5) { 
-								echo 'лет жизни';
-							} ?>
-					</div>
-				</div>
-			</div>
-				<div class="lifetime">
-					Согласно тесту расчетная продолжительность вашей жизни составит <b><?php 
-						if ($user_data_arr['lifetime'] - (date("Y") - $user_data_arr['year_birth']) < 5) { 
-							echo date("Y") - $user_data_arr['year_birth'] + 5; 
-						} else { 
-							echo $user_data_arr['lifetime']; 
-						} ?> лет</b> </br>
-					Максимальная возможная продолжительность жизни может составить
-					<b><?php if ($user_data_arr['lifetime'] - (date("Y") - $user_data_arr['year_birth']) < 5){
-						echo date("Y") - $user_data_arr['year_birth'] + 5 + $lifecount;
-						echo ' лет ';
-					}
-					else 
-					{
-						echo $user_data_arr['lifetime'] + $lifecount;
-						echo ' лет ';
-					} ?></b>
-					<div class="questionmark">
-						<span class="tooltip-content">
-							Тест и расчет возможной продолжительности жизни основаны на
-							статистических данных по средней продолжительности жизни мужчин и женщин в России
-							на 2017г, а так же на исследованиях Всемирной организации здравоохранения о факторах
-							влияющих на продолжительность жизни
-						</span>
-					</div>
-				</div>
+	<div class="recommendations-top threeb">
+		<div class="rec-wrapper review-body">
+			<img src="images/banners/review-test.jpg">
 		</div>
 	</div>
+
+	<div class="personal-recommendations threeb blue-shadow">
+		<div class="main-rec-container">
+			<div class="main-rec-text-container">
+				<div class="rec-icon-main"></div>
+				<div class="rec-text-main">Личные рекомендации</div>
+			</div>
+			<div class="rec-sum-container">
+				<div class="rec-numb">
+					<?php echo "+";echo $lifecount; ?>
+				</div> 
+				<div class="rec_numb_text">
+					<?php if ($lifecount == 1) { 
+							echo 'год жизни';
+						} 
+						elseif ($lifecount > 1 && $lifecount < 5) { 
+							echo 'года жизни';
+						}
+						elseif ($lifecount >= 5) { 
+							echo 'лет жизни';
+						} ?>
+				</div>
+			</div>
+		</div>
+			<div class="lifetime">
+				Согласно тесту расчетная продолжительность вашей жизни составит <b><?php 
+					if ($user_data_arr['lifetime'] - (date("Y") - $user_data_arr['year_birth']) < 5) { 
+						echo date("Y") - $user_data_arr['year_birth'] + 5; 
+					} else { 
+						echo $user_data_arr['lifetime']; 
+					} ?> лет</b> </br>
+				Максимальная возможная продолжительность жизни может составить
+				<b><?php if ($user_data_arr['lifetime'] - (date("Y") - $user_data_arr['year_birth']) < 5){
+					echo date("Y") - $user_data_arr['year_birth'] + 5 + $lifecount;
+					echo ' лет ';
+				}
+				else 
+				{
+					echo $user_data_arr['lifetime'] + $lifecount;
+					echo ' лет ';
+				} ?></b>
+				<div class="questionmark">
+					<span class="tooltip-content">
+						Тест и расчет возможной продолжительности жизни основаны на
+						статистических данных по средней продолжительности жизни мужчин и женщин в России
+						на 2017г, а так же на исследованиях Всемирной организации здравоохранения о факторах
+						влияющих на продолжительность жизни
+					</span>
+				</div>
+			</div>
+	</div>
+	
 
 	<div class="rec-list">
 		<?php
