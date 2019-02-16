@@ -236,7 +236,6 @@ $(document).ready(function() {
     }
 
     $("#user-phone-for-order").mask("+7 (999) 999-99-99");
-    $("#user-phone-for-order").trigger('input');
 
     $("#submit-order").click(function(e){
         e.preventDefault();

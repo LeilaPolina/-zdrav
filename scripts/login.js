@@ -123,9 +123,7 @@ $(document).ready(function () {
 	recover1_modal= document.getElementById('recover-first-step-modal');
 	recover_modal= document.getElementById('recover-modal');
 	$("#login-phone-number").mask("+7 (999) 999-99-99");
-	$("#login-phone-number").trigger('input');
 	$("#phone-number").mask("+7 (999) 999-99-99");
-	$("#phone-number").trigger('input');
     $("#lk-login").click(function(e) {
         e.preventDefault();
 		login_modal.style.display = "block";
@@ -134,7 +132,6 @@ $(document).ready(function () {
 	$("#login-btn").click(function(e) {
 		e.preventDefault();
 		isRegisteredUser(checkIsRegisteredUser);
-		
 	});
 	
 	

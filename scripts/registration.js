@@ -72,7 +72,6 @@ $(document).ready(function(){
 	success_modal= document.getElementById('success-modal');
 	$("#phone-number").mask("+7 (999) 999-99-99");
 	$("#itele").mask("+7 (999) 999-99-99");
-	$("#itele").trigger('input');
 	
 	var sex="", birth_year="", height="", weight="", work="", sport="", food="", children="", risks="", sick="", chronic="", smoking="", alcohol="";
 	var offered_user_name="", offered_user_phone="";
@@ -118,7 +117,6 @@ $(document).ready(function(){
 		lifetime = $('#ilifetime').val();
 		
 		$("#phone-number").val(offered_user_phone);
-		$("#phone-number").trigger('input');
 		$("#username").val(offered_user_name);
 
 		test_reg_modal.style.display = "block";
@@ -159,6 +157,10 @@ $(document).ready(function(){
 		e.preventDefault();
 		test_reg_modal.style.display = "none";		
 	});
+
+	if (window.location.hash === "#open_register_modal") {
+		$("#register").trigger("submit");
+	}
 	
 	function registration_answer(answer) {
 		if(answer.result==701) {

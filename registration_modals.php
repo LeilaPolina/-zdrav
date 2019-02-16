@@ -18,7 +18,7 @@
 				<form id="register-form" class="modal-form">
 					<div class="input-phone">
 						<p class="modal-label" id="phone-label">Номер мобильного телефона</p>
-						<input type="text" name="phone-number" class="modal-input" id="phone-number">
+						<input type="text" name="phone-number" class="modal-input" id="phone-number" placeholder="+7 (___) ___-__-__">
 					</div>
 					<div class="checkbox">
 						<p class="agree-label" >

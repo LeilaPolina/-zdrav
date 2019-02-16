@@ -281,7 +281,7 @@ function get_supposed_lifetime($user_data_arr, $lifetime_index_mass){
     $supposed_lifetime = 0;
 
     if($user_data_arr['sex'] == 'male'){
-        $supposed_lifetime += 66; 
+        $supposed_lifetime += 76; 
 
         if($user_data_arr['family_status'] == 'Живу один'){
             $supposed_lifetime += -1;
@@ -295,7 +295,7 @@ function get_supposed_lifetime($user_data_arr, $lifetime_index_mass){
 
     }
     else if($user_data_arr['sex'] == 'female'){
-        $supposed_lifetime += 77;
+        $supposed_lifetime += 81;
         
         if($user_data_arr['family_status'] == 'Живу одна'){
             $supposed_lifetime += -1;

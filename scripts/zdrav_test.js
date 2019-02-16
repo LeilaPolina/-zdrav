@@ -23,8 +23,8 @@ $(function () {
 			title: 'Ваш пол:',
 			type: 'radio',
 			answers: [ 
-				{ value: 'м', text: 'Мужской', count: '66'},
-				{ value: 'ж', text: 'Женский', count: '77' },
+				{ value: 'м', text: 'Мужской', count: '76'},
+				{ value: 'ж', text: 'Женский', count: '81' },
 			],
 		},
 		/* 2 */

@@ -14,7 +14,7 @@
     display: none;
     position: fixed;
     z-index: 1000;
-    padding-top: 10%;
+    padding-top: 5%;
     left: 0;
     top: 0;
     width: 100%;
@@ -232,7 +232,8 @@
 }
 
 #test-reg-btns {
-	margin-top:16px;
+	margin-top: 16px;
+	margin-bottom: 16px;
 }
 
 #recover1-text,
@@ -318,9 +319,7 @@
 .success-btn-wrapper {
 	width: 124px;
 	height: 36px;
-	margin-top: 27px;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 27px auto;
 }
 
 .success-header {
@@ -582,4 +581,10 @@
 .error_msg {
 	color: red;
 	width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+	.modal-window-content {
+		width: 95% !important;
+	}
 }

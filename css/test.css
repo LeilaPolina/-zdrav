@@ -1004,4 +1004,12 @@ td.rem-name {
 		text-align: center;
 		margin-bottom: 25px;
 	}
+
+	.review-body {
+		width: 95%;
+	}
+
+	.review-body img {
+		height: 150px;
+	}
 }
