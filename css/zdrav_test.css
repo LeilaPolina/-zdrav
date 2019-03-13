@@ -86,6 +86,11 @@ h2.title {
 	height: 100%;
 }
 
+.container.container-texts {
+	padding: 10px 25px;
+	color: rgba(22, 50, 92, 0.8);
+}
+
 .container.container-social {
 	display: flex;
 	justify-content: space-around;
@@ -137,6 +142,22 @@ h2.title {
 	justify-content: space-between;
 	flex-wrap: wrap;
 	padding: 10px 5px;
+}
+
+.image-text-block {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 15px auto;
+}
+
+.image-text-block > div.img > img {
+	width: 100%;
+}
+
+.image-text-block > div.text {
+	width: 50%;
+	margin: 0 20px;
 }
 
 .team-member {
@@ -417,6 +438,24 @@ h2.title {
 	.container.container-login > a {
 		width: 100%;
 		margin: 10px;
+	}
+
+	.image-text-block {
+		flex-direction: column;
+	}
+
+	.image-text-block.reverse {
+		flex-direction: column-reverse;
+	}
+
+	.image-text-block > div.img {
+		width: 100%;
+		margin: 15px auto;
+	}
+
+	.image-text-block > div.text {
+		margin: 0;
+		width: 100%;
 	}
 
 	/*.container.container-vidreview {

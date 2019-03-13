@@ -6,12 +6,14 @@
 		<meta name="keywords" content="здоровье, профилактика, зож, здоровый образ жизни, медосотр, чекап, анализы, кровь, моча, долголетие, холестерин, глюкоза, сахар в крови, инфаркт, инсульт, рак ">
 	<title>Здравствую! онлайн сервис сохранения здоровья и продления жизни</title>
 	
+	<link rel="shortcut icon" href="images/favicons/favicon.jpg" type="image/x-icon">
 	<!--STYLES-->
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
 	<!--Font awesome-->
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 	<!--Zdrav Test Styles-->
 	<link rel="stylesheet" href="css/zdrav_test.css"/>
+	<link rel="stylesheet" href="css/test.css"/>
 	<!-- Loading Elements Styles-->   
 		<link href="css/index.css" rel="stylesheet">
 	<!--Registration-Login Styles-->
@@ -31,7 +33,7 @@
 		<div class="wrap">
 			<div id="logo"></div>
 			<div id="header-title">
-				Маркетплейс услуг ЗОЖ и профилактики здоровья
+				ИНТЕРНЕТ СЕРВИС ДЛЯ УПРАВЛЕНИЯ ЗДОРОВЬЕМ
 			</div>
 		</div>
 	</div>
@@ -46,6 +48,63 @@
 		<div class="container container-vidreview">
 			<div class="wrap blue-shadow">
 				<iframe src="https://www.youtube.com/embed/nru-vvs5p00" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+		</div>
+
+		<div class="container container-texts">
+			<div class="image-text-block">
+				<div class="text">В будущем изменяется не только отношение людей к своему здоровью, но и сама
+медицина из лечащей превратится в сохраняющую.
+Любые изменения в здоровье человека, даже самые незначительные и будут
+фиксироваться начиная с момента зачатия и на
+протяжении всей жизни.
+				</div>
+				<div class="img">
+					<img src="images/landing/sample_1.jpg">
+				</div>
+			</div>
+
+			<div class="image-text-block reverse">
+				<div class="img">
+					<img src="images/landing/sample_2.jpg">
+				</div>
+				<div class="text">Всё будет в цифре, в базе, в облаке. Вся
+личная история здоровья каждого человека от
+начала до конца. Каждый параметр в
+отдельности и тысячи их сочетаний будут
+анализироваться нейронными сетями и
+сравниваться с миллиардами историй других
+людей.</div>
+			</div>
+
+			<div class="image-text-block">
+				<div class="text">
+					В каждый момент времени любой человек будет знать все свои риски до десятой доли
+					процента и по каждому пункту получит рекомендации как эти риски уменьшить. И это не
+					фантастика, это уже прогноз. Вопрос не в том как это будет, а когда.
+				</div>
+				<div class="img">
+					<img src="images/landing/sample_3.jpg">
+				</div>
+			</div>
+
+			<div class="image-text-block reverse">
+				<div class="img">
+					<img src="images/landing/sample_4.jpg">
+				</div>
+				<div class="text">Мы, команда проекта Здравствую!, строим свой
+	сервис исходя из нашего видения будущего и
+	предлагаем вам уже сегодня стать частью этого.</div>
+			</div>
+
+			<div class="image-text-block">
+				<div class="text">Регистрируйтесь на сервисе, пользуйтесь тем
+	что уже работает сегодня и первыми войдите в
+	новую эру качества жизни и контроля за
+	здоровьем.</div>
+				<div class="img">
+					<img src="images/landing/sample_5.jpg">
+				</div>
 			</div>
 		</div>
 
@@ -134,8 +193,13 @@
 				</div>
 			</div>
 		</div>
-		<h2 class="title">Контакты<br><br><span class="contacts">7 495 131-32-73<br><br>zdrav.rf@mail.ru</span></h2>
+		<!--h2 class="title">Контакты<br><br><span class="contacts">7 495 131-32-73<br><br>zdrav.rf@mail.ru</span></h2-->
 		
+		<hr>
+
+		<?php
+      include("footer.php");
+    ?>
 	</div>
 
 	<!--div id="index-btns-wrapper">
@@ -258,6 +322,44 @@
 		</div>
 		</div>
 	<!-- MODALS END-->
+
+<!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40933314 = new Ya.Metrika({ id:40933314, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40933314" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">
+	var _tmr = window._tmr || (window._tmr = []);
+	_tmr.push({id: "2885114", type: "pageView", start: (new Date()).getTime()});
+	(function (d, w, id) {
+		if (d.getElementById(id)) return;
+		var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+		ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+		var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+		if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+	})(document, window, "topmailru-code");
+	</script><noscript><div>
+	<img src="//top-fwz1.mail.ru/counter?id=2885114;js=na" style="border:0;position:absolute;left:-9999px;" alt="" />
+	</div></noscript>
+	<!-- //Rating@Mail.ru counter -->
+	
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	
+		ga('create', 'UA-96242372-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	
+	<script>
+	(function(w, d, s, h, id) {
+			w.roistatProjectId = id; w.roistatHost = h;
+			var p = d.location.protocol == "https:" ? "https://" : "http://";
+			var u = /^.*roistat_visit=[^;]+(.*)?$/.test(d.cookie) ? "/dist/module.js" : "/api/site/1.0/"+id+"/init";
+			var js = d.createElement(s); js.charset="UTF-8"; js.async = 1; js.src = p+h+u; var js2 = d.getElementsByTagName(s)[0]; js2.parentNode.insertBefore(js, js2);
+	})(window, document, 'script', 'cloud.roistat.com', 'e1532658477bc22fa49715ac4445f571');
+	</script>
 </body>
 
 </html>
